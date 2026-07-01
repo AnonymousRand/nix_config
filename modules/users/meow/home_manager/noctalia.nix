@@ -9,7 +9,7 @@
       #settings = {
       #  colorSchemes.predefinedScheme = "Catppuccin";
       #};
-      settings = ../dotfiles/noctalia/settings.json
+      settings = ../dotfiles/noctalia/settings.json;
     };
   };
 }
