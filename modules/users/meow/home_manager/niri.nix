@@ -1,5 +1,9 @@
-{
+{ inputs, ... }: {
   flake.homeModules.meow = {
+    imports = [
+      inputs.niri.homeModules.niri
+    ];
+
     programs.niri = {
       enable = true;
       settings = {
@@ -8,6 +12,6 @@
           { command = [ "noctalia-shell" ]; }
         ];
       };
-    }
+    };
   };
 }
