@@ -5,7 +5,7 @@
     ];
 
     programs.noctalia-greeter = {
-      enable = true;
+      #enable = true;
       settings = {
         keyboard = {
           layout = "us";

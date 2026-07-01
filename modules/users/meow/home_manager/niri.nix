@@ -9,7 +9,7 @@
       settings = {
         spawn-at-startup = [
           # start Noctalia as well on Niri startup
-          { argv = [ "noctalia-shell" ]; }
+          { command = [ "noctalia-shell" ]; }
         ];
 
         binds = with config.lib.niri.actions; {
