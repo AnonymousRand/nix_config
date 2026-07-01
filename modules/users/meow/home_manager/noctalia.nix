@@ -6,6 +6,7 @@
 
     programs.noctalia-shell = {
       enable = true;
+      settings.colorSchemes.predefinedScheme = "Catppuccin";
       #settings = {
       #  colorSchemes.predefinedScheme = "Catppuccin";
       #};

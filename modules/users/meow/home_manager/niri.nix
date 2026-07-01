@@ -6,7 +6,7 @@
 
     programs.niri = {
       enable = true;
-      config = builtins.readFile ./dotfiles/niri_config.kdl;
+      config = builtins.readFile ../dotfiles/niri/config.kdl;
     };
   };
 }
