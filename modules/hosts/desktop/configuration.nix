@@ -46,7 +46,7 @@
       extraConfig = ''
         Defaults timestamp_timeout=30
       '';
-    }
+    };
     security.pam.services.sudo.nodelay = true;
 
     # enable bluetooth
