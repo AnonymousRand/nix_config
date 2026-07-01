@@ -14,6 +14,10 @@
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs-unstable"; # Noctalia requires nixpkgs unstable
     };
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -22,8 +26,9 @@
       "aarch64-linux"
     ];
     imports = [
-      inputs.home-manager.flakeModules.home-manager # to allow standalone Home Manager configs
       (inputs.import-tree ./modules)
+      inputs.home-manager.flakeModules.home-manager # to allow standalone Home Manager configs
+      inputs.noctalia-greeter.nixosModules.default  # Noctalia Greeter
     ];
   };
 }
