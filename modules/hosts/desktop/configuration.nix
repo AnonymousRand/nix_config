@@ -49,5 +49,12 @@
 
     # enable battery status feature
     #services.upower.enable = true;
+
+    # extend sudo password validity duration
+    security.sudo = {
+      extraConfig = ''
+        Defaults timestamp_timeout=30
+      '';
+    }
   };
 }
