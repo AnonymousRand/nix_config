@@ -12,7 +12,6 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        #home-manager.backupFileExtension = "backup"; # allow existing config files to be overridden
 
         home-manager.users.meow = self.homeModules.meow;
       }
@@ -21,6 +20,7 @@
       self.nixosModules.niri
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
+      self.nixosModules.nvtop
     ];
   };
 }
