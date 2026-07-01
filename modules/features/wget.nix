@@ -1,7 +1,7 @@
 {
-  flake.nixosModules.base = { pkgs, ... }: {
+  flake.nixosModules.wget = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
-      efibootmgr
+      wget
     ];
   };
 }

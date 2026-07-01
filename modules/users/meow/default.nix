@@ -1,5 +1,6 @@
 { self, inputs, ... }: {
   flake.nixosModules.meow = { pkgs, ... }: {
+    # import user-specific features here!
     # don't forget to set a password with ‘passwd’!
     users.users."meow" = {
       isNormalUser = true;

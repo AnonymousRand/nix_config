@@ -1,5 +1,14 @@
 { self, inputs, ... }: {
   flake.nixosModules.base = { config, pkgs, ... }: {
+    imports = [
+      # features to be installed on every host
+      self.nixosModules.efibootmgr
+      self.nixosModules.git
+      self.nixosModules.tree
+      self.nixosModules.vim
+      self.nixosModules.wget
+    ];
+
     # bootloader
     # IMPORTANT: FOR UEFI DUAL-BOOTING WITH WINDOWS, use efibootmgr to put "UEFI OS"
     # or "Linux Boot Manager" higher in boot priority than Windows Boot Manager

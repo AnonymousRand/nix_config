@@ -1,7 +1,7 @@
 {
-  flake.nixosModules.base = { pkgs, ... }: {
+  flake.nixosModules.tree = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
-      wget
+      tree
     ];
   };
 }

@@ -3,10 +3,6 @@
     modules = [
       self.nixosModules.desktopConfig
 
-      # desktop env
-      #self.nixosModules.niri
-      #self.nixosModules.noctalia
-
       # users
       self.nixosModules.meow
 
@@ -18,6 +14,10 @@
         home-manager.useUserPackages = true;
         home-manager.users.meow = self.homeModules.meow;
       }
+
+      # features
+      #self.nixosModules.niri
+      #self.nixosModules.noctalia
     ];
   };
 }
