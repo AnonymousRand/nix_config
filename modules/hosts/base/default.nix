@@ -17,10 +17,6 @@
     # enable networking
     networking.networkmanager.enable = true;
   
-    # enable the OpenSSH daemon and SSH agent (e.g. for SSH key passphrases)
-    services.openssh.enable = true;
-    programs.ssh.startAgent = true;
-  
     # enable Nix flakes
     nix.settings.experimental-features = ["nix-command" "flakes"];
   };
