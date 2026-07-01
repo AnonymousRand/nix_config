@@ -15,9 +15,11 @@
         home-manager.users.meow = self.homeModules.meow;
       }
 
-      # features
-      #self.nixosModules.niri
-      #self.nixosModules.noctalia
+      # packages
+      self.nixosModules.niri
+      self.nixosModules.noctalia
+
+      # shells
     ];
   };
 }
