@@ -362,6 +362,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
+    // `bash -l -c kitty` forces user config to be read (e.g. changing default shell)
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "bash" "-l" "-c" "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
