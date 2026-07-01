@@ -1,3 +1,3 @@
-# `modules/base/`
+# Host `base`
 
-This directory contains configs that are shared between ALL hosts and ALL users.
+Configs that are shared between all hosts.

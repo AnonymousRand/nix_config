@@ -1,7 +1,3 @@
 # `modules/hosts/`
 
-Machine-level or host-level config, for example:
-
-- Bootloaders
-- Hardware
-- Networking
+Host-level config, shared between all users on each host.
