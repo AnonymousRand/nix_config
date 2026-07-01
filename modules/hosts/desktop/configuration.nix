@@ -41,6 +41,14 @@
     # allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
+    # extend sudo password validity duration and remove incorrect password timer
+    security.sudo = {
+      extraConfig = ''
+        Defaults timestamp_timeout=30
+      '';
+    }
+    security.pam.servives.sudo.nodelay = true;
+
     # enable bluetooth
     hardware.bluetooth.enable = true;
 
@@ -49,12 +57,5 @@
 
     # enable battery status feature
     #services.upower.enable = true;
-
-    # extend sudo password validity duration
-    security.sudo = {
-      extraConfig = ''
-        Defaults timestamp_timeout=30
-      '';
-    }
   };
 }
