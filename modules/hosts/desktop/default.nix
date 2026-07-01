@@ -12,7 +12,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "backup"; # allow overriding of non-Home-Manager configs
+        #home-manager.backupFileExtension = "backup"; # allow overriding of non-Home-Manager configs
 
         home-manager.users.meow = self.homeModules.meow;
       }
