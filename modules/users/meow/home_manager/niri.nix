@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = {
+  flake.homeModules.meow = { config, ... }: {
     imports = [
       inputs.niri.homeModules.niri
     ];
@@ -11,6 +11,10 @@
           # start Noctalia as well on Niri startup
           { command = [ "noctalia-shell" ]; }
         ];
+
+        binds = with config.lib.niri.actions; {
+          "Mod+T".action = spawn "kitty";
+        };
       };
     };
   };
