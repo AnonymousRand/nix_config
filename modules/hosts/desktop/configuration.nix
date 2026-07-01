@@ -47,7 +47,7 @@
         Defaults timestamp_timeout=30
       '';
     }
-    security.pam.servives.sudo.nodelay = true;
+    security.pam.services.sudo.nodelay = true;
 
     # enable bluetooth
     hardware.bluetooth.enable = true;
