@@ -6,16 +6,7 @@
 
     programs.niri = {
       enable = true;
-      settings = {
-        spawn-at-startup = [
-          # start Noctalia as well on Niri startup
-          { command = [ "noctalia-shell" ]; }
-        ];
-
-        binds = with config.lib.niri.actions; {
-          "Mod+T".action = spawn "kitty";
-        };
-      };
+      config = builtins.readFile ./dotfiles/niri_config.kdl;
     };
   };
 }
