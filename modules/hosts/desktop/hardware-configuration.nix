@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktopHardwareConfig = { config, lib, pkgs, modulesPath, ... }: {
+  flake.nixosModules.desktopConfig = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
