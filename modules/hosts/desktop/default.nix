@@ -20,6 +20,7 @@
       self.nixosModules.niri
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
+      self.nixosModules.xwayland-satellite
       self.nixosModules.nvtop
     ];
   };
