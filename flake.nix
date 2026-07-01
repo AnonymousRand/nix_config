@@ -28,7 +28,7 @@
     imports = [
       (inputs.import-tree ./modules)
       inputs.home-manager.flakeModules.home-manager # to allow standalone Home Manager configs
-      inputs.noctalia-greeter.nixosModules.default  # Noctalia Greeter
+      #inputs.noctalia-greeter.nixosModules.default  # Noctalia Greeter
     ];
   };
 }
