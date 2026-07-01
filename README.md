@@ -8,7 +8,7 @@ more documentation to come :3
 
 ## Structure
 
-### so what the heck is a dendritic
+### so what the heck is a dendritic pattern
 
 - [Dendritic pattern](https://github.com/mightyiam/dendritic) is a way to organize Nix configs where we essentially break up our config into *features,* such as packages, programs, and shells. Each feature gets a single top-level module, and hosts and users simply pick out the features they want by importing their top-level modules.
 - Dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization, which is like really confusing but it basically facilitates splitting up flakes into multiple files, and gives us flake-level options like `flake.nixosModules`. (These are exactly the "top-level modules" we give to each feature.)
