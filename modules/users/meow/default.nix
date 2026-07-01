@@ -1,12 +1,17 @@
 { self, inputs, ... }: {
   flake.nixosModules.meow = { pkgs, ... }: {
-    # import user-specific features here!
     # don't forget to set a password with ‘passwd’!
     users.users."meow" = {
       isNormalUser = true;
       description = "AnonymousRand";
       extraGroups = [ "networkmanager" "wheel" ];
     };
+
+    imports = [
+      # packages to be installed at the system/host level (if this user is present on host)
+      self.nixosModules.fish
+      self.nixosModules.kitty
+    ];
   };
 
   # Home Manager config module, which can be both integrated into NixOS configs
@@ -17,6 +22,10 @@
     home.stateVersion = "26.05";
 
     programs.home-manager.enable = true; # enables `home-manager` command
+
+    home.sessionVariables = {
+      TERMINAL = "kitty";
+    };
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)

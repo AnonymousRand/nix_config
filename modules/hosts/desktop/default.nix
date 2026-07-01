@@ -19,8 +19,6 @@
       self.nixosModules.niri
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
-
-      # shells
     ];
   };
 }
