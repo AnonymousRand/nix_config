@@ -6,7 +6,6 @@
 
     programs.noctalia-greeter = {
       enable = true;
-      greeter-args = "--session";
       settings = {
         keyboard = {
           layout = "us";
