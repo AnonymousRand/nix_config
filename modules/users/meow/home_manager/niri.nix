@@ -13,7 +13,7 @@
         ];
 
         binds = with config.lib.niri.actions; {
-          "Shift+T".action = spawn "kitty";
+          "Mod+T".action = spawn "kitty";
         };
       };
     };
