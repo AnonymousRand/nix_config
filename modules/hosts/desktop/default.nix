@@ -3,7 +3,9 @@
     modules = [
       self.nixosModules.desktopConfig
 
+      ##########################################################################
       # users
+
       self.nixosModules.meow
 
       # integrate Home Manager config for all users on this host
@@ -17,14 +19,22 @@
         home-manager.users.meow = self.homeModules.meow;
       }
 
+      ##########################################################################
       # packages
+
+      # desktop
       self.nixosModules.niri
       #self.nixosModules.noctalia-v4
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
       self.nixosModules.xwayland-satellite
+
+      # Logitech mouse config
+      self.nixosModules.libratbag
+      self.nixosModules.piper
+
+      # other
       self.nixosModules.nvtop
-      self.nixosModules.piper # Logitech mouse config
     ];
   };
 }
