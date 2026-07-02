@@ -24,9 +24,10 @@
 
       # desktop
       self.nixosModules.niri
-      #self.nixosModules.noctalia-v4
       self.nixosModules.noctalia
+      #self.nixosModules.noctalia-v4
       self.nixosModules.noctalia-greeter
+      self.nixosModules.stylix
       self.nixosModules.xwayland-satellite
 
       # Logitech mouse config
