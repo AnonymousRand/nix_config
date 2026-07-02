@@ -12,9 +12,10 @@
       # (so they're also built when `nixos-rebuild --flake .#<host name>` command is run)
       inputs.home-manager.nixosModules.home-manager # to allow integrated Home Manager configs
       {
-        home-manager.useGlobalPkgs = true;
+        #home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         #home-manager.backupFileExtension = "backup"; # allow overriding of non-Home-Manager configs
+        #stylix.homeManagerIntegration.autoImport = false; # allow standalone Home Manager config of stylix still
 
         home-manager.users.meow = self.homeModules.meow;
       }
