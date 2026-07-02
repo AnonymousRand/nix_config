@@ -356,8 +356,9 @@ binds {
 
     Super+Alt+Slash                               { show-hotkey-overlay; }
     // `bash -l -c kitty` forces user config to be read (e.g. if changing default shell)
-    Mod+T hotkey-overlay-title="Terminal (kitty)" { spawn "bash" "-l" "-c" "kitty"; }
-    Mod+D hotkey-overlay-title="Launcher"         { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+T hotkey-overlay-title="Terminal (kitty)"   { spawn "bash" "-l" "-c" "kitty"; }
+    Mod+D hotkey-overlay-title="Launcher"           { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker"; }
 
     Print          { screenshot; }
     Mod+Print      { screenshot-screen; }
