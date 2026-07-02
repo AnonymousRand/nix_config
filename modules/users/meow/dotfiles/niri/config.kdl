@@ -76,7 +76,7 @@ input {
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 /*
-output "eDP-1" {
+output "DP-4" {
     // Uncomment this line to disable this output.
     // off
 
@@ -107,10 +107,6 @@ output "eDP-1" {
     position x=1280 y=0
 }
 */
-
-outputs {
-    "*" match-all=true {}
-}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
