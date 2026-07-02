@@ -2,7 +2,7 @@
 
 uhhh
 
-shoddy attempts at dendritic pattern with `flake-parts`
+a shoddy attempt at dendritic pattern with `flake-parts`
 
 more documentation to come :3
 
@@ -10,8 +10,9 @@ more documentation to come :3
 
 ### so what the heck is a dendritic pattern
 
-- [Dendritic pattern](https://github.com/mightyiam/dendritic) is a way to organize Nix configs where we essentially break up our config into *features,* such as packages, programs, and shells. Each feature gets a single top-level module, and hosts and users simply pick out the features they want by importing their top-level modules.
-- Dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization, which is like really confusing but it basically facilitates splitting up flakes into multiple files, and gives us flake-level options like `flake.nixosModules`. (These are exactly the "top-level modules" we give to each feature.)
+- From what I've tried to gather, [dendritic pattern](https://github.com/mightyiam/dendritic) is a way to organize Nix configs where we essentially organize our config by *feature,* such as packages, programs, and shells. Each feature gets a single top-level module, and hosts and users simply pick out the features they want by importing their top-level modules.
+- This doesn't mean all files have to be top-level modules; a single top-level module can be broken up and spread across several files by using the same module name and letting Nix automatically merge them together (e.g. the top-level modules for each user in `modules/users/` is spread across all their Home Manager files).
+- Dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization, which is like really confusing but it basically facilitates splitting up flakes and top-level modules into multiple files, and gives us flake-level options like `flake.nixosModules`. (These are exactly the "top-level modules" we give to each feature.)
 
 ### NixOS Config
 
