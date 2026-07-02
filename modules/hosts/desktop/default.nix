@@ -24,6 +24,7 @@
       self.nixosModules.noctalia-greeter
       self.nixosModules.xwayland-satellite
       self.nixosModules.nvtop
+      self.nixosModules.piper # Logitech mouse config
     ];
   };
 }

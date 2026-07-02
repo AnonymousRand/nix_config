@@ -46,7 +46,7 @@ input {
         // off
         // natural-scroll
         // accel-speed 0.2
-        // accel-profile "flat"
+        accel-profile "flat" // turns off dynamic mouse accel
         // scroll-method "no-scroll"
     }
 
