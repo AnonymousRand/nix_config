@@ -352,7 +352,7 @@ binds {
     // `bash -l -c kitty` forces user config to be read (e.g. changing default shell)
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "bash" "-l" "-c" "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
+    Mod+Shift+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
