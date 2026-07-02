@@ -30,8 +30,7 @@
       self.nixosModules.xwayland-satellite
 
       # Logitech mouse config
-      self.nixosModules.ratbagd
-      self.nixosModules.piper
+      self.nixosModules.solaar
 
       # other
       self.nixosModules.nvtop
