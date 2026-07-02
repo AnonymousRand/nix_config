@@ -8,7 +8,7 @@ palette:
   base02: "#484848" # selection background
   base03: "#606060" # comments, invisibles, line highlighting
   base04: "#b0b0b0" # dark foreground (status bars)
-  base05: "#ffe8f6" # default foreground, caret, delimiters, operators
+  base05: "#cccccc" # default foreground, caret, delimiters, operators
   base06: "#ffedf8" # light foreground (not often used)
   base07: "#fff2fa" # light background (not often used)
   base08: "#ffd500" # variables, XML tags, markup links text & lists, diff deleted
