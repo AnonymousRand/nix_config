@@ -7,7 +7,7 @@
         pkgs.vimPlugins.vim-camelcasemotion
         pkgs.vimPlugins.vim-indentwise
       ];
-      extraConfig = builtins.readFile ../dotfiles/vim/vimrc
+      extraConfig = builtins.readFile ../dotfiles/vim/vimrc;
     };
 
     # custom colorscheme
