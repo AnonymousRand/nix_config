@@ -16,9 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
+    noctalia-v4 = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs-unstable"; # Noctalia requires nixpkgs unstable
+      inputs.nixpkgs.follows = "nixpkgs-unstable"; # Noctalia v4 requires nixpkgs unstable
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";

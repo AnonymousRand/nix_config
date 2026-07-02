@@ -19,6 +19,7 @@
 
       # packages
       self.nixosModules.niri
+      #self.nixosModules.noctalia-v4
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
       self.nixosModules.xwayland-satellite

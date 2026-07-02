@@ -4,12 +4,14 @@
       inputs.noctalia.homeModules.default
     ];
 
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
-      #settings = {
-      #  colorSchemes.predefinedScheme = "Catppuccin";
-      #};
-      settings = ../dotfiles/noctalia/settings.json;
+      settings = {
+        theme = {
+          source = "builtin";
+          builtin = "Catppuccin";
+        };
+      };
     };
   };
 }

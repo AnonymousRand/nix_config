@@ -270,7 +270,8 @@ layout {
 // spawn Noctalia
 //spawn-at-startup "dbus-update-activation-environment" "--all"
 //spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-spawn-at-startup "noctalia-shell"
+//spawn-at-startup "noctalia-shell" // for Noctalia v4
+spawn-at-startup "noctalia"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
