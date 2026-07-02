@@ -14,6 +14,11 @@
   
     networking.hostName = "snow-rainbow";             # define hostname
     networking.networkmanager.wifi.powersave = false; # maybe help with wifi issues after suspend
+
+    # Nix store auto clean up
+    nix.gc.automatic = true;
+    nix.gc.dates = "weekly";
+    nix.gc.options = "--delete-older-than 30d";
   
     # set time zone
     time.timeZone = "America/Los_Angeles";
