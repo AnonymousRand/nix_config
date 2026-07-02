@@ -75,7 +75,8 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+/*
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -104,6 +105,11 @@ input {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=1280 y=0
+}
+*/
+
+outputs {
+    "*" match-all=true {}
 }
 
 // Settings that influence how windows are positioned and sized.
