@@ -34,6 +34,7 @@
 
       # other
       self.nixosModules.nvtop
+      self.nixosModules.playerctl # control media players using MPRIS
     ];
   };
 }
