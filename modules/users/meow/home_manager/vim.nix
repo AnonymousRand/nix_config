@@ -4,7 +4,7 @@
       enable = true;
       plugins = [
         pkgs.vimPlugins.vim-sensible
-        pkgs.vimPlugins.vim-camelcasemotion
+        pkgs.vimPlugins.camelcasemotion
         pkgs.vimPlugins.vim-indentwise
       ];
       extraConfig = builtins.readFile ../dotfiles/vim/vimrc;
