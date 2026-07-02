@@ -36,6 +36,7 @@
       # other
       self.nixosModules.playerctl # control media players that use MPRIS
       self.nixosModules.nvtop
+      self.nixosModules.wl-color-picker
     ];
   };
 }

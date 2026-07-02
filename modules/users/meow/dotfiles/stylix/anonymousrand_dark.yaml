@@ -1,0 +1,21 @@
+system: "base16"
+name: "AnonymousRand"
+author: "AnonymousRand"
+variant: "dark"
+palette:
+  base00: "#181818" # default background
+  base01: "#242424" # lighter background
+  base02: "#484848" # selection background
+  base03: "#606060" # comments, invisibles, line highlighting
+  base04: "#b0b0b0" # dark foreground (status bars)
+  base05: "#ffe8f6" # default foreground, caret, delimiters, operators
+  base06: "#ffedf8" # light foreground (not often used)
+  base07: "#fff2fa" # light background (not often used)
+  base08: "#ffd500" # variables, XML tags, markup links text & lists, diff deleted
+  base09: "#80f4ff" # integers, booleans, constants, XML attributes, markup link url
+  base0A: "#ffd500" # classes, markup bold, search text background
+  base0B: "#80f4ff" # strings, inherited class, markup code, diff inserted
+  base0C: "#80f4ff" # support, regex, escape chars, markup quotes
+  base0D: "#ffd500" # functions, methods, attribute IDs, headings
+  base0E: "#ffd1f0" # keywords, storage, selector, markup italic, diff changed # TODO try ffd1ed as well, 323, 18, 100
+  base0F: "#cccccc" # deprecated, opening/closing embedded language tags

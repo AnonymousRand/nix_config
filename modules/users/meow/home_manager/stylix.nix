@@ -6,6 +6,7 @@
 
     stylix = {
       enable = true;
+      base16Scheme = ../dotfiles/stylix/anonymousrand_dark.yaml;
     };
   };
 }
