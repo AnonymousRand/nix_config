@@ -1,4 +1,4 @@
-set -U fish_color_cwd {{ colors.bonus.default.hex }}
+set -U fish_color_cwd "{{ colors.bonus_source.default.hex }}"
 
 #set -U fish_color_normal "${colors.${theme}.foreground}" \
 #  --background "${colors.${theme}.background}"

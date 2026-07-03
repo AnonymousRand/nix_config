@@ -20,7 +20,6 @@
             custom_colors = {
               bonus = {
                 color = "#ffa200";
-                blend = false;
               };
             };
           };
