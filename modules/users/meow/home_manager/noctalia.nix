@@ -7,16 +7,16 @@
     programs.noctalia = {
       enable = true;
       settings = {
-        # declare my custom color palette for Noctalia app theming
         theme = {
+          # declare my custom color palette for Noctalia app theming
           source = "custom";
           custom_palette = "anonymousrand";
-        };
 
-        # enable app theming, which uses templates to map Noctalia color palette colors to each app's configs
-        templates = {
-          enableBuiltinTemplates = true;
-          enableUserTemplates = true;
+          # enable app theming, which uses templates to map Noctalia color palette colors to each app's configs
+          templates = {
+            enableBuiltinTemplates = true;
+            enableUserTemplates = true;
+          };
         };
       };
     };

@@ -12,7 +12,7 @@
     # Noctalia theming
     programs.noctalia = {
       settings = {
-        templates = {
+        theme.templates = {
           builtin_ids = [ "kitty" ];
         };
       };
