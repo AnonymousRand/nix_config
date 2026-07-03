@@ -4,7 +4,7 @@
       enable = true;
 
       interactiveShellInit = with config.meow; let
-        theme = "dark-mode"; # TODO eventually replace
+        theme = "light-mode"; # TODO eventually replace
       in
         ########################################################################
         # custom colorscheme
