@@ -3,13 +3,27 @@
     programs.kitty = {
       enable = true;
       shellIntegration.enableFishIntegration = true;
+      settings = {
+        shell = "fish";
+        font_size = 12;
+      };
+    };
 
-      settings = with config.meow; let
-        theme = "dark-mode"; # TODO eventually replace
-      in
-        {
-          shell = "fish";
-          font_size = 12;
+    # Noctalia theming
+    programs.noctalia = {
+      settings = {
+        templates = {
+          builtin_ids = [ "kitty" ];
+        };
+      };
+    };
+
+      #settings = with config.meow; let
+      #  theme = "dark-mode"; # TODO eventually replace
+      #in
+      #  {
+      #    shell = "fish";
+      #    font_size = 12;
 
           #########################################################################
           ## custom colorscheme
@@ -42,7 +56,7 @@
           #color13              = colors.pink-light;      # brmagenta
           #color14              = colors.blue-light;      # brblue
           #color15              = colors.white;           # brwhite
-        };
-    };
+    #   };
+    #};
   };
 }

@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = {
+  flake.homeModules.meow = { config, ... }: {
     imports = [
       inputs.noctalia.homeModules.default
     ];
@@ -7,17 +7,23 @@
     programs.noctalia = {
       enable = true;
       settings = {
+        # declare my custom color palette for Noctalia app theming
         theme = {
-          #source = "builtin";
-          #builtin = "Catppuccin";
           source = "custom";
           custom_palette = "anonymousrand";
+        };
+
+        # enable app theming, which uses templates to map Noctalia color palette colors to each app's configs
+        templates = {
+          enableBuiltinTemplates = true;
+          enableUserTemplates = true;
         };
       };
     };
 
     xdg.configFile."noctalia/palettes/anonymousrand.json".text = with config.meow; builtins.toJSON {
       dark = rec {
+        bonus             = colors.orange;
         mPrimary          = colors.pink-light;
         mOnPrimary        = colors.black;
         mSecondary        = colors.orange-light;
