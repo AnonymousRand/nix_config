@@ -133,7 +133,7 @@
     # set light mode color presets
 
     light-mode = rec {
-      background                    = white;
+      background                    = "#ffebf2";
       background-secondary          = white-dark;
       foreground                    = "#303030";
       foreground-secondary          = "#484848";

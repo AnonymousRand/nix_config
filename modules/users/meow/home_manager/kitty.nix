@@ -5,7 +5,7 @@
       shellIntegration.enableFishIntegration = true;
 
       settings = with config.meow; let
-        theme = "light-mode"; # TODO eventually replace
+        theme = "dark-mode"; # TODO eventually replace
       in
         {
           shell = "fish";
