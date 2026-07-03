@@ -53,7 +53,7 @@
     orange-xdeep    = "#ffaa00";
 
     pink            = "#ff0095";
-    pink-light      = "#ffbae3";
+    pink-light      = "#ffb5e1";
     pink-xlight     = "#ffd1ed";
     pink-xxlight    = "#ffe0f3";
 
