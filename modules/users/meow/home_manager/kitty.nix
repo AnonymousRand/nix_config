@@ -27,7 +27,7 @@
 
           # the 16 ANSI terminal colors
           color0               = colors.black;           # black
-          color1               = colors.red;             # red
+          color1               = colors.orange-xdeep;    # red
           color2               = colors.green;           # green
           color3               = colors.orange;          # yellow
           color4               = colors.blue-deep;       # blue
@@ -36,7 +36,7 @@
           color7               = colors.white-dark;      # white
 
           color8               = colors.black-light;     # brblack
-          color9               = colors.orange-xdeep;    # brred
+          color9               = colors.red;             # brred
           color10              = colors.green-light;     # brgreen
           color11              = colors.orange-light;    # bryellow
           color12              = colors.blue-deep-light; # brblue
