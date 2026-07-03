@@ -21,8 +21,8 @@
               bonus = {
                 color = "#ffa200";
                 blend = false;
-              }
-            }
+              };
+            };
           };
         };
       };
