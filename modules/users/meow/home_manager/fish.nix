@@ -3,7 +3,7 @@
     programs.fish = {
       enable = true;
 
-      interactiveShellInit = "source ~/.config/fish/notalia_theme.fish";
+      interactiveShellInit = "source ~/.config/fish/noctalia_theme.fish";
     };
 
     # Noctalia theming
@@ -12,12 +12,12 @@
         theme.templates.user.fish = {
           input_path = "./templates/fish.fish";
           output_path = "$XDG_CONFIG_HOME/fish/noctalia_theme.fish";
-          post_hook = "fish -c \"source $HOME/config/fish/config.fish";
+          post_hook = "fish -c \"source $HOME/.config/fish/config.fish";
         };
       };
-
-      xdg.configFile."noctalia/templates/fish.fish".source = ../dotfiles/noctalia/templates/fish.fish;
     };
+
+    xdg.configFile."noctalia/templates/fish.fish".source = ../dotfiles/noctalia/templates/fish.fish;
 
       #interactiveShellInit = with config.meow; let
       #  theme = "dark-mode"; # TODO eventually replace
