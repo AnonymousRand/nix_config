@@ -12,10 +12,9 @@
           source = "custom";
           custom_palette = "anonymousrand";
 
-          # enable app theming, which uses templates to map Noctalia color palette colors to each app's configs
+          # enable built-in app theming, which uses templates to map Noctalia color palette colors to each app's configs
           templates = {
-            enableBuiltinTemplates = true;
-            enableUserTemplates = true;
+            enable_builtin_templates = true;
           };
         };
       };
