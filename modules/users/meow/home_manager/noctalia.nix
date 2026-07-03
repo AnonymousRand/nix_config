@@ -44,8 +44,8 @@
           foreground  = mOnSurface;
           cursor      = colors.pink-xlight;
           cursorText  = background;
-          selectionBg = colors.pink-xxlight;
-          selectionFg = foreground;
+          selectionBg = colors.pink-xlight;
+          selectionFg = background;
           normal = {
             black   = colors.black;
             red     = colors.orange-xdeep;
