@@ -8,6 +8,8 @@
     };
 
     imports = [
+      ./colors.nix
+
       # packages to be installed at the system/host level (if this user is present on host)
       self.nixosModules.fish
       self.nixosModules.kitty
