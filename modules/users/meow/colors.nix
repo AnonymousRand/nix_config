@@ -163,8 +163,8 @@
     # set dark mode color presets
 
     dark-mode = rec {
-      background                    = "#181818";
-      background-secondary          = "#242424";
+      background                    = "#000000";
+      background-secondary          = "#202020";
       foreground                    = white-dark;
       foreground-secondary          = "#b0b0b0";
 
