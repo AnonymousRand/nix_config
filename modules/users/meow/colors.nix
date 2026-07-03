@@ -1,9 +1,8 @@
 { lib, config, ... }: {
-  ##############################################################################
-  # color variables
-
-
   options.meow.colors = with lib; {
+    ############################################################################
+    # color variables
+
     black           = mkOption { type = types.str; };
     black-light     = mkOption { type = types.str; };
 
@@ -29,13 +28,84 @@
 
     white           = mkOption { type = types.str; };
     white-dark      = mkOption { type = types.str; };
+
+    ############################################################################
+    # light mode color presets
+
+    light-mode = mkOption {
+      type = types.submodule {
+        options = {
+          background                    = mkOption { type = types.str; };
+          background-secondary          = mkOption { type = types.str; };
+          foreground                    = mkOption { type = types.str; };
+          foreground-secondary          = mkOption { type = types.str; };
+
+          status-bar-background         = mkOption { type = types.str; };
+          status-bar-foreground         = mkOption { type = types.str; };
+
+          selection-background          = mkOption { type = types.str; };
+          selection-foreground          = mkOption { type = types.str; };
+          selection-discreet-background = mkOption { type = types.str; };
+          selection-discreet-foreground = mkOption { type = types.str; };
+
+          textcursor-background         = mkOption { type = types.str; };
+          textcursor-foreground         = mkOption { type = types.str; };
+
+          classes                       = mkOption { type = types.str; };
+          comments                      = mkOption { type = types.str; };
+          constants                     = mkOption { type = types.str; };
+          functions                     = mkOption { type = types.str; };
+          keywords                      = mkOption { type = types.str; };
+          variables                     = mkOption { type = types.str; };
+          urgent                        = mkOption { type = types.str; };
+          very-urgent                   = mkOption { type = types.str; };
+        };
+      };
+    };
+
+    ############################################################################
+    # dark mode color presets
+
+    dark-mode = mkOption {
+      type = types.submodule {
+        options = {
+          background                    = mkOption { type = types.str; };
+          background-secondary          = mkOption { type = types.str; };
+          foreground                    = mkOption { type = types.str; };
+          foreground-secondary          = mkOption { type = types.str; };
+
+          status-bar-background         = mkOption { type = types.str; };
+          status-bar-foreground         = mkOption { type = types.str; };
+
+          selection-background          = mkOption { type = types.str; };
+          selection-foreground          = mkOption { type = types.str; };
+          selection-discreet-background = mkOption { type = types.str; };
+          selection-discreet-foreground = mkOption { type = types.str; };
+
+          textcursor-background         = mkOption { type = types.str; };
+          textcursor-foreground         = mkOption { type = types.str; };
+
+          classes                       = mkOption { type = types.str; };
+          comments                      = mkOption { type = types.str; };
+          constants                     = mkOption { type = types.str; };
+          functions                     = mkOption { type = types.str; };
+          keywords                      = mkOption { type = types.str; };
+          variables                     = mkOption { type = types.str; };
+          urgent                        = mkOption { type = types.str; };
+          very-urgent                   = mkOption { type = types.str; };
+        };
+      };
+    };
   };
 
 
   # TODO: consider having light and dark mode color variables, then remove distinction
   # between light and dark mode presets below, and use global theme variable to determine whether
   # light or dark variable from meow.colors pulled? maybe better for kitty ansi colors, for example
-  config.meow.colors = {
+  config.meow.colors = rec {
+    ############################################################################
+    # set color variables
+
     black           = "#000000";
     black-light     = "#808080";
 
@@ -61,125 +131,65 @@
 
     white           = "#ffffff";
     white-dark      = "#cccccc";
-  };
 
+    ############################################################################
+    # set light mode color presets
 
-  ##############################################################################
-  # light mode color presets
+    light-mode = rec {
+      background                    = white;
+      background-secondary          = white-dark;
+      foreground                    = "#303030";
+      foreground-secondary          = "#484848";
 
+      status-bar-background         = pink-xlight;
+      status-bar-foreground         = foreground;
 
-  options.meow.colors-light = with lib; {
-    background                    = mkOption { type = types.str; };
-    background-secondary          = mkOption { type = types.str; };
-    foreground                    = mkOption { type = types.str; };
-    foreground-secondary          = mkOption { type = types.str; };
+      selection-background          = pink-xxlight;
+      selection-foreground          = foreground;
+      selection-discreet-background = "#b8b8b8";
+      selection-discreet-foreground = foreground;
 
-    status-bar-background         = mkOption { type = types.str; };
-    status-bar-foreground         = mkOption { type = types.str; };
+      textcursor-background         = pink-xlight;
+      textcursor-foreground         = foreground;
 
-    selection-background          = mkOption { type = types.str; };
-    selection-foreground          = mkOption { type = types.str; };
-    selection-discreet-background = mkOption { type = types.str; };
-    selection-discreet-foreground = mkOption { type = types.str; };
+      classes                       = orange;
+      comments                      = green;
+      constants                     = blue;
+      functions                     = orange-deep;
+      keywords                      = pink-light;
+      variables                     = foreground;
+      urgent                        = orange-xdeep;
+      very-urgent                   = red;
+    };
 
-    textcursor-background         = mkOption { type = types.str; };
-    textcursor-foreground         = mkOption { type = types.str; };
+    ############################################################################
+    # set dark mode color presets
 
-    classes                       = mkOption { type = types.str; };
-    comments                      = mkOption { type = types.str; };
-    constants                     = mkOption { type = types.str; };
-    functions                     = mkOption { type = types.str; };
-    keywords                      = mkOption { type = types.str; };
-    variables                     = mkOption { type = types.str; };
-    urgent                        = mkOption { type = types.str; };
-    very-urgent                   = mkOption { type = types.str; };
-  };
+    dark-mode = rec {
+      background                    = "#181818";
+      background-secondary          = "#242424";
+      foreground                    = white-dark;
+      foreground-secondary          = "#b0b0b0";
 
+      status-bar-background         = pink-xlight;
+      status-bar-foreground         = background;
 
-  config.meow.colors-light = with config.meow.colors; rec {
-    background                    = white;
-    background-secondary          = white-dark;
-    foreground                    = "#303030";
-    foreground-secondary          = "#484848";
+      selection-background          = pink-xlight;
+      selection-foreground          = background;
+      selection-discreet-background = "#484848";
+      selection-discreet-foreground = foreground;
 
-    status-bar-background         = pink-xlight;
-    status-bar-foreground         = foreground;
+      textcursor-background         = pink-xlight;
+      textcursor-foreground         = background;
 
-    selection-background          = pink-xxlight;
-    selection-foreground          = foreground;
-    selection-discreet-background = "#b8b8b8";
-    selection-discreet-foreground = foreground;
-
-    textcursor-background         = pink-xlight;
-    textcursor-foreground         = foreground;
-
-    classes                       = orange;
-    comments                      = green;
-    constants                     = blue;
-    functions                     = orange-deep;
-    keywords                      = pink-light;
-    variables                     = foreground;
-    urgent                        = orange-xdeep;
-    very-urgent                   = red;
-  };
-
-
-  ##############################################################################
-  # dark mode color presets
-
-
-  options.meow.colors-dark = with lib; {
-    background                    = mkOption { type = types.str; };
-    background-secondary          = mkOption { type = types.str; };
-    foreground                    = mkOption { type = types.str; };
-    foreground-secondary          = mkOption { type = types.str; };
-
-    status-bar-background         = mkOption { type = types.str; };
-    status-bar-foreground         = mkOption { type = types.str; };
-
-    selection-background          = mkOption { type = types.str; };
-    selection-foreground          = mkOption { type = types.str; };
-    selection-discreet-background = mkOption { type = types.str; };
-    selection-discreet-foreground = mkOption { type = types.str; };
-
-    textcursor-background         = mkOption { type = types.str; };
-    textcursor-foreground         = mkOption { type = types.str; };
-
-    classes                       = mkOption { type = types.str; };
-    comments                      = mkOption { type = types.str; };
-    constants                     = mkOption { type = types.str; };
-    functions                     = mkOption { type = types.str; };
-    keywords                      = mkOption { type = types.str; };
-    variables                     = mkOption { type = types.str; };
-    urgent                        = mkOption { type = types.str; };
-    very-urgent                   = mkOption { type = types.str; };
-  };
-
-
-  config.meow.colors-dark = with config.meow.colors; rec {
-    background                    = "#181818";
-    background-secondary          = "#242424";
-    foreground                    = white-dark;
-    foreground-secondary          = "#b0b0b0";
-
-    status-bar-background         = pink-xlight;
-    status-bar-foreground         = background;
-
-    selection-background          = pink-xlight;
-    selection-foreground          = background;
-    selection-discreet-background = "#484848";
-    selection-discreet-foreground = foreground;
-
-    textcursor-background         = pink-xlight;
-    textcursor-foreground         = background;
-
-    classes                       = orange;
-    comments                      = green-light;
-    constants                     = blue-light;
-    functions                     = orange;
-    keywords                      = pink-xlight;
-    variables                     = foreground;
-    urgent                        = orange-deep;
-    very-urgent                   = red;
+      classes                       = orange;
+      comments                      = green-light;
+      constants                     = blue-light;
+      functions                     = orange;
+      keywords                      = pink-xlight;
+      variables                     = foreground;
+      urgent                        = orange-deep;
+      very-urgent                   = red;
+    };
   };
 }

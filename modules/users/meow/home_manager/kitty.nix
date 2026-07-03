@@ -5,25 +5,25 @@
       shellIntegration.enableFishIntegration = true;
 
       settings = with config.meow; let
-        theme = "dark"; # TODO eventually replace
+        theme = "dark-mode"; # TODO eventually replace
       in
         {
           shell = "fish";
 
-          font_size = 14;
+          font_size = 11;
 
           ########################################################################
           # custom colorscheme
           # (for docs, see https://sw.kovidgoyal.net/kitty/conf/#color-scheme)
 
-          background           = "colors-${theme}.background";
-          foreground           = "colors-${theme}.foreground";
+          background           = colors.${theme}.background;
+          foreground           = colors.${theme}.foreground;
 
-          selection_background = "colors-${theme}.selection-background";
-          selection_foreground = "colors-${theme}.selection-foreground";
+          selection_background = colors.${theme}.selection-background;
+          selection_foreground = colors.${theme}.selection-foreground;
 
-          cursor               = "colors-${theme}.textcursor-background";
-          cursor_text_color    = "colors-${theme}.textcursor-foreground";
+          cursor               = colors.${theme}.textcursor-background;
+          cursor_text_color    = colors.${theme}.textcursor-foreground;
 
           # the 16 ANSI terminal colors
           color0               = colors.black;           # black
