@@ -8,8 +8,6 @@
     };
 
     imports = [
-      ./colors.nix
-
       # packages to be installed at the system/host level (if this user is present on host)
       self.nixosModules.fish
       self.nixosModules.kitty
@@ -31,6 +29,10 @@
     home.sessionVariables = {
       TERMINAL = "kitty";
     };
+
+    imports = [
+      ./colors.nix
+    ];
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)
