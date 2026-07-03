@@ -16,22 +16,26 @@
     green-light     = mkOption { type = types.str; };
 
     orange          = mkOption { type = types.str; };
-    orange-dee      = mkOption { type = types.str; };
     orange-light    = mkOption { type = types.str; };
+    orange-deep     = mkOption { type = types.str; };
+    orange-xdeep    = mkOption { type = types.str; };
 
     pink            = mkOption { type = types.str; };
     pink-light      = mkOption { type = types.str; };
     pink-xlight     = mkOption { type = types.str; };
+    pink-xxlight    = mkOption { type = types.str; };
 
     red             = mkOption { type = types.str; };
-    red-light       = mkOption { type = types.str; };
 
     white           = mkOption { type = types.str; };
     white-dark      = mkOption { type = types.str; };
   };
 
 
-  config.meow-colors = {
+  # TODO: consider having light and dark mode color variables, then remove distinction
+  # between light and dark mode presets below, and use global theme variable to determine whether
+  # light or dark variable from meow.colors pulled? maybe better for kitty ansi colors, for example
+  config.meow.colors = {
     black           = "#000000";
     black-light     = "#808080";
 
@@ -48,12 +52,12 @@
     orange-deep     = "#ffbf00";
     orange-xdeep    = "#ffaa00";
 
-    pink            = "#ff73c7";
-    pink-light      = "#ffd1ed";
-    pink-xlight     = "#ffe0f3";
+    pink            = "#ff0095";
+    pink-light      = "#ffbae3";
+    pink-xlight     = "#ffd1ed";
+    pink-xxlight    = "#ffe0f3";
 
     red             = "#ff0000";
-    red-light       = "#ff4040";
 
     white           = "#ffffff";
     white-dark      = "#cccccc";
@@ -98,22 +102,22 @@
     foreground                    = "#303030";
     foreground-secondary          = "#484848";
 
-    status-bar-background         = pink-light;
+    status-bar-background         = pink-xlight;
     status-bar-foreground         = foreground;
 
-    selection-background          = pink-xlight;
+    selection-background          = pink-xxlight;
     selection-foreground          = foreground;
     selection-discreet-background = "#b8b8b8";
     selection-discreet-foreground = foreground;
 
-    textcursor-background         = pink-light;
+    textcursor-background         = pink-xlight;
     textcursor-foreground         = foreground;
 
     classes                       = orange;
     comments                      = green;
     constants                     = blue;
     functions                     = orange-deep;
-    keywords                      = pink;
+    keywords                      = pink-light;
     variables                     = foreground;
     urgent                        = orange-xdeep;
     very-urgent                   = red;
@@ -161,19 +165,19 @@
     status-bar-background         = pink-xlight;
     status-bar-foreground         = background;
 
-    selection-background          = pink-light;
+    selection-background          = pink-xlight;
     selection-foreground          = background;
     selection-discreet-background = "#484848";
     selection-discreet-foreground = foreground;
 
-    textcursor-background         = pink-light;
+    textcursor-background         = pink-xlight;
     textcursor-foreground         = background;
 
     classes                       = orange;
     comments                      = green-light;
     constants                     = blue-light;
     functions                     = orange;
-    keywords                      = pink-light;
+    keywords                      = pink-xlight;
     variables                     = foreground;
     urgent                        = orange-deep;
     very-urgent                   = red;
