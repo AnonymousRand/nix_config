@@ -99,9 +99,6 @@
   };
 
 
-  # TODO: consider having light and dark mode color variables, then remove distinction
-  # between light and dark mode presets below, and use global theme variable to determine whether
-  # light or dark variable from meow.colors pulled? maybe better for kitty ansi colors, for example
   config.meow.colors = rec {
     ############################################################################
     # set color variables
@@ -120,7 +117,7 @@
     orange          = "#ffd500";
     orange-light    = "#ffdf40";
     orange-deep     = "#ffbf00";
-    orange-xdeep    = "#ffaa00";
+    orange-xdeep    = "#ffa200";
 
     pink            = "#ff0095";
     pink-light      = "#ffb5e1";
