@@ -8,7 +8,7 @@
         font_size = 12;
       };
 
-      themeFile = "noctalia";
+      extraConfig = "include themes/noctalia.conf";
     };
 
     # Noctalia theming
