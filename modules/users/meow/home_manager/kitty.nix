@@ -7,6 +7,8 @@
         shell = "fish";
         font_size = 12;
       };
+
+      themeFile = "noctalia";
     };
 
     # Noctalia theming
