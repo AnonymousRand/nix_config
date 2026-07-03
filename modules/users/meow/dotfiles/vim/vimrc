@@ -47,9 +47,8 @@ let g:camelcasemotion_key='<leader>'
 
 set colorcolumn=121                             " vertical rule to guide line widths
 set hlsearch                                    " searching permanently highlights all matches
-set iskeyword-=_                                " things like `ctrl + w` in insert mode stop at underscores too
 set iskeyword-=_                                " things like `w` in normal mode stop at underscores too
-autocmd FileType css setlocal iskeyword-=-      " things like `w` in normal mode stop at hyphens too in CSS files
+autocmd FileType css,nix setlocal iskeyword-=-  " things like `w` in normal mode always stop at hyphens too
 set laststatus=2                                " always shows status line at bottom
 set nu rnu                                      " hybrid line numbers
 set scrolloff=2                                 " scrolling always keeps 2 lines visible around cursor

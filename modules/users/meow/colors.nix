@@ -66,9 +66,9 @@
 
   options.meow.colors-light = with lib; {
     background                    = mkOption { type = types.str; };
-    background-dark               = mkOption { type = types.str; };
+    background-secondary          = mkOption { type = types.str; };
     foreground                    = mkOption { type = types.str; };
-    foreground-light              = mkOption { type = types.str; };
+    foreground-secondary          = mkOption { type = types.str; };
 
     status-bar-background         = mkOption { type = types.str; };
     status-bar-foreground         = mkOption { type = types.str; };
@@ -77,6 +77,9 @@
     selection-foreground          = mkOption { type = types.str; };
     selection-discreet-background = mkOption { type = types.str; };
     selection-discreet-foreground = mkOption { type = types.str; };
+
+    textcursor-background         = mkOption { type = types.str; };
+    textcursor-foreground         = mkOption { type = types.str; };
 
     classes                       = mkOption { type = types.str; };
     comments                      = mkOption { type = types.str; };
@@ -91,9 +94,9 @@
 
   config.meow.colors-light = with config.meow.colors; rec {
     background                    = white;
-    background-dark               = white-dark;
+    background-secondary          = white-dark;
     foreground                    = "#303030";
-    foreground-light              = "#484848";
+    foreground-secondary          = "#484848";
 
     status-bar-background         = pink-light;
     status-bar-foreground         = foreground;
@@ -102,6 +105,9 @@
     selection-foreground          = foreground;
     selection-discreet-background = "#b8b8b8";
     selection-discreet-foreground = foreground;
+
+    textcursor-background         = pink-light;
+    textcursor-foreground         = foreground;
 
     classes                       = orange;
     comments                      = green;
@@ -120,9 +126,9 @@
 
   options.meow.colors-dark = with lib; {
     background                    = mkOption { type = types.str; };
-    background-light              = mkOption { type = types.str; };
+    background-secondary          = mkOption { type = types.str; };
     foreground                    = mkOption { type = types.str; };
-    foreground-dark               = mkOption { type = types.str; };
+    foreground-secondary          = mkOption { type = types.str; };
 
     status-bar-background         = mkOption { type = types.str; };
     status-bar-foreground         = mkOption { type = types.str; };
@@ -131,6 +137,9 @@
     selection-foreground          = mkOption { type = types.str; };
     selection-discreet-background = mkOption { type = types.str; };
     selection-discreet-foreground = mkOption { type = types.str; };
+
+    textcursor-background         = mkOption { type = types.str; };
+    textcursor-foreground         = mkOption { type = types.str; };
 
     classes                       = mkOption { type = types.str; };
     comments                      = mkOption { type = types.str; };
@@ -145,9 +154,9 @@
 
   config.meow.colors-dark = with config.meow.colors; rec {
     background                    = "#181818";
-    background-light              = "#242424";
+    background-secondary          = "#242424";
     foreground                    = white-dark;
-    foreground-dark               = "#b0b0b0";
+    foreground-secondary          = "#b0b0b0";
 
     status-bar-background         = pink-xlight;
     status-bar-foreground         = background;
@@ -156,6 +165,9 @@
     selection-foreground          = background;
     selection-discreet-background = "#484848";
     selection-discreet-foreground = foreground;
+
+    textcursor-background         = pink-light;
+    textcursor-foreground         = background;
 
     classes                       = orange;
     comments                      = green-light;
