@@ -20,6 +20,7 @@
     pink-light        = mkOption { type = types.str; };
     pink-xlight       = mkOption { type = types.str; };
     pink-xxlight      = mkOption { type = types.str; };
+    pink-xxxlight     = mkOption { type = types.str; };
 
     red               = mkOption { type = types.str; };
 
@@ -52,9 +53,10 @@
     orange-xdeep      = "#ffa200";
 
     pink              = "#ff0095";
-    pink-light        = "#ffb5e1";
-    pink-xlight       = "#ffd1ed";
-    pink-xxlight      = "#ffe0f3";
+    pink-light        = "#ff9ed8";
+    pink-xlight       = "#ffb3e0";
+    pink-xxlight      = "#ffd1ed";
+    pink-xxxlight     = "#ffe0f3";
 
     red               = "#ff0000";
 
@@ -70,7 +72,7 @@
         mOnSurface        = "#303030";    # main foreground color
         mSurfaceVariant   = white;        # secondary background color (cards, panels)
         mOnSurfaceVariant = mOnSurface;   # secondary foreground color
-        mPrimary          = pink-light;   # primary accent (buttons, links, highlights)
+        mPrimary          = pink-xlight;  # primary accent (buttons, links, highlights)
         mOnPrimary        = black;        # text on primary surfaces
         mSecondary        = orange-light; # secondary accent
         mOnSeconary       = mOnPrimary;   # text on secondary surfaces
@@ -78,16 +80,16 @@
         mOnTertiary       = mOnPrimary;   # text on tertiary surfaces
         mError            = red;          # error color
         mOnError          = black;        # text on error surfaces
-        mOutline          = pink-light;   # borders and dividers
+        mOutline          = pink-xlight;  # borders and dividers
         mShadow           = mSurface;     # shadows
         mHover            = mTertiary;    # hover state background
         mOnHover          = mOnTertiary;  # text on hover surfaces
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = pink-xlight;
+          cursor      = pink-xxlight;
           cursorText  = foreground;
-          selectionBg = pink-xlight;
+          selectionBg = pink-xxlight;
           selectionFg = foreground;
           normal = {
             black   = black;
@@ -95,7 +97,7 @@
             green   = green;
             yellow  = orange;
             blue    = blue-deep;
-            magenta = pink;
+            magenta = pink-light;
             cyan    = blue;
             white   = white-dark;
           };
@@ -105,7 +107,7 @@
             green   = green-light;
             yellow  = orange-light;
             blue    = blue-deep-light;
-            magenta = pink-light;
+            magenta = pink-xlight;
             cyan    = blue-light;
             white   = white;
           };
@@ -117,7 +119,7 @@
         mOnSurface        = white-dark;
         mSurfaceVariant   = "#202020";
         mOnSurfaceVariant = mOnSurface;
-        mPrimary          = pink-light;
+        mPrimary          = pink-xlight;
         mOnPrimary        = black;
         mSecondary        = orange-light;
         mOnSeconary       = mOnPrimary;
@@ -125,16 +127,16 @@
         mOnTertiary       = mOnPrimary;
         mError            = red;
         mOnError          = black;
-        mOutline          = pink-xlight;
+        mOutline          = pink-xxlight;
         mShadow           = mSurface;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = pink-xlight;
+          cursor      = pink-xxlight;
           cursorText  = background;
-          selectionBg = pink-xlight;
+          selectionBg = pink-xxlight;
           selectionFg = background;
           normal = {
             black   = black;
@@ -185,8 +187,8 @@
       };
 
       keywords = {
-        light-color = pink-light;
-        dark-color  = pink-xlight;
+        light-color = pink-xlight;
+        dark-color  = pink-xxlight;
       };
 
       variables = {

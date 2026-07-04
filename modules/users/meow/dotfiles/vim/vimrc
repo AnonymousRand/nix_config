@@ -34,37 +34,37 @@ set mouse=a                                     " enable mouse usage (all modes)
 "    source /etc/vim/vimrc.local
 "endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Configs
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " CamelCaseMotion
 let g:camelcasemotion_key='<leader>'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Custom Configs
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set colorcolumn=121                             " vertical rule to guide line widths
-set hlsearch                                    " searching permanently highlights all matches
-set iskeyword-=_                                " things like `w` in normal mode always stop at underscores too
+set colorcolumn=121                                 " vertical rule to guide line widths
+set hlsearch                                        " searching permanently highlights all matches
+set iskeyword-=_                                    " things like `w` in normal mode always stop at underscores too
 autocmd FileType fish setlocal iskeyword-=_
 autocmd FileType fish setlocal iskeyword-=.
-autocmd FileType css,nix setlocal iskeyword-=-  " things like `w` in normal mode always stop at hyphens too
-set laststatus=2                                " always shows status line at bottom
-set nu rnu                                      " hybrid line numbers
-set scrolloff=2                                 " scrolling always keeps 2 lines visible around cursor
-set viminfo='256,<65535                         " yank up to 65535 lines and remember marks from 256 files
+autocmd FileType css,fish,nix setlocal iskeyword-=- " things like `w` in normal mode always stop at hyphens too
+set laststatus=2                                    " always shows status line at bottom
+set nu rnu                                          " hybrid line numbers
+set scrolloff=2                                     " scrolling always keeps 2 lines visible around cursor
+set viminfo='256,<65535                             " yank up to 65535 lines and remember marks from 256 files
 
-set shiftwidth=4                                " `tab` is 4 spaces wide
-set smarttab expandtab                          " pressing `tab` gives `shiftwidth` spaces
-set tabstop=8                                   " actual tab chars are 8 spaces wide to avoid confusion with indents
+set shiftwidth=4                                    " `tab` is 4 spaces wide
+set smarttab expandtab                              " pressing `tab` gives `shiftwidth` spaces
+set tabstop=8                                       " actual tab chars are 8 spaces wide to avoid confusion with indents
 
-set termguicolors                               " for custom colorscheme
+set termguicolors                                   " for custom colorscheme
 set cursorline
-autocmd BufEnter * :colorscheme anonymousrand   " always apply custom colorscheme last when entering buffer
+autocmd BufEnter * :colorscheme anonymousrand       " always apply custom colorscheme last when entering buffer
 
-set visualbell                                  " turn off bell sounds in vim, for WSL mainly
+set visualbell                                      " turn off bell sounds in vim, for WSL mainly
 set t_vb=
 
 let mapleader=','
@@ -79,9 +79,9 @@ nnoremap <p> <C-g>up
 nnoremap n nzz
 nnoremap N Nzz
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Custom Keybinds
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " `ctrl + c` to copy to system clipboard (XA_CLIPBOARD) in visual mode, and `ctrl + v` to paste from XA_CLIPBOARD
 " (may already be set by terminal, but just in case)
