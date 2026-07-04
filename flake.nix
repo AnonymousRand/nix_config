@@ -48,7 +48,6 @@
     ];
     imports = [
       (inputs.import-tree ./modules)
-      (inputs.import-tree ./shells)
       inputs.home-manager.flakeModules.home-manager # to allow standalone Home Manager configs
     ];
   };
