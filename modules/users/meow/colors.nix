@@ -1,192 +1,208 @@
 { lib, config, ... }: {
   options.meow.colors = with lib; {
-    ############################################################################
-    # color variables
+    black             = mkOption { type = types.str; };
+    black-light       = mkOption { type = types.str; };
 
-    black           = mkOption { type = types.str; };
-    black-light     = mkOption { type = types.str; };
+    blue              = mkOption { type = types.str; };
+    blue-light        = mkOption { type = types.str; };
+    blue-deep         = mkOption { type = types.str; };
+    blue-deep-light   = mkOption { type = types.str; };
 
-    blue            = mkOption { type = types.str; };
-    blue-light      = mkOption { type = types.str; };
-    blue-deep       = mkOption { type = types.str; };
-    blue-deep-light = mkOption { type = types.str; };
+    green             = mkOption { type = types.str; };
+    green-light       = mkOption { type = types.str; };
 
-    green           = mkOption { type = types.str; };
-    green-light     = mkOption { type = types.str; };
+    orange            = mkOption { type = types.str; };
+    orange-light      = mkOption { type = types.str; };
+    orange-deep       = mkOption { type = types.str; };
+    orange-xdeep      = mkOption { type = types.str; };
 
-    orange          = mkOption { type = types.str; };
-    orange-light    = mkOption { type = types.str; };
-    orange-deep     = mkOption { type = types.str; };
-    orange-xdeep    = mkOption { type = types.str; };
+    pink              = mkOption { type = types.str; };
+    pink-light        = mkOption { type = types.str; };
+    pink-xlight       = mkOption { type = types.str; };
+    pink-xxlight      = mkOption { type = types.str; };
 
-    pink            = mkOption { type = types.str; };
-    pink-light      = mkOption { type = types.str; };
-    pink-xlight     = mkOption { type = types.str; };
-    pink-xxlight    = mkOption { type = types.str; };
+    red               = mkOption { type = types.str; };
 
-    red             = mkOption { type = types.str; };
+    white             = mkOption { type = types.str; };
+    white-dark        = mkOption { type = types.str; };
 
-    white           = mkOption { type = types.str; };
-    white-dark      = mkOption { type = types.str; };
-
-    ############################################################################
-    # light mode color presets
-
-    light-mode = mkOption {
-      type = types.submodule {
-        options = {
-          background                    = mkOption { type = types.str; };
-          background-secondary          = mkOption { type = types.str; };
-          foreground                    = mkOption { type = types.str; };
-          foreground-secondary          = mkOption { type = types.str; };
-
-          status-bar-background         = mkOption { type = types.str; };
-          status-bar-foreground         = mkOption { type = types.str; };
-
-          selection-background          = mkOption { type = types.str; };
-          selection-foreground          = mkOption { type = types.str; };
-          selection-discreet-background = mkOption { type = types.str; };
-          selection-discreet-foreground = mkOption { type = types.str; };
-
-          textcursor-background         = mkOption { type = types.str; };
-          textcursor-foreground         = mkOption { type = types.str; };
-
-          classes                       = mkOption { type = types.str; };
-          comments                      = mkOption { type = types.str; };
-          constants                     = mkOption { type = types.str; };
-          functions                     = mkOption { type = types.str; };
-          keywords                      = mkOption { type = types.str; };
-          variables                     = mkOption { type = types.str; };
-          urgent                        = mkOption { type = types.str; };
-          very-urgent                   = mkOption { type = types.str; };
-        };
-      };
-    };
-
-    ############################################################################
-    # dark mode color presets
-
-    dark-mode = mkOption {
-      type = types.submodule {
-        options = {
-          background                    = mkOption { type = types.str; };
-          background-secondary          = mkOption { type = types.str; };
-          foreground                    = mkOption { type = types.str; };
-          foreground-secondary          = mkOption { type = types.str; };
-
-          status-bar-background         = mkOption { type = types.str; };
-          status-bar-foreground         = mkOption { type = types.str; };
-
-          selection-background          = mkOption { type = types.str; };
-          selection-foreground          = mkOption { type = types.str; };
-          selection-discreet-background = mkOption { type = types.str; };
-          selection-discreet-foreground = mkOption { type = types.str; };
-
-          textcursor-background         = mkOption { type = types.str; };
-          textcursor-foreground         = mkOption { type = types.str; };
-
-          classes                       = mkOption { type = types.str; };
-          comments                      = mkOption { type = types.str; };
-          constants                     = mkOption { type = types.str; };
-          functions                     = mkOption { type = types.str; };
-          keywords                      = mkOption { type = types.str; };
-          variables                     = mkOption { type = types.str; };
-          urgent                        = mkOption { type = types.str; };
-          very-urgent                   = mkOption { type = types.str; };
-        };
-      };
-    };
+    material3-palette = mkOption { type = types.attrs; };
+    extra-palette     = mkOption { type = types.attrs; };
   };
 
 
   config.meow.colors = rec {
     ############################################################################
-    # set color variables
+    ## basic color variables
 
-    black           = "#000000";
-    black-light     = "#808080";
+    black             = "#000000";
+    black-light       = "#808080";
 
-    blue            = "#00eaff";
-    blue-light      = "#80f4ff";
-    blue-deep       = "#00a6ff";
-    blue-deep-light = "#80d2ff";
+    blue              = "#00eaff";
+    blue-light        = "#80f4ff";
+    blue-deep         = "#00a6ff";
+    blue-deep-light   = "#80d2ff";
 
-    green           = "#8cff00";
-    green-light     = "#a9ff40";
+    green             = "#8cff00";
+    green-light       = "#a9ff40";
 
-    orange          = "#ffd500";
-    orange-light    = "#ffdf40";
-    orange-deep     = "#ffbf00";
-    orange-xdeep    = "#ffa200";
+    orange            = "#ffd500";
+    orange-light      = "#ffdf40";
+    orange-deep       = "#ffbf00";
+    orange-xdeep      = "#ffa200";
 
-    pink            = "#ff0095";
-    pink-light      = "#ffb5e1";
-    pink-xlight     = "#ffd1ed";
-    pink-xxlight    = "#ffe0f3";
+    pink              = "#ff0095";
+    pink-light        = "#ffb5e1";
+    pink-xlight       = "#ffd1ed";
+    pink-xxlight      = "#ffe0f3";
 
-    red             = "#ff0000";
+    red               = "#ff0000";
 
-    white           = "#ffffff";
-    white-dark      = "#cccccc";
+    white             = "#ffffff";
+    white-dark        = "#cccccc";
 
     ############################################################################
-    # set light mode color presets
+    ## Material 3 palette (e.g. for Noctalia palette)
 
-    light-mode = rec {
-      background                    = "#ffebf2";
-      background-secondary          = white-dark;
-      foreground                    = "#303030";
-      foreground-secondary          = "#484848";
+    material3-palette = {
+      light = rec {
+        mSurface          = "#ffebf2";    # main background color
+        mOnSurface        = "#303030";    # main foreground color
+        mSurfaceVariant   = white;        # secondary background color (cards, panels)
+        mOnSurfaceVariant = mOnSurface;   # secondary foreground color
+        mPrimary          = pink-light;   # primary accent (buttons, links, highlights)
+        mOnPrimary        = black;        # text on primary surfaces
+        mSecondary        = orange-light; # secondary accent
+        mOnSeconary       = mOnPrimary;   # text on secondary surfaces
+        mTertiary         = blue-light;   # tertiary accent
+        mOnTertiary       = mOnPrimary;   # text on tertiary surfaces
+        mError            = red;          # error color
+        mOnError          = black;        # text on error surfaces
+        mOutline          = pink-light;   # borders and dividers
+        mShadow           = mSurface;     # shadows
+        mHover            = mTertiary;    # hover state background
+        mOnHover          = mOnTertiary;  # text on hover surfaces
+        terminal = rec {
+          background  = mSurface;
+          foreground  = mOnSurface;
+          cursor      = pink-xlight;
+          cursorText  = foreground;
+          selectionBg = pink-xlight;
+          selectionFg = foreground;
+          normal = {
+            black   = black;
+            red     = orange-xdeep;
+            green   = green;
+            yellow  = orange;
+            blue    = blue-deep;
+            magenta = pink;
+            cyan    = blue;
+            white   = white-dark;
+          };
+          bright = {
+            black   = black-light;
+            red     = red;
+            green   = green-light;
+            yellow  = orange-light;
+            blue    = blue-deep-light;
+            magenta = pink-light;
+            cyan    = blue-light;
+            white   = white;
+          };
+        };
+      };
 
-      status-bar-background         = pink-xlight;
-      status-bar-foreground         = foreground;
-
-      selection-background          = pink-xxlight;
-      selection-foreground          = foreground;
-      selection-discreet-background = "#b8b8b8";
-      selection-discreet-foreground = foreground;
-
-      textcursor-background         = pink-xlight;
-      textcursor-foreground         = foreground;
-
-      classes                       = orange;
-      comments                      = green;
-      constants                     = blue;
-      functions                     = orange-deep;
-      keywords                      = pink-light;
-      variables                     = foreground;
-      urgent                        = orange-xdeep;
-      very-urgent                   = red;
+      dark = rec {
+        mSurface          = black;
+        mOnSurface        = white-dark;
+        mSurfaceVariant   = "#202020";
+        mOnSurfaceVariant = mOnSurface;
+        mPrimary          = pink-light;
+        mOnPrimary        = black;
+        mSecondary        = orange-light;
+        mOnSeconary       = mOnPrimary;
+        mTertiary         = blue-light;
+        mOnTertiary       = mOnPrimary;
+        mError            = red;
+        mOnError          = black;
+        mOutline          = pink-xlight;
+        mShadow           = mSurface;
+        mHover            = mTertiary;
+        mOnHover          = mOnTertiary;
+        terminal = rec {
+          background  = mSurface;
+          foreground  = mOnSurface;
+          cursor      = pink-xlight;
+          cursorText  = background;
+          selectionBg = pink-xlight;
+          selectionFg = background;
+          normal = {
+            black   = black;
+            red     = orange-xdeep;
+            green   = green;
+            yellow  = orange;
+            blue    = blue-deep;
+            magenta = pink;
+            cyan    = blue;
+            white   = white-dark;
+          };
+          bright = {
+            black   = black-light;
+            red     = red;
+            green   = green-light;
+            yellow  = orange-light;
+            blue    = blue-deep-light;
+            magenta = pink-light;
+            cyan    = blue-light;
+            white   = white;
+          };
+        };
+      };
     };
-
+ 
     ############################################################################
-    # set dark mode color presets
+    ## extra color roles and variables (currently in format for Noctalia custom colors)
 
-    dark-mode = rec {
-      background                    = "#000000";
-      background-secondary          = "#202020";
-      foreground                    = white-dark;
-      foreground-secondary          = "#b0b0b0";
+    extra-palette = {
+      classes = {
+        light-color = orange;
+        dark-color  = orange;
+      };
 
-      status-bar-background         = pink-xlight;
-      status-bar-foreground         = background;
+      comments = {
+        light-color = green;
+        dark-color  = green-light;
+      };
 
-      selection-background          = pink-xlight;
-      selection-foreground          = background;
-      selection-discreet-background = "#484848";
-      selection-discreet-foreground = foreground;
+      constants = {
+        light-color = blue;
+        dark-color  = blue-light;
+      };
 
-      textcursor-background         = pink-xlight;
-      textcursor-foreground         = background;
+      functions = {
+        light-color = orange-deep;
+        dark-color  = orange;
+      };
 
-      classes                       = orange;
-      comments                      = green-light;
-      constants                     = blue-light;
-      functions                     = orange;
-      keywords                      = pink-xlight;
-      variables                     = foreground;
-      urgent                        = orange-deep;
-      very-urgent                   = red;
+      keywords = {
+        light-color = pink-light;
+        dark-color  = pink-xlight;
+      };
+
+      variables = {
+        light-color = material3-palette.light.mOnSurface;
+        dark-color  = material3-palette.dark.mOnSurface;
+      };
+
+      urgent = {
+        light-color = orange-xdeep;
+        dark-color  = orange-deep;
+      };
+
+      very-urgent = {
+        light-color = red;
+        dark-color  = red;
+      };
     };
   };
 }
