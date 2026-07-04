@@ -17,13 +17,13 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
 
-            #custom_colors = config.meow.colors.extra-palette;
-            custom_colors = {
-              bonus = {
-                color = "#ffa200";
-                blend = false;
-              };
-            };
+            custom_colors = config.meow.colors.extra-palette;
+            #custom_colors = {
+            #  bonus = {
+            #    color = "#ffa200";
+            #    blend = false;
+            #  };
+            #};
           };
         };
       };

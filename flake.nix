@@ -21,7 +21,8 @@
     #  inputs.nixpkgs.follows = "nixpkgs-unstable"; # Noctalia v4 requires nixpkgs unstable
     #};
     noctalia = {
-      url = "github:noctalia-dev/noctalia";
+      #url = "github:noctalia-dev/noctalia";
+      url = "github:AnonymousRand/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia-greeter = {
