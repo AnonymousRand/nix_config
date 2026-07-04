@@ -142,7 +142,7 @@
             green   = green;
             yellow  = orange;
             blue    = blue-deep;
-            magenta = pink;
+            magenta = pink-light;
             cyan    = blue;
             white   = white-dark;
           };
@@ -152,7 +152,7 @@
             green   = green-light;
             yellow  = orange-light;
             blue    = blue-deep-light;
-            magenta = pink-light;
+            magenta = pink-xlight;
             cyan    = blue-light;
             white   = white;
           };
