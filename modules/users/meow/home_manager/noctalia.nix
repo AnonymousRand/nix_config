@@ -20,6 +20,7 @@
             custom_colors = {
               bonus = {
                 color = "#ffa200";
+                blend = false;
               };
             };
           };
@@ -29,6 +30,7 @@
 
     xdg.configFile."noctalia/palettes/anonymousrand.json".text = with config.meow; builtins.toJSON {
       dark = rec {
+        test              = "#ff0000";
         mPrimary          = colors.pink-light;
         mOnPrimary        = colors.black;
         mSecondary        = colors.orange-light;

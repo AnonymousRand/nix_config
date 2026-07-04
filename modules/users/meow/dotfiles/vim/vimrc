@@ -49,6 +49,7 @@ set colorcolumn=121                             " vertical rule to guide line wi
 set hlsearch                                    " searching permanently highlights all matches
 set iskeyword-=_                                " things like `w` in normal mode always stop at underscores too
 autocmd FileType fish setlocal iskeyword-=_
+autocmd FileType fish setlocal iskeyword-=.
 autocmd FileType css,nix setlocal iskeyword-=-  " things like `w` in normal mode always stop at hyphens too
 set laststatus=2                                " always shows status line at bottom
 set nu rnu                                      " hybrid line numbers
