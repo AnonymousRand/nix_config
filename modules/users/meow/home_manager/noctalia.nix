@@ -17,7 +17,7 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
 
-            custom_colors = config.meow.colors.extra-palette;
+            custom_colors = config.meow.colors.color-vars // config.meow.colors.extra-palette;
           };
         };
       };
