@@ -93,7 +93,7 @@
           selectionFg = foreground;
           normal = {
             black   = black;
-            red     = orange-xdeep;
+            red     = red;
             green   = green;
             yellow  = orange;
             blue    = blue-deep;
@@ -140,7 +140,7 @@
           selectionFg = background;
           normal = {
             black   = black;
-            red     = orange-xdeep;
+            red     = red;
             green   = green;
             yellow  = orange;
             blue    = blue-deep;
@@ -167,43 +167,43 @@
 
     extra-palette = {
       classes = {
-        light-color = orange;
-        dark-color  = orange;
+        color_light = orange;
+        color_dark  = orange;
       };
 
       comments = {
-        light-color = green;
-        dark-color  = green-light;
+        color_light = green;
+        color_dark  = green-light;
       };
 
       constants = {
-        light-color = blue;
-        dark-color  = blue-light;
+        color_light = blue;
+        color_dark  = blue-light;
       };
 
       functions = {
-        light-color = orange-deep;
-        dark-color  = orange;
+        color_light = orange-deep;
+        color_dark  = orange;
       };
 
       keywords = {
-        light-color = pink-xlight;
-        dark-color  = pink-xxlight;
+        color_light = pink-xlight;
+        color_dark  = pink-xxlight;
       };
 
       variables = {
-        light-color = material3-palette.light.mOnSurface;
-        dark-color  = material3-palette.dark.mOnSurface;
+        color_light = material3-palette.light.mOnSurface;
+        color_dark  = material3-palette.dark.mOnSurface;
       };
 
       urgent = {
-        light-color = orange-xdeep;
-        dark-color  = orange-deep;
+        color_light = orange-xdeep;
+        color_dark  = orange-deep;
       };
 
       very-urgent = {
-        light-color = red;
-        dark-color  = red;
+        color_light = red;
+        color_dark  = red;
       };
     };
   };

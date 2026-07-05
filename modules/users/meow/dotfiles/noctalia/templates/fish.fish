@@ -1,6 +1,6 @@
-set -U fish_color_param "{{ colors.classes.default.hex }}"
-set -U fish_color_param "{{ colors.classes.light.hex }}"
-set -U fish_color_param "{{ colors.classes.dark.hex }}"
+set -U fish_color_params "{{ colors.comments_source.default.hex }}"
+set -U fish_color_params "{{ colors.comments_source.light.hex }}"
+set -U fish_color_params "{{ colors.comments_source.dark.hex }}"
 
 #set -U fish_color_normal "${colors.${theme}.foreground}" \
 #  --background "${colors.${theme}.background}"
