@@ -17,13 +17,7 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
 
-            #custom_colors = config.meow.colors.extra-palette;
-            custom_colors = {
-              comments = {
-                color_light = "#ffa300";
-                color_dark = "#000000";
-              };
-            };
+            custom_colors = config.meow.colors.extra-palette;
           };
         };
       };

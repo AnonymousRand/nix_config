@@ -1,6 +1,6 @@
-set -U fish_color_params "{{ colors.comments_source.default.hex }}"
-set -U fish_color_params "{{ colors.comments_source.light.hex }}"
-set -U fish_color_params "{{ colors.comments_source.dark.hex }}"
+set -U fish_color_cwd "{{ colors.comments_source.default.hex }}"
+set -U fish_color_cwd "{{ colors.comments_source.light.hex }}"
+set -U fish_color_cwd "{{ colors.comments_source.dark.hex }}"
 
 #set -U fish_color_normal "${colors.${theme}.foreground}" \
 #  --background "${colors.${theme}.background}"
