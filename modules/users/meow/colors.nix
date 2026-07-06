@@ -13,7 +13,12 @@
 
     color-vars = {
       black           = "#000000";
-      black-light     = "#808080";
+      gray-xdark      = "#303030";
+      gray-dark       = "#505050";
+      gray            = "#808080";
+      gray-light      = "#aaaaaa";
+      gray-xlight     = "#cccccc";
+      white           = "#ffffff";
 
       blue            = "#00eaff";
       blue-light      = "#40efff";
@@ -34,9 +39,6 @@
       pink-xxxlight   = "#ffe0f0";
 
       red             = "#ff0000";
-
-      white           = "#ffffff";
-      white-dark      = "#cccccc";
     };
  
     ############################################################################
@@ -49,8 +51,8 @@
         color_dark  = black;
       };
       default_fg = {
-        color_light = "#303030";
-        color_dark  = white-dark;
+        color_light = gray-xdark;
+        color_dark  = gray-xlight;
       };
 
 
@@ -104,10 +106,10 @@
 
     material3-palette = {
       light = rec {
-        mSurface          = color-roles.default_fg.color_light; # main background color
-        mOnSurface        = color-roles.default_bg.color_light; # main foreground color
+        mSurface          = color-roles.default_bg.color_light; # main background color
+        mOnSurface        = color-roles.default_fg.color_light; # main foreground color
         mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
-        mOnSurfaceVariant = mOnSurface;                         # secondary foreground color
+        mOnSurfaceVariant = color-vars.gray-dark;               # secondary foreground color
         mPrimary          = color-vars.pink-xlight;             # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.black;                   # text on primary surfaces
         mSecondary        = color-vars.orange;                  # secondary accent
@@ -120,6 +122,7 @@
         mShadow           = mSurface;                           # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
+
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
@@ -135,10 +138,10 @@
             blue    = color-vars.blue-deep;
             magenta = color-vars.pink-light;
             cyan    = color-vars.blue;
-            white   = color-vars.white-dark;
+            white   = color-vars.gray-xlight;
           };
           bright = {
-            black   = color-vars.black-light;
+            black   = color-vars.gray-xdark;
             red     = color-vars.red;
             green   = color-vars.green-light;
             yellow  = color-vars.orange-deep;
@@ -153,8 +156,8 @@
       dark = rec {
         mSurface          = color-roles.default_bg.color_dark;
         mOnSurface        = color-roles.default_fg.color_dark;
-        mSurfaceVariant   = "#202020";
-        mOnSurfaceVariant = mOnSurface;
+        mSurfaceVariant   = color-vars.gray-xdark;
+        mOnSurfaceVariant = color-vars.gray-light;
         mPrimary          = color-vars.pink-xlight;
         mOnPrimary        = color-vars.black;
         mSecondary        = color-vars.orange;
@@ -167,6 +170,7 @@
         mShadow           = mSurface;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
+
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
@@ -182,10 +186,10 @@
             blue    = color-vars.blue-deep;
             magenta = color-vars.pink-xlight;
             cyan    = color-vars.blue;
-            white   = color-vars.white-dark;
+            white   = color-vars.gray-xlight;
           };
           bright = {
-            black   = color-vars.black-light;
+            black   = color-vars.gray-xdark;
             red     = color-vars.red;
             green   = color-vars.green-light;
             yellow  = color-vars.orange;
