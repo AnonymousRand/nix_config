@@ -1,3 +1,3 @@
 # `modules/packages/`
 
-Packages and programs.
+packages and programs.

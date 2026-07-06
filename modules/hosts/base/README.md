@@ -1,3 +1,3 @@
-# Host `base`
+# host `base`
 
-Configs that are shared between all hosts.
+configs that are shared between all hosts.

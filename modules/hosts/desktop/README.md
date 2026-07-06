@@ -1,3 +1,3 @@
-# Host `desktop`
+# host `desktop`
 
-Desktop computer.
+desktop computer.

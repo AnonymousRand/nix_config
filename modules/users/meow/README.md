@@ -1,3 +1,3 @@
-# User `meow`
+# user `meow`
 
-Main user for AnonymousRand :3
+main user for AnonymousRand :3

@@ -1,3 +1,3 @@
 # `/modules/users/`
 
-Users, along with both their NixOS and Home Manager configs.
+users, along with both their nixos and home manager configs.
