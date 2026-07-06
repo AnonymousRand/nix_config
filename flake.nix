@@ -16,13 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #noctalia-v4 = {
-    #  url = "github:noctalia-dev/noctalia/legacy-v4";
-    #  inputs.nixpkgs.follows = "nixpkgs-unstable"; # Noctalia v4 requires nixpkgs unstable
-    #};
     noctalia = {
       #url = "github:noctalia-dev/noctalia";
-      url = "github:AnonymousRand/noctalia";
+      url = "github:AnonymousRand/noctalia"; # my own fork with custom color light and dark modes
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia-greeter = {
@@ -32,11 +28,6 @@
 
     solaar = {
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix = {
-      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

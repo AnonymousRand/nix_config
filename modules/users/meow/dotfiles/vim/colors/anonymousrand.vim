@@ -12,9 +12,9 @@ let blue='#00bfff'
 let default='#cccccc'
 let green='#a9ff40'
 let orange='#ffd500'
-let pink_light='#ffd1f0'
-let pink_xlight='#ffe6f7'
-let pink='#ff66cc'
+let pink='#ff66b3'
+let pink_light='#ffd1e8'
+let pink_xlight='#ffe0f0'
 let red='#ff0000'
 
 " custom syntax groups
@@ -59,7 +59,7 @@ exe 'hi Todo'                  'guifg='.green      'guibg='.red
 exe 'hi Type'                  'guifg='.pink_light
 exe 'hi Underlined'            'guifg='.blue_light
 exe 'hi vimCommentTitle'       'guifg='.green
-exe 'hi Visual'                                    'guibg=#484848'
+exe 'hi Visual'                'guifg='.black     'guibg='.pink_light
 
 " linked color settings
 hi link Braces                                 Normal

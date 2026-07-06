@@ -14,8 +14,6 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        #home-manager.backupFileExtension = "backup"; # allow overriding of non-Home-Manager configs
-        stylix.homeManagerIntegration.autoImport = false; # allow standalone Home Manager config of stylix still
 
         home-manager.users.meow = self.homeModules.meow;
       }
@@ -26,9 +24,7 @@
       # desktop
       self.nixosModules.niri
       self.nixosModules.noctalia
-      #self.nixosModules.noctalia-v4
       self.nixosModules.noctalia-greeter
-      self.nixosModules.stylix
       self.nixosModules.xwayland-satellite
 
       # Logitech mouse config

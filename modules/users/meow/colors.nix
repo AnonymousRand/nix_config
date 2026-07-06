@@ -31,7 +31,7 @@
       pink-light      = "#ff9ed8";
       pink-xlight     = "#ffbdde";
       pink-xxlight    = "#ffd1e8";
-      pink-xxxlight   = "#ffe3f1";
+      pink-xxxlight   = "#ffe0f0";
 
       red             = "#ff0000";
 
@@ -62,11 +62,6 @@
         color_light = default_fg.color_light;
         color_dark  = default_bg.color_dark;
       };
-      selection_discreet_bg = {
-        color_light = pink-xxlight;
-        color_dark  = "#484848";
-      };
-      selection_discreet_fg = default_fg;
 
 
       error = {
@@ -130,8 +125,8 @@
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = foreground;
-          selectionBg = color-roles.selection_discreet_bg.color_light;
-          selectionFg = color-roles.selection_discreet_fg.color_light;
+          selectionBg = color-roles.selection_bg.color_light;
+          selectionFg = color-roles.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
             red     = color-vars.pink-light;
@@ -177,8 +172,8 @@
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = background;
-          selectionBg = color-roles.selection_discreet_bg.color_dark;
-          selectionFg = color-roles.selection_discreet_fg.color_dark;
+          selectionBg = color-roles.selection_bg.color_dark;
+          selectionFg = color-roles.selection_fg.color_dark;
           normal = {
             black   = color-vars.black;
             red     = color-vars.pink-light;
