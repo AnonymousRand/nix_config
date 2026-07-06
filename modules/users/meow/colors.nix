@@ -16,21 +16,20 @@
       black-light     = "#808080";
 
       blue            = "#00eaff";
-      blue-light      = "#80f4ff";
-      blue-deep       = "#00a6ff";
-      blue-deep-light = "#80d2ff";
+      blue-light      = "#40efff";
+      blue-deep       = "#00aaff";
+      blue-deep-light = "#40bfff";
 
       green           = "#8cff00";
       green-light     = "#a9ff40";
 
       orange          = "#ffd500";
-      orange-light    = "#ffdf40";
       orange-deep     = "#ffbf00";
       orange-xdeep    = "#ffa200";
 
       pink            = "#ff0080";
       pink-light      = "#ff9ed8";
-      pink-xlight     = "#ffbfdf";
+      pink-xlight     = "#ffbdde";
       pink-xxlight    = "#ffd1e8";
       pink-xxxlight   = "#ffe3f1";
 
@@ -135,9 +134,9 @@
           selectionFg = color-roles.selection_discreet_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.orange-xdeep;
+            red     = color-vars.pink-light;
             green   = color-vars.green;
-            yellow  = color-vars.orange;
+            yellow  = color-vars.orange-xdeep;
             blue    = color-vars.blue-deep;
             magenta = color-vars.pink-light;
             cyan    = color-vars.blue;
@@ -147,7 +146,7 @@
             black   = color-vars.black-light;
             red     = color-vars.red;
             green   = color-vars.green-light;
-            yellow  = color-vars.orange-light;
+            yellow  = color-vars.orange-deep;
             blue    = color-vars.blue-deep-light;
             magenta = color-vars.pink-xlight;
             cyan    = color-vars.blue-light;
@@ -182,9 +181,9 @@
           selectionFg = color-roles.selection_discreet_fg.color_dark;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.orange-xdeep;
+            red     = color-vars.pink-light;
             green   = color-vars.green;
-            yellow  = color-vars.orange;
+            yellow  = color-vars.orange-deep;
             blue    = color-vars.blue-deep;
             magenta = color-vars.pink-xlight;
             cyan    = color-vars.blue;
@@ -194,7 +193,7 @@
             black   = color-vars.black-light;
             red     = color-vars.red;
             green   = color-vars.green-light;
-            yellow  = color-vars.orange-light;
+            yellow  = color-vars.orange;
             blue    = color-vars.blue-deep-light;
             magenta = color-vars.pink-xxlight;
             cyan    = color-vars.blue-light;

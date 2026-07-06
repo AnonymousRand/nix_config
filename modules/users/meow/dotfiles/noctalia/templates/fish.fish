@@ -6,17 +6,17 @@ set -g fish_color_command $fish_color_normal
 set -g fish_color_comment "{{ colors.comments_source.default.hex }}"
 set -g fish_color_cwd brgreen
 set -g fish_color_cwd_root magenta
-set -g fish_color_end yellow
+set -g fish_color_end bryellow
 set -g fish_color_error "{{ colors.error_source.default.hex }}"
-set -g fish_color_escape yellow
-set -g fish_color_host yellow
-set -g fish_color_operator yellow
+set -g fish_color_escape bryellow
+set -g fish_color_host bryellow
+set -g fish_color_operator bryellow
 set -g fish_color_param brmagenta
 set -g fish_color_quote "{{ colors.constants_source.default.hex }}"
 set -g fish_color_redirection $fish_color_end
 set -g fish_color_search_match magenta --bold
 set -g fish_color_selection --background "{{ colors.terminal_selection_bg.default.hex }}"
-set -g fish_color_status red
+set -g fish_color_status magenta
 set -g fish_color_user magenta
 set -g fish_color_valid_path --underline
 
