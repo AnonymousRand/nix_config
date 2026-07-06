@@ -143,37 +143,37 @@
 
     extra-palette = {
       classes = {
-        color_light = orange;
-        color_dark  = orange;
+        color_light = color-vars.orange;
+        color_dark  = color-vars.orange;
       };
 
       comments = {
-        color_light = green;
-        color_dark  = green-light;
+        color_light = color-vars.green;
+        color_dark  = color-vars.green-light;
       };
 
       constants = {
-        color_light = blue;
-        color_dark  = blue-light;
+        color_light = color-vars.blue;
+        color_dark  = color-vars.blue-light;
       };
 
       error = {
-        color_light = red;
-        color_dark  = red;
+        color_light = color-vars.red;
+        color_dark  = color-vars.red;
       };
 
       functions = {
-        color_light = orange-deep;
-        color_dark  = orange;
+        color_light = color-vars.orange-deep;
+        color_dark  = color-vars.orange;
       };
 
       keywords = {
-        color_light = pink-xlight;
-        color_dark  = pink-xxlight;
+        color_light = color-vars.pink-xlight;
+        color_dark  = color-vars.pink-xxlight;
       };
 
       selection_discreet = {
-        color_light = pink-xxlight;
+        color_light = color-vars.pink-xxlight;
         color_dark  = "#484848";
       };
 
@@ -183,8 +183,8 @@
       };
 
       warning = {
-        color_light = orange-xdeep;
-        color_dark  = orange-deep;
+        color_light = color-vars.orange-xdeep;
+        color_dark  = color-vars.orange-deep;
       };
     };
   };
