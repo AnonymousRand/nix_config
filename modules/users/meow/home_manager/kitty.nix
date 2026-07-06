@@ -6,6 +6,7 @@
       settings = {
         shell = "fish";
         font_size = 12;
+        cursor_shape = "block";
       };
 
       extraConfig = "include themes/noctalia.conf";

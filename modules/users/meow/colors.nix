@@ -1,8 +1,8 @@
 { lib, config, ... }: {
   options.meow.colors = with lib; {
     color-vars        = mkOption { type = types.attrs; };
+    custom-palette    = mkOption { type = types.attrs; };
     material3-palette = mkOption { type = types.attrs; };
-    extra-palette     = mkOption { type = types.attrs; };
   };
 
 
@@ -38,35 +38,97 @@
       white           = "#ffffff";
       white-dark      = "#cccccc";
     };
+ 
+    ############################################################################
+    ## custom color roles/variables (currently in format for Noctalia custom colors)
+
+    custom-palette = with color-vars; rec {
+      default_bg = {
+        color_light = "#ffebf2";
+        color_dark  = black;
+      };
+      default_fg = {
+        color_light = "#303030";
+        color_dark  = white-dark;
+      };
+
+
+      selection_bg = {
+        color_light = pink-xxlight;
+        color_dark  = pink-xxlight;
+      };
+      selection_fg = {
+        color_light = default_fg.color_light;
+        color_dark  = default_bg.color_dark;
+      };
+      selection_discreet_bg = {
+        color_light = pink-xxlight;
+        color_dark  = "#484848";
+      };
+      selection_discreet_fg = default_fg;
+
+
+      error = {
+        color_light = red;
+        color_dark  = red;
+      };
+      warning = {
+        color_light = orange-xdeep;
+        color_dark  = orange-deep;
+      };
+
+
+      classes = {
+        color_light = orange;
+        color_dark  = orange;
+      };
+      comments = {
+        color_light = green;
+        color_dark  = green-light;
+      };
+      constants = {
+        color_light = blue;
+        color_dark  = blue-light;
+      };
+      functions = {
+        color_light = orange-deep;
+        color_dark  = orange;
+      };
+      keywords = {
+        color_light = pink-xlight;
+        color_dark  = pink-xxlight;
+      };
+      variables = default_fg;
+    };
 
     ############################################################################
     ## Material 3 palette (e.g. for Noctalia palette)
 
     material3-palette = {
       light = rec {
-        mSurface          = "#ffebf2";               # main background color
-        mOnSurface        = "#303030";               # main foreground color
-        mSurfaceVariant   = color-vars.white;        # secondary background color (cards, panels)
-        mOnSurfaceVariant = mOnSurface;              # secondary foreground color
-        mPrimary          = color-vars.pink-xlight;  # primary accent (buttons, links, highlights)
-        mOnPrimary        = color-vars.black;        # text on primary surfaces
-        mSecondary        = color-vars.orange-light; # secondary accent
-        mOnSeconary       = mOnPrimary;              # text on secondary surfaces
-        mTertiary         = color-vars.blue-light;   # tertiary accent
-        mOnTertiary       = mOnPrimary;              # text on tertiary surfaces
-        mError            = color-vars.red;          # error color
-        mOnError          = color-vars.black;        # text on error surfaces
-        mOutline          = color-vars.pink-xlight;  # borders and dividers
-        mShadow           = mSurface;                # shadows
-        mHover            = mTertiary;               # hover state background
-        mOnHover          = mOnTertiary;             # text on hover surfaces
+        mSurface          = custom-palette.default_fg.color_light; # main background color
+        mOnSurface        = custom-palette.default_bg.color_light; # main foreground color
+        mSurfaceVariant   = color-vars.white;                      # secondary background color (cards, panels)
+        mOnSurfaceVariant = mOnSurface;                            # secondary foreground color
+        mPrimary          = color-vars.pink-xlight;                # primary accent (buttons, links, highlights)
+        mOnPrimary        = color-vars.black;                      # text on primary surfaces
+        mSecondary        = color-vars.orange-light;               # secondary accent
+        mOnSeconary       = mOnPrimary;                            # text on secondary surfaces
+        mTertiary         = color-vars.blue-light;                 # tertiary accent
+        mOnTertiary       = mOnPrimary;                            # text on tertiary surfaces
+        mError            = color-vars.red;                        # error color
+        mOnError          = color-vars.black;                      # text on error surfaces
+        mOutline          = color-vars.pink-xlight;                # borders and dividers
+        mShadow           = mSurface;                              # shadows
+        mHover            = mTertiary;                             # hover state background
+        mOnHover          = mOnTertiary;                           # text on hover surfaces
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = foreground;
-          selectionBg = color-vars.pink-xxlight;
-          selectionFg = foreground;
+          selectionBg = custom-palette.selection_bg.color_light;
+          selectionFg = custom-palette.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
             red     = color-vars.red;
@@ -91,8 +153,8 @@
       };
 
       dark = rec {
-        mSurface          = color-vars.black;
-        mOnSurface        = color-vars.white-dark;
+        mSurface          = custom-palette.default_bg.color_dark;
+        mOnSurface        = custom-palette.default_fg.color_dark;
         mSurfaceVariant   = "#202020";
         mOnSurfaceVariant = mOnSurface;
         mPrimary          = color-vars.pink-xlight;
@@ -112,15 +174,15 @@
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = background;
-          selectionBg = color-vars.pink-xxlight;
-          selectionFg = background;
+          selectionBg = custom-palette.selection_bg.color_dark;
+          selectionFg = custom-palette.selection_fg.color_dark;
           normal = {
             black   = color-vars.black;
             red     = color-vars.red;
             green   = color-vars.green;
             yellow  = color-vars.orange;
             blue    = color-vars.blue-deep;
-            magenta = color-vars.pink-light;
+            magenta = color-vars.pink-xlight;
             cyan    = color-vars.blue;
             white   = color-vars.white-dark;
           };
@@ -130,61 +192,11 @@
             green   = color-vars.green-light;
             yellow  = color-vars.orange-light;
             blue    = color-vars.blue-deep-light;
-            magenta = color-vars.pink-xlight;
+            magenta = color-vars.pink-xxlight;
             cyan    = color-vars.blue-light;
             white   = color-vars.white;
           };
         };
-      };
-    };
- 
-    ############################################################################
-    ## extra color roles and variables (currently in format for Noctalia custom colors)
-
-    extra-palette = {
-      classes = {
-        color_light = color-vars.orange;
-        color_dark  = color-vars.orange;
-      };
-
-      comments = {
-        color_light = color-vars.green;
-        color_dark  = color-vars.green-light;
-      };
-
-      constants = {
-        color_light = color-vars.blue;
-        color_dark  = color-vars.blue-light;
-      };
-
-      error = {
-        color_light = color-vars.red;
-        color_dark  = color-vars.red;
-      };
-
-      functions = {
-        color_light = color-vars.orange-deep;
-        color_dark  = color-vars.orange;
-      };
-
-      keywords = {
-        color_light = color-vars.pink-xlight;
-        color_dark  = color-vars.pink-xxlight;
-      };
-
-      selection_discreet = {
-        color_light = color-vars.pink-xxlight;
-        color_dark  = "#484848";
-      };
-
-      variables = {
-        color_light = material3-palette.light.mOnSurface;
-        color_dark  = material3-palette.dark.mOnSurface;
-      };
-
-      warning = {
-        color_light = color-vars.orange-xdeep;
-        color_dark  = color-vars.orange-deep;
       };
     };
   };
