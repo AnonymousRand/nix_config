@@ -10,9 +10,9 @@ more documentation to come :3
 
 ### so like what the heck is a dendritic pattern
 
-- [Dendritic pattern](https://github.com/mightyiam/dendritic) (to the best of my little knowledge) is a way to organize Nix configs where we essentially organize our config by *feature,* such as packages or programs. Each feature gets a single top-level module, and hosts and users simply pick out the features they want by importing their top-level modules.
-- This doesn't mean all files have to be top-level modules; a single top-level module can be broken up and spread across several files by using the same module name and letting Nix automatically merge them together (e.g. the top-level modules for each user in `modules/users/` is spread across all their Home Manager files).
-- Dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization, which is like really confusing but it basically facilitates splitting up flakes and top-level modules into multiple files, and gives us flake-level options like `flake.nixosModules`. (These are exactly the "top-level modules" we give to each feature.)
+- don't quote me on this but [dendritic pattern](https://github.com/mightyiam/dendritic) is essentially a way to organize Nix configs where we organize modules by *feature,* such as packages or programs. each feature gets a single top-level module, and hosts and users simply pick out the features they want by importing their top-level modules.
+- this doesn't mean all files have to be top-level modules; a single top-level module can be broken up and spread across several files by using the same module name and letting Nix automatically merge them together (e.g. the top-level modules for each user in `modules/users/` is spread across all their Home Manager files).
+- dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization, which is like really confusing but it basically facilitates splitting up flakes and top-level modules into multiple files, and gives us flake-level options like `flake.nixosModules`. (these are exactly the "top-level modules" we give to each feature.)
 
 ### NixOS Config
 
