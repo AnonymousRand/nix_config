@@ -59,7 +59,7 @@ exe 'hi Todo'                  'guifg='.green      'guibg='.red
 exe 'hi Type'                  'guifg='.pink_light
 exe 'hi Underlined'            'guifg='.blue_light
 exe 'hi vimCommentTitle'       'guifg='.green
-exe 'hi Visual'                'guifg='.black     'guibg='.pink_light
+exe 'hi Visual'                'guifg='.black      'guibg='.pink_light
 
 " linked color settings
 hi link Braces                                 Normal
