@@ -29,7 +29,7 @@
 
       pink            = "#ff0095";
       pink-light      = "#ff9ed8";
-      pink-xlight     = "#ffb3e0";
+      pink-xlight     = "#ffb5e1";
       pink-xxlight    = "#ffd1ed";
       pink-xxxlight   = "#ffe0f3";
 

@@ -4,7 +4,7 @@ set -g fish_color_normal "{{ colors.terminal_foreground.default.hex }}" \
 set -g fish_color_autosuggestion "{{ colors.surface_variant.default.hex }}"
 set -g fish_color_command $fish_color_normal
 set -g fish_color_comment "{{ colors.comments_source.default.hex }}"
-set -g fish_color_cwd green
+set -g fish_color_cwd brgreen
 set -g fish_color_cwd_root magenta
 set -g fish_color_end yellow
 set -g fish_color_error "{{ colors.error_source.default.hex }}"
