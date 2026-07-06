@@ -1,14 +1,15 @@
 { lib, config, ... }: {
   options.meow.colors = with lib; {
     color-vars        = mkOption { type = types.attrs; };
-    custom-palette    = mkOption { type = types.attrs; };
+    color-roles       = mkOption { type = types.attrs; };
     material3-palette = mkOption { type = types.attrs; };
   };
 
 
   config.meow.colors = rec {
     ############################################################################
-    ## basic color variables
+    # basic color variables
+    # (avoid using these directly in templates as much as possible)
 
     color-vars = {
       black           = "#000000";
@@ -27,11 +28,11 @@
       orange-deep     = "#ffbf00";
       orange-xdeep    = "#ffa200";
 
-      pink            = "#ff0095";
+      pink            = "#ff0080";
       pink-light      = "#ff9ed8";
-      pink-xlight     = "#ffb5e1";
-      pink-xxlight    = "#ffd1ed";
-      pink-xxxlight   = "#ffe0f3";
+      pink-xlight     = "#ffbfdf";
+      pink-xxlight    = "#ffd1e8";
+      pink-xxxlight   = "#ffe3f1";
 
       red             = "#ff0000";
 
@@ -40,9 +41,10 @@
     };
  
     ############################################################################
-    ## custom color roles/variables (currently in format for Noctalia custom colors)
+    # custom color roles/variables (currently in format for Noctalia custom colors)
+    # (use these on things which very clearly have any of the following roles!)
 
-    custom-palette = with color-vars; rec {
+    color-roles = with color-vars; rec {
       default_bg = {
         color_light = "#ffebf2";
         color_dark  = black;
@@ -102,36 +104,38 @@
     };
 
     ############################################################################
-    ## Material 3 palette (e.g. for Noctalia palette)
+    # Material 3 palette (e.g. for Noctalia palette)
+    # (use these on things which very clearly have a Material 3 role!)
+    # (although treat the terminal ANSI colors more like fixed color variables)
 
     material3-palette = {
       light = rec {
-        mSurface          = custom-palette.default_fg.color_light; # main background color
-        mOnSurface        = custom-palette.default_bg.color_light; # main foreground color
-        mSurfaceVariant   = color-vars.white;                      # secondary background color (cards, panels)
-        mOnSurfaceVariant = mOnSurface;                            # secondary foreground color
-        mPrimary          = color-vars.pink-xlight;                # primary accent (buttons, links, highlights)
-        mOnPrimary        = color-vars.black;                      # text on primary surfaces
-        mSecondary        = color-vars.orange-light;               # secondary accent
-        mOnSeconary       = mOnPrimary;                            # text on secondary surfaces
-        mTertiary         = color-vars.blue-light;                 # tertiary accent
-        mOnTertiary       = mOnPrimary;                            # text on tertiary surfaces
-        mError            = color-vars.red;                        # error color
-        mOnError          = color-vars.black;                      # text on error surfaces
-        mOutline          = color-vars.pink-xlight;                # borders and dividers
-        mShadow           = mSurface;                              # shadows
-        mHover            = mTertiary;                             # hover state background
-        mOnHover          = mOnTertiary;                           # text on hover surfaces
+        mSurface          = color-roles.default_fg.color_light; # main background color
+        mOnSurface        = color-roles.default_bg.color_light; # main foreground color
+        mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
+        mOnSurfaceVariant = mOnSurface;                         # secondary foreground color
+        mPrimary          = color-vars.pink-xlight;             # primary accent (buttons, links, highlights)
+        mOnPrimary        = color-vars.black;                   # text on primary surfaces
+        mSecondary        = color-vars.orange-light;            # secondary accent
+        mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
+        mTertiary         = color-vars.blue-light;              # tertiary accent
+        mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
+        mError            = color-vars.red;                     # error color
+        mOnError          = color-vars.black;                   # text on error surfaces
+        mOutline          = color-vars.pink-xlight;             # borders and dividers
+        mShadow           = mSurface;                           # shadows
+        mHover            = mTertiary;                          # hover state background
+        mOnHover          = mOnTertiary;                        # text on hover surfaces
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = foreground;
-          selectionBg = custom-palette.selection_bg.color_light;
-          selectionFg = custom-palette.selection_fg.color_light;
+          selectionBg = color-roles.selection_discreet_bg.color_light;
+          selectionFg = color-roles.selection_discreet_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.red;
+            red     = color-vars.orange-xdeep;
             green   = color-vars.green;
             yellow  = color-vars.orange;
             blue    = color-vars.blue-deep;
@@ -153,8 +157,8 @@
       };
 
       dark = rec {
-        mSurface          = custom-palette.default_bg.color_dark;
-        mOnSurface        = custom-palette.default_fg.color_dark;
+        mSurface          = color-roles.default_bg.color_dark;
+        mOnSurface        = color-roles.default_fg.color_dark;
         mSurfaceVariant   = "#202020";
         mOnSurfaceVariant = mOnSurface;
         mPrimary          = color-vars.pink-xlight;
@@ -174,11 +178,11 @@
           foreground  = mOnSurface;
           cursor      = color-vars.pink-xxlight;
           cursorText  = background;
-          selectionBg = custom-palette.selection_bg.color_dark;
-          selectionFg = custom-palette.selection_fg.color_dark;
+          selectionBg = color-roles.selection_discreet_bg.color_dark;
+          selectionFg = color-roles.selection_discreet_fg.color_dark;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.red;
+            red     = color-vars.orange-xdeep;
             green   = color-vars.green;
             yellow  = color-vars.orange;
             blue    = color-vars.blue-deep;
