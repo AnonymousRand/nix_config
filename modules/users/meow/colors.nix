@@ -115,7 +115,7 @@
         mOnSurfaceVariant = mOnSurface;                         # secondary foreground color
         mPrimary          = color-vars.pink-xlight;             # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.black;                   # text on primary surfaces
-        mSecondary        = color-vars.orange-light;            # secondary accent
+        mSecondary        = color-vars.orange;                  # secondary accent
         mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
         mTertiary         = color-vars.blue-light;              # tertiary accent
         mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
@@ -162,7 +162,7 @@
         mOnSurfaceVariant = mOnSurface;
         mPrimary          = color-vars.pink-xlight;
         mOnPrimary        = color-vars.black;
-        mSecondary        = color-vars.orange-light;
+        mSecondary        = color-vars.orange;
         mOnSeconary       = mOnPrimary;
         mTertiary         = color-vars.blue-light;
         mOnTertiary       = mOnPrimary;
