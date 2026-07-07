@@ -22,23 +22,24 @@
 
       blue              = "#00eaff";
       blue_light        = "#40efff";
-      blue_deep         = "#00d5ff";
+      blue_deep         = "#00d0ff";
       blue_xdeep        = "#00bfff";
       blue_xdeep_light  = "#42d0ff";
 
       green             = "#8cff00";
       green_light       = "#a9ff40";
       green_deep        = "#8cff00";
-      green_deep_dark   = "#7de300";
+      green_deep_dark   = "#7ee600";
       green_deep_xdark  = "#70cc00";
 
       orange            = "#ffd500";
       orange_light      = "#ffdb26";
-      orange_deep       = "#ffbb00";
-      orange_xdeep      = "#ffaa00";
+      orange_deep       = "#ffbf00";
+      orange_xdeep      = "#ffac00";
+      orange_xxdeep     = "#ff9500";
 
       pink              = "#ff0080";
-      pink_light        = "#ff94c9";
+      pink_light        = "#ff8cc6";
       pink_xlight       = "#ffabd5";
       pink_xxlight      = "#ffc7e3";
       pink_xxxlight     = "#ffd1e8";
@@ -77,25 +78,25 @@
         color_dark  = red;
       };
       warning = {
-        color_light = orange_xdeep;
+        color_light = orange_xxdeep;
         color_dark  = orange_deep;
       };
 
 
       classes = {
-        color_light = orange;
+        color_light = orange_xdeep;
         color_dark  = orange;
       };
       comments = {
-        color_light = green;
+        color_light = green_deep_xdark;
         color_dark  = green_light;
       };
       constants = {
-        color_light = blue;
+        color_light = blue_deep;
         color_dark  = blue_light;
       };
       functions = {
-        color_light = orange_deep;
+        color_light = orange_xdeep;
         color_dark  = orange;
       };
       keywords = {
@@ -117,7 +118,7 @@
         mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
         mOnSurfaceVariant = color-vars.gray_light;              # secondary foreground color
         mPrimary          = color-vars.pink_xxlight;            # primary accent (buttons, links, highlights)
-        mOnPrimary        = color-vars.black;                   # text on primary surfaces
+        mOnPrimary        = color-vars.gray_xdark;              # text on primary surfaces
         mSecondary        = color-vars.blue;                    # secondary accent
         mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
         mTertiary         = color-vars.orange;                  # tertiary accent
@@ -140,7 +141,7 @@
             black   = color-vars.black;
             red     = color-vars.pink_light;
             green   = color-vars.green_deep_dark;
-            yellow  = color-vars.orange_deep;
+            yellow  = color-vars.orange_xdeep;
             blue    = color-vars.blue_xdeep_light;
             magenta = color-vars.pink_light;
             cyan    = color-vars.blue;
@@ -165,7 +166,7 @@
         mSurfaceVariant   = color-vars.gray_xdark;
         mOnSurfaceVariant = color-vars.gray_light;
         mPrimary          = color-vars.pink_xxlight;
-        mOnPrimary        = color-vars.black;
+        mOnPrimary        = color-vars.gray_xdark;
         mSecondary        = color-vars.blue_light;
         mOnSeconary       = mOnPrimary;
         mTertiary         = color-vars.orange;
