@@ -39,7 +39,7 @@
 
       pink              = "#ff0080";
       pink_light        = "#ff94c9";
-      pink_xlight       = "#ffa6d2";
+      pink_xlight       = "#ffabd5";
       pink_xxlight      = "#ffc7e3";
       pink_xxxlight     = "#ffd1e8";
       pink_xxxxlight    = "#ffe0f0";
@@ -138,7 +138,7 @@
           selectionFg = color-roles.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.pink_xlight;
+            red     = color-vars.pink_light;
             green   = color-vars.green_deep_dark;
             yellow  = color-vars.orange_deep;
             blue    = color-vars.blue_xdeep_light;
@@ -190,7 +190,7 @@
             green   = color-vars.green;
             yellow  = color-vars.orange;
             blue    = color-vars.blue_xdeep;
-            magenta = color-vars.pink_xxlight;
+            magenta = color-vars.pink_xlight;
             cyan    = color-vars.blue;
             white   = color-vars.gray_xlight;
           };
@@ -200,7 +200,7 @@
             green   = color-vars.green_light;
             yellow  = color-vars.orange_light;
             blue    = color-vars.blue_xdeep_light;
-            magenta = color-vars.pink_xxxlight;
+            magenta = color-vars.pink_xxlight;
             cyan    = color-vars.blue_light;
             white   = color-vars.white;
           };
