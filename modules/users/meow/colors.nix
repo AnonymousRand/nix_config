@@ -39,7 +39,7 @@
       orange-xdeep      = "#ffa200";
 
       pink              = "#ff0080";
-      pink-light        = "#ff66b3";
+      pink-light        = "#ff9ccd";
       pink-xlight       = "#ffa6d2";
       pink-xxlight      = "#ffc7e3";
       pink-xxxlight     = "#ffd1e8";
@@ -54,7 +54,7 @@
 
     color-roles = with color-vars; rec {
       default_bg = {
-        color_light = "#fff7fa";
+        color_light = "#feedf3";
         color_dark  = black;
       };
       default_fg = {
@@ -139,7 +139,7 @@
           selectionFg = color-roles.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.pink;
+            red     = color-vars.pink-light;
             green   = color-vars.green-deep-dark;
             yellow  = color-vars.orange-deep;
             blue    = color-vars.blue-xdeep-light;
