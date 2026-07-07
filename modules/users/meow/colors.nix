@@ -14,7 +14,7 @@
     color-vars = {
       black             = "#000000";
       gray_xdark        = "#303030";
-      gray_dark         = "#606060";
+      gray_dark         = "#707070";
       gray              = "#808080";
       gray_light        = "#a0a0a0";
       gray_xlight       = "#cccccc";
@@ -23,9 +23,8 @@
       blue              = "#00eaff";
       blue_light        = "#40efff";
       blue_deep         = "#00d5ff";
-      blue_deep_dark    = "#00cef7";
       blue_xdeep        = "#00bfff";
-      blue_xdeep_light  = "#40cfff";
+      blue_xdeep_light  = "#42d0ff";
 
       green             = "#8cff00";
       green_light       = "#a9ff40";
@@ -35,8 +34,8 @@
 
       orange            = "#ffd500";
       orange_light      = "#ffdb26";
-      orange_deep       = "#ffbf00";
-      orange_xdeep      = "#ffa600";
+      orange_deep       = "#ffbb00";
+      orange_xdeep      = "#ffaa00";
 
       pink              = "#ff0080";
       pink_light        = "#ff94c9";
@@ -153,7 +152,7 @@
             green   = color-vars.green_deep_xdark;
             yellow  = color-vars.orange_xdeep;
             blue    = color-vars.blue_xdeep;
-            magenta = color-vars.pink_xlight;
+            magenta = color-vars.pink_light;
             cyan    = color-vars.blue_deep;
             white   = color-vars.white;
           };
