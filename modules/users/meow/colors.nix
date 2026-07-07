@@ -54,7 +54,7 @@
 
     color-roles = with color-vars; rec {
       default_bg = {
-        color_light = "#feedf3";
+        color_light = "#e0c99f";
         color_dark  = black;
       };
       default_fg = {
