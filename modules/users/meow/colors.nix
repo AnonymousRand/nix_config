@@ -23,23 +23,23 @@
       blue              = "#00eaff";
       blue_light        = "#40efff";
       blue_deep         = "#00d5ff";
-      blue_deep_dark    = "#00ccf5";
+      blue_deep_dark    = "#00cef7";
       blue_xdeep        = "#00bfff";
       blue_xdeep_light  = "#40cfff";
 
       green             = "#8cff00";
       green_light       = "#a9ff40";
       green_deep        = "#8cff00";
-      green_deep_dark   = "#76d600";
-      green_deep_xdark  = "#6fc900";
+      green_deep_dark   = "#7de300";
+      green_deep_xdark  = "#70cc00";
 
       orange            = "#ffd500";
       orange_light      = "#ffdb26";
       orange_deep       = "#ffbf00";
-      orange_xdeep      = "#ffa200";
+      orange_xdeep      = "#ffa600";
 
       pink              = "#ff0080";
-      pink_light        = "#ff9ccd";
+      pink_light        = "#ff94c9";
       pink_xlight       = "#ffa6d2";
       pink_xxlight      = "#ffc7e3";
       pink_xxxlight     = "#ffd1e8";
@@ -54,7 +54,7 @@
 
     color-roles = with color-vars; rec {
       default_bg = {
-        color_light = "#e0c99f";
+        color_light = "#feedf3";
         color_dark  = black;
       };
       default_fg = {
@@ -139,12 +139,12 @@
           selectionFg = color-roles.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.pink_light;
+            red     = color-vars.pink_xlight;
             green   = color-vars.green_deep_dark;
             yellow  = color-vars.orange_deep;
             blue    = color-vars.blue_xdeep_light;
             magenta = color-vars.pink_light;
-            cyan    = color-vars.blue_deep;
+            cyan    = color-vars.blue;
             white   = color-vars.gray_xlight;
           };
           bright = {
@@ -154,7 +154,7 @@
             yellow  = color-vars.orange_xdeep;
             blue    = color-vars.blue_xdeep;
             magenta = color-vars.pink_xlight;
-            cyan    = color-vars.blue_deep_dark;
+            cyan    = color-vars.blue_deep;
             white   = color-vars.white;
           };
         };
