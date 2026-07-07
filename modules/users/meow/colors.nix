@@ -41,7 +41,7 @@
       pink              = "#ff0080";
       pink-light        = "#ff66b3";
       pink-xlight       = "#ffa1d0";
-      pink-xxlight      = "#ffc7e3";
+      pink-xxlight      = "#ffc4e2";
       pink-xxxlight     = "#ffd1e8";
       pink-xxxxlight    = "#ffe0f0";
 
