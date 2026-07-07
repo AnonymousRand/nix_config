@@ -5,6 +5,18 @@
       interactiveShellInit = builtins.readFile ../dotfiles/fish/interactiveShellInit.fish;
     };
 
+    # yes, i know this isn't how you're supposed to initialize functions,
+    # but the native `programs.fish.functions` syntax pisses me off >_<
+    # (the alternative is a monolithic mess inside `interactiveShellInit.fish`)
+    xdg.configFile."fish/functions/fish_mode_prompt.fish".source =
+        ../dotfiles/fish/functions/fish_mode_prompt.fish;
+    xdg.configFile."fish/functions/fish_prompt.fish".source =
+        ../dotfiles/fish/functions/fish_prompt.fish;
+    xdg.configFile."fish/functions/fish_right_prompt.fish".source =
+        ../dotfiles/fish/functions/fish_right_prompt.fish;
+    xdg.configFile."fish/functions/fish_user_key_bindings.fish".source =
+        ../dotfiles/fish/functions/fish_user_key_bindings.fish;
+
     # Noctalia theming
     programs.noctalia = {
       settings = {

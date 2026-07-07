@@ -4,19 +4,19 @@ set -g fish_color_normal "{{ colors.terminal_foreground.default.hex }}" \
 set -g fish_color_autosuggestion "{{ colors.on_surface_variant.default.hex }}"
 set -g fish_color_command $fish_color_normal
 set -g fish_color_comment "{{ colors.comments_source.default.hex }}"
-set -g fish_color_cwd brgreen
+set -g fish_color_cwd bryellow
 set -g fish_color_cwd_root magenta
-set -g fish_color_end bryellow
+set -g fish_color_end yellow
 set -g fish_color_error "{{ colors.error_source.default.hex }}"
-set -g fish_color_escape bryellow
-set -g fish_color_host bryellow
-set -g fish_color_operator bryellow
+set -g fish_color_escape yellow
+set -g fish_color_host brcyan
+set -g fish_color_operator yellow
 set -g fish_color_param brmagenta
 set -g fish_color_quote "{{ colors.constants_source.default.hex }}"
 set -g fish_color_redirection $fish_color_end
 set -g fish_color_search_match magenta --bold
 set -g fish_color_selection --background "{{ colors.terminal_selection_bg.default.hex }}"
-set -g fish_color_status magenta
+set -g fish_color_status brgreen
 set -g fish_color_user magenta
 set -g fish_color_valid_path --underline
 
@@ -29,4 +29,4 @@ set -g fish_pager_color_selected_completion "{{ colors.selection_fg_source.defau
 set -g fish_pager_color_selected_description "{{ colors.pink_source.default.hex }}"
 set -g fish_pager_color_selected_prefix "{{ colors.pink_source.default.hex }}" --bold
 
-set -g __fish_git_prompt_color brcyan
+set -g __fish_git_prompt_color brgreen
