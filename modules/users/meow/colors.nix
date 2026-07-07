@@ -13,37 +13,37 @@
 
     color-vars = {
       black             = "#000000";
-      gray-xdark        = "#303030";
-      gray-dark         = "#606060";
+      gray_xdark        = "#303030";
+      gray_dark         = "#606060";
       gray              = "#808080";
-      gray-light        = "#a0a0a0";
-      gray-xlight       = "#cccccc";
+      gray_light        = "#a0a0a0";
+      gray_xlight       = "#cccccc";
       white             = "#ffffff";
 
       blue              = "#00eaff";
-      blue-light        = "#40efff";
-      blue-deep         = "#00d5ff";
-      blue-deep-dark    = "#00ccf5";
-      blue-xdeep        = "#00bfff";
-      blue-xdeep-light  = "#40cfff";
+      blue_light        = "#40efff";
+      blue_deep         = "#00d5ff";
+      blue_deep_dark    = "#00ccf5";
+      blue_xdeep        = "#00bfff";
+      blue_xdeep_light  = "#40cfff";
 
       green             = "#8cff00";
-      green-light       = "#a9ff40";
-      green-deep        = "#8cff00";
-      green-deep-dark   = "#76d600";
-      green-deep-xdark  = "#6fc900";
+      green_light       = "#a9ff40";
+      green_deep        = "#8cff00";
+      green_deep_dark   = "#76d600";
+      green_deep_xdark  = "#6fc900";
 
       orange            = "#ffd500";
-      orange-light      = "#ffdb26";
-      orange-deep       = "#ffbf00";
-      orange-xdeep      = "#ffa200";
+      orange_light      = "#ffdb26";
+      orange_deep       = "#ffbf00";
+      orange_xdeep      = "#ffa200";
 
       pink              = "#ff0080";
-      pink-light        = "#ff9ccd";
-      pink-xlight       = "#ffa6d2";
-      pink-xxlight      = "#ffc7e3";
-      pink-xxxlight     = "#ffd1e8";
-      pink-xxxxlight    = "#ffe0f0";
+      pink_light        = "#ff9ccd";
+      pink_xlight       = "#ffa6d2";
+      pink_xxlight      = "#ffc7e3";
+      pink_xxxlight     = "#ffd1e8";
+      pink_xxxxlight    = "#ffe0f0";
 
       red               = "#ff0000";
     };
@@ -58,14 +58,14 @@
         color_dark  = black;
       };
       default_fg = {
-        color_light = gray-dark;
-        color_dark  = gray-xlight;
+        color_light = gray_dark;
+        color_dark  = gray_xlight;
       };
 
 
       selection_bg = {
-        color_light = pink-xxxlight;
-        color_dark  = pink-xxxlight;
+        color_light = pink_xxxlight;
+        color_dark  = pink_xxxlight;
       };
       selection_fg = {
         color_light = default_fg.color_light;
@@ -78,8 +78,8 @@
         color_dark  = red;
       };
       warning = {
-        color_light = orange-xdeep;
-        color_dark  = orange-deep;
+        color_light = orange_xdeep;
+        color_dark  = orange_deep;
       };
 
 
@@ -89,19 +89,19 @@
       };
       comments = {
         color_light = green;
-        color_dark  = green-light;
+        color_dark  = green_light;
       };
       constants = {
         color_light = blue;
-        color_dark  = blue-light;
+        color_dark  = blue_light;
       };
       functions = {
-        color_light = orange-deep;
+        color_light = orange_deep;
         color_dark  = orange;
       };
       keywords = {
-        color_light = pink-xxlight;
-        color_dark  = pink-xxxlight;
+        color_light = pink_xxlight;
+        color_dark  = pink_xxxlight;
       };
       variables = default_fg;
     };
@@ -116,8 +116,8 @@
         mSurface          = color-roles.default_bg.color_light; # main background color
         mOnSurface        = color-roles.default_fg.color_light; # main foreground color
         mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
-        mOnSurfaceVariant = color-vars.gray-light;              # secondary foreground color
-        mPrimary          = color-vars.pink-xxlight;            # primary accent (buttons, links, highlights)
+        mOnSurfaceVariant = color-vars.gray_light;              # secondary foreground color
+        mPrimary          = color-vars.pink_xxlight;            # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.black;                   # text on primary surfaces
         mSecondary        = color-vars.blue;                    # secondary accent
         mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
@@ -125,7 +125,7 @@
         mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
         mError            = color-vars.red;                     # error color
         mOnError          = color-vars.black;                   # text on error surfaces
-        mOutline          = color-vars.pink-xxlight;            # borders and dividers
+        mOutline          = color-vars.pink_xxlight;            # borders and dividers
         mShadow           = mSurface;                           # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
@@ -133,28 +133,28 @@
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = color-vars.pink-xxlight;
+          cursor      = color-vars.pink_xxlight;
           cursorText  = foreground;
           selectionBg = color-roles.selection_bg.color_light;
           selectionFg = color-roles.selection_fg.color_light;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.pink-light;
-            green   = color-vars.green-deep-dark;
-            yellow  = color-vars.orange-deep;
-            blue    = color-vars.blue-xdeep-light;
-            magenta = color-vars.pink-light;
-            cyan    = color-vars.blue-deep;
-            white   = color-vars.gray-xlight;
+            red     = color-vars.pink_light;
+            green   = color-vars.green_deep_dark;
+            yellow  = color-vars.orange_deep;
+            blue    = color-vars.blue_xdeep_light;
+            magenta = color-vars.pink_light;
+            cyan    = color-vars.blue_deep;
+            white   = color-vars.gray_xlight;
           };
           bright = {
-            black   = color-vars.gray-xdark;
+            black   = color-vars.gray_xdark;
             red     = color-vars.red;
-            green   = color-vars.green-deep-xdark;
-            yellow  = color-vars.orange-xdeep;
-            blue    = color-vars.blue-xdeep;
-            magenta = color-vars.pink-xlight;
-            cyan    = color-vars.blue-deep-dark;
+            green   = color-vars.green_deep_xdark;
+            yellow  = color-vars.orange_xdeep;
+            blue    = color-vars.blue_xdeep;
+            magenta = color-vars.pink_xlight;
+            cyan    = color-vars.blue_deep_dark;
             white   = color-vars.white;
           };
         };
@@ -163,17 +163,17 @@
       dark = rec {
         mSurface          = color-roles.default_bg.color_dark;
         mOnSurface        = color-roles.default_fg.color_dark;
-        mSurfaceVariant   = color-vars.gray-xdark;
-        mOnSurfaceVariant = color-vars.gray-light;
-        mPrimary          = color-vars.pink-xxlight;
+        mSurfaceVariant   = color-vars.gray_xdark;
+        mOnSurfaceVariant = color-vars.gray_light;
+        mPrimary          = color-vars.pink_xxlight;
         mOnPrimary        = color-vars.black;
-        mSecondary        = color-vars.blue-light;
+        mSecondary        = color-vars.blue_light;
         mOnSeconary       = mOnPrimary;
         mTertiary         = color-vars.orange;
         mOnTertiary       = mOnPrimary;
         mError            = color-vars.red;
         mOnError          = color-vars.black;
-        mOutline          = color-vars.pink-xxxlight;
+        mOutline          = color-vars.pink_xxxlight;
         mShadow           = mSurface;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
@@ -181,28 +181,28 @@
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = color-vars.pink-xxxlight;
+          cursor      = color-vars.pink_xxxlight;
           cursorText  = background;
           selectionBg = color-roles.selection_bg.color_dark;
           selectionFg = color-roles.selection_fg.color_dark;
           normal = {
             black   = color-vars.black;
-            red     = color-vars.pink-xlight;
+            red     = color-vars.pink_xlight;
             green   = color-vars.green;
             yellow  = color-vars.orange;
-            blue    = color-vars.blue-xdeep;
-            magenta = color-vars.pink-xxlight;
+            blue    = color-vars.blue_xdeep;
+            magenta = color-vars.pink_xxlight;
             cyan    = color-vars.blue;
-            white   = color-vars.gray-xlight;
+            white   = color-vars.gray_xlight;
           };
           bright = {
-            black   = color-vars.gray-xdark;
+            black   = color-vars.gray_xdark;
             red     = color-vars.red;
-            green   = color-vars.green-light;
-            yellow  = color-vars.orange-light;
-            blue    = color-vars.blue-xdeep-light;
-            magenta = color-vars.pink-xxxlight;
-            cyan    = color-vars.blue-light;
+            green   = color-vars.green_light;
+            yellow  = color-vars.orange_light;
+            blue    = color-vars.blue_xdeep_light;
+            magenta = color-vars.pink_xxxlight;
+            cyan    = color-vars.blue_light;
             white   = color-vars.white;
           };
         };
