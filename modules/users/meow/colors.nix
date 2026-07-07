@@ -29,7 +29,7 @@
       green             = "#8cff00";
       green_light       = "#a9ff40";
       green_deep        = "#8cff00";
-      green_deep_dark   = "#7ee600";
+      green_deep_dark   = "#7de300";
       green_deep_xdark  = "#70cc00";
 
       orange            = "#ffd500";
