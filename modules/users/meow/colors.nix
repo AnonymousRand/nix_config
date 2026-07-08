@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ config, lib, ... }: {
   options.meow.colors = with lib; {
     color-vars        = mkOption { type = types.attrs; };
     color-roles       = mkOption { type = types.attrs; };
@@ -22,18 +22,20 @@
 
       blue              = "#00eaff";
       blue_light        = "#40efff";
-      blue_deep         = "#00d0ff";
-      blue_xdeep        = "#00bfff";
-      blue_xdeep_light  = "#42d0ff";
+      blue_xlight       = "#80f4ff";
+      blue_deep         = "#00ceff";
+      blue_xdeep        = "#00bbff";
+      blue_xdeep_light  = "#33c9ff";
 
       green             = "#8cff00";
       green_light       = "#a9ff40";
       green_deep        = "#8cff00";
-      green_deep_dark   = "#7de300";
+      green_deep_dark   = "#76d600";
       green_deep_xdark  = "#70cc00";
 
       orange            = "#ffd500";
       orange_light      = "#ffdb26";
+      orange_xlight     = "#ffdf40";
       orange_deep       = "#ffbf00";
       orange_xdeep      = "#ffac00";
       orange_xxdeep     = "#ff9500";
@@ -41,9 +43,8 @@
       pink              = "#ff0080";
       pink_light        = "#ff8cc6";
       pink_xlight       = "#ffabd5";
-      pink_xxlight      = "#ffc7e3";
+      pink_xxlight      = "#ffc4e2";
       pink_xxxlight     = "#ffd1e8";
-      pink_xxxxlight    = "#ffe0f0";
 
       red               = "#ff0000";
     };
@@ -104,6 +105,25 @@
         color_dark  = pink_xxxlight;
       };
       variables = default_fg;
+
+
+      # for shell "scales" prompt
+      scales_blue = {
+        color_light = "#26edff";
+        color_dark  = blue;
+      };
+      scales_green = {
+        color_light = "#7ee600";
+        color_dark  = green;
+      };
+      scales_orange = {
+        color_light = "#ffc400";
+        color_dark  = orange;
+      };
+      scales_pink = {
+        color_light = "#ffa8d4";
+        color_dark  = pink_xlight;
+      };
     };
 
     ############################################################################
@@ -117,18 +137,18 @@
         mOnSurface        = color-roles.default_fg.color_light; # main foreground color
         mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
         mOnSurfaceVariant = color-vars.gray_light;              # secondary foreground color
-        mPrimary          = color-vars.pink_xxlight;            # primary accent (buttons, links, highlights)
+        mPrimary          = color-vars.pink_light;              # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.gray_xdark;              # text on primary surfaces
-        mSecondary        = color-vars.blue;                    # secondary accent
+        mSecondary        = color-vars.pink_xxlight;            # secondary accent
         mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
-        mTertiary         = color-vars.orange;                  # tertiary accent
+        mTertiary         = color-vars.pink_xxxlight;           # tertiary accent
         mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
-        mError            = color-vars.red;                     # error color
-        mOnError          = color-vars.black;                   # text on error surfaces
-        mOutline          = color-vars.pink_xxlight;            # borders and dividers
+        mOutline          = color-vars.pink_xlight;             # borders and dividers
         mShadow           = mSurface;                           # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
+        mError            = color-vars.red;                     # error color
+        mOnError          = color-vars.black;                   # text on error surfaces
 
         terminal = rec {
           background  = mSurface;
@@ -144,7 +164,7 @@
             yellow  = color-vars.orange_xdeep;
             blue    = color-vars.blue_xdeep_light;
             magenta = color-vars.pink_light;
-            cyan    = color-vars.blue;
+            cyan    = color-vars.blue_deep;
             white   = color-vars.gray_xlight;
           };
           bright = {
@@ -171,12 +191,12 @@
         mOnSeconary       = mOnPrimary;
         mTertiary         = color-vars.orange;
         mOnTertiary       = mOnPrimary;
-        mError            = color-vars.red;
-        mOnError          = color-vars.black;
         mOutline          = color-vars.pink_xxxlight;
         mShadow           = mSurface;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
+        mError            = color-vars.red;
+        mOnError          = color-vars.black;
 
         terminal = rec {
           background  = mSurface;

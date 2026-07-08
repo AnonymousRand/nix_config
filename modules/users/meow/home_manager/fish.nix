@@ -2,7 +2,8 @@
   flake.homeModules.meow = { config, ... }: {
     programs.fish = {
       enable = true;
-      interactiveShellInit = builtins.readFile ../dotfiles/fish/interactiveShellInit.fish;
+      interactiveShellInit = builtins.readFile ../dotfiles/fish/interactiveShellInit.fish +
+          "\nsource ${config.xdg.configHome}/fish/noctalia_theme.fish";
     };
 
     # yes, i know this isn't how you're supposed to initialize functions,
@@ -21,7 +22,7 @@
     programs.noctalia = {
       settings = {
         theme.templates.user.fish = {
-          input_path = builtins.toString ../dotfiles/noctalia/templates/fish.fish;
+          input_path = builtins.toString ../dotfiles/fish/noctalia_theme.fish;
           output_path = "$XDG_CONFIG_HOME/fish/noctalia_theme.fish";
         };
       };

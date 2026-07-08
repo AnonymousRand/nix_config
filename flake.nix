@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs. url = "github:nixos/nixpkgs/nixos-26.05";
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
@@ -12,7 +12,8 @@
 
     # Niri has a built-in flake as a NixOS option but it doesn't have Home Manager options
     niri = {
-      url = "github:sodiboo/niri-flake";
+      # sodiboo's flake is the common alternative but it's being slow with updates
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
