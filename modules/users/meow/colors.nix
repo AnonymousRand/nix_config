@@ -44,13 +44,14 @@
       pink_xlight       = "#ffadd6";
       pink_xxlight      = "#ffc4e2";
       pink_xxxlight     = "#ffd1e8";
+      pink_xxxxlight    = "#ffe6f2";
 
       red               = "#ff0000";
     };
  
     ############################################################################
     # custom color roles/variables (currently in format for Noctalia custom colors)
-    # (use these on things which very clearly have any of the following roles!)
+    # (use these on things which very clearly have any of the following roles)
 
     color-roles = with color-vars; rec {
       default_bg = {
@@ -117,7 +118,7 @@
       };
       scales_green = {
         color_light = "#7ee600";
-        color_dark  = "#a9ff40";
+        color_dark  = "#a8ff3d";
       };
       scales_orange = {
         color_light = "#ffc400";
@@ -131,7 +132,7 @@
 
     ############################################################################
     # Material 3 palette (e.g. for Noctalia palette)
-    # (use these on things which very clearly have a Material 3 role!)
+    # (use these on things which very clearly have a Material 3 role)
     # (although treat the terminal ANSI colors more like fixed color variables)
 
     material3-palette = {
@@ -144,7 +145,7 @@
         mOnPrimary        = color-vars.gray_xdark;              # text on primary surfaces
         mSecondary        = color-vars.pink_xxlight;            # secondary accent
         mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
-        mTertiary         = color-vars.pink_xxxlight;           # tertiary accent
+        mTertiary         = color-vars.pink_xxxxlight;          # tertiary accent
         mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
         mShadow           = color-vars.gray_xdark;              # shadows
@@ -192,7 +193,7 @@
         mOnPrimary        = color-vars.gray_xdark;
         mSecondary        = color-vars.pink_xxlight;
         mOnSeconary       = mOnPrimary;
-        mTertiary         = color-vars.pink_xxxlight;
+        mTertiary         = color-vars.pink_xxxxlight;
         mOnTertiary       = mOnPrimary;
         mOutline          = color-vars.pink_xlight;
         mShadow           = color-vars.gray_xdark;
