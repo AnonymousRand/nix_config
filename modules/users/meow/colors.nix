@@ -42,7 +42,7 @@
 
       pink              = "#ff0080";
       pink_light        = "#ff8cc6";
-      pink_xlight       = "#ffabd5";
+      pink_xlight       = "#ffadd6";
       pink_xxlight      = "#ffc4e2";
       pink_xxxlight     = "#ffd1e8";
 
@@ -110,11 +110,11 @@
       # for shell "scales" prompt
       scales_blue = {
         color_light = "#26edff";
-        color_dark  = blue;
+        color_dark  = blue_light;
       };
       scales_green = {
         color_light = "#7ee600";
-        color_dark  = green;
+        color_dark  = green_light;
       };
       scales_orange = {
         color_light = "#ffc400";
@@ -122,7 +122,7 @@
       };
       scales_pink = {
         color_light = "#ffa8d4";
-        color_dark  = pink_xlight;
+        color_dark  = "#ffa8d4";
       };
     };
 
@@ -185,13 +185,13 @@
         mOnSurface        = color-roles.default_fg.color_dark;
         mSurfaceVariant   = color-vars.gray_xdark;
         mOnSurfaceVariant = color-vars.gray_light;
-        mPrimary          = color-vars.pink_xxlight;
+        mPrimary          = color-vars.pink_light;
         mOnPrimary        = color-vars.gray_xdark;
-        mSecondary        = color-vars.blue_light;
+        mSecondary        = color-vars.pink_xxlight;
         mOnSeconary       = mOnPrimary;
-        mTertiary         = color-vars.orange;
+        mTertiary         = color-vars.pink_xxxlight;
         mOnTertiary       = mOnPrimary;
-        mOutline          = color-vars.pink_xxxlight;
+        mOutline          = color-vars.pink_xlight;
         mShadow           = mSurface;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
