@@ -62,7 +62,7 @@ set tabstop=8                                       " actual tab chars are 8 spa
 
 set termguicolors                                   " for custom colorscheme
 set cursorline
-autocmd BufEnter * :colorscheme anonymousrand       " always apply custom colorscheme last when entering buffer
+autocmd BufEnter * :colorscheme noctalia_theme      " always apply custom colorscheme last when entering buffer
 
 set visualbell                                      " turn off bell sounds in vim, for WSL mainly
 set t_vb=

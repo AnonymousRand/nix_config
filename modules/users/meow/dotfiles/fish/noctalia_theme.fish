@@ -7,7 +7,7 @@ set -g fish_color_comment                                "{{ colors.comments_sou
 set -g fish_color_cwd                                    brgreen
 set -g fish_color_cwd_root                               magenta
 set -g fish_color_end                                    yellow
-set -g fish_color_error                                  "{{ colors.error_source.default.hex }}"
+set -g fish_color_error                                  "{{ colors.error.default.hex }}"
 set -g fish_color_escape                                 yellow
 set -g fish_color_host                                   bryellow
 set -g fish_color_operator                               yellow

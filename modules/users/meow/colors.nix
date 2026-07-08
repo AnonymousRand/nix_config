@@ -13,7 +13,7 @@
 
     color-vars = {
       black             = "#000000";
-      gray_xdark        = "#303030";
+      gray_xdark        = "#202020";
       gray_dark         = "#707070";
       gray              = "#808080";
       gray_light        = "#a0a0a0";
@@ -21,14 +21,13 @@
       white             = "#ffffff";
 
       blue              = "#00eaff";
-      blue_light        = "#40efff";
-      blue_xlight       = "#80f4ff";
+      blue_light        = "#66f2ff";
       blue_deep         = "#00ceff";
       blue_xdeep        = "#00bbff";
       blue_xdeep_light  = "#33c9ff";
 
       green             = "#8cff00";
-      green_light       = "#a9ff40";
+      green_light       = "#a3ff33";
       green_deep        = "#8cff00";
       green_deep_dark   = "#76d600";
       green_deep_xdark  = "#70cc00";
@@ -104,21 +103,25 @@
         color_light = pink_xxlight;
         color_dark  = pink_xxxlight;
       };
+      links = {
+        color_light = blue_xdeep;
+        color_dark  = blue;
+      };
       variables = default_fg;
 
 
-      # for shell "scales" prompt
+      # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
       scales_blue = {
         color_light = "#26edff";
-        color_dark  = blue_light;
+        color_dark  = "#40efff";
       };
       scales_green = {
         color_light = "#7ee600";
-        color_dark  = green_light;
+        color_dark  = "#a9ff40";
       };
       scales_orange = {
         color_light = "#ffc400";
-        color_dark  = orange;
+        color_dark  = "#ffd500";
       };
       scales_pink = {
         color_light = "#ffa8d4";
@@ -144,10 +147,10 @@
         mTertiary         = color-vars.pink_xxxlight;           # tertiary accent
         mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
-        mShadow           = mSurface;                           # shadows
+        mShadow           = color-vars.gray_xdark;              # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
-        mError            = color-vars.red;                     # error color
+        mError            = color-roles.error.color_light;      # error color
         mOnError          = color-vars.black;                   # text on error surfaces
 
         terminal = rec {
@@ -192,10 +195,10 @@
         mTertiary         = color-vars.pink_xxxlight;
         mOnTertiary       = mOnPrimary;
         mOutline          = color-vars.pink_xlight;
-        mShadow           = mSurface;
+        mShadow           = color-vars.gray_xdark;
         mHover            = mTertiary;
         mOnHover          = mOnTertiary;
-        mError            = color-vars.red;
+        mError            = color-roles.error.color_dark;
         mOnError          = color-vars.black;
 
         terminal = rec {

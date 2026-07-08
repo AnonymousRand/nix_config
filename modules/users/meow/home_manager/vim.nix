@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = { pkgs, ... }: {
+  flake.homeModules.meow = { config, pkgs, ... }: {
     programs.vim = {
       enable = true;
       plugins = [
@@ -10,7 +10,15 @@
       extraConfig = builtins.readFile ../dotfiles/vim/vimrc;
     };
 
+    # Noctalia theme (custom colorscheme)
     # custom colorscheme
-    home.file.".vim/colors/anonymousrand.vim".source = ../dotfiles/vim/colors/anonymousrand.vim;
+    programs.noctalia = {
+      settings = {
+        theme.templates.user.vim = {
+          input_path = builtins.toString ../dotfiles/vim/colors/noctalia_theme.vim;
+          output_path = "${config.home.homeDirectory}/.vim/colors/noctalia_theme.vim";
+        };
+      };
+    };
   };
 }
