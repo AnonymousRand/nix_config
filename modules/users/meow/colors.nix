@@ -13,7 +13,8 @@
 
     color-vars = {
       black             = "#000000";
-      gray_xdark        = "#202020";
+      gray_xxdark       = "#202020";
+      gray_xdark        = "#505050";
       gray_dark         = "#707070";
       gray              = "#808080";
       gray_light        = "#a0a0a0";
@@ -22,7 +23,7 @@
 
       blue              = "#00eaff";
       blue_light        = "#66f2ff";
-      blue_deep         = "#00ceff";
+      blue_deep         = "#00c8ff";
       blue_xdeep        = "#00bbff";
       blue_xdeep_light  = "#33c9ff";
 
@@ -30,7 +31,7 @@
       green_light       = "#a3ff33";
       green_deep        = "#8cff00";
       green_deep_dark   = "#76d600";
-      green_deep_xdark  = "#70cc00";
+      green_deep_xdark  = "#6fc900";
 
       orange            = "#ffd500";
       orange_light      = "#ffdb26";
@@ -44,7 +45,7 @@
       pink_xlight       = "#ffadd6";
       pink_xxlight      = "#ffc4e2";
       pink_xxxlight     = "#ffd1e8";
-      pink_xxxxlight    = "#ffe6f2";
+      pink_xxxxlight    = "#ffe0f0";
 
       red               = "#ff0000";
     };
@@ -101,7 +102,7 @@
         color_dark  = orange;
       };
       keywords = {
-        color_light = pink_xxlight;
+        color_light = pink_light;
         color_dark  = pink_xxxlight;
       };
       links = {
@@ -132,23 +133,23 @@
 
     ############################################################################
     # Material 3 palette (e.g. for Noctalia palette)
-    # (use these on things which very clearly have a Material 3 role)
+    # (use these on things which very clearly have a Material 3 role, and Noctalia didn't change the color)
     # (although treat the terminal ANSI colors more like fixed color variables)
 
     material3-palette = {
       light = rec {
         mSurface          = color-roles.default_bg.color_light; # main background color
         mOnSurface        = color-roles.default_fg.color_light; # main foreground color
-        mSurfaceVariant   = color-vars.white;                   # secondary background color (cards, panels)
+        mSurfaceVariant   = "#fff5f8";                          # secondary background color (cards, panels)
         mOnSurfaceVariant = color-vars.gray_light;              # secondary foreground color
         mPrimary          = color-vars.pink_light;              # primary accent (buttons, links, highlights)
-        mOnPrimary        = color-vars.gray_xdark;              # text on primary surfaces
+        mOnPrimary        = color-vars.gray_xxdark;             # text on primary surfaces
         mSecondary        = color-vars.pink_xxlight;            # secondary accent
-        mOnSeconary       = mOnPrimary;                         # text on secondary surfaces
+        mOnSecondary      = color-vars.gray_xdark;              # text on secondary surfaces
         mTertiary         = color-vars.pink_xxxxlight;          # tertiary accent
-        mOnTertiary       = mOnPrimary;                         # text on tertiary surfaces
+        mOnTertiary       = color-vars.gray_dark;               # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
-        mShadow           = color-vars.gray_xdark;              # shadows
+        mShadow           = color-vars.gray_xxdark;             # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
         mError            = color-roles.error.color_light;      # error color
@@ -157,7 +158,7 @@
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = color-vars.pink_xxlight;
+          cursor      = color-vars.pink_xxxlight;
           cursorText  = foreground;
           selectionBg = color-roles.selection_bg.color_light;
           selectionFg = color-roles.selection_fg.color_light;
@@ -190,11 +191,11 @@
         mSurfaceVariant   = color-vars.gray_xdark;
         mOnSurfaceVariant = color-vars.gray_light;
         mPrimary          = color-vars.pink_light;
-        mOnPrimary        = color-vars.gray_xdark;
+        mOnPrimary        = color-vars.gray_xxdark;
         mSecondary        = color-vars.pink_xxlight;
-        mOnSeconary       = mOnPrimary;
+        mOnSecondary      = color-vars.gray_xdark;
         mTertiary         = color-vars.pink_xxxxlight;
-        mOnTertiary       = mOnPrimary;
+        mOnTertiary       = color-vars.gray_dark;
         mOutline          = color-vars.pink_xlight;
         mShadow           = color-vars.gray_xdark;
         mHover            = mTertiary;
