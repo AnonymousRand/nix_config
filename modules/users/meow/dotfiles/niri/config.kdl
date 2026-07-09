@@ -380,3 +380,10 @@ binds {
     // toggle whether applications (e.g. remote desktop) are allowed to inhibit/override niri's keybinds
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
+
+gestures {
+    // disable overview when mousing over top left corner
+    hot-corners {
+        off
+    }
+}
