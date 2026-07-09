@@ -21,6 +21,26 @@
     # Noctalia theming
     programs.noctalia = {
       settings = {
+        theme.templates.custom_colors = {
+          # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
+          scales_blue = {
+            color_light = "#26edff";
+            color_dark  = "#40efff";
+          };
+          scales_green = {
+            color_light = "#7ee600";
+            color_dark  = "#a8ff3d";
+          };
+          scales_orange = {
+            color_light = "#ffc400";
+            color_dark  = "#ffd500";
+          };
+          scales_pink = {
+            color_light = "#ffa8d4";
+            color_dark  = "#ffa8d4";
+          };
+        };
+
         theme.templates.user.fish = {
           input_path = builtins.toString ../dotfiles/fish/noctalia_theme.fish;
           output_path = "$XDG_CONFIG_HOME/fish/noctalia_theme.fish";

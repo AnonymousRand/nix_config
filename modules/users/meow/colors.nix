@@ -110,25 +110,6 @@
         color_dark  = blue;
       };
       variables = default_fg;
-
-
-      # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
-      scales_blue = {
-        color_light = "#26edff";
-        color_dark  = "#40efff";
-      };
-      scales_green = {
-        color_light = "#7ee600";
-        color_dark  = "#a8ff3d";
-      };
-      scales_orange = {
-        color_light = "#ffc400";
-        color_dark  = "#ffd500";
-      };
-      scales_pink = {
-        color_light = "#ffa8d4";
-        color_dark  = "#ffa8d4";
-      };
     };
 
     ############################################################################
@@ -150,8 +131,8 @@
         mOnTertiary       = color-vars.gray_dark;               # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
         mShadow           = color-vars.gray_xdark;              # shadows
-        mHover            = mTertiary;                          # hover state background
-        mOnHover          = mOnTertiary;                        # text on hover surfaces
+        mHover            = mSecondary;                         # hover state background
+        mOnHover          = mOnSecondary;                       # text on hover surfaces
         mError            = color-roles.error.color_light;      # error color
         mOnError          = color-vars.black;                   # text on error surfaces
 
@@ -198,8 +179,8 @@
         mOnTertiary       = color-vars.gray_dark;
         mOutline          = color-vars.pink_xlight;
         mShadow           = color-vars.gray_xdark;
-        mHover            = mTertiary;
-        mOnHover          = mOnTertiary;
+        mHover            = mSecondary;
+        mOnHover          = mOnSecondary;
         mError            = color-roles.error.color_dark;
         mOnError          = color-vars.black;
 

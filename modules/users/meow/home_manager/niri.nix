@@ -16,6 +16,18 @@
     # Noctalia theming
     programs.noctalia = {
       settings = {
+        theme.templates.custom_colors = {
+          # for active window border/focus ring gradient
+          active_gradient_start = {
+            color_light = "#ff198c";
+            color_dark  = "#ff0080";
+          };
+          active_gradient_end = {
+            color_light = "#00eaff";
+            color_dark  = "#00eaff";
+          };
+        };
+
         theme.templates.user.niri = {
           input_path = builtins.toString ../dotfiles/niri/noctalia_theme.kdl;
           output_path = "$XDG_CONFIG_HOME/niri/noctalia_theme.kdl";
