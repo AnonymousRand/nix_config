@@ -188,7 +188,7 @@
       dark = rec {
         mSurface          = color-roles.default_bg.color_dark;
         mOnSurface        = color-roles.default_fg.color_dark;
-        mSurfaceVariant   = color-vars.gray_xdark;
+        mSurfaceVariant   = color-vars.gray_xxdark;
         mOnSurfaceVariant = color-vars.gray_light;
         mPrimary          = color-vars.pink_light;
         mOnPrimary        = color-vars.gray_xxdark;
