@@ -43,7 +43,7 @@
       pink              = "#ff0080";
       pink_light        = "#ff8cc6";
       pink_xlight       = "#ffadd6";
-      pink_xxlight      = "#ffc4e2";
+      pink_xxlight      = "#ffc7e4";
       pink_xxxlight     = "#ffd1e8";
       pink_xxxxlight    = "#ffe0f0";
 
@@ -149,7 +149,7 @@
         mTertiary         = color-vars.pink_xxxxlight;          # tertiary accent
         mOnTertiary       = color-vars.gray_dark;               # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
-        mShadow           = color-vars.gray_xxdark;             # shadows
+        mShadow           = color-vars.gray_xdark;              # shadows
         mHover            = mTertiary;                          # hover state background
         mOnHover          = mOnTertiary;                        # text on hover surfaces
         mError            = color-roles.error.color_light;      # error color
