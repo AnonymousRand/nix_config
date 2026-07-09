@@ -103,7 +103,7 @@
       };
       keywords = {
         color_light = pink_light;
-        color_dark  = pink_xxxlight;
+        color_dark  = pink_xxlight;
       };
       links = {
         color_light = blue_xdeep;
