@@ -1,0 +1,11 @@
+theme = "noctalia_theme"
+
+# use fish shell
+command = "fish --login --interactive"
+shell-integration = fish
+shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
+
+# cursor
+adjust-cursor-height = -50%
+adjust-cursor-thickness = 300%
+cursor-click-to-move = true

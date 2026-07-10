@@ -10,6 +10,7 @@
     imports = [
       # packages to be installed at the system/host level (if this user is present on host)
       self.nixosModules.fish
+      self.nixosModules.ghostty
       self.nixosModules.kitty
       self.nixosModules.niri
       self.nixosModules.noctalia

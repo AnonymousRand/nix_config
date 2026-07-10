@@ -4,9 +4,14 @@
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ghostty = {
+      # this version is 2026/7/10; for fixed `adjust-cursor-height` bug
+      url = "github:ghostty-org/ghostty/tip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
