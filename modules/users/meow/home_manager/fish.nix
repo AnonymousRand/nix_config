@@ -15,6 +15,8 @@
         ../dotfiles/fish/functions/fish_prompt.fish;
     xdg.configFile."fish/functions/fish_right_prompt.fish".source =
         ../dotfiles/fish/functions/fish_right_prompt.fish;
+    xdg.configFile."fish/functions/fish_title.fish".source =
+        ../dotfiles/fish/functions/fish_title.fish;
     xdg.configFile."fish/functions/fish_user_key_bindings.fish".source =
         ../dotfiles/fish/functions/fish_user_key_bindings.fish;
 

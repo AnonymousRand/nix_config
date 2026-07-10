@@ -9,7 +9,13 @@ function fish_prompt
     end
 
     # use prompt suffix inspired by "scales"
-    set -l prompt_suffix (echo -n -s (set_color $prompt_scales_pink) "❯" (set_color $prompt_scales_orange) "❯" (set_color $prompt_scales_green) "❯" (set_color $prompt_scales_blue) "❯" (set_color --reset))
+    set -l prompt_suffix (echo -n -s (set_color $prompt_scales_pink) "❯" \
+                                     (set_color $prompt_scales_orange) "❯" \
+                                     (set_color $prompt_scales_green) "❯" \
+                                     (set_color $prompt_scales_blue) "❯" (set_color --reset))
 
-    echo -n -s (prompt_login) " " (set_color $color_cwd) (prompt_pwd) (set_color --reset) (fish_vcs_prompt) (set_color --reset) " " $prompt_suffix " "
+    echo -n -s (prompt_login) " " \
+               (set_color $color_cwd) (prompt_pwd) \
+               (set_color --reset) (fish_vcs_prompt) \
+               (set_color --reset) " " $prompt_suffix " "
 end

@@ -14,7 +14,7 @@ function fish_right_prompt
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    if [ -n "$prompt_status" ]
+    if test -n "$prompt_status"
         echo -n -s $prompt_status
     else if string match -qi "*UTF-8*" "$LANG"
             and set -q TERM
