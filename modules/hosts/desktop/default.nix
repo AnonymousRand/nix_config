@@ -21,20 +21,19 @@
       ##########################################################################
       # packages
 
-      # desktop
+      # desktop environment
       self.nixosModules.niri
       self.nixosModules.noctalia
       self.nixosModules.noctalia-greeter
       self.nixosModules.xwayland-satellite
-
-      # Logitech mouse config
-      self.nixosModules.solaar
-
+      
       # other
-      self.nixosModules.hyprpicker
-      self.nixosModules.playerctl # control media players that use MPRIS
-      self.nixosModules.nvtop
-      self.nixosModules.wl-clipboard
+      self.nixosModules.firefox
+      self.nixosModules.hyprpicker   # colorpicker
+      self.nixosModules.playerctl    # control media players that use MPRIS
+      self.nixosModules.nvtop        # GPU top
+      self.nixosModules.solaar       # Logitech mouse config
+      self.nixosModules.wl-clipboard # wayland clipboard
     ];
   };
 }

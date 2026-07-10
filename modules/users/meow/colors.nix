@@ -37,7 +37,7 @@
       orange_light      = "#ffdb26";
       orange_xlight     = "#ffdf40";
       orange_deep       = "#ffbf00";
-      orange_xdeep      = "#ffac00";
+      orange_xdeep      = "#ffa600";
       orange_xxdeep     = "#ff9500";
 
       pink              = "#ff0080";
@@ -139,7 +139,7 @@
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = color-vars.pink_xxxlight;
+          cursor      = color-vars.pink_xxlight;
           cursorText  = foreground;
           selectionBg = color-roles.selection_bg.color_light;
           selectionFg = color-roles.selection_fg.color_light;
@@ -187,7 +187,7 @@
         terminal = rec {
           background  = mSurface;
           foreground  = mOnSurface;
-          cursor      = color-vars.pink_xxxlight;
+          cursor      = color-vars.pink_xxlight;
           cursorText  = background;
           selectionBg = color-roles.selection_bg.color_dark;
           selectionFg = color-roles.selection_fg.color_dark;
