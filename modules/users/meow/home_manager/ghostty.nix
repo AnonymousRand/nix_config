@@ -5,6 +5,7 @@
     };
 
     xdg.configFile."ghostty/config.ghostty".source = ../dotfiles/ghostty/config.ghostty;
+    xdg.configFile."ghostty/custom.css".source = ../dotfiles/ghostty/custom.css;
 
     # Noctalia theming
     programs.noctalia = {

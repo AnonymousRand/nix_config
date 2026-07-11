@@ -1,0 +1,46 @@
+/******************************************************************************/
+/* titlebar                                                                   */
+/******************************************************************************/
+
+/*
+ * by default, the titlebar is rendered by adwaita, whose src/stylesheet/_colors.scss
+ * (https://github.com/GNOME/libadwaita/blob/42f647ffcbec3282c126ad9153c77baecf86ba90/src/stylesheet/_colors.scss#L270)
+ * very frustratingly sets a bunch of defaults, such as using `currentColor` (the *foreground* color)
+ * mixed with varying amounts of `transparent` to define the selected tab etc. *background* colors.
+ *
+ * what the fuck.
+ *
+ * so here's my attempt to make it make sense. (the lightness percentage adjustments are half of
+ * the percent `currentColor` used in `color-mix()` in the original adwaita code.)
+ */
+@define-color tab_selected_color #ffe0f0;
+@define-color tab_hover_color hsl(from @tab_selected_color h s calc(l + 3.5%));
+@define-color tab_active_color hsl(from @tab_selected_color h s calc(l - 3%));
+@define-color tab_selected_hover_color hsl(from @tab_selected_color h s calc(l - 1.5%));
+@define-color tab_selected_active_color hsl(from @tab_selected_color h s calc(l - 4.5%));
+
+/* this is the overlay that is blended onto the titlebar of unfocused windows */
+/* (note `--ghostty-bg` variable only exists if using `window-theme = ghostty` in ghostty config) */
+:root {
+    --headerbar-backdrop-color: var(--ghostty-bg);
+}
+
+tabbox:not(.single-tab) tab:hover {
+    background-color: @tab_hover_color;
+}
+
+tabbox:not(.single-tab) tab:active {
+    background-color: @tab_active_color;
+}
+
+tabbox:not(.single-tab) tab:selected {
+    background-color: @tab_selected_color;
+}
+
+tabbox:not(.single-tab) tab:selected:hover {
+    background-color: @tab_selected_hover_color;
+}
+
+tabbox:not(.single-tab) tab:selected:active {
+    background-color: @tab_selected_active_color;
+}

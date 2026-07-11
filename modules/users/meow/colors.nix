@@ -121,8 +121,8 @@
       light = rec {
         mSurface          = color-roles.default_bg.color_light; # main background color
         mOnSurface        = color-roles.default_fg.color_light; # main foreground color
-        mSurfaceVariant   = "#fff5f8";                          # secondary background color (cards, panels)
-        mOnSurfaceVariant = color-vars.gray_light;              # secondary foreground color
+        mSurfaceVariant   = "#fffafc";                          # variant background color (cards, panels)
+        mOnSurfaceVariant = color-vars.gray_dark;               # variant foreground color
         mPrimary          = color-vars.pink_light;              # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.gray_xxdark;             # text on primary surfaces
         mSecondary        = color-vars.pink_xxlight;            # secondary accent
@@ -170,7 +170,7 @@
         mSurface          = color-roles.default_bg.color_dark;
         mOnSurface        = color-roles.default_fg.color_dark;
         mSurfaceVariant   = color-vars.gray_xxdark;
-        mOnSurfaceVariant = color-vars.gray_light;
+        mOnSurfaceVariant = color-vars.gray_xlight;
         mPrimary          = color-vars.pink_light;
         mOnPrimary        = color-vars.gray_xxdark;
         mSecondary        = color-vars.pink_xxlight;

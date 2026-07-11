@@ -1,4 +1,13 @@
+################################################################################
+# configs
+################################################################################
+
+# styling
 theme = "noctalia_theme"
+# force ghostty to use ghostty config (instead of system GTK, for example) to style windows & titlebars
+window-theme = "ghostty"
+font-size = 12
+gtk-custom-css = custom.css
 
 # use fish shell
 command = "fish --login --interactive"
@@ -6,6 +15,78 @@ shell-integration = fish
 shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
 
 # cursor
-adjust-cursor-height = -50%
 adjust-cursor-thickness = 300%
 cursor-click-to-move = true
+
+# layout
+confirm-close-surface = true
+unfocused-split-opacity = 0.6
+
+# titlebar
+gtk-titlebar-style = tabs
+
+# scrollback buffer max size in bytes (10MB ~= 100k lines at 100 UTF-8 chars/line)
+scrollback-limit = 10_000_000
+
+################################################################################
+# keybinds
+################################################################################
+
+# system
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+e=copy_url_to_clipboard
+          
+keybind = ctrl+shift+minus=decrease_font_size:1
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+shift+0=reset_font_size
+          
+keybind = ctrl+shift+f=start_search
+keybind = ctrl+shift+alt+f=search_selection
+keybind = ctrl+g=navigate_search:next
+keybind = ctrl+shift+g=navigate_search:previous
+keybind = performable:escape=end_search
+keybind = ctrl+shift+slash=write_scrollback_file:open
+          
+keybind = ctrl+shift+delete=clear_screen
+keybind = ctrl+shift+q=close_surface
+
+keybind = ctrl+shift+i=show_gtk_inspector
+
+# scrolling
+keybind = ctrl+e=scroll_page_lines:1
+keybind = ctrl+y=scroll_page_lines:-1
+keybind = ctrl+f=scroll_page_down
+keybind = ctrl+b=scroll_page_up
+keybind = ctrl+d=scroll_page_fractional:0.5
+keybind = ctrl+u=scroll_page_fractional:-0.5
+keybind = ctrl+i=jump_to_prompt:-1
+keybind = ctrl+o=jump_to_prompt:1
+         
+# tabs     
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+u=previous_tab
+keybind = ctrl+shift+p=next_tab
+keybind = ctrl+shift+alt+u=move_tab:-1
+keybind = ctrl+shift+alt+p=move_tab:1
+keybind = ctrl+shift+1=goto_tab:1
+keybind = ctrl+shift+2=goto_tab:2
+keybind = ctrl+shift+3=goto_tab:3
+keybind = ctrl+shift+4=goto_tab:4
+keybind = ctrl+shift+5=goto_tab:5
+keybind = ctrl+shift+6=goto_tab:6
+keybind = ctrl+shift+7=goto_tab:7
+keybind = ctrl+shift+8=goto_tab:8
+keybind = ctrl+shift+9=last_tab
+keybind = ctrl+shift+backquote=toggle_tab_overview
+keybind = ctrl+shift+r=prompt_tab_title
+          
+# splits   
+keybind = ctrl+shift+w>h=new_split:left
+keybind = ctrl+shift+w>j=new_split:down
+keybind = ctrl+shift+w>k=new_split:up
+keybind = ctrl+shift+w>l=new_split:right
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right

@@ -28,7 +28,7 @@
     programs.home-manager.enable = true; # enables `home-manager` command
 
     home.sessionVariables = {
-      TERMINAL = "kitty";
+      TERMINAL = "ghostty";
     };
 
     imports = [

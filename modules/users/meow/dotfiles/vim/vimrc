@@ -92,7 +92,9 @@ if &term ==? "xterm-kitty"
     execute "set <FocusLost>=\<Esc>[O"
     let &t_ST = "\e[22;2t"
     let &t_RT = "\e[23;2t"
-    let &t_ut=''
+    let &t_ut = ""
+    " see https://github.com/vim/vim/issues/20739; corrects cursor blink control with kitty
+    let &t_ve = "\e[?25h"
 endif
 
 " colorscheme
