@@ -57,7 +57,6 @@ keybind = ctrl+shift+alt+f=search_selection
 keybind = ctrl+g=navigate_search:previous
 keybind = ctrl+shift+g=navigate_search:next
 keybind = performable:escape=end_search
-keybind = ctrl+shift+slash=write_scrollback_file:open
 
 keybind = ctrl+shift+delete=clear_screen
 keybind = ctrl+shift+q=close_surface
@@ -79,6 +78,7 @@ keybind = ctrl+home=scroll_to_top
 keybind = ctrl+end=scroll_to_bottom
 keybind = ctrl+i=jump_to_prompt:-1
 keybind = ctrl+o=jump_to_prompt:1
+keybind = ctrl+shift+slash=write_scrollback_file:open
 
 # windows
 keybind = ctrl+shift+n=new_window
