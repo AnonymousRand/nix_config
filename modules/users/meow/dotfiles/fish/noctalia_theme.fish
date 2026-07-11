@@ -1,7 +1,7 @@
 set -g fish_color_normal                                 "{{colors.terminal_foreground.default.hex}}" \
     --background                                         "{{colors.terminal_background.default.hex}}"
 
-set -g fish_color_autosuggestion                         "{{colors.on_surface_variant.default.hex}}"
+set -g fish_color_autosuggestion                         "{{colors.lighter_fg_source.default.hex}}"
 set -g fish_color_command                                $fish_color_normal
 set -g fish_color_comment                                "{{colors.comments_source.default.hex}}"
 set -g fish_color_cwd                                    brgreen

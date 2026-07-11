@@ -12,42 +12,42 @@
     # (avoid using these directly in templates as much as possible)
 
     color-vars = {
-      black             = "#000000";
-      gray_xxdark       = "#202020";
-      gray_xdark        = "#505050";
-      gray_dark         = "#707070";
-      gray              = "#808080";
-      gray_light        = "#a0a0a0";
-      gray_xlight       = "#cccccc";
-      white             = "#ffffff";
+      black            = "#000000";
+      gray_xxdark      = "#202020";
+      gray_xdark       = "#505050";
+      gray_dark        = "#707070";
+      gray             = "#808080";
+      gray_light       = "#909090";
+      gray_xlight      = "#a8a8a8";
+      gray_xxlight     = "#cccccc";
+      white            = "#ffffff";
 
-      blue              = "#00eaff";
-      blue_light        = "#66f2ff";
-      blue_deep         = "#00c8ff";
-      blue_xdeep        = "#00bbff";
-      blue_xdeep_light  = "#33c9ff";
+      blue             = "#00eaff";
+      blue_light       = "#66f2ff";
+      blue_deep        = "#00c8ff";
+      blue_xdeep       = "#00bbff";
+      blue_xdeep_light = "#33c9ff";
 
-      green             = "#8cff00";
-      green_light       = "#a3ff33";
-      green_deep        = "#8cff00";
-      green_deep_dark   = "#76d600";
-      green_deep_xdark  = "#6fc900";
+      green            = "#8cff00";
+      green_light      = "#a3ff33";
+      green_deep       = "#8cff00";
+      green_deep_dark  = "#76d600";
+      green_deep_xdark = "#6fc900";
 
-      orange            = "#ffd500";
-      orange_light      = "#ffdb26";
-      orange_xlight     = "#ffdf40";
-      orange_deep       = "#ffbf00";
-      orange_xdeep      = "#ffa600";
-      orange_xxdeep     = "#ff9500";
+      orange           = "#ffd500";
+      orange_light     = "#ffdb26";
+      orange_xlight    = "#ffdf40";
+      orange_deep      = "#ffbf00";
+      orange_xdeep     = "#ffa600";
+      orange_xxdeep    = "#ff9500";
 
-      pink              = "#ff0080";
-      pink_light        = "#ff8cc6";
-      pink_xlight       = "#ffadd6";
-      pink_xxlight      = "#ffc7e4";
-      pink_xxxlight     = "#ffd1e8";
-      pink_xxxxlight    = "#ffe0f0";
+      pink             = "#ff0080";
+      pink_light       = "#ff8cc6";
+      pink_xlight      = "#ffadd6";
+      pink_xxlight     = "#ffc7e4";
+      pink_xxxlight    = "#ffdeee";
 
-      red               = "#ff0000";
+      red              = "#ff0000";
     };
  
     ############################################################################
@@ -61,7 +61,11 @@
       };
       default_fg = {
         color_light = gray_dark;
-        color_dark  = gray_xlight;
+        color_dark  = gray_xxlight;
+      };
+      lighter_fg = {
+        color_light = gray_xlight;
+        color_dark  = gray_light;
       };
 
 
@@ -75,7 +79,16 @@
       };
 
 
-      error = {
+      search_bg      = selection_bg;
+      search_fg      = selection_fg;
+      search_curr_bg = {
+        color_light = green_light;
+        color_dark  = green_light;
+      };
+      search_curr_fg = search_fg;
+
+
+      error   = {
         color_light = red;
         color_dark  = red;
       };
@@ -85,11 +98,11 @@
       };
 
 
-      classes = {
+      classes   = {
         color_light = orange_xdeep;
         color_dark  = orange;
       };
-      comments = {
+      comments  = {
         color_light = green_deep_xdark;
         color_dark  = green_light;
       };
@@ -101,11 +114,11 @@
         color_light = orange_xdeep;
         color_dark  = orange;
       };
-      keywords = {
+      keywords  = {
         color_light = pink_light;
         color_dark  = pink_xxlight;
       };
-      links = {
+      links     = {
         color_light = blue_xdeep;
         color_dark  = blue;
       };
@@ -122,12 +135,12 @@
         mSurface          = color-roles.default_bg.color_light; # main background color
         mOnSurface        = color-roles.default_fg.color_light; # main foreground color
         mSurfaceVariant   = "#fffafc";                          # variant background color (cards, panels)
-        mOnSurfaceVariant = color-vars.gray_dark;               # variant foreground color
+        mOnSurfaceVariant = color-vars.gray;                    # variant foreground color
         mPrimary          = color-vars.pink_light;              # primary accent (buttons, links, highlights)
         mOnPrimary        = color-vars.gray_xxdark;             # text on primary surfaces
         mSecondary        = color-vars.pink_xxlight;            # secondary accent
         mOnSecondary      = color-vars.gray_xdark;              # text on secondary surfaces
-        mTertiary         = color-vars.pink_xxxxlight;          # tertiary accent
+        mTertiary         = color-vars.pink_xxxlight;           # tertiary accent
         mOnTertiary       = color-vars.gray_dark;               # text on tertiary surfaces
         mOutline          = color-vars.pink_xlight;             # borders and dividers
         mShadow           = color-vars.gray_xdark;              # shadows
@@ -151,7 +164,7 @@
             blue    = color-vars.blue_xdeep_light;
             magenta = color-vars.pink_light;
             cyan    = color-vars.blue_deep;
-            white   = color-vars.gray_xlight;
+            white   = color-vars.gray_xxlight;
           };
           bright = {
             black   = color-vars.gray_xdark;
@@ -175,7 +188,7 @@
         mOnPrimary        = color-vars.gray_xxdark;
         mSecondary        = color-vars.pink_xxlight;
         mOnSecondary      = color-vars.gray_xdark;
-        mTertiary         = color-vars.pink_xxxxlight;
+        mTertiary         = color-vars.pink_xxxlight;
         mOnTertiary       = color-vars.gray_dark;
         mOutline          = color-vars.pink_xlight;
         mShadow           = color-vars.gray_xdark;
@@ -199,7 +212,7 @@
             blue    = color-vars.blue_xdeep;
             magenta = color-vars.pink_xlight;
             cyan    = color-vars.blue;
-            white   = color-vars.gray_xlight;
+            white   = color-vars.gray_xxlight;
           };
           bright = {
             black   = color-vars.gray_xdark;

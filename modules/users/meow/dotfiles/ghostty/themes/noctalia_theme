@@ -26,3 +26,8 @@ selection-foreground       = {{colors.terminal_selection_fg.default.hex}}
 window-titlebar-background = {{colors.surface_variant.default.hex}}
 window-titlebar-foreground = {{colors.on_surface_variant.default.hex}}
 split-divider-color        = {{colors.primary.default.hex}}
+
+search-background          = {{colors.search_bg_source.default.hex}}
+search-foreground          = {{colors.search_fg_source.default.hex}}
+search-selected-background = {{colors.search_curr_bg_source.default.hex}}
+search-selected-foreground = {{colors.search_curr_fg_source.default.hex}}

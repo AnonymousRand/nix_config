@@ -10,37 +10,56 @@
  *
  * what the fuck.
  *
- * so here's my attempt to make it make sense. (the lightness percentage adjustments are half of
- * the percent `currentColor` used in `color-mix()` in the original adwaita code.)
+ * so here's my attempt to make it make sense.
  */
-@define-color tab_selected_color #ffe0f0;
-@define-color tab_hover_color hsl(from @tab_selected_color h s calc(l + 3.5%));
-@define-color tab_active_color hsl(from @tab_selected_color h s calc(l - 3%));
-@define-color tab_selected_hover_color hsl(from @tab_selected_color h s calc(l - 1.5%));
-@define-color tab_selected_active_color hsl(from @tab_selected_color h s calc(l - 4.5%));
 
-/* this is the overlay that is blended onto the titlebar of unfocused windows */
-/* (note `--ghostty-bg` variable only exists if using `window-theme = ghostty` in ghostty config) */
+@define-color btn_selected_bg        {{colors.tertiary.default.hex}};
+@define-color selection_bg           {{colors.selection_bg_source.default.hex}};
+@define-color selection_fg           {{colors.selection_fg_source.default.hex}};
+
+/* the lightness percentage adjustments are generally half of the percent `currentColor`
+ * used in `color-mix()`in the original adwaita code */
+@define-color btn_hover_bg           hsl(from @btn_selected_bg h s calc(l + 2%));
+@define-color btn_active_bg          hsl(from @btn_selected_bg h s calc(l - 3%));
+@define-color btn_selected_hover_bg  hsl(from @btn_selected_bg h s calc(l - 2%));
+@define-color btn_selected_active_bg hsl(from @btn_selected_bg h s calc(l - 4.5%));
+@define-color btn_checked_bg         @btn_selected_bg;
+
+/* this is the overlay that is blended onto the titlebar of unfocused windows
+ * (note `--ghostty-bg` variable only exists if using `window-theme = ghostty` in ghostty config) */
 :root {
     --headerbar-backdrop-color: var(--ghostty-bg);
 }
 
-tabbox:not(.single-tab) tab:hover {
-    background-color: @tab_hover_color;
+button:hover, tabbox:not(.single-tab) tab:hover {
+    background-color: @btn_hover_bg;
 }
 
-tabbox:not(.single-tab) tab:active {
-    background-color: @tab_active_color;
+button:active, tabbox:not(.single-tab) tab:active {
+    background-color: @btn_active_bg;
 }
 
-tabbox:not(.single-tab) tab:selected {
-    background-color: @tab_selected_color;
+button:selected, tabbox:not(.single-tab) tab:selected {
+    background-color: @btn_selected_bg;
 }
 
-tabbox:not(.single-tab) tab:selected:hover {
-    background-color: @tab_selected_hover_color;
+button:selected:hover, tabbox:not(.single-tab) tab:selected:hover {
+    background-color: @btn_selected_hover_bg;
 }
 
-tabbox:not(.single-tab) tab:selected:active {
-    background-color: @tab_selected_active_color;
+button:selected:active, tabbox:not(.single-tab) tab:selected:active {
+    background-color: @btn_selected_active_bg;
+}
+
+button:checked {
+    background-color: @btn_checked_bg;
+}
+
+splitbutton:hover {
+    background-color: hsl(from @btn_hover_bg h s calc(l + 1%));
+}
+
+popover.menu modelbutton:hover {
+    color: @selection_fg;
+    background-color: @selection_bg;
 }
