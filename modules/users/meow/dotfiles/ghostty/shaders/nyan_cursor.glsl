@@ -1,4 +1,6 @@
 // Nyan Cat cursor shader for Ghostty
+// many thanks to https://github.com/guysoft/Ghostty-Nyan-Shader for the original code
+// which i have modified here (removed unnoticeable leg wiggles, changed params and their calculations)
 // -----------------------------------
 // Draws a procedural pop-tart cat at the cursor position with a 6-stripe
 // rainbow trail connecting the previous cursor position to the current one.
@@ -165,14 +167,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 prvCenter = iPreviousCursor.xy + vec2(prvSize.x * 0.5, -prvSize.y * 0.5);
 
     vec2 cell = curSize; // use current cell as our unit
-
-    // ---- visibility envelope ----
-    // Nyan (cat + trail + stars) is a motion effect. Two gates compose:
-    //   1. trailAlpha — exponential decay since the last cursor move.
-    //   2. jumpStrength — how far the cursor jumped. Per-character typing
-    //      moves the cursor 1 cell, which would otherwise re-trigger nyan
-    //      on every keystroke. Require ≥ ~2 cells to consider it a jump.
-    float jumpThresh = cell.x * 5.0;
+    float jumpThresh = cell.x * 5.0; // this is about 6 chars
     float maxTrailLen = cell.x * 12.0;
     vec2 toCur = curCenter - prvCenter;
     float jumpDist = length(toCur);
@@ -181,30 +176,31 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         fragColor = base;
         return;
     }
-    vec2 P = fragCoord;  // pixel coord
+    vec2 P = fragCoord;  // current pixel coord
     float dt = max(iTime - iTimeCursorChange, 0.0);
 
-    // `jumpStrength` basically dictates opacity/alpha of the entire animation as a function of jump distance
-    float maxJumpStrengthThresh = cell.x * 70;
+    // `jumpStrength` basically dictates all the parameters of the entire animation,
+    // and it is a function of jump distance
+    float maxJumpStrengthThresh = cell.x * 64;
     float jumpStrength = min(jumpDist / maxJumpStrengthThresh, 1.0);
-    float alphaMult = 1.2 + 0.09 * jumpStrength;
-    float flyDuration = 0.07 + 0.325 * jumpStrength;
-    float catLife = 1.5 * flyDuration; // fade time of cat after reaching destination
-    float trailLife = 3 * flyDuration; // fade time of trail after reaching destination
+    float alphaMult = 1.2 + 0.2 * jumpStrength;
+    float flyDuration = 0.07 + 0.33 * jumpStrength;
+    float catFadeDuration = 1.5 * flyDuration; // fade time of cat after reaching destination
+    float trailFadeDuration = 3 * flyDuration; // fade time of trail after reaching destination
 
     // The cat now actually flies from the previous cursor position to the
-    // current one (instead of appearing instantly at curCenter). catLife is
+    // current one (instead of appearing instantly at curCenter). catFadeDuration is
     // the post-flight morph/fade duration; flyDuration controls travel speed.
-    // trailLife keeps exponential decay so the comet smoothly trails.
+    // trailFadeDuration keeps exponential decay so the comet smoothly trails.
     float flyT = clamp(dt / flyDuration, 0.0, 1.0);
     float flyProgress = flyT * flyT * (3.0 - 2.0 * flyT); // smoothstep
     vec2 flyCenter = mix(prvCenter, curCenter, flyProgress);
 
-    float morphT = clamp((dt - flyDuration) / catLife, 0.0, 1.0);
+    float morphT = clamp((dt - flyDuration) / catFadeDuration, 0.0, 1.0);
     float catFade = morphT;
     float catAlpha = (1.0 - smoothstep(0.6 * 1.0, 1.0, catFade)) * alphaMult;
     float trailDt = max(dt - flyDuration, 0.0);
-    float trailAlpha = exp(2.5 * (-trailDt / trailLife)) * alphaMult;
+    float trailAlpha = exp(2.5 * (-trailDt / trailFadeDuration)) * alphaMult;
 
     // Crossfade-mask the default block cursor with catAlpha, but only once
     // the flying cat gets close to the destination. This leaves the block
@@ -259,7 +255,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                 // like a comet, instead of fading uniformly as one block.
                 float travelTime = 0.18;
                 float age = trailDt + travelTime * (1.0 - along);
-                float localAlpha = exp(-age / trailLife * 2.5) * alphaMult;
+                float localAlpha = exp(-age / trailFadeDuration * 2.5) * alphaMult;
                 float a = localAlpha * headFade * tailFade;
 
                 outCol = mix(outCol, sc, a);
@@ -273,7 +269,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // the cat (t→0), so they fade out first.
     if (segLen > cell.x * 1.2 && liveTrailLen > cell.x * 0.5 && trailAlpha > 0.01) {
         const float travelTime = 0.18;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             float fi = float(i);
             float t = fract(0.15 + fi * 0.27 - iTime * 0.6);
             vec2 sp = mix(flyCenter, tailCenter, t);
@@ -282,7 +278,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                   * cell.y * 0.35;
             float ds = sdCircle(P - sp, cell.y * 0.06);
             float starAge = trailDt + travelTime * t;
-            float starAlpha = exp(-starAge / trailLife * 2.5) * alphaMult;
+            float starAlpha = exp(-starAge / trailFadeDuration * 2.5) * alphaMult;
             float sa = smoothstep(0.0, -cell.y * 0.06, ds) * starAlpha * 0.8;
             outCol = mix(outCol, vec3(1.0), sa);
         }
@@ -329,7 +325,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // shrink only kicks in during the LAST stretch of the fade (when
     // catAlpha drops below 0.3). Otherwise the cat visibly shrinks well
     // before its alpha fades, making the whole thing look much shorter
-    // than catLife.
+    // than catFadeDuration.
     float shrinkProgress = smoothstep(0.3, 0.0, catAlpha);
     float shrink = mix(1.0, 2.2, shrinkProgress);
     local *= shrink;

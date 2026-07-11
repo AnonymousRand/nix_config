@@ -6,7 +6,7 @@
 theme                      = "noctalia_theme"
 # force ghostty to use ghostty config (instead of system GTK, for example) to style windows & titlebars
 window-theme               = "ghostty"
-font-size = 12
+font-size                  = 12
 gtk-custom-css             = custom.css
 custom-shader              = shaders/nyan_cursor.glsl
 custom-shader-animation    = true

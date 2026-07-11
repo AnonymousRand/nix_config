@@ -2,7 +2,7 @@
   flake.homeModules.meow = { config, ... }: {
     programs.fish = {
       enable = true;
-      interactiveShellInit = builtins.readFile ../dotfiles/fish/interactiveShellInit.fish +
+      interactiveShellInit = builtins.readFile ../dotfiles/fish/interactive_shell_init.fish +
           "\nsource ${config.xdg.configHome}/fish/noctalia_theme.fish";
     };
 
