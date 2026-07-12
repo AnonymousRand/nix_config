@@ -1,5 +1,9 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, pkgs, ... }: {
+  flake.homeModules.meow = { config, pkgs, ... }:
+
+  let
+    systemConfig = config;
+  in {
     imports = [
       inputs.niri.homeModules.niri
     ];
@@ -10,13 +14,15 @@
       config = builtins.readFile ../dotfiles/niri/config.kdl +
           # put at end as `include`s override prior options
           # optional include to pass `niri validate` when home manager is building and `noctalia.kdl` doesn't exist yet
-          "\ninclude optional=true \"${config.xdg.configHome}/niri/noctalia_theme.kdl\"";
+          "\ninclude optional=true \"${systemConfig.xdg.configHome}/niri/noctalia_theme.kdl\"";
     };
 
     # Noctalia theming
     programs.noctalia = {
-      settings = {
-        theme.templates.custom_colors = {
+      settings = rec {
+        theme.templates.custom_colors = config.custom_colors;
+
+        config.custom_colors = {
           # for active window border/focus ring gradient
           active_gradient_start = {
             color_light = "#ff369a";

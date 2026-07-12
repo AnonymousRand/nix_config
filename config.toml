@@ -1,0 +1,278 @@
+[config.custom_colors]
+black = "#000000"
+blue = "#00eaff"
+blue_deep = "#00caff"
+blue_light = "#66f2ff"
+blue_xdeep = "#00bbff"
+blue_xdeep_light = "#33c9ff"
+blue_xxdeep = "#00a6ff"
+gray = "#808080"
+gray_dark = "#707070"
+gray_light = "#909090"
+gray_xdark = "#505050"
+gray_xlight = "#a8a8a8"
+gray_xxdark = "#202020"
+gray_xxlight = "#cccccc"
+green = "#8cff00"
+green_deep = "#8cff00"
+green_deep_dark = "#76d600"
+green_deep_xdark = "#6fc900"
+green_light = "#a3ff33"
+orange = "#ffd500"
+orange_deep = "#ffbf00"
+orange_light = "#ffdb26"
+orange_xdeep = "#ffa600"
+orange_xlight = "#ffdf40"
+orange_xxdeep = "#ff9500"
+pink = "#ff0080"
+pink_light = "#ff8cc6"
+pink_xlight = "#ffadd6"
+pink_xxlight = "#ffcbe6"
+pink_xxxlight = "#ffdeee"
+red = "#ff0000"
+white = "#ffffff"
+
+[config.custom_colors.class]
+color_dark = "#ffd500"
+color_light = "#ffa600"
+
+[config.custom_colors.comment]
+color_dark = "#a3ff33"
+color_light = "#6fc900"
+
+[config.custom_colors.constant]
+color_dark = "#66f2ff"
+color_light = "#00caff"
+
+[config.custom_colors.default_bg]
+color_dark = "#000000"
+color_light = "#feedf3"
+
+[config.custom_colors.default_fg]
+color_dark = "#cccccc"
+color_light = "#707070"
+
+[config.custom_colors.error]
+color_dark = "#ff0000"
+color_light = "#ff0000"
+
+[config.custom_colors.function]
+color_dark = "#ffd500"
+color_light = "#ffa600"
+
+[config.custom_colors.keyword]
+color_dark = "#ffcbe6"
+color_light = "#ff8cc6"
+
+[config.custom_colors.lighter_fg]
+color_dark = "#808080"
+color_light = "#a8a8a8"
+
+[config.custom_colors.link]
+color_dark = "#00eaff"
+color_light = "#00bbff"
+
+[config.custom_colors.link_hover]
+color_dark = "#66f2ff"
+color_light = "#00a6ff"
+
+[config.custom_colors.search_bg]
+color_dark = "#ffcbe6"
+color_light = "#ffdeee"
+
+[config.custom_colors.search_curr_bg]
+color_dark = "#a3ff33"
+color_light = "#a3ff33"
+
+[config.custom_colors.search_curr_fg]
+color_dark = "#000000"
+color_light = "#707070"
+
+[config.custom_colors.search_fg]
+color_dark = "#000000"
+color_light = "#707070"
+
+[config.custom_colors.selection_bg]
+color_dark = "#ffcbe6"
+color_light = "#ffdeee"
+
+[config.custom_colors.selection_fg]
+color_dark = "#000000"
+color_light = "#707070"
+
+[config.custom_colors.variable]
+color_dark = "#cccccc"
+color_light = "#707070"
+
+[config.custom_colors.warning]
+color_dark = "#ffbf00"
+color_light = "#ff9500"
+
+#[location]
+#auto_locate = false
+#sunrise = "09:00"
+#sunset = "18:00"
+
+#[theme]
+#custom_palette = "anonymousrand"
+#mode = "auto"
+#source = "custom"
+
+#[theme.templates]
+#enable_builtin_templates = true
+#
+#[theme.templates.custom_colors]
+#black = "#000000"
+#blue = "#00eaff"
+#blue_deep = "#00caff"
+#blue_light = "#66f2ff"
+#blue_xdeep = "#00bbff"
+#blue_xdeep_light = "#33c9ff"
+#blue_xxdeep = "#00a6ff"
+#gray = "#808080"
+#gray_dark = "#707070"
+#gray_light = "#909090"
+#gray_xdark = "#505050"
+#gray_xlight = "#a8a8a8"
+#gray_xxdark = "#202020"
+#gray_xxlight = "#cccccc"
+#green = "#8cff00"
+#green_deep = "#8cff00"
+#green_deep_dark = "#76d600"
+#green_deep_xdark = "#6fc900"
+#green_light = "#a3ff33"
+#orange = "#ffd500"
+#orange_deep = "#ffbf00"
+#orange_light = "#ffdb26"
+#orange_xdeep = "#ffa600"
+#orange_xlight = "#ffdf40"
+#orange_xxdeep = "#ff9500"
+#pink = "#ff0080"
+#pink_light = "#ff8cc6"
+#pink_xlight = "#ffadd6"
+#pink_xxlight = "#ffcbe6"
+#pink_xxxlight = "#ffdeee"
+#red = "#ff0000"
+#white = "#ffffff"
+#
+#[theme.templates.custom_colors.active_gradient_end]
+#color_dark = "#00e1ff"
+#color_light = "#00e1ff"
+#
+#[theme.templates.custom_colors.active_gradient_start]
+#color_dark = "#ff369a"
+#color_light = "#ff369a"
+#
+#[theme.templates.custom_colors.class]
+#color_dark = "#ffd500"
+#color_light = "#ffa600"
+#
+#[theme.templates.custom_colors.comment]
+#color_dark = "#a3ff33"
+#color_light = "#6fc900"
+#
+#[theme.templates.custom_colors.constant]
+#color_dark = "#66f2ff"
+#color_light = "#00caff"
+#
+#[theme.templates.custom_colors.default_bg]
+#color_dark = "#000000"
+#color_light = "#feedf3"
+#
+#[theme.templates.custom_colors.default_fg]
+#color_dark = "#cccccc"
+#color_light = "#707070"
+#
+#[theme.templates.custom_colors.error]
+#color_dark = "#ff0000"
+#color_light = "#ff0000"
+#
+#[theme.templates.custom_colors.function]
+#color_dark = "#ffd500"
+#color_light = "#ffa600"
+#
+#[theme.templates.custom_colors.keyword]
+#color_dark = "#ffcbe6"
+#color_light = "#ff8cc6"
+#
+#[theme.templates.custom_colors.lighter_fg]
+#color_dark = "#808080"
+#color_light = "#a8a8a8"
+#
+#[theme.templates.custom_colors.link]
+#color_dark = "#00eaff"
+#color_light = "#00bbff"
+#
+#[theme.templates.custom_colors.link_hover]
+#color_dark = "#66f2ff"
+#color_light = "#00a6ff"
+#
+#[theme.templates.custom_colors.scales_blue]
+#color_dark = "#40efff"
+#color_light = "#26edff"
+#
+#[theme.templates.custom_colors.scales_green]
+#color_dark = "#a8ff3d"
+#color_light = "#7ee600"
+#
+#[theme.templates.custom_colors.scales_orange]
+#color_dark = "#ffd500"
+#color_light = "#ffc400"
+#
+#[theme.templates.custom_colors.scales_pink]
+#color_dark = "#ffa8d4"
+#color_light = "#ffa8d4"
+#
+#[theme.templates.custom_colors.search_bg]
+#color_dark = "#ffcbe6"
+#color_light = "#ffdeee"
+#
+#[theme.templates.custom_colors.search_curr_bg]
+#color_dark = "#a3ff33"
+#color_light = "#a3ff33"
+#
+#[theme.templates.custom_colors.search_curr_fg]
+#color_dark = "#000000"
+#color_light = "#707070"
+#
+#[theme.templates.custom_colors.search_fg]
+#color_dark = "#000000"
+#color_light = "#707070"
+#
+#[theme.templates.custom_colors.selection_bg]
+#color_dark = "#ffcbe6"
+#color_light = "#ffdeee"
+#
+#[theme.templates.custom_colors.selection_fg]
+#color_dark = "#000000"
+#color_light = "#707070"
+#
+#[theme.templates.custom_colors.variable]
+#color_dark = "#cccccc"
+#color_light = "#707070"
+#
+#[theme.templates.custom_colors.warning]
+#color_dark = "#ffbf00"
+#color_light = "#ff9500"
+#
+#[theme.templates.user.fish]
+#input_path = "/nix/store/bwwwfxs4fdnlqcdzkn6n5mvcm012sq6k-source/modules/users/meow/dotfiles/fish/noctalia_theme.fish"
+#output_path = "$XDG_CONFIG_HOME/fish/noctalia_theme.fish"
+#
+#[theme.templates.user.ghostty]
+#input_path = "/nix/store/bwwwfxs4fdnlqcdzkn6n5mvcm012sq6k-source/modules/users/meow/dotfiles/ghostty/themes/noctalia_theme"
+#output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme"
+#post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true"
+#
+#[theme.templates.user.ghostty-css]
+#input_path = "/nix/store/bwwwfxs4fdnlqcdzkn6n5mvcm012sq6k-source/modules/users/meow/dotfiles/ghostty/custom.css"
+#output_path = "$XDG_CONFIG_HOME/ghostty/custom.css"
+#post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true"
+#
+#[theme.templates.user.niri]
+#input_path = "/nix/store/bwwwfxs4fdnlqcdzkn6n5mvcm012sq6k-source/modules/users/meow/dotfiles/niri/noctalia_theme.kdl"
+#output_path = "$XDG_CONFIG_HOME/niri/noctalia_theme.kdl"
+#
+#[theme.templates.user.vim]
+#input_path = "/nix/store/bwwwfxs4fdnlqcdzkn6n5mvcm012sq6k-source/modules/users/meow/dotfiles/vim/colors/noctalia_theme.vim"
+#output_path = "/home/meow/.vim/colors/noctalia_theme.vim"

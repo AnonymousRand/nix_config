@@ -1,9 +1,13 @@
 {
-  flake.homeModules.meow = { config, ... }: {
+  flake.homeModules.meow = { config, ... }:
+
+  let
+    systemConfig = config;
+  in {
     programs.fish = {
       enable = true;
       interactiveShellInit = builtins.readFile ../dotfiles/fish/interactive_shell_init.fish +
-          "\nsource ${config.xdg.configHome}/fish/noctalia_theme.fish";
+          "\nsource ${systemConfig.xdg.configHome}/fish/noctalia_theme.fish";
     };
 
     # yes, i know this isn't how you're supposed to initialize functions,
@@ -22,8 +26,10 @@
 
     # Noctalia theming
     programs.noctalia = {
-      settings = {
-        theme.templates.custom_colors = {
+      settings = rec {
+        theme.templates.custom_colors = config.custom_colors;
+
+        config.custom_colors = {
           # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
           scales_blue = {
             color_light = "#26edff";
