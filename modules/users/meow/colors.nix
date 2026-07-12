@@ -24,7 +24,7 @@
 
       blue             = "#00eaff";
       blue_light       = "#66f2ff";
-      blue_deep        = "#00c8ff";
+      blue_deep        = "#00caff";
       blue_xdeep       = "#00bbff";
       blue_xdeep_light = "#33c9ff";
 
@@ -44,7 +44,7 @@
       pink             = "#ff0080";
       pink_light       = "#ff8cc6";
       pink_xlight      = "#ffadd6";
-      pink_xxlight     = "#ffc7e4";
+      pink_xxlight     = "#ffcbe6";
       pink_xxxlight    = "#ffdeee";
 
       red              = "#ff0000";
@@ -71,7 +71,7 @@
 
       selection_bg = {
         color_light = pink_xxxlight;
-        color_dark  = pink_xxxlight;
+        color_dark  = pink_xxlight;
       };
       selection_fg = {
         color_light = default_fg.color_light;
@@ -186,10 +186,10 @@
         mOnSurfaceVariant = color-vars.gray_xlight;
         mPrimary          = color-vars.pink_light;
         mOnPrimary        = color-vars.gray_xxdark;
-        mSecondary        = color-vars.pink_xxlight;
-        mOnSecondary      = color-vars.gray_xdark;
-        mTertiary         = color-vars.pink_xxxlight;
-        mOnTertiary       = color-vars.gray_dark;
+        mSecondary        = color-vars.pink_xlight;
+        mOnSecondary      = color-vars.gray_xxdark;
+        mTertiary         = color-vars.pink_xxlight;
+        mOnTertiary       = color-vars.gray_xdark;
         mOutline          = color-vars.pink_xlight;
         mShadow           = color-vars.gray_xdark;
         mHover            = mSecondary;

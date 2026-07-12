@@ -19,12 +19,12 @@
         theme.templates.custom_colors = {
           # for active window border/focus ring gradient
           active_gradient_start = {
-            color_light = "#ff198c";
-            color_dark  = "#ff0080";
+            color_light = "#ff369a";
+            color_dark  = "#ff369a";
           };
           active_gradient_end = {
-            color_light = "#00eaff";
-            color_dark  = "#00eaff";
+            color_light = "#00e1ff";
+            color_dark  = "#00e1ff";
           };
         };
 

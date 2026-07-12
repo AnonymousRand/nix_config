@@ -17,7 +17,7 @@ shell-integration          = fish
 shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
 
 # cursor
-adjust-cursor-thickness    = 300%
+adjust-cursor-thickness    = 200%
 cursor-click-to-move       = true
 
 # layout

@@ -149,6 +149,23 @@ vec4 drawNyan(vec2 p, vec2 cellSize, float t) {
     return col;
 }
 
+vec2 getCellSize(vec2 curSize) {
+    switch (iCurrentCursorStyle) {
+        case CURSORSTYLE_BLOCK:
+        case CURSORSTYLE_BLOCK_HOLLOW:
+        case CURSORSTYLE_LOCK: // what the heck are you doing with your life
+            return curSize;
+        case CURSORSTYLE_BAR:
+            // approximate width based on height of bar cursor
+            return vec2(curSize.y / 2.1, curSize.y);
+        case CURSORSTYLE_UNDERLINE:
+            // approximate height based on width of underline cursor
+            return vec2(curSize.x, curSize.x * 2.1);
+        default:
+        return curSize;
+    }
+}
+
 // ---------- main ----------
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 res = iResolution.xy;
@@ -156,6 +173,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     // base = whatever the terminal drew underneath
     vec4 base = texture(iChannel0, uv);
+    // don't run on unfocused windows at all
+    if (iFocus == 0) {
+        fragColor = base;
+        return;
+    }
 
     // --- cursor geometry (in pixels). Ghostty's iCurrentCursor.xy is
     // already in fragCoord space (Y-up), with .y being the TOP edge of
@@ -166,7 +188,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 curCenter = iCurrentCursor.xy + vec2(curSize.x * 0.5, -curSize.y * 0.5);
     vec2 prvCenter = iPreviousCursor.xy + vec2(prvSize.x * 0.5, -prvSize.y * 0.5);
 
-    vec2 cell = curSize; // use current cell as our unit
+    // IMPORTANT: currently there is no consistent way to obtain exact cell size
+    // `printf '\e[16t' && cat -v` at the command line may work,
+    // but note that it depends on resolution/DPI
+    vec2 cell = getCellSize(curSize);
     float jumpThresh = cell.x * 5.0; // this is about 6 chars
     float maxTrailLen = cell.x * 12.0;
     vec2 toCur = curCenter - prvCenter;
@@ -181,12 +206,12 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     // `jumpStrength` basically dictates all the parameters of the entire animation,
     // and it is a function of jump distance
-    float maxJumpStrengthThresh = cell.x * 64;
+    float maxJumpStrengthThresh = cell.x * 64.0;
     float jumpStrength = min(jumpDist / maxJumpStrengthThresh, 1.0);
-    float alphaMult = 1.2 + 0.2 * jumpStrength;
+    float alphaMult = 1.1 + 0.1 * jumpStrength;
     float flyDuration = 0.07 + 0.33 * jumpStrength;
     float catFadeDuration = 1.5 * flyDuration; // fade time of cat after reaching destination
-    float trailFadeDuration = 3 * flyDuration; // fade time of trail after reaching destination
+    float trailFadeDuration = 3.0 * flyDuration; // fade time of trail after reaching destination
 
     // The cat now actually flies from the previous cursor position to the
     // current one (instead of appearing instantly at curCenter). catFadeDuration is
@@ -200,7 +225,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float catFade = morphT;
     float catAlpha = (1.0 - smoothstep(0.6 * 1.0, 1.0, catFade)) * alphaMult;
     float trailDt = max(dt - flyDuration, 0.0);
-    float trailAlpha = exp(2.5 * (-trailDt / trailFadeDuration)) * alphaMult;
+    float trailAlpha = exp(2.75 * (-trailDt / trailFadeDuration)) * alphaMult;
 
     // Crossfade-mask the default block cursor with catAlpha, but only once
     // the flying cat gets close to the destination. This leaves the block
@@ -243,6 +268,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                 stripeIdx = clamp(stripeIdx, 0.0, 5.0);
                 vec3 sc = rainbowStripe(stripeIdx);
 
+                // wavy shimmer along the trail
+                float wob = sin(along * 18.0 - iTime * 12.0) * 0.04;
+                sc += wob;
+
                 // fade-in near the head, fade-out at the tail
                 float headFade = smoothstep(catCutoff, catCutoff - 0.05, along);
                 float tailFade = smoothstep(0.0, 0.05, along);
@@ -269,7 +298,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // the cat (t→0), so they fade out first.
     if (segLen > cell.x * 1.2 && liveTrailLen > cell.x * 0.5 && trailAlpha > 0.01) {
         const float travelTime = 0.18;
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             float fi = float(i);
             float t = fract(0.15 + fi * 0.27 - iTime * 0.6);
             vec2 sp = mix(flyCenter, tailCenter, t);
@@ -305,7 +334,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
             // moving leftward: rotate the angle back into the front half
             // (so the cat is upright) and mirror cat-space X so the head
             // visually faces left.
-            angle += 3.14159265358979;
+            angle += 3.1416;
             flipX = -1.0;
         }
     }
