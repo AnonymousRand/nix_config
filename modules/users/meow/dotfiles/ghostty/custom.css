@@ -13,7 +13,12 @@
  * so here's my attempt to make it make sense.
  */
 
+@define-color accent_fg              {{colors.on_secondary.default.hex}};
+@define-color accent_bg              {{colors.secondary.default.hex}};
+@define-color destructive_fg         {{colors.default_fg_source.default.hex}};
+@define-color destructive_bg         {{colors.error_source.default.hex}};
 @define-color btn_selected_bg        {{colors.tertiary.default.hex}};
+@define-color btn_fg                 {{colors.on_tertiary.default.hex}};
 @define-color selection_bg           {{colors.selection_bg_source.default.hex}};
 @define-color selection_fg           {{colors.selection_fg_source.default.hex}};
 
@@ -33,33 +38,40 @@
 
 button:hover, tabbox:not(.single-tab) tab:hover {
     background-color: @btn_hover_bg;
+    color:            @btn_fg;
 }
 
 button:active, tabbox:not(.single-tab) tab:active {
     background-color: @btn_active_bg;
+    color:            @btn_fg;
 }
 
 button:selected, tabbox:not(.single-tab) tab:selected {
     background-color: @btn_selected_bg;
+    color:            @btn_fg;
 }
 
 button:selected:hover, tabbox:not(.single-tab) tab:selected:hover {
     background-color: @btn_selected_hover_bg;
+    color:            @btn_fg;
 }
 
 button:selected:active, tabbox:not(.single-tab) tab:selected:active {
     background-color: @btn_selected_active_bg;
+    color:            @btn_fg;
 }
 
 button:checked {
     background-color: @btn_checked_bg;
+    color:            @btn_fg;
 }
 
 splitbutton:hover {
     background-color: hsl(from @btn_hover_bg h s calc(l + 1%));
+    color:            @btn_fg;
 }
 
 popover.menu modelbutton:hover {
-    color: @selection_fg;
     background-color: @selection_bg;
+    color:            @selection_fg;
 }

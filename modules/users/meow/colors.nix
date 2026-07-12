@@ -65,7 +65,7 @@
       };
       lighter_fg = {
         color_light = gray_xlight;
-        color_dark  = gray_light;
+        color_dark  = gray;
       };
 
 

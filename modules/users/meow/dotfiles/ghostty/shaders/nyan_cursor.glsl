@@ -99,11 +99,13 @@ vec4 drawNyan(vec2 p, vec2 cellSize, float t) {
         }
     }
 
-    // ---- legs ----
+    // ---- legs (wiggle) ----
     float legY = -bodyHalf.y - s * 0.10;
+    float legWiggle = sin(t * 18.0) * s * 0.05;
     for (int i = 0; i < 2; i++) {
         float xo = (i == 0 ? -1.0 : 1.0) * s * 0.55;
-        vec2 lp = p - vec2(xo, legY);
+        float yo = legY + (i == 0 ? legWiggle : -legWiggle);
+        vec2 lp = p - vec2(xo, yo);
         float dLeg = sdRoundBox(lp, vec2(s * 0.12, s * 0.18), s * 0.06);
         if (dLeg < 0.0) col = vec4(vec3(0.55, 0.55, 0.60), 1.0);
     }
@@ -162,7 +164,7 @@ vec2 getCellSize(vec2 curSize) {
             // approximate height based on width of underline cursor
             return vec2(curSize.x, curSize.x * 2.1);
         default:
-        return curSize;
+            return curSize;
     }
 }
 
