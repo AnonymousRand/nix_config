@@ -19,9 +19,14 @@
             # enable built-in app theming, which uses templates to map
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
-
-            custom_colors = config.meow.colors.color-vars // config.meow.colors.color-roles;
           };
+        };
+
+        config = {
+          # put custom colors here instead of in `theme.templates` so that template engine
+          # can see them when running by itself (e.g. via `noctalia theme` CLI);
+          # it is copied to `theme.templates` normally
+          custom_colors = config.meow.colors.color-vars // config.meow.colors.color-roles;
         };
 
         location = {

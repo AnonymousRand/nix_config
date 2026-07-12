@@ -10,8 +10,8 @@
     imports = [
       # features to be activated at the system/host level (if this user is present on host)
 
-      # my own derivation for compiling shared SCSS config
-      self.nixosModules.compile-scss-config
+      ## my own derivation for compiling shared SCSS config
+      #self.nixosModules.compile-scss-config
 
       self.nixosModules.fish
       self.nixosModules.ghostty
@@ -35,7 +35,7 @@
     };
 
     imports = [
-      ./colors.nix
+      ./theme/colors.nix
     ];
   };
 
