@@ -1,3 +1,5 @@
+@import url("../theme/gtk_base.css")
+
 /******************************************************************************/
 /* titlebar                                                                   */
 /******************************************************************************/
@@ -10,31 +12,8 @@
  *
  * what the fuck.
  *
- * so here's my attempt to make it make sense.
+ * so here's my attempt to make it somewhat more sane.
  */
-
-@define-color accent_fg              {{colors.on_secondary.default.hex}};
-@define-color accent_bg              {{colors.secondary.default.hex}};
-@define-color destructive_fg         {{colors.default_fg_source.default.hex}};
-@define-color destructive_bg         {{colors.error_source.default.hex}};
-@define-color btn_selected_bg        {{colors.tertiary.default.hex}};
-@define-color btn_fg                 {{colors.on_tertiary.default.hex}};
-@define-color selection_bg           {{colors.selection_bg_source.default.hex}};
-@define-color selection_fg           {{colors.selection_fg_source.default.hex}};
-
-/* the lightness percentage adjustments are generally half of the percent `currentColor`
- * used in `color-mix()`in the original adwaita code */
-@define-color btn_hover_bg           hsl(from @btn_selected_bg h s calc(l + 2%));
-@define-color btn_active_bg          hsl(from @btn_selected_bg h s calc(l - 3%));
-@define-color btn_selected_hover_bg  hsl(from @btn_selected_bg h s calc(l - 2%));
-@define-color btn_selected_active_bg hsl(from @btn_selected_bg h s calc(l - 4.5%));
-@define-color btn_checked_bg         @btn_selected_bg;
-
-/* this is the overlay that is blended onto the titlebar of unfocused windows
- * (note `--ghostty-bg` variable only exists if using `window-theme = ghostty` in ghostty config) */
-:root {
-    --headerbar-backdrop-color: var(--ghostty-bg);
-}
 
 button:hover, tabbox:not(.single-tab) tab:hover {
     background-color: @btn_hover_bg;
@@ -74,4 +53,8 @@ splitbutton:hover {
 popover.menu modelbutton:hover {
     background-color: @selection_bg;
     color:            @selection_fg;
+}
+
+tabbox.single-tab tab {
+    background: none;
 }

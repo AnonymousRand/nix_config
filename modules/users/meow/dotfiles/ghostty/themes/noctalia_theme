@@ -15,19 +15,19 @@ palette                    = 13={{colors.terminal_bright_magenta.default.hex}}
 palette                    = 14={{colors.terminal_bright_cyan.default.hex}}
 palette                    = 15={{colors.terminal_bright_white.default.hex}}
 
-background                 = {{colors.terminal_background.default.hex}}
 foreground                 = {{colors.terminal_foreground.default.hex}}
+background                 = {{colors.terminal_background.default.hex}}
 cursor-color               = {{colors.terminal_cursor.default.hex}}
 cursor-text                = {{colors.terminal_cursor_text.default.hex}}
 cursor-opacity             = 1
-selection-background       = {{colors.terminal_selection_bg.default.hex}}
 selection-foreground       = {{colors.terminal_selection_fg.default.hex}}
+selection-background       = {{colors.terminal_selection_bg.default.hex}}
 
-window-titlebar-background = {{colors.surface_variant.default.hex}}
 window-titlebar-foreground = {{colors.on_surface_variant.default.hex}}
-split-divider-color        = {{colors.primary.default.hex}}
+window-titlebar-background = {{colors.surface_variant.default.hex}}
+split-divider-color        = {{colors.outline.default.hex}}
 
-search-background          = {{colors.search_bg_source.default.hex}}
 search-foreground          = {{colors.search_fg_source.default.hex}}
-search-selected-background = {{colors.search_curr_bg_source.default.hex}}
+search-background          = {{colors.search_bg_source.default.hex}}
 search-selected-foreground = {{colors.search_curr_fg_source.default.hex}}
+search-selected-background = {{colors.search_curr_bg_source.default.hex}}

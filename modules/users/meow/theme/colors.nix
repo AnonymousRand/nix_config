@@ -27,6 +27,7 @@
       blue_deep        = "#00caff";
       blue_xdeep       = "#00bbff";
       blue_xdeep_light = "#33c9ff";
+      blue_xxdeep      = "#00a6ff";
 
       green            = "#8cff00";
       green_light      = "#a3ff33";
@@ -55,13 +56,13 @@
     # (use these on things which very clearly have any of the following roles)
 
     color-roles = with color-vars; rec {
-      default_bg = {
-        color_light = "#feedf3";
-        color_dark  = black;
-      };
       default_fg = {
         color_light = gray_dark;
         color_dark  = gray_xxlight;
+      };
+      default_bg = {
+        color_light = "#feedf3";
+        color_dark  = black;
       };
       lighter_fg = {
         color_light = gray_xlight;
@@ -69,23 +70,23 @@
       };
 
 
-      selection_bg = {
-        color_light = pink_xxxlight;
-        color_dark  = pink_xxlight;
-      };
       selection_fg = {
         color_light = default_fg.color_light;
         color_dark  = default_bg.color_dark;
       };
+      selection_bg = {
+        color_light = pink_xxxlight;
+        color_dark  = pink_xxlight;
+      };
 
 
-      search_bg      = selection_bg;
       search_fg      = selection_fg;
+      search_bg      = selection_bg;
+      search_curr_fg = search_fg;
       search_curr_bg = {
         color_light = green_light;
         color_dark  = green_light;
       };
-      search_curr_fg = search_fg;
 
 
       error   = {
@@ -98,31 +99,37 @@
       };
 
 
-      classes   = {
-        color_light = orange_xdeep;
-        color_dark  = orange;
-      };
-      comments  = {
-        color_light = green_deep_xdark;
-        color_dark  = green_light;
-      };
-      constants = {
-        color_light = blue_deep;
-        color_dark  = blue_light;
-      };
-      functions = {
-        color_light = orange_xdeep;
-        color_dark  = orange;
-      };
-      keywords  = {
-        color_light = pink_light;
-        color_dark  = pink_xxlight;
-      };
-      links     = {
+      link         = {
         color_light = blue_xdeep;
         color_dark  = blue;
       };
-      variables = default_fg;
+      link_hover   = {
+        color_light = blue_xxdeep;
+        color_dark  = blue_light;
+      };
+
+
+      class    = {
+        color_light = orange_xdeep;
+        color_dark  = orange;
+      };
+      comment  = {
+        color_light = green_deep_xdark;
+        color_dark  = green_light;
+      };
+      constant = {
+        color_light = blue_deep;
+        color_dark  = blue_light;
+      };
+      function = {
+        color_light = orange_xdeep;
+        color_dark  = orange;
+      };
+      keyword  = {
+        color_light = pink_light;
+        color_dark  = pink_xxlight;
+      };
+      variable = default_fg;
     };
 
     ############################################################################
@@ -147,7 +154,7 @@
         mHover            = mSecondary;                         # hover state background
         mOnHover          = mOnSecondary;                       # text on hover surfaces
         mError            = color-roles.error.color_light;      # error color
-        mOnError          = color-vars.black;                   # text on error surfaces
+        mOnError          = color-vars.white;                   # text on error surfaces
 
         terminal = rec {
           background  = mSurface;
@@ -195,7 +202,7 @@
         mHover            = mSecondary;
         mOnHover          = mOnSecondary;
         mError            = color-roles.error.color_dark;
-        mOnError          = color-vars.black;
+        mOnError          = color-vars.white;
 
         terminal = rec {
           background  = mSurface;
