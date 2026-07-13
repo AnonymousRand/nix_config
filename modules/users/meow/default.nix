@@ -33,22 +33,12 @@
     };
 
     programs.home-manager.enable = true; # enables `home-manager` command
-
-    # expose top-level inputs to all instances of `flake.homeModules.meow`
-    _module.args = {
-      my = {
-        theme    = import ./_theme { inherit self pkgs; };
-        dotfiles = ./dotfiles;
-      };
-    };
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)
   # TODO: how to make this system-agnostic? using `perSystem` changes the name and makes it weird to invoke on CLI
   flake.homeConfigurations.meow = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    modules = [
-      self.homeModules.meow
-    ];
+    modules = [ self.homeModules.meow ];
   };
 }

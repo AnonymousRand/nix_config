@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, my, ... }:
+  flake.homeModules.meow = { config, ... }:
   
   let
     systemConfig = config;
