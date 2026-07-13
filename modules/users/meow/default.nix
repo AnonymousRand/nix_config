@@ -33,6 +33,13 @@
     };
 
     programs.home-manager.enable = true; # enables `home-manager` command
+
+    # expose top-level inputs to all instances of `flake.homeModules.meow`
+    _module.args = {
+      my = {
+        theme = import ./_theme { inherit self pkgs; };
+      };
+    };
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)
