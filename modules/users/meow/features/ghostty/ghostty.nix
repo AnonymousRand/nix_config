@@ -5,7 +5,7 @@
     };
 
     xdg.configFile."ghostty/config.ghostty".source           = ./dotfiles/config.ghostty;
-    xdg.configFile."ghostty/test.css".source                 = "${my.theme.cssConfig}/ghostty/test.css";
+    xdg.configFile."ghostty/test.css".source                 = "${my.theme.cssConfig}/ghostty/dotfiles/test.css";
     xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
     # Noctalia theming

@@ -12,11 +12,24 @@
 # to a different architecture, and when this derivation is called it should just get that updated
 # `pkgs` in its arguments and work just fine? >_<
 
-{ stdenv, noctalia, sass, m3Palette, noctaliaCustomColors }:
+{ dart-sass, formats, noctalia, stdenv, writeText, m3Palette, noctaliaCustomColors }:
 
 let
-  paletteJson = pkgs.writeText "palette.json" (builtins.toJSON m3Palette);
-  configToml = (pkgs.formats.toml { }).generate "config.toml" noctaliaCustomColors;
+  # SCSS files that should be rendered by Noctalia before being rendered by sass
+  # these should be the only SCSS files with Noctalia template syntax!!
+  # (this is a custom option)
+  scssFilesToRender = [
+    ./_base.scss
+  ];
+
+  # SCSS paths to be loaded with `sass --load-path` (for imports in other SCSS files
+  # without needing relative paths). provide directories, not individual files
+  scssPathsToLoad = [
+    ./.
+  ];
+
+  paletteJson = writeText "palette.json" (builtins.toJSON m3Palette);
+  configToml = (formats.toml { }).generate "config.toml" noctaliaCustomColors;
 in stdenv.mkDerivation {
   pname = "compile-scss-config";
   version = "0.0.0";
@@ -26,24 +39,13 @@ in stdenv.mkDerivation {
     ./_base.scss
     ../../features
   ];
-
-  # SCSS files that should be rendered by Noctalia before being rendered by sass
-  # these should be the only SCSS files with Noctalia template syntax!!
-  # (this is a custom option)
-  scssFilesToRender = [
-    ./_base.scss
-  ];
-
-  # SCSS files to be loaded with `sass --load-path` (for imports in other SCSS files
-  # without needing relative paths)
-  scssFilesToLoadPath = [
-    ./_base.scss
-  ];
+  # don't try to unpack single files in `srcs` as archives
+  dontUnpack = true;
 
   # build-time dependencies
   nativeBuildInputs = [
+    dart-sass
     noctalia
-    sass
   ];
 
   # build
@@ -57,6 +59,6 @@ in stdenv.mkDerivation {
         ${builtins.foldl' (acc: elem: acc + " -r ${elem}:${elem}") "" scssFilesToRender}
 
     sass ${../../features}:$out \
-        ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssFilesToLoadPath}
+        ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
   '';
 }
