@@ -20,7 +20,7 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
             # load custom colors
-            custom_colors = my.theme.noctalia-custom-colors;
+            custom_colors = my.theme.noctaliaCustomColors;
           };
         };
 
@@ -38,6 +38,6 @@
       };
     };
 
-    xdg.configFile."noctalia/palettes/anonymousrand.json".text = builtins.toJSON my.theme.colors.m3-palette;
+    xdg.configFile."noctalia/palettes/anonymousrand.json".text = builtins.toJSON my.theme.colors.m3Palette;
   };
 }

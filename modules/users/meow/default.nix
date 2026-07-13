@@ -33,7 +33,7 @@
     # expose top-level inputs to all instances of `flake.homeModules.meow`
     _module.args = {
       my = {
-        theme = import ./_theme { inherit self lib pkgs; };
+        theme = import ./_theme { inherit inputs lib pkgs; };
       };
     };
   };

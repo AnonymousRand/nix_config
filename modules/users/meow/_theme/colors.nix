@@ -150,7 +150,7 @@ rec {
   # (use these on things which very clearly have a Material 3 role, and Noctalia didn't change the color)
   # (although treat the terminal ANSI colors more like fixed color variables)
 
-  m3-palette = {
+  m3Palette = {
     light = rec {
       mSurface          = roles.default_bg.color_light; # main background color
       mOnSurface        = roles.default_fg.color_light; # main foreground color

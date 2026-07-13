@@ -24,7 +24,7 @@
       # desktop environment
       self.nixosModules.niri
       self.nixosModules.noctalia
-      self.nixosModules.noctalia-greeter
+      self.nixosModules.noctaliaGreeter
       self.nixosModules.xwayland-satellite
       
       # other

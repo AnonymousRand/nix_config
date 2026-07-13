@@ -1,6 +1,10 @@
-{ self, lib, pkgs, ... }: {
-  colors                 = import ./colors.nix;
-  #css-config             = self.packages.${pkgs.stdenv.hostPlatform.system}.compile-scss-config;
-  noctalia-custom-colors = import ./noctalia_custom_colors.nix { inherit lib; };
-  #css-config = assert builtins.hasAttr "compile-scss-config" self.packages.${pkgs.stdenv.hostPlatform.system}; self.packages.${pkgs.stdenv.hostPlatform.system}.compile-scss-config;
+{ inputs, lib, pkgs, ... }: rec {
+  colors               = import ./colors.nix;
+  noctaliaCustomColors = import ./noctalia_custom_colors.nix { inherit lib; };
+
+  cssConfig = pkgs.callPackage ./scss/compile_scss_config.nix {
+    noctalia             = inputs.noctalia.packages.default;
+    m3Palette            = colors.m3Palette;
+    noctaliaCustomColors = noctaliaCustomColors;
+  };
 }
