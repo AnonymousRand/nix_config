@@ -1,32 +1,44 @@
-# custom colors are also put here instead of in `theme.templates` so that template engine
-# can see them when running by itself (e.g. via `noctalia theme` CLI)
-# when run normally with noctalia startup/config loading, `theme.templates` seems to be used
-# instead to render templates, so all changes here must also be copied to `theme.templates`
+{
+  perSystem = { self', inputs', pkgs, my, ... }: {
+    packages.compile-scss-config =
+      let
+        paletteJson = pkgs.writeText "palette.json" (builtins.toJSON my.theme.colors.m3-palette);
+        configToml = (pkgs.formats.toml { }).generate "config.toml" my.theme.noctalia-custom-colors;
+      in
+        pkgs.stdenv.mkDerivation {
+          pname = "compile-scss-config";
+          version = "0.0.0";
 
+          # input SCSS files
+          srcs = [
+            ./_base.scss
+            ../../features
+          ];
 
-{ self, ... }: {
-  perSystem = { pkgs, ... }: {
-    packages.compile-scss-config = pkgs.stdenv.mkDerivation {
-      pname = "compile-scss-config";
-      version = "0.0.0";
+          # base SCSS files that should be rendered by Noctalia before being rendered by sass
+          # (this is a custom option)
+          scssFilesToRender = [
+            ./_base.scss
+          ];
 
-      # input SCSS files
-      srcs = [
-        ./_base.scss
-        ../dotfiles/
-      ];
+          # build-time dependencies
+          nativeBuildInputs = [
+            pkgs.sass
+            inputs'.noctalia.packages.default
+          ];
 
-      # build-time dependencies
-      nativeBuildInputs = [
-        pkgs.sass
-      ];
+          # build
+          # 2 steps:
+          # 1. render base SCSS files as Noctalia templates (so SCSS syntax is correct)
+          # 2. compile all SCSS files for all apps, and output the resulting CSS to
+          #    the designated output directory for this derivation in the nix store ($out),
+          #    which is accessible via `<this package>.<desired file path>` in home manager etc.
+          buildPhase = ''
+            noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
+                ${builtins.foldl' (acc: elem: acc + " -r ${elem}:${elem}") "" scssFilesToRender}
 
-      # build (compile SCSS files into CSS)
-      buildPhase = ''
-        sass ../dotfiles/:../dotfiles/
-      '';
-
-      # copy generated CSS files from temporary build environment to nix store for later use by home manager
-    };
+            sass ${../../features}:$out
+          '';
+        };
   };
 }
