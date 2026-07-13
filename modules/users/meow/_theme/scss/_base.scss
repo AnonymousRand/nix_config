@@ -1,0 +1,7 @@
+%button--raised {
+  color: #ff0000;
+}
+
+.button-raised {
+  @extend %button--raised;
+}

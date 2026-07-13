@@ -9,15 +9,22 @@
           pname = "compile-scss-config";
           version = "0.0.0";
 
-          # input SCSS files
+          # input SCSS files to be copied into build environment
           srcs = [
             ./_base.scss
             ../../features
           ];
 
-          # base SCSS files that should be rendered by Noctalia before being rendered by sass
+          # SCSS files that should be rendered by Noctalia before being rendered by sass
+          # these should be the only SCSS files with Noctalia template syntax!!
           # (this is a custom option)
           scssFilesToRender = [
+            ./_base.scss
+          ];
+
+          # SCSS files to be loaded with `sass --load-path` (for imports in other SCSS files
+          # without needing relative paths)
+          scssFilesToLoadPath = [
             ./_base.scss
           ];
 
@@ -37,7 +44,8 @@
             noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
                 ${builtins.foldl' (acc: elem: acc + " -r ${elem}:${elem}") "" scssFilesToRender}
 
-            sass ${../../features}:$out
+            sass ${../../features}:$out \
+                ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssFilesToLoadPath}
           '';
         };
   };
