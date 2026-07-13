@@ -23,20 +23,24 @@
 
   # Home Manager config module, which can be both integrated into NixOS configs
   # (i.e. built with `nixos-rebuild` command) or used standalone (i.e. built with `home-manager` command)
-  flake.homeModules.meow = {
+  flake.homeModules.meow = { pkgs, ... }: {
     home.username = "meow";
     home.homeDirectory = "/home/meow";
     home.stateVersion = "26.05";
-
-    programs.home-manager.enable = true; # enables `home-manager` command
 
     home.sessionVariables = {
       TERMINAL = "ghostty";
     };
 
-    imports = [
-      ./theme/colors.nix
-    ];
+    programs.home-manager.enable = true; # enables `home-manager` command
+
+    # expose top-level inputs to all instances of `flake.homeModules.meow`
+    _module.args = {
+      my = {
+        theme    = import ./_theme { inherit self pkgs; };
+        dotfiles = ./dotfiles;
+      };
+    };
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)

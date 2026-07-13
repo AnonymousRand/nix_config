@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, pkgs, ... }:
+  flake.homeModules.meow = { config, pkgs, my, ... }:
 
   let
     systemConfig = config;
@@ -11,7 +11,7 @@
     programs.niri = {
       enable = true;
       package = pkgs.niri-stable; # enables newer versions of niri
-      config = builtins.readFile ../dotfiles/niri/config.kdl +
+      config = builtins.readFile (my.dotfiles + /niri/config.kdl) +
           # put at end as `include`s override prior options
           # optional include to pass `niri validate` when home manager is building and `noctalia.kdl` doesn't exist yet
           "\ninclude optional=true \"${systemConfig.xdg.configHome}/niri/noctalia_theme.kdl\"";
@@ -35,7 +35,7 @@
         };
 
         theme.templates.user.niri = {
-          input_path = builtins.toString ../dotfiles/niri/noctalia_theme.kdl;
+          input_path = builtins.toString (my.dotfiles + /niri/noctalia_theme.kdl);
           output_path = "$XDG_CONFIG_HOME/niri/noctalia_theme.kdl";
         };
       };

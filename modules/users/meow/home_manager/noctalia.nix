@@ -1,9 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, ... }:
-
-  let
-    systemConfig = config;
-  in {
+  flake.homeModules.meow = { my, ... }: {
     imports = [
       inputs.noctalia.homeModules.default
     ];
@@ -32,7 +28,7 @@
           # can see them when running by itself (e.g. via `noctalia theme` CLI)
           # when run normally with noctalia startup/config loading, `theme.templates` seems to be used
           # instead to render templates, so all changes here must also be copied to `theme.templates`
-          custom_colors = systemConfig.meow.colors.color-vars // systemConfig.meow.colors.color-roles;
+          custom_colors = my.theme.colors.vars // my.theme.colors.roles;
         };
 
         location = {
@@ -43,6 +39,6 @@
       };
     };
 
-    xdg.configFile."noctalia/palettes/anonymousrand.json".text = builtins.toJSON config.meow.colors.material3-palette;
+    xdg.configFile."noctalia/palettes/anonymousrand.json".text = builtins.toJSON my.theme.colors.m3-palette;
   };
 }
