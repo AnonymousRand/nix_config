@@ -247,13 +247,4 @@ rec {
       };
     };
   };
-
-  ############################################################################
-  # extras (for individual programs)
-
-  # (this is not the cleanest way to do things, but `compile-scss-config` needs to know
-  # all these colors before any home manager stuff is built. i could delegate the work of
-  # managing these colors to each individual program in their own file, but i also don't wanna
-  # make my own mergeable options inside `config`; having a random thing in `config` while
-  # everything else of the same vein is in `_module.args` feels inelegant and hard to maintain too)
 }
