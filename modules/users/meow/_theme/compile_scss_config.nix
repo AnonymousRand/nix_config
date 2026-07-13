@@ -1,3 +1,9 @@
+# custom colors are also put here instead of in `theme.templates` so that template engine
+# can see them when running by itself (e.g. via `noctalia theme` CLI)
+# when run normally with noctalia startup/config loading, `theme.templates` seems to be used
+# instead to render templates, so all changes here must also be copied to `theme.templates`
+
+
 { self, ... }: {
   perSystem = { pkgs, ... }: {
     packages.compile-scss-config = pkgs.stdenv.mkDerivation {

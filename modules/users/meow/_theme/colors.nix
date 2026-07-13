@@ -122,6 +122,27 @@ rec {
       color_dark  = pink_xxlight;
     };
     variable = default_fg;
+
+
+    fish = {
+      # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
+      scales_blue = {
+        color_light = "#26edff";
+        color_dark  = "#40efff";
+      };
+      scales_green = {
+        color_light = "#7ee600";
+        color_dark  = "#a8ff3d";
+      };
+      scales_orange = {
+        color_light = "#ffc400";
+        color_dark  = "#ffd500";
+      };
+      scales_pink = {
+        color_light = "#ffa8d4";
+        color_dark  = "#ffa8d4";
+      };
+    };
   };
 
   ############################################################################
@@ -226,4 +247,13 @@ rec {
       };
     };
   };
+
+  ############################################################################
+  # extras (for individual programs)
+
+  # (this is not the cleanest way to do things, but `compile-scss-config` needs to know
+  # all these colors before any home manager stuff is built. i could delegate the work of
+  # managing these colors to each individual program in their own file, but i also don't wanna
+  # make my own mergeable options inside `config`; having a random thing in `config` while
+  # everything else of the same vein is in `_module.args` feels inelegant and hard to maintain too)
 }
