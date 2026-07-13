@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.meow = { pkgs, ... }: {
+  flake.nixosModules.meow = {
     # don't forget to set a password with ‘passwd’!
     users.users."meow" = {
       isNormalUser = true;
@@ -9,10 +9,6 @@
 
     imports = [
       # features to be activated at the system/host level (if this user is present on host)
-
-      ## my own derivation for compiling shared SCSS config
-      #self.nixosModules.compile-scss-config
-
       self.nixosModules.fish
       self.nixosModules.ghostty
       self.nixosModules.niri
@@ -23,7 +19,7 @@
 
   # Home Manager config module, which can be both integrated into NixOS configs
   # (i.e. built with `nixos-rebuild` command) or used standalone (i.e. built with `home-manager` command)
-  flake.homeModules.meow = { pkgs, ... }: {
+  flake.homeModules.meow = { lib, pkgs, ... }: {
     home.username = "meow";
     home.homeDirectory = "/home/meow";
     home.stateVersion = "26.05";
@@ -37,7 +33,7 @@
     # expose top-level inputs to all instances of `flake.homeModules.meow`
     _module.args = {
       my = {
-        theme = import ./_theme { inherit self pkgs; };
+        theme = import ./_theme { inherit self lib pkgs; };
       };
     };
   };

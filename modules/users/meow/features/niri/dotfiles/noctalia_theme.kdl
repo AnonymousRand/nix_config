@@ -1,15 +1,15 @@
 layout {
     focus-ring {
-        active-gradient from="{{colors.active_gradient_start_source.default.hex}}" \
-                          to="{{colors.active_gradient_end_source.default.hex}}" \
+        active-gradient from="{{colors.niri_active_gradient_start_source.default.hex}}" \
+                          to="{{colors.niri_active_gradient_end_source.default.hex}}" \
                        angle=180 in="oklch longer hue"
         inactive-color "{{colors.secondary.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 
     border {
-        active-gradient from="{{colors.active_gradient_start_source.default.hex}}" \
-                          to="{{colors.active_gradient_end_source.default.hex}}" \
+        active-gradient from="{{colors.niri_active_gradient_start_source.default.hex}}" \
+                          to="{{colors.niri_active_gradient_end_source.default.hex}}" \
                        angle=180 in="oklch longer hue"
         inactive-color "{{colors.secondary.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"

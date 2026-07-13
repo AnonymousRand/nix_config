@@ -32,7 +32,7 @@ set -g fish_pager_color_selected_prefix                  "{{colors.pink_source.d
 set -g __fish_git_prompt_color                           brcyan
 
 # custom variables for `fish_prompt`
-set -g prompt_scales_blue                                "{{colors.scales_blue_source.default.hex}}"
-set -g prompt_scales_green                               "{{colors.scales_green_source.default.hex}}"
-set -g prompt_scales_orange                              "{{colors.scales_orange_source.default.hex}}"
-set -g prompt_scales_pink                                "{{colors.scales_pink_source.default.hex}}"
+set -g prompt_scales_blue                                "{{colors.fish_scales_blue_source.default.hex}}"
+set -g prompt_scales_green                               "{{colors.fish_scales_green_source.default.hex}}"
+set -g prompt_scales_orange                              "{{colors.fish_scales_orange_source.default.hex}}"
+set -g prompt_scales_pink                                "{{colors.fish_scales_pink_source.default.hex}}"

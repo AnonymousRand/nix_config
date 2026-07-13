@@ -1,9 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, ... }:
-  
-  let
-    systemConfig = config;
-  in {
+  flake.homeModules.meow = { my, ... }: {
     imports = [
       inputs.noctalia.homeModules.default
     ];
@@ -24,7 +20,7 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
             # load custom colors
-            custom_colors = systemConfig.meow.noctalia-custom-colors;
+            custom_colors = my.theme.noctalia-custom-colors;
           };
         };
 

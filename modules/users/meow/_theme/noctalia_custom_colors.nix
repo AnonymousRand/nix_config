@@ -1,21 +1,12 @@
 # this file has to be a module independent of home manager so that the `compile-scss-config`
 # derivation can import it before anything with home manager is built
 
-#let
-#  colors = import ./colors.nix;
-#in {
-#  imports = [
-#    colors.vars
-#    colors.roles
-#  ];
-#}
-
-{ config, lib, ... }:
+{ lib }:
 
 let
   colors = import ./colors.nix;
-in {
-  options.meow.noctalia-custom-colors = lib.mkOption { type = lib.types.attrs; };
-
-  config.meow.noctalia-custom-colors = colors.vars // colors.roles;
-}
+  # `hasSuffix` instead of exact filename match since they turn into nix store paths
+  colorFiles = builtins.filter
+               (filename: lib.strings.hasSuffix "_colors.nix" filename)
+               (lib.filesystem.listFilesRecursive ../features);
+in colors.vars // colors.roles // lib.attrsets.mergeAttrsList (map import colorFiles)
