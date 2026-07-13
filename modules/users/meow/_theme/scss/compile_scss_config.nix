@@ -39,7 +39,7 @@
           # 1. render base SCSS files as Noctalia templates (so SCSS syntax is correct)
           # 2. compile all SCSS files for all apps, and output the resulting CSS to
           #    the designated output directory for this derivation in the nix store ($out),
-          #    which is accessible via `<this package>.<desired file path>` in home manager etc.
+          #    which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
           buildPhase = ''
             noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
                 ${builtins.foldl' (acc: elem: acc + " -r ${elem}:${elem}") "" scssFilesToRender}

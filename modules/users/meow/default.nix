@@ -40,6 +40,8 @@
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)
   # TODO: how to make this system-agnostic? using `perSystem` changes the name and makes it weird to invoke on CLI
+  # maybe the good practice is to just create a separate `homeManagerConfiguration` for each architecture
+  # maybe passing it as parameter to a custom function?
   flake.homeConfigurations.meow = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     modules = [ self.homeModules.meow ];

@@ -1,10 +1,11 @@
 {
-  flake.homeModules.meow = { config, ... }: {
+  flake.homeModules.meow = { config, my, ... }: {
     programs.ghostty = {
       enable = true;
     };
 
     xdg.configFile."ghostty/config.ghostty".source           = ./dotfiles/config.ghostty;
+    #xdg.configFile."ghostty/test.css".source                 = "${my.theme.css-config}/ghostty/test.css";
     xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
     # Noctalia theming
@@ -16,11 +17,11 @@
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };
 
-        theme.templates.user.ghostty-css = {
-          input_path = builtins.toString ./dotfiles/custom.css;
-          output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
-          post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
-        };
+        #theme.templates.user.ghostty-css = {
+        #  input_path = builtins.toString ./dotfiles/custom.css;
+        #  output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
+        #  post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
+        #};
       };
     };
   };
