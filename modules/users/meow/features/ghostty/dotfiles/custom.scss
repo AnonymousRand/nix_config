@@ -1,0 +1,6 @@
+@use "gtk_base";
+
+/* titlebar tab should not be highlighted as if it were a selected tab if it's the only tab */
+tabbox.single-tab tab {
+    background: none;
+}

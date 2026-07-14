@@ -1,0 +1,159 @@
+/* the primary goal of this file is to override most of the built-in GTK (libadwaita) CSS variables 
+ * which should hopefully make our life slightly easier :3 */
+
+@use "base";
+
+/******************************************************************************/
+/* variables                                                                  */
+/******************************************************************************/
+
+:root {
+    /**************************************************************************/
+    /* accents                                                                */
+
+    --accent-fg-color: var(--accent-default-fg);
+    --accent-bg-color: var(--accent-default-bg);
+    --accent-blue:     {{colors.terminal_normal_cyan.default.hex}}
+    --accent-green:    {{colors.terminal_normal_green.default.hex}}
+    --accent-orange:   {{colors.terminal_normal_yellow.default.hex}}
+    --accent-pink:     {{colors.terminal_bright_magenta.default.hex}}
+    --accent-purple:   {{colors.terminal_magenta.default.hex}}
+    --accent-red:      {{colors.terminal_bright_red.default.hex}}
+    --accent-slate:    {{colors.terminal_bright_black.default.hex}}
+    --accent-teal:     {{colors.terminal_normal_blue.default.hex}}
+    --accent-yellow:   {{colors.terminal_bright_yellow.default.hex}}
+
+    /**************************************************************************/
+    /* GNOME palette                                                          */
+    
+    --blue-1: {{colors.blue_light_source.default.hex}}
+    --blue-2: {{colors.blue_source.default.hex}}
+    --blue-3: {{colors.blue_deep_source.default.hex}}
+    --blue-4: {{colors.blue_xdeep_source.default.hex}}
+    --blue-5: {{colors.blue_xxdeep_source.default.hex}}
+
+    --green-1: {{colors.green_light_source.default.hex}}
+    --green-2: {{colors.green_source.default.hex}}
+    --green-3: {{colors.green_deep_source.default.hex}}
+    --green-4: {{colors.green_deep_dark_source.default.hex}}
+    --green-5: {{colors.green_deep_xdark_source.default.hex}}
+
+    --orange-1: {{colors.orange_light_source.default.hex}}
+    --orange-2: {{colors.orange_source.default.hex}}
+    --orange-3: {{colors.orange_deep_source.default.hex}}
+    --orange-4: {{colors.orange_xdeep_source.default.hex}}
+    --orange-5: {{colors.orange_xxdeep_source.default.hex}}
+
+    --purple-1: #ffb3ff
+    --purple-2: #ff66ff
+    --purple-3: #ff00ff
+    --purple-4: #e600e6
+    --purple-5: #cc00cc
+
+    --red-1: #ff5959
+    --red-2: #ff3333
+    --red-3: #ff0000
+    --red-4: #e60000
+    --red-5: #cc0000
+
+    --yellow-1: {{colors.orange_xlight_source.default.hex}}
+    --yellow-2: {{colors.orange_light_source.default.hex}}
+    --yellow-3: {{colors.orange_source.default.hex}}
+    --yellow-4: {{colors.orange_deep_source.default.hex}}
+    --yellow-5: {{colors.orange_xdeep_source.default.hex}}
+
+    /**************************************************************************/
+    /* UI elements                                                            */
+
+    --active-toggle-fg-color: var(--accent-default-fg);
+    --active-toggle-bg-color: var(--accent-default-bg);
+
+    --border-color    {{colors.outline.default.hex}};
+    --border-opacity: 1;
+
+    --card-fg-color: var(--variant-fg);
+    --card-bg-color: var(--variant-bg);
+
+    --dialog-fg-color: var(--variant-fg);
+    --dialog-bg-color: var(--variant-bg);
+
+    --headerbar-fg-color:       var(--variant-fg);
+    --headerbar-bg-color:       var(--variant-bg);
+    --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
+
+    --overview-fg-color: var(--default-fg);
+    --overview-bg-color: var(--default-bg);
+
+    --popover-fg-color: var(--variant-fg);
+    --popover-bg-color: var(--variant-bg);
+
+    /* now why the heck do *you* exist ;-; */
+    --secondary-sidebar-fg-color:       var(--secondary-sidebar-fg-color);
+    --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.5%));
+    --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
+
+    --sidebar-fg-color:       var(--variant-fg);
+    --sidebar-bg-color:       var(--variant-bg);
+    --sidebar-backdrop-color: var(--sidebar-bg-color);
+
+    --view-fg-color: var(--variant-fg);
+    --view-bg-color: var(--variant-bg);
+
+    --window-fg-color: var(--default-fg);
+    --window-bg-color: var(--default-bg);
+
+    /**************************************************************************/
+    /* misc                                                                   */
+
+    --destructive-color:    {{colors.error_source.default.hex}};
+    --destructive-fg-color: {{colors.on_error.default.hex}};
+    --destructive-bg-color: var(--destructive-color);
+
+    --error-color:    {{colors.error_source.default.hex}};
+    --error-fg-color: {{colors.on_error.default.hex}};
+    --error-bg-color: var(--error-color);
+
+    --success-color:    {{colors.terminal_normal_green.default.hex}};
+    --success-fg-color: {{colors.terminal_normal_green.default.hex}};
+    --success-bg-color: var(--success-color);
+
+    --warning-color:    {{colors.warning_source.default.hex}};
+    --warning-fg-color: var(--default-fg);
+    --warning-bg-color: var(--warning-color);
+}
+
+/******************************************************************************/
+/* styles                                                                     */
+/******************************************************************************/
+
+%btn {
+  &.flat {
+    @extend %btn--flat;
+  }
+
+  &.raised {
+    @extend %btn--raised;
+  }
+
+  &:selected {
+    @extend %btn--selected;
+  }
+}
+
+menubutton {
+  @extend %btn;
+}
+
+splitbutton {
+  @extend %btn;
+
+  &:hover {
+    background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
+    color: var(--hover-fg);
+  }
+}
+
+popover.menu modelbutton:hover {
+  background-color: var(--hover-bg);
+  color: var(--hover-fg);
+}

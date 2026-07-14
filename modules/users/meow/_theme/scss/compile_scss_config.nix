@@ -20,6 +20,7 @@ let
   # (this is a custom option)
   scssFilesToRender = [
     ./_base.scss
+    ./_gtk_base.scss
   ];
 
   # SCSS paths to be loaded with `sass --load-path` (for imports in other SCSS files
@@ -35,8 +36,7 @@ in stdenv.mkDerivation {
   version = "0.0.0";
 
   # input SCSS files to be copied into build environment
-  srcs = [
-    ./_base.scss
+  srcs = scssFilesToRender ++ [
     ../../features
   ];
   # don't try to unpack single files in `srcs` as archives
@@ -49,7 +49,6 @@ in stdenv.mkDerivation {
   ];
 
   # build
-  # 2 steps:
   # 1. render base SCSS files as Noctalia templates (so SCSS syntax is correct)
   # 2. compile all SCSS files for all apps, and output the resulting CSS to
   #    the designated output directory for this derivation in the nix store ($out),

@@ -1,5 +1,0 @@
-@use "base";
-
-button:not(.flat) {
-  @extend %button--raised;
-}

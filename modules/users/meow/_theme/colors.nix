@@ -122,27 +122,6 @@ rec {
       color_dark  = pink_xxlight;
     };
     variable = default_fg;
-
-
-    fish = {
-      # for shell "scales" prompt; hardcode to not be affected by `color-vars` changes
-      scales_blue = {
-        color_light = "#26edff";
-        color_dark  = "#40efff";
-      };
-      scales_green = {
-        color_light = "#7ee600";
-        color_dark  = "#a8ff3d";
-      };
-      scales_orange = {
-        color_light = "#ffc400";
-        color_dark  = "#ffd500";
-      };
-      scales_pink = {
-        color_light = "#ffa8d4";
-        color_dark  = "#ffa8d4";
-      };
-    };
   };
 
   ############################################################################
@@ -164,8 +143,8 @@ rec {
       mOnTertiary       = vars.gray_dark;               # text on tertiary surfaces
       mOutline          = vars.pink_xlight;             # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
-      mHover            = mSecondary;                   # hover state background
-      mOnHover          = mOnSecondary;                 # text on hover surfaces
+      mHover            = mTertiary;                    # hover state background
+      mOnHover          = mOnTertiary;                  # text on hover surfaces
       mError            = roles.error.color_light;      # error color
       mOnError          = vars.white;                   # text on error surfaces
 
@@ -212,8 +191,8 @@ rec {
       mOnTertiary       = vars.gray_xdark;
       mOutline          = vars.pink_xlight;
       mShadow           = vars.gray_xdark;
-      mHover            = mSecondary;
-      mOnHover          = mOnSecondary;
+      mHover            = mTertiary;
+      mOnHover          = mOnTertiary;
       mError            = roles.error.color_dark;
       mOnError          = vars.white;
 

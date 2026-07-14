@@ -1,7 +1,84 @@
-%button--raised {
-  color: #ff0000;
+/******************************************************************************/
+/* variables                                                                  */
+/******************************************************************************/
+
+:root {
+  /**************************************************************************/
+  /* basics                                                                 */
+
+  /*
+   * by default, GTK apps are rendered with libadwaita, whose src/stylesheet/_colors.scss
+   * (https://github.com/GNOME/libadwaita/blob/42f647ffcbec3282c126ad9153c77baecf86ba90/src/stylesheet/_colors.scss#L270)
+   * very frustratingly sets a bunch of defaults, such as using `currentColor` (the *foreground* color)
+   * mixed with varying amounts of `transparent` to define the selected tab etc. *background* colors.
+   *
+   * what the fuck.
+   *
+   * so here's my attempt to make it somewhat make sense.
+   */
+
+  --default-fg:        {{colors.default_fg_source.default.hex}};
+  --default-bg:        {{colors.default_bg_source.default.hex}};
+  --variant-fg:        {{colors.on_surface_variant.default.hex}};
+  --variant-bg:        {{colors.surface_variant.default.hex}};
+  --selection-fg:      {{colors.selection_fg_source.default.hex}};
+  --selection-bg:      {{colors.selection_bg_source.default.hex}};
+  --error:             {{colors.error_source.default.hex}};
+  --accent-default-fg: {{colors.on_tertiary.default.hex}};
+  --accent-default-bg: {{colors.tertiary.default.hex}};
+  --hover-default-fg:  {{colors.on_hover.default.hex}};
+  --hover-default-bg:  {{colors.hover.default.hex}};
+  --disabled-opacity:  50%;
+
+  --link:              {{colors.link_source.default.hex}};
+  --link-hover:        {{colors.link_hover_source.default.hex}};
+  --link-visited:      {{colors.link_hover_source.default.hex}};
 }
 
-.button-raised {
-  @extend %button--raised;
+/******************************************************************************/
+/* placeholders                                                               */
+/******************************************************************************/
+
+%btn {
+  /* to use these variables, simply set ``--normal-bg`` within the selector scope,
+   * and the other variables will automatically populate (you can still change them, of course) */
+  --hover-bg:  hsl(from var(--normal-bg) h s calc(l - 2%));
+  --active-bg: hsl(from var(--normal-bg) h s calc(l - 6.5%));
+
+  background-color: var(--normal-bg);
+  color: var(--normal-fg);
+
+  &:hover {
+    background-color: var(--hover-bg);
+    color: var(--normal-fg);
+  }
+
+  &:active {
+    background-color: var(--active-bg);
+    color: var(--normal-fg);
+  }
+
+  @at-root &--flat {
+    --normal-fg: inherit;
+    --normal-bg: inherit;
+  }
+
+  @at-root &--raised {
+    --normal-fg: var(--accent-default-fg);
+    --normal-bg: var(--accent-default-bg);
+  }
+
+  @at-root &--selected {
+    --normal-fg: var(--accent-default-fg);
+    --normal-bg: var(--accent-default-bg);
+  }
+}
+
+/******************************************************************************/
+/* styles                                                                     */
+/******************************************************************************/
+
+button,
+tab {
+  @extend %btn;
 }
