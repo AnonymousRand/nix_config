@@ -6,4 +6,4 @@ let
   colorFiles = builtins.filter
                (filename: lib.strings.hasSuffix "_colors.nix" filename)
                (lib.filesystem.listFilesRecursive ../features);
-in colors.vars // colors.roles // lib.attrsets.mergeAttrsList (map import colorFiles);
+in colors.vars // colors.roles // lib.attrsets.mergeAttrsList (map import colorFiles)
