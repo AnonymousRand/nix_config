@@ -5,7 +5,6 @@
     };
 
     xdg.configFile."ghostty/config.ghostty".source           = ./dotfiles/config.ghostty;
-    xdg.configFile."ghostty/custom.css".source               = "${my.theme.cssConfig}/ghostty/dotfiles/custom.css";
     xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
     # Noctalia theming
@@ -14,6 +13,12 @@
         theme.templates.user.ghostty = {
           input_path = builtins.toString ./dotfiles/themes/noctalia_theme;
           output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme";
+          post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
+        };
+
+        theme.templates.user.ghosttyCss = {
+          input_path = "${my.theme.cssConfig}/ghostty/dotfiles/custom.css";
+          output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };
       };

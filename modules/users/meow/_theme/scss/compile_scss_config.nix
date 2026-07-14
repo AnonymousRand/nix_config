@@ -12,25 +12,20 @@
 # to a different architecture, and when this derivation is called it should just get that updated
 # `pkgs` in its arguments and work just fine? >_<
 
-{ dart-sass, formats, noctalia, stdenv, writeText, m3Palette, noctaliaSettings }:
+{ dart-sass, stdenv }:
 
 let
-  # SCSS files that should be rendered by Noctalia before being rendered by sass
-  # these should be the only SCSS files with Noctalia template syntax!!
-  # (this is a custom option)
-  scssFilesToRender = [
-    ./_base.scss
-    ./_gtk_base.scss
+  # SCSS paths to be loaded with `sass --load-path` (for imports in other SCSS files
+  # without needing relative paths). provide directories, not individual files
+  scssPathsToLoad = [
+    ./.
   ];
-
-  paletteJson = writeText "palette.json" (builtins.toJSON m3Palette);
-  configToml = (formats.toml { }).generate "config.toml" noctaliaSettings;
 in stdenv.mkDerivation {
   pname = "compile-scss-config";
   version = "0.0.0";
 
   # input SCSS files to be copied into build environment
-  srcs = scssFilesToRender ++ [
+  srcs = scssPathsToLoad ++ [
     ../../features
   ];
   # don't try to unpack single files in `srcs` as archives
@@ -39,22 +34,34 @@ in stdenv.mkDerivation {
   # build-time dependencies
   nativeBuildInputs = [
     dart-sass
-    noctalia
   ];
+
+  preBuild = ''
+    find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
+  '';
+
+  buildPhase = ''
+    runHook preBuild
+
+    mkdir build/
+    sass ${../../features}:build/ --no-source-map \
+        ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
+  '';
+
+  installPhase = ''
+    mkdir -p $out
+    cp -r build/* $out/
+
+    runHook postInstall
+  '';
+
+  postInstall = ''
+    find . -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
+  '';
+}
 
   # build
   # 1. render base SCSS files as Noctalia templates (so SCSS syntax is correct)
   # 2. compile all SCSS files for all apps, and output the resulting CSS to
   #    the designated output directory for this derivation in the nix store ($out),
   #    which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
-  buildPhase = ''
-    mkdir -p $out/_noctalia_out/
-
-    noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
-        ${builtins.foldl'
-            (acc: elem: acc + " -r ${elem}:$out/_noctalia_out/${builtins.baseNameOf elem}")
-            "" scssFilesToRender}
-
-    sass ${../../features}:$out --load-path $out/_noctalia_out/ --no-source-map
-  '';
-}
