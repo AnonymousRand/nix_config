@@ -34,41 +34,53 @@
 }
 
 /******************************************************************************/
-/* placeholders                                                               */
+/* scss features                                                              */
 /******************************************************************************/
 
-%btn {
-  /* to use these variables, simply set ``--normal-bg`` within the selector scope,
-   * and the other variables will automatically populate (you can still change them, of course) */
-  --hover-bg:  hsl(from var(--normal-bg) h s calc(l - 2%));
-  --active-bg: hsl(from var(--normal-bg) h s calc(l - 6.5%));
+/* use this mixin for all elements that should have a `--curr-fg` and/or `--curr-bg`
+ * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
+@mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $selectors...) {
+  @at-root #{$selectors} {
+    --curr-fg: $fg;
+    --curr-bg: $bg;
+    
+    background-color: var(--curr-bg);
+    color: var(--curr-fg);
+  }
+}
 
-  background-color: var(--normal-bg);
-  color: var(--normal-fg);
+%btn {
+  /* to use these variables, simply change ``--curr-bg`` within the selector scope,
+   * and the other variables will automatically populate (you can still change them, of course) */
+  --hover-bg:  hsl(from var(--curr-bg) h s calc(l - 2%));
+  --active-bg: hsl(from var(--curr-bg) h s calc(l - 6.5%));
+
+  background-color: var(--curr-bg);
+  color: var(--curr-fg);
 
   &:hover {
     background-color: var(--hover-bg);
-    color: var(--normal-fg);
+    color: var(--curr-fg);
   }
 
   &:active {
     background-color: var(--active-bg);
-    color: var(--normal-fg);
+    color: var(--curr-fg);
   }
 
   @at-root &--flat {
-    --normal-fg: inherit;
-    --normal-bg: inherit;
+    --curr-fg: var(--curr-fg, inherit);
+    --curr-bg: var(--curr-bg, inherit);
   }
 
   @at-root &--raised {
-    --normal-fg: var(--accent-default-fg);
-    --normal-bg: var(--accent-default-bg);
+    --curr-fg: var(--accent-default-fg);
+    --curr-bg: var(--accent-default-bg);
   }
 
   @at-root &--selected {
-    --normal-fg: var(--accent-default-fg);
-    --normal-bg: var(--accent-default-bg);
+    --curr-fg: var(--accent-default-fg);
+    --curr-bg: var(--accent-default-bg);
   }
 }
 

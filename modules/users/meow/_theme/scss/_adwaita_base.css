@@ -1,5 +1,5 @@
-/* the primary goal of this file is to override most of the built-in GTK (libadwaita) CSS variables 
- * which should hopefully make our life slightly easier :3 */
+/* the primary goal of this file is to override most of the built-in GTK/libadwaita CSS variables 
+ * which should hopefully make our life slightly easier :33 */
 
 @use "base";
 
@@ -90,19 +90,36 @@
 
     --card-fg-color: var(--variant-fg);
     --card-bg-color: var(--variant-bg);
+    @include curr-colors(var(--card-fg-color), var(--card-bg-color),
+      .boxed-list, .boxed-list-separate, .card
+    );
 
     --dialog-fg-color: var(--variant-fg);
     --dialog-bg-color: var(--variant-bg);
+    @include curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
+      dialog
+    );
 
     --headerbar-fg-color:       var(--variant-fg);
     --headerbar-bg-color:       var(--variant-bg);
     --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
+    @include curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
+      actionbar, headerbar:not(.flat), searchbar:not(.inline), tabbar:not(.inline),
+      // `AdwToolbarView` top and bottom bars
+      menubar, viewswitcherbar, .toolbar
+    );
 
-    --overview-fg-color: var(--default-fg);
-    --overview-bg-color: var(--default-bg);
+    --overview-fg-color: var(--variant-fg);
+    --overview-bg-color: var(--variant-bg);
+    @include curr-colors(var(--overview-fg-color), var(--overview-bg-color),
+      taboverview
+    );
 
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
+    @include curr-colors(var(--popover-fg-color), var(--popover-bg-color),
+      popover
+    );
 
     /* now why the heck do *you* exist ;-; */
     --secondary-sidebar-fg-color:       var(--secondary-sidebar-fg-color);
@@ -112,20 +129,32 @@
     --sidebar-fg-color:       var(--variant-fg);
     --sidebar-bg-color:       var(--variant-bg);
     --sidebar-backdrop-color: var(--sidebar-bg-color);
+    @include curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
+      navigation-split-view, overlay-split-view, .navigation-sidebar
+    );
 
     --view-fg-color: var(--variant-fg);
     --view-bg-color: var(--variant-bg);
+    @include curr-colors(var(--view-fg-color), var(--view-bg-color),
+      textview.view
+    );
 
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
+    @include curr-colors(var(--window-fg-color), var(--window-bg-color),
+      window.background
+    );
 }
 
 /******************************************************************************/
-/* styles                                                                     */
+/* scss features                                                              */
 /******************************************************************************/
 
-%btn {
-  &.flat {
+%gtk-btn {
+  @extend %btn;
+
+  &.flat,
+  &.close {
     @extend %btn--flat;
   }
 
@@ -138,17 +167,24 @@
   }
 }
 
-menubutton {
-  @extend %btn;
+/******************************************************************************/
+/* styles                                                                     */
+/******************************************************************************/
+
+card.activatable {
+  @extend %btn--flat;
 }
 
-splitbutton {
-  @extend %btn;
+button,
+menubutton,
+splitbutton,
+tab {
+  @extend %gtk-btn;
+}
 
-  &:hover {
-    background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
-    color: var(--hover-fg);
-  }
+splitbutton:hover {
+  background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
+  color: var(--hover-fg);
 }
 
 popover.menu modelbutton:hover {

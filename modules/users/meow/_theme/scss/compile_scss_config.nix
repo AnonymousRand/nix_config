@@ -61,9 +61,9 @@ in stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  # take all the Noctalia template syntax in the generated CSS files out of quotes again lmao
+  # take all the Noctalia template syntax in the generated CSS files back out of quotes lmao
   # (since CSS doesn't recognize hex codes inside quotes/strings)
   postInstall = ''
-    find . -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
+    find $out -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
   '';
 }
