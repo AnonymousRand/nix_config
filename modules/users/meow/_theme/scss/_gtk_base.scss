@@ -9,10 +9,11 @@
 
 :root {
     /**************************************************************************/
-    /* accents                                                                */
+    /* basics                                                                 */
 
+    --accent-color:    var(--accent-default-bg);
     --accent-fg-color: var(--accent-default-fg);
-    --accent-bg-color: var(--accent-default-bg);
+    --accent-bg-color: var(--accent-color);
     --accent-blue:     {{colors.terminal_normal_cyan.default.hex}};
     --accent-green:    {{colors.terminal_normal_green.default.hex}};
     --accent-orange:   {{colors.terminal_normal_yellow.default.hex}};
@@ -22,6 +23,22 @@
     --accent-slate:    {{colors.terminal_bright_black.default.hex}};
     --accent-teal:     {{colors.terminal_normal_blue.default.hex}};
     --accent-yellow:   {{colors.terminal_bright_yellow.default.hex}};
+
+    --destructive-color:    {{colors.error_source.default.hex}};
+    --destructive-fg-color: {{colors.on_error.default.hex}};
+    --destructive-bg-color: var(--destructive-color);
+
+    --error-color:    {{colors.error_source.default.hex}};
+    --error-fg-color: {{colors.on_error.default.hex}};
+    --error-bg-color: var(--error-color);
+
+    --success-color:    {{colors.terminal_normal_green.default.hex}};
+    --success-fg-color: {{colors.terminal_normal_green.default.hex}};
+    --success-bg-color: var(--success-color);
+
+    --warning-color:    {{colors.warning_source.default.hex}};
+    --warning-fg-color: var(--default-fg);
+    --warning-bg-color: var(--warning-color);
 
     /**************************************************************************/
     /* GNOME palette                                                          */
@@ -101,25 +118,6 @@
 
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
-
-    /**************************************************************************/
-    /* misc                                                                   */
-
-    --destructive-color:    {{colors.error_source.default.hex}};
-    --destructive-fg-color: {{colors.on_error.default.hex}};
-    --destructive-bg-color: var(--destructive-color);
-
-    --error-color:    {{colors.error_source.default.hex}};
-    --error-fg-color: {{colors.on_error.default.hex}};
-    --error-bg-color: var(--error-color);
-
-    --success-color:    {{colors.terminal_normal_green.default.hex}};
-    --success-fg-color: {{colors.terminal_normal_green.default.hex}};
-    --success-bg-color: var(--success-color);
-
-    --warning-color:    {{colors.warning_source.default.hex}};
-    --warning-fg-color: var(--default-fg);
-    --warning-bg-color: var(--warning-color);
 }
 
 /******************************************************************************/

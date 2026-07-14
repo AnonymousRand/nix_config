@@ -12,7 +12,7 @@
 # to a different architecture, and when this derivation is called it should just get that updated
 # `pkgs` in its arguments and work just fine? >_<
 
-{ dart-sass, formats, noctalia, stdenv, writeText, m3Palette, noctaliaCustomColors }:
+{ dart-sass, formats, noctalia, stdenv, writeText, m3Palette, noctaliaSettings }:
 
 let
   # SCSS files that should be rendered by Noctalia before being rendered by sass
@@ -24,7 +24,7 @@ let
   ];
 
   paletteJson = writeText "palette.json" (builtins.toJSON m3Palette);
-  configToml = (formats.toml { }).generate "config.toml" noctaliaCustomColors;
+  configToml = (formats.toml { }).generate "config.toml" noctaliaSettings;
 in stdenv.mkDerivation {
   pname = "compile-scss-config";
   version = "0.0.0";
