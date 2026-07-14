@@ -55,6 +55,6 @@ in stdenv.mkDerivation {
             (acc: elem: acc + " -r ${elem}:$out/_noctalia_out/${builtins.baseNameOf elem}")
             "" scssFilesToRender}
 
-    sass ${../../features}:$out --load-path $out/_noctalia_out/
+    sass ${../../features}:$out --load-path $out/_noctalia_out/ --no-source-map
   '';
 }
