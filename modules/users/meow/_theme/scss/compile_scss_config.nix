@@ -36,10 +36,14 @@ in stdenv.mkDerivation {
     dart-sass
   ];
 
+  # wrap all Noctalia template syntax in the SCSS files in quotes so sass compiles without error
+  # (i could render the templates before running sass with `noctalia theme`, but then
+  # the resulting CSS won't see and be tracked by Noctalia's light/dark mode changes)
   preBuild = ''
     find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
   '';
 
+  # render SCSS to CSS with sass, and place generated CSS in `build/` in build environment
   buildPhase = ''
     runHook preBuild
 
@@ -48,6 +52,8 @@ in stdenv.mkDerivation {
         ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
   '';
 
+  # copy `build/*` to the designated output directory for this derivation in the nix store (`$out`),
+  # which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
   installPhase = ''
     mkdir -p $out
     cp -r build/* $out/
@@ -55,13 +61,9 @@ in stdenv.mkDerivation {
     runHook postInstall
   '';
 
+  # take all the Noctalia template syntax in the generated CSS files out of quotes again lmao
+  # (since CSS doesn't recognize hex codes inside quotes/strings)
   postInstall = ''
     find . -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
   '';
 }
-
-  # build
-  # 1. render base SCSS files as Noctalia templates (so SCSS syntax is correct)
-  # 2. compile all SCSS files for all apps, and output the resulting CSS to
-  #    the designated output directory for this derivation in the nix store ($out),
-  #    which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
