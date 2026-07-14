@@ -23,12 +23,6 @@ let
     ./_gtk_base.scss
   ];
 
-  # SCSS paths to be loaded with `sass --load-path` (for imports in other SCSS files
-  # without needing relative paths). provide directories, not individual files
-  scssPathsToLoad = [
-    ./.
-  ];
-
   paletteJson = writeText "palette.json" (builtins.toJSON m3Palette);
   configToml = (formats.toml { }).generate "config.toml" noctaliaCustomColors;
 in stdenv.mkDerivation {
@@ -54,10 +48,13 @@ in stdenv.mkDerivation {
   #    the designated output directory for this derivation in the nix store ($out),
   #    which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
   buildPhase = ''
-    noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
-        ${builtins.foldl' (acc: elem: acc + " -r ${elem}:${elem}") "" scssFilesToRender}
+    mkdir -p $out/_noctalia_out/
 
-    sass ${../../features}:$out \
-        ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
+    noctalia theme --theme-json ${paletteJson} -c ${configToml} --both \
+        ${builtins.foldl'
+            (acc: elem: acc + " -r ${elem}:$out/_noctalia_out/${builtins.baseNameOf elem}")
+            "" scssFilesToRender}
+
+    sass ${../../features}:$out --load-path $out/_noctalia_out/
   '';
 }
