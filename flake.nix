@@ -23,10 +23,8 @@
     };
 
     noctalia = {
-      #url = "github:noctalia-dev/noctalia";
-      # my own fork with custom color light and dark modes, and where the template engine CLI
-      # processes config (e.g. custom colors) before rendering templates instead of after
-      url = "github:AnonymousRand/noctalia/better-template-cli";
+      url = "github:noctalia-dev/noctalia";
+      #url = "github:AnonymousRand/noctalia/better-template-cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia-greeter = {

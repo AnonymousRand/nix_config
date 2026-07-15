@@ -72,6 +72,12 @@ rec {
     };
 
 
+    outline = {
+      color_light = pink_xlight;
+      color_dark  = pink_xlight;
+    };
+
+
     search_fg      = selection_fg;
     search_bg      = selection_bg;
     search_curr_fg = search_fg;
@@ -141,7 +147,7 @@ rec {
       mOnSecondary      = vars.gray_xdark;              # text on secondary surfaces
       mTertiary         = vars.pink_xxxlight;           # tertiary accent
       mOnTertiary       = vars.gray_dark;               # text on tertiary surfaces
-      mOutline          = vars.pink_xlight;             # borders and dividers
+      mOutline          = roles.outline.color_light;    # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = mTertiary;                    # hover state background
       mOnHover          = mOnTertiary;                  # text on hover surfaces
@@ -189,7 +195,7 @@ rec {
       mOnSecondary      = vars.gray_xxdark;
       mTertiary         = vars.pink_xxlight;
       mOnTertiary       = vars.gray_xdark;
-      mOutline          = vars.pink_xlight;
+      mOutline          = roles.outline.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = mTertiary;
       mOnHover          = mOnTertiary;

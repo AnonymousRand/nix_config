@@ -85,7 +85,7 @@
     --active-toggle-fg-color: var(--accent-default-fg);
     --active-toggle-bg-color: var(--accent-default-bg);
 
-    --border-color:   {{colors.outline.default.hex}};
+    --border-color:   {{colors.outline_source.default.hex}};
     --border-opacity: 1;
 
     --card-fg-color: var(--variant-fg);
