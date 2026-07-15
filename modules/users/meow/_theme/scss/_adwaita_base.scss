@@ -192,7 +192,7 @@ button {
     border: none;
 
     &:hover {
-      // need to put in here for like specificity or something. it's always fucking specificity.
+      // need to put in here for like specificity or something
       --hover-bg: transparent;
     }
 
@@ -230,13 +230,12 @@ modelbutton {
 }
 
 splitbutton {
-  //@extend %gtk-btn;
+  @extend %gtk-btn;
 
   &:hover {
-    @include btn-flat;
-
     --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
-    --curr-bg: var(--secondary-hover-bg); // TODO clean up
+    // for some reason setting `--hover-bg` instead of `background-color` doesn't work.
+    // (it's probably specificity again. it's always fucking specificity.)
     background-color: var(--secondary-hover-bg);
 
     button:not(:hover) {
