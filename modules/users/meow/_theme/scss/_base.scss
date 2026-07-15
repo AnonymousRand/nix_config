@@ -51,7 +51,7 @@
   }
 }
 
-@mixin btn($is-flat: true, $is-fixed: true) {
+%btn-base {
   // `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
   // elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use the
   // tab's hover background color, not the tab's base/non-hovered background color)
@@ -59,9 +59,25 @@
   // on the other hand, `base` variables are fixed regardless of state, and they are mainly used
   // to derive the colors of different states
 
+  /* colors should generally be overriden by simply setting `--base-bg` and/or `--curr-bg` */
   /* default is flat fixed button */
-  /* colors should generally be overriden by simply setting `--curr-bg` */
 
+  --curr-fg: var(--base-fg);
+  --curr-bg: var(--base-bg);
+
+  background-color: var(--curr-bg);
+  color: var(--curr-fg);
+
+  &:hover {
+    --curr-bg: var(--hover-bg);
+  }
+
+  &:active {
+    --curr-bg: var(--active-bg);
+  }
+}
+
+@mixin _btn-colors($is-flat: true, $is-fixed: true) {
   @if $is-flat {
     --base-fg: var(--curr-fg, inherit);
     --base-bg: var(--curr-bg, inherit);
@@ -77,38 +93,25 @@
     --hover-bg:  hsl(from var(--base-bg) h s calc(l - 2.5%));
     --active-bg: hsl(from var(--base-bg) h s calc(l - 5%));
   }
-
-  --curr-fg: var(--base-fg);
-  --curr-bg: var(--base-bg);
-  background-color: var(--curr-bg);
-  color: var(--curr-fg);
-
-  &:hover {
-    --curr-bg: var(--hover-bg);
-  }
-
-  &:active {
-    --curr-bg: var(--active-bg);
-  }
 }
 
-// we want btn--flat, btn--raised, btn--flat-dynamic, btn--selected
-// flat is current flat behavior, flat-dynamic is dynamic like raised
-// make all flat under :selected be flat-dynamic instead
-
-%btn--flat {
-  @include btn(true, true);
+@mixin btn-flat {
+  @include _btn-colors(true, true);
 }
 
-%btn--raised {
-  @include btn(false, false);
+@mixin btn-flat-dynamic {
+  @include _btn-colors(true, false);
 }
 
-%btn--selected {
-  @extend %btn--raised;
+@mixin btn-raised {
+  @include _btn-colors(false, false);
 }
 
-@mixin btn--reveal-border {
+@mixin btn-selected {
+  @include _btn-colors(false, false);
+}
+
+@mixin btn-reveals-border {
   --base-border:  transparent;
   --hover-border: var(--border-color);
 

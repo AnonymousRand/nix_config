@@ -151,20 +151,22 @@
 /******************************************************************************/
 
 %gtk-btn {
+  @extend %btn-base;
+
   // these are built-in adwaita/GTK selectors
   &.flat,
   &:not(.raised) {
     &:not(:selected) {
-      @extend %btn--flat;
+      @include btn-flat;
     }
 
     &:selected {
-      @extend %btn--selected;
+      @include btn-selected;
     }
   }
 
   &.raised {
-    @extend %btn--raised;
+    @include btn-raised;
   }
 }
 
@@ -174,13 +176,13 @@
 
 card {
   &.activatable {
-    @extend %btn--flat;
+    @include btn-flat;
   }
 }
 
 button {
   @extend %gtk-btn;
-  @include btn--reveal-border;
+  @include btn-reveals-border;
 
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
@@ -189,16 +191,15 @@ button {
   windowcontrols > &.image-button {
     border: none;
 
-    // for some reason that i'm too tired to investigate, only this gets rid of the hover background
-    // (it's probably specificity. it's always fucking specificity.
-    // my hatred of css cannot be understated.)
     &:hover {
-      background-color: transparent;
+      // need to put in here for like specificity or something. it's always fucking specificity.
+      --hover-bg: transparent;
     }
 
     &:not(.flat) > image {
-      @extend %btn--raised;
-      @include btn--reveal-border;
+      @extend %btn-base;
+      @include btn-raised;
+      @include btn-reveals-border;
     }
   }
 
@@ -206,33 +207,36 @@ button {
   splitbutton.flat &,
   menubutton:not(.raised) &, // TODO can remove these two?
   splitbutton:not(.raised) & {
-    @extend %btn--flat;
+    @include btn-flat;
   }
 
   menubutton.raised &,
   splitbutton.raised & {
-    @extend %btn--raised;
+    @include btn-raised;
   }
 
   &.text-button {
-    @extend %btn--raised;
+    @include btn-raised;
   }
 }
 
 modelbutton {
   @extend %gtk-btn;
-  @include btn--reveal-border;
+  @include btn-reveals-border;
 
   popover.menu & {
-    @extend %btn--flat;
+    @include btn-flat;
   }
 }
 
 splitbutton {
+  //@extend %gtk-btn;
+
   &:hover {
-    @extend %btn--flat;
+    @include btn-flat;
+
     --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
-    --curr-bg: var(--secondary-hover-bg);
+    --curr-bg: var(--secondary-hover-bg); // TODO clean up
     background-color: var(--secondary-hover-bg);
 
     button:not(:hover) {
@@ -250,8 +254,9 @@ tab {
     // the same base background color as the hover color of non-dynamic flat buttons inside it,
     // and hovering these buttons also hovers the tab. thus, on hover, the tab's background color
     // is darker than the button's. which is weird.)
-    %btn--flat {
-      @include btn(true, false);
+    button.flat,
+    button:not(.raised) {
+      @include btn-flat-dynamic;
     }
   }
 }
