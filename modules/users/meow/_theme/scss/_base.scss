@@ -109,10 +109,14 @@
 }
 
 @mixin btn--reveal-border {
+  --base-border:  transparent;
+  --hover-border: var(--border-color);
+
+  --curr-border:  var(--base-border);
   border: 2px solid;
-  border-color: var(--curr-border, transparent);
+  border-color: var(--curr-border);
 
   &:hover {
-    --curr-border: var(--border-color);
+    --curr-border: var(--hover-border);
   }
 }

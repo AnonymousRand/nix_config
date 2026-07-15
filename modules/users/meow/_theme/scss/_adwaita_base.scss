@@ -179,14 +179,23 @@ card {
 }
 
 button {
+  @extend %gtk-btn;
+  @include btn--reveal-border;
+
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
-  :not(windowcontrols) > & {
-    @extend %gtk-btn;
-    @include btn--reveal-border;
-  }
+  // (i could just exclude `windowcontrols > button` from extending `%gtk-btn` and such, but that
+  // causes issues with how other selectors like for buttons inside tabs are expanded)
+  windowcontrols > &.image-button {
+    border: none;
 
-  windowcontrols > & {
+    // for some reason that i'm too tired to investigate, only this gets rid of the hover background
+    // (it's probably specificity. it's always fucking specificity.
+    // my hatred of css cannot be understated.)
+    &:hover {
+      background-color: transparent;
+    }
+
     &:not(.flat) > image {
       @extend %btn--raised;
       @include btn--reveal-border;
@@ -195,7 +204,7 @@ button {
 
   menubutton.flat &,
   splitbutton.flat &,
-  menubutton:not(.raised) &,
+  menubutton:not(.raised) &, // TODO can remove these two?
   splitbutton:not(.raised) & {
     @extend %btn--flat;
   }
@@ -220,12 +229,11 @@ modelbutton {
 }
 
 splitbutton {
-  @extend %gtk-btn;
-
-  --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
-
   &:hover {
-    --hover-bg: var(--secondary-hover-bg);
+    @extend %btn--flat;
+    --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
+    --curr-bg: var(--secondary-hover-bg);
+    background-color: var(--secondary-hover-bg);
 
     button:not(:hover) {
       --curr-bg: var(--secondary-hover-bg);
@@ -237,12 +245,12 @@ tab {
   tabbox:not(.single-tab) & {
     @extend %gtk-btn;
 
-    // this is so that flat buttons inside selected buttons adjust their hover/active colors to
-    // their selected parent's colors accordingly (e.g. currently, selected tabs have the same base
-    // background color as the hover color of non-dynamic flat buttons inside it, and hovering these
-    // buttons also hovers the selected tab. this means that on hover, the tab's background color
+    // this is so that flat buttons inside selected tabs adjust their hover/active colors to
+    // their selected parent's colors accordingly (otherwise, selected tabs currently have
+    // the same base background color as the hover color of non-dynamic flat buttons inside it,
+    // and hovering these buttons also hovers the tab. thus, on hover, the tab's background color
     // is darker than the button's. which is weird.)
-    button:is(%btn--flat) {
+    %btn--flat {
       @include btn(true, false);
     }
   }
