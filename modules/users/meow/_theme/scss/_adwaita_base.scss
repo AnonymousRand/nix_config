@@ -150,28 +150,12 @@
 /* scss features                                                              */
 /******************************************************************************/
 
-// logic for figuring out whether a flat button should be dynamic or not
-@mixin gen-flat-btn($parent) {
-  @at-root :not(:selected) #{$parent} {
-    @extend %btn--flat;
-  }
-
-  // this is so that flat buttons inside selected buttons adjust their hover/active colors to
-  // their selected parent's colors accordingly (e.g. currently, selected tabs have the same base
-  // background color as the hover color of non-dynamic flat buttons inside it, and hovering these
-  // buttons also hovers the selected tab. this means that on hover, the tab's background color
-  // is darker than the button's. which is weird.)
-  @at-root :selected #{$parent} {
-    @extend %btn--flat-dynamic;
-  }
-}
-
 %gtk-btn {
   // these are built-in adwaita/GTK selectors
   &.flat,
   &:not(.raised) {
     &:not(:selected) {
-      @include gen-flat-btn(&);
+      @extend %btn--flat;
     }
 
     &:selected {
@@ -195,30 +179,28 @@ card {
 }
 
 button {
-  @extend %gtk-btn;
-
-  $base-parent: &;
-
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
   :not(windowcontrols) > & {
+    @extend %gtk-btn;
     @include btn--reveal-border;
   }
 
-  @at-root menubutton.flat,
-  splitbutton.flat,
-  menubutton:not(.raised),
-  splitbutton:not(.raised) {
-    &:not(:selected) #{$base-parent} {
-      @include gen-flat-btn(&);
-    }
-
-    &:selected #{$base-parent} {
-      @extend %btn--selected;
+  windowcontrols > & {
+    &:not(.flat) > image {
+      @extend %btn--raised;
+      @include btn--reveal-border;
     }
   }
 
-  @at-root menubutton.raised &,
+  menubutton.flat &,
+  splitbutton.flat &,
+  menubutton:not(.raised) &,
+  splitbutton:not(.raised) & {
+    @extend %btn--flat;
+  }
+
+  menubutton.raised &,
   splitbutton.raised & {
     @extend %btn--raised;
   }
@@ -254,14 +236,14 @@ splitbutton {
 tab {
   tabbox:not(.single-tab) & {
     @extend %gtk-btn;
-  }
-}
 
-windowcontrols {
-  > button {
-    &:not(.flat) > image {
-      @extend %btn--raised;
-      @include btn--reveal-border;
+    // this is so that flat buttons inside selected buttons adjust their hover/active colors to
+    // their selected parent's colors accordingly (e.g. currently, selected tabs have the same base
+    // background color as the hover color of non-dynamic flat buttons inside it, and hovering these
+    // buttons also hovers the selected tab. this means that on hover, the tab's background color
+    // is darker than the button's. which is weird.)
+    button:is(%btn--flat) {
+      @include btn(true, false);
     }
   }
 }

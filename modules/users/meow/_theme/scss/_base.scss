@@ -100,10 +100,6 @@
   @include btn(true, true);
 }
 
-%btn--flat-dynamic {
-  @include btn(true, false);
-}
-
 %btn--raised {
   @include btn(false, false);
 }
