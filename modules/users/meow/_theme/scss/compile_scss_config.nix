@@ -39,6 +39,7 @@ in stdenv.mkDerivation {
   # wrap all Noctalia template syntax in the SCSS files in quotes so sass compiles without error
   # (i could render the templates before running sass with `noctalia theme`, but then
   # the resulting CSS won't see and be tracked by Noctalia's light/dark mode changes)
+  # (i would like to apologize for the sheer absurdity of this hack)
   preBuild = ''
     find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
   '';

@@ -19,14 +19,16 @@
   --default-bg:        {{colors.default_bg_source.default.hex}};
   --variant-fg:        {{colors.on_surface_variant.default.hex}};
   --variant-bg:        {{colors.surface_variant.default.hex}};
+  --accent-fg:         {{colors.on_tertiary.default.hex}};
+  --accent-bg:         {{colors.tertiary.default.hex}};
   --selection-fg:      {{colors.selection_fg_source.default.hex}};
   --selection-bg:      {{colors.selection_bg_source.default.hex}};
-  --error:             {{colors.error_source.default.hex}};
-  --accent-default-fg: {{colors.on_tertiary.default.hex}};
-  --accent-default-bg: {{colors.tertiary.default.hex}};
-  --hover-default-fg:  {{colors.on_hover.default.hex}};
-  --hover-default-bg:  {{colors.hover.default.hex}};
+  --hover-fg:          {{colors.on_hover.default.hex}};
+  --hover-bg:          {{colors.hover.default.hex}};
+
+  --border-color:      {{colors.outline_source.default.hex}};
   --disabled-opacity:  50%;
+  --error:             {{colors.error_source.default.hex}};
 
   --link:              {{colors.link_source.default.hex}};
   --link-hover:        {{colors.link_hover_source.default.hex}};
@@ -49,38 +51,72 @@
   }
 }
 
-%btn {
-  /* default is flat button */
-  background-color: var(--curr-bg, inherit);
-  color: var(--curr-fg, inherit);
+@mixin btn($is-flat: true, $is-fixed: true) {
+  // `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
+  // elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use the
+  // tab's hover background color, not the tab's base/non-hovered background color)
+
+  // on the other hand, `base` variables are fixed regardless of state, and they are mainly used
+  // to derive the colors of different states
+
+  /* default is flat fixed button */
+  /* colors should generally be overriden by simply setting `--curr-bg` */
+
+  @if $is-flat {
+    --base-fg: var(--curr-fg, inherit);
+    --base-bg: var(--curr-bg, inherit);
+  } @else {
+    --base-fg: var(--accent-fg);
+    --base-bg: var(--accent-bg);
+  }
+
+  @if $is-fixed {
+    --hover-bg:  var(--accent-bg);
+    --active-bg: hsl(from var(--hover-bg) h s calc(l - 2.5%));
+  } @else {
+    --hover-bg:  hsl(from var(--base-bg) h s calc(l - 2.5%));
+    --active-bg: hsl(from var(--base-bg) h s calc(l - 5%));
+  }
+
+  --curr-fg: var(--base-fg);
+  --curr-bg: var(--base-bg);
+  background-color: var(--curr-bg);
+  color: var(--curr-fg);
 
   &:hover {
-    background-color: var(--hover-bg);
-    color: var(--curr-fg);
+    --curr-bg: var(--hover-bg);
   }
 
   &:active {
-    background-color: var(--active-bg);
-    color: var(--curr-fg);
+    --curr-bg: var(--active-bg);
   }
 }
 
+// we want btn--flat, btn--raised, btn--flat-dynamic, btn--selected
+// flat is current flat behavior, flat-dynamic is dynamic like raised
+// make all flat under :selected be flat-dynamic instead
+
 %btn--flat {
-  @extend %btn;
-  --curr-fg:   var(--curr-fg, inherit);
-  --curr-bg:   var(--curr-bg, inherit);
-  --hover-bg:  var(--accent-default-bg);
-  --active-bg: hsl(from var(--hover-bg) h s calc(l - 2.5%));
+  @include btn(true, true);
+}
+
+%btn--flat-dynamic {
+  @include btn(true, false);
 }
 
 %btn--raised {
-  @extend %btn;
-  --curr-fg:   var(--accent-default-fg);
-  --curr-bg:   var(--accent-default-bg);
-  --hover-bg:  hsl(from var(--curr-bg) h s calc(l - 2.5%));
-  --active-bg: hsl(from var(--curr-bg) h s calc(l - 5%));
+  @include btn(true,false);
 }
 
 %btn--selected {
   @extend %btn--raised;
+}
+
+@mixin btn--reveal-border {
+  border: 2px solid;
+  border-color: var(--curr-border, transparent);
+
+  &:hover {
+    --curr-border: var(--border-color);
+  }
 }

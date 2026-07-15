@@ -1,7 +1,4 @@
-/* the primary goal of this file is to override most of the built-in GTK/libadwaita CSS variables 
- * which should hopefully make our life slightly easier :33 */
-
-@use "base";
+@use "base" as *;
 
 /******************************************************************************/
 /* variables                                                                  */
@@ -11,8 +8,12 @@
     /**************************************************************************/
     /* basics                                                                 */
 
-    --accent-color:    var(--accent-default-bg);
-    --accent-fg-color: var(--accent-default-fg);
+    // we override most of the built-in GTK/libadwaita CSS variables, which should
+    // hopefully make our life slightly easier :33
+
+
+    --accent-color:    var(--accent-bg);
+    --accent-fg-color: var(--accent-fg);
     --accent-bg-color: var(--accent-color);
     --accent-blue:     {{colors.terminal_normal_cyan.default.hex}};
     --accent-green:    {{colors.terminal_normal_green.default.hex}};
@@ -82,28 +83,27 @@
     /**************************************************************************/
     /* UI elements                                                            */
 
-    --active-toggle-fg-color: var(--accent-default-fg);
-    --active-toggle-bg-color: var(--accent-default-bg);
+    --active-toggle-fg-color: var(--accent-fg);
+    --active-toggle-bg-color: var(--accent-bg);
 
-    --border-color:   {{colors.outline_source.default.hex}};
     --border-opacity: 1;
 
     --card-fg-color: var(--variant-fg);
     --card-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--card-fg-color), var(--card-bg-color),
+    @include curr-colors(var(--card-fg-color), var(--card-bg-color),
       ".boxed-list", ".boxed-list-separate", ".card"
     );
 
     --dialog-fg-color: var(--variant-fg);
     --dialog-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
+    @include curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
       "dialog"
     );
 
     --headerbar-fg-color:       var(--variant-fg);
     --headerbar-bg-color:       var(--variant-bg);
     --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
-    @include base.curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
+    @include curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
       "actionbar", "headerbar:not(.flat)", "searchbar:not(.inline)", "tabbar:not(.inline)",
       // `AdwToolbarView` top and bottom bars
       "toolbarview menubar", "toolbarview viewswitcherbar", "toolbarview .toolbar"
@@ -111,13 +111,13 @@
 
     --overview-fg-color: var(--variant-fg);
     --overview-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--overview-fg-color), var(--overview-bg-color),
+    @include curr-colors(var(--overview-fg-color), var(--overview-bg-color),
       "taboverview"
     );
 
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--popover-fg-color), var(--popover-bg-color),
+    @include curr-colors(var(--popover-fg-color), var(--popover-bg-color),
       "popover > arrow", "popover > contents"
     );
 
@@ -129,19 +129,19 @@
     --sidebar-fg-color:       var(--variant-fg);
     --sidebar-bg-color:       var(--variant-bg);
     --sidebar-backdrop-color: var(--sidebar-bg-color);
-    @include base.curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
+    @include curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
       "navigation-split-view", "overlay-split-view", ".navigation-sidebar"
     );
 
     --view-fg-color: var(--variant-fg);
     --view-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--view-fg-color), var(--view-bg-color),
+    @include curr-colors(var(--view-fg-color), var(--view-bg-color),
       "textview.view"
     );
 
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
-    @include base.curr-colors(var(--window-fg-color), var(--window-bg-color),
+    @include curr-colors(var(--window-fg-color), var(--window-bg-color),
       "window.background"
     );
 }
@@ -150,26 +150,37 @@
 /* scss features                                                              */
 /******************************************************************************/
 
-%gtk-btn {
-  @extend %btn;
-
-  // these are built-in adwaita/GTK selectors
-  &.flat,
-  menubutton.flat &,
-  splitbutton.flat & {
+// logic for figuring out whether a flat button should be dynamic or not
+@mixin gen-btn--flat($parent) {
+  :not(:selected) #{$parent} {
     @extend %btn--flat;
   }
 
-  &.raised,
-  menubutton.raised &,
-  splitbutton.raised & {
-    @extend %btn--raised;
+  // this is so that flat buttons inside selected buttons adjust their hover/active colors to
+  // their selected parent's colors accordingly (e.g. currently, selected tabs have the same base
+  // background color as the hover color of non-dynamic flat buttons inside it, and hovering these
+  // buttons also hovers the selected tab which hence makes its background color darker than
+  // the button's. this is weird.)
+  :selected #{$parent} {
+    @extend %btn--flat-dynamic;
+  }
+}
+
+%gtk-btn {
+  // these are built-in adwaita/GTK selectors
+  &.flat,
+  &:not(.raised) {
+    &:not(:selected) {
+      @include gen-btn--flat(&);
+    }
+
+    &:selected {
+      @extend %btn--selected;
+    }
   }
 
-  &:selected,
-  menubutton:selected &,
-  splitbutton:selected & {
-    @extend %btn--selected;
+  &.raised {
+    @extend %btn--raised;
   }
 }
 
@@ -185,10 +196,41 @@ card {
 
 button {
   @extend %gtk-btn;
+
+  $base-parent: &;
+
+  // for `windowcontrols` buttons, we want the often round `image` child instead of the
+  // square `button` itself to be the one that highlights and stuff like a button
+  :not(windowcontrols) > & {
+    @include btn--reveal-border;
+  }
+
+  menubutton.flat,
+  splitbutton.flat,
+  menubutton:not(.raised),
+  splitbutton:not(.raised) {
+    &:not(:selected) #{$base-parent} {
+      @include gen-btn--flat(&);
+    }
+
+    &:selected #{$base-parent} {
+      @extend %btn--selected;
+    }
+  }
+
+  menubutton.raised &,
+  splitbutton.raised & {
+    @extend %btn--raised;
+  }
+
+  &.text-button {
+    @extend %btn--raised;
+  }
 }
 
 modelbutton {
   @extend %gtk-btn;
+  @include btn--reveal-border;
 
   popover.menu & {
     @extend %btn--flat;
@@ -198,31 +240,28 @@ modelbutton {
 splitbutton {
   @extend %gtk-btn;
 
+  --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
+
   &:hover {
+    --hover-bg: var(--secondary-hover-bg);
+
     button:not(:hover) {
-      background-color: hsl(from var(--hover-bg) h s calc(l + 3.5%));
-      color: var(--hover-fg);
+      --curr-bg: var(--secondary-hover-bg);
     }
   }
 }
 
 tab {
-  tabbox:not(.single-tab) & {
+  tabbox:not(.single-tab) tabboxchild & {
     @extend %gtk-btn;
   }
 }
 
 windowcontrols {
-  headerbar &,
-  tabbar & {
-    > button:not(.flat) {
-      // for `windowcontrols` buttons, we want the often round `image` child instead of the
-      // square `button` itself to be the one that highlights and stuff like a button
-      background: none;
-
-      > image {
-        @extend %btn--raised;
-      }
+  > button {
+    &:not(.flat) > image {
+      @extend %btn--raised;
+      @include btn--reveal-border;
     }
   }
 }
