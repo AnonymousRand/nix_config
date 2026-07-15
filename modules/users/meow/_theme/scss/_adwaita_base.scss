@@ -151,17 +151,17 @@
 /******************************************************************************/
 
 // logic for figuring out whether a flat button should be dynamic or not
-@mixin gen-btn--flat($parent) {
-  :not(:selected) #{$parent} {
+@mixin gen-flat-btn($parent) {
+  @at-root :not(:selected) #{$parent} {
     @extend %btn--flat;
   }
 
   // this is so that flat buttons inside selected buttons adjust their hover/active colors to
   // their selected parent's colors accordingly (e.g. currently, selected tabs have the same base
   // background color as the hover color of non-dynamic flat buttons inside it, and hovering these
-  // buttons also hovers the selected tab which hence makes its background color darker than
-  // the button's. this is weird.)
-  :selected #{$parent} {
+  // buttons also hovers the selected tab. this means that on hover, the tab's background color
+  // is darker than the button's. which is weird.)
+  @at-root :selected #{$parent} {
     @extend %btn--flat-dynamic;
   }
 }
@@ -171,7 +171,7 @@
   &.flat,
   &:not(.raised) {
     &:not(:selected) {
-      @include gen-btn--flat(&);
+      @include gen-flat-btn(&);
     }
 
     &:selected {
@@ -205,12 +205,12 @@ button {
     @include btn--reveal-border;
   }
 
-  menubutton.flat,
+  @at-root menubutton.flat,
   splitbutton.flat,
   menubutton:not(.raised),
   splitbutton:not(.raised) {
     &:not(:selected) #{$base-parent} {
-      @include gen-btn--flat(&);
+      @include gen-flat-btn(&);
     }
 
     &:selected #{$base-parent} {
@@ -218,7 +218,7 @@ button {
     }
   }
 
-  menubutton.raised &,
+  @at-root menubutton.raised &,
   splitbutton.raised & {
     @extend %btn--raised;
   }
@@ -252,7 +252,7 @@ splitbutton {
 }
 
 tab {
-  tabbox:not(.single-tab) tabboxchild & {
+  tabbox:not(.single-tab) & {
     @extend %gtk-btn;
   }
 }
