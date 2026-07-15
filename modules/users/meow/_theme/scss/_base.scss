@@ -50,11 +50,6 @@
 }
 
 %btn {
-  /* to use these variables, simply change ``--curr-bg`` within the selector scope,
-   * and the other variables will automatically populate (you can still change them, of course) */
-  --hover-bg:  hsl(from var(--curr-bg) h s calc(l - 2%));
-  --active-bg: hsl(from var(--curr-bg) h s calc(l - 4.5%));
-
   /* default is flat button */
   background-color: var(--curr-bg, inherit);
   color: var(--curr-fg, inherit);
@@ -72,18 +67,20 @@
 
 %btn--flat {
   @extend %btn;
-  --curr-fg: var(--curr-fg, inherit);
-  --curr-bg: var(--curr-bg, inherit);
+  --curr-fg:   var(--curr-fg, inherit);
+  --curr-bg:   var(--curr-bg, inherit);
+  --hover-bg:  var(--accent-default-bg);
+  --active-bg: hsl(from var(--hover-bg) h s calc(l - 2.5%));
 }
 
 %btn--raised {
   @extend %btn;
-  --curr-fg: var(--accent-default-fg);
-  --curr-bg: var(--accent-default-bg);
+  --curr-fg:   var(--accent-default-fg);
+  --curr-bg:   var(--accent-default-bg);
+  --hover-bg:  hsl(from var(--curr-bg) h s calc(l - 2.5%));
+  --active-bg: hsl(from var(--curr-bg) h s calc(l - 5%));
 }
 
 %btn--selected {
-  @extend %btn;
-  --curr-fg: var(--accent-default-fg);
-  --curr-bg: var(--accent-default-bg);
+  @extend %btn--raised;
 }

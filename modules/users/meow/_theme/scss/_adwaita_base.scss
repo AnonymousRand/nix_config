@@ -153,15 +153,22 @@
 %gtk-btn {
   @extend %btn;
 
-  &.flat {
+  // these are built-in adwaita/GTK selectors
+  &.flat,
+  menubutton.flat &,
+  splitbutton.flat & {
     @extend %btn--flat;
   }
 
-  &.raised {
+  &.raised,
+  menubutton.raised &,
+  splitbutton.raised & {
     @extend %btn--raised;
   }
 
-  &:selected {
+  &:selected,
+  menubutton:selected &,
+  splitbutton:selected & {
     @extend %btn--selected;
   }
 }
@@ -177,9 +184,7 @@ card {
 }
 
 button {
-  :not(windowcontrols) > & {
-    @extend %gtk-btn;
-  }
+  @extend %gtk-btn;
 }
 
 modelbutton {
@@ -191,9 +196,13 @@ modelbutton {
 }
 
 splitbutton {
+  @extend %gtk-btn;
+
   &:hover {
-    background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
-    color: var(--hover-fg);
+    button:not(:hover) {
+      background-color: hsl(from var(--hover-bg) h s calc(l + 3.5%));
+      color: var(--hover-fg);
+    }
   }
 }
 
@@ -207,6 +216,10 @@ windowcontrols {
   headerbar &,
   tabbar & {
     > button:not(.flat) {
+      // for `windowcontrols` buttons, we want the often round `image` child instead of the
+      // square `button` itself to be the one that highlights and stuff like a button
+      background: none;
+
       > image {
         @extend %btn--raised;
       }
