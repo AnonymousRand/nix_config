@@ -41,8 +41,8 @@
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
 @mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $selectors...) {
   @at-root #{$selectors} {
-    --curr-fg: $fg;
-    --curr-bg: $bg;
+    --curr-fg: #{$fg};
+    --curr-bg: #{$bg};
     
     background-color: var(--curr-bg);
     color: var(--curr-fg);
@@ -53,10 +53,11 @@
   /* to use these variables, simply change ``--curr-bg`` within the selector scope,
    * and the other variables will automatically populate (you can still change them, of course) */
   --hover-bg:  hsl(from var(--curr-bg) h s calc(l - 2%));
-  --active-bg: hsl(from var(--curr-bg) h s calc(l - 6.5%));
+  --active-bg: hsl(from var(--curr-bg) h s calc(l - 4.5%));
 
-  background-color: var(--curr-bg);
-  color: var(--curr-fg);
+  /* default is flat button */
+  background-color: var(--curr-bg, inherit);
+  color: var(--curr-fg, inherit);
 
   &:hover {
     background-color: var(--hover-bg);
@@ -67,28 +68,22 @@
     background-color: var(--active-bg);
     color: var(--curr-fg);
   }
-
-  @at-root &--flat {
-    --curr-fg: var(--curr-fg, inherit);
-    --curr-bg: var(--curr-bg, inherit);
-  }
-
-  @at-root &--raised {
-    --curr-fg: var(--accent-default-fg);
-    --curr-bg: var(--accent-default-bg);
-  }
-
-  @at-root &--selected {
-    --curr-fg: var(--accent-default-fg);
-    --curr-bg: var(--accent-default-bg);
-  }
 }
 
-/******************************************************************************/
-/* styles                                                                     */
-/******************************************************************************/
-
-button,
-tab {
+%btn--flat {
   @extend %btn;
+  --curr-fg: var(--curr-fg, inherit);
+  --curr-bg: var(--curr-bg, inherit);
+}
+
+%btn--raised {
+  @extend %btn;
+  --curr-fg: var(--accent-default-fg);
+  --curr-bg: var(--accent-default-bg);
+}
+
+%btn--selected {
+  @extend %btn;
+  --curr-fg: var(--accent-default-fg);
+  --curr-bg: var(--accent-default-bg);
 }

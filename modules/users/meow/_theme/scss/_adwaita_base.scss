@@ -106,7 +106,7 @@
     @include base.curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
       "actionbar", "headerbar:not(.flat)", "searchbar:not(.inline)", "tabbar:not(.inline)",
       // `AdwToolbarView` top and bottom bars
-      "menubar", "viewswitcherbar", ".toolbar"
+      "toolbarview menubar", "toolbarview viewswitcherbar", "toolbarview .toolbar"
     );
 
     --overview-fg-color: var(--variant-fg);
@@ -118,7 +118,7 @@
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
     @include base.curr-colors(var(--popover-fg-color), var(--popover-bg-color),
-      "popover"
+      "popover > arrow", "popover > contents"
     );
 
     /* now why the heck do *you* exist ;-; */
@@ -153,8 +153,7 @@
 %gtk-btn {
   @extend %btn;
 
-  &.flat,
-  &.close {
+  &.flat {
     @extend %btn--flat;
   }
 
@@ -171,23 +170,46 @@
 /* styles                                                                     */
 /******************************************************************************/
 
-card.activatable {
-  @extend %btn--flat;
+card {
+  &.activatable {
+    @extend %btn--flat;
+  }
 }
 
-button,
-menubutton,
-splitbutton,
-tab {
+button {
+  :not(windowcontrols) > & {
+    @extend %gtk-btn;
+  }
+}
+
+modelbutton {
   @extend %gtk-btn;
+
+  popover.menu & {
+    @extend %btn--flat;
+  }
 }
 
-splitbutton:hover {
-  background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
-  color: var(--hover-fg);
+splitbutton {
+  &:hover {
+    background-color: hsl(from var(--hover-bg) h s calc(l + 1.5%));
+    color: var(--hover-fg);
+  }
 }
 
-popover.menu modelbutton:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-fg);
+tab {
+  tabbox:not(.single-tab) & {
+    @extend %gtk-btn;
+  }
+}
+
+windowcontrols {
+  headerbar &,
+  tabbar & {
+    > button:not(.flat) {
+      > image {
+        @extend %btn--raised;
+      }
+    }
+  }
 }
