@@ -102,37 +102,53 @@ rec {
       color_dark  = pink_xlight;
     };
 
-    search_fg      = selection_fg;
-    search_bg      = selection_bg;
+    search_fg = selection_fg;
+    search_bg = selection_bg;
     search_curr_fg = search_fg;
     search_curr_bg = {
       color_light = green_light;
       color_dark  = green_light;
     };
 
-    error   = {
+    error = {
       color_light = red;
       color_dark  = red;
+    };
+    error_fg = {
+      color_light = white;
+      color_dark  = white;
     };
     warning = {
       color_light = orange_xxdeep;
       color_dark  = orange_deep;
     };
+    warning_fg = {
+      color_light = black;
+      color_dark  = black;
+    };
+    success = {
+      color_light = green_deep_xdark;
+      color_dark  = green;
+    };
+    success_fg = {
+      color_light = black;
+      color_dark  = black;
+    };
 
-    link         = {
+    link = {
       color_light = blue_xdeep;
       color_dark  = blue;
     };
-    link_hover   = {
+    link_hover = {
       color_light = blue_xxdeep;
       color_dark  = blue_light;
     };
 
-    class    = {
+    class = {
       color_light = orange_xdeep;
       color_dark  = orange;
     };
-    comment  = {
+    comment = {
       color_light = green_deep_xdark;
       color_dark  = green_light;
     };
@@ -144,7 +160,7 @@ rec {
       color_light = orange_xdeep;
       color_dark  = orange;
     };
-    keyword  = {
+    keyword = {
       color_light = pink_light;
       color_dark  = pink_xxlight;
     };
@@ -173,7 +189,7 @@ rec {
       mHover            = roles.hover_bg.color_light;   # hover state background
       mOnHover          = roles.hover_fg.color_light;   # text on hover surfaces
       mError            = roles.error.color_light;      # error color
-      mOnError          = vars.white;                   # text on error surfaces
+      mOnError          = roles.error_fg.color_light;   # text on error surfaces
 
       terminal = rec {
         background  = mSurface;
@@ -221,7 +237,7 @@ rec {
       mHover            = roles.hover_bg.color_dark;
       mOnHover          = roles.hover_fg.color_dark;
       mError            = roles.error.color_dark;
-      mOnError          = vars.white;
+      mOnError          = roles.error_fg.color_dark;
 
       terminal = rec {
         background  = mSurface;

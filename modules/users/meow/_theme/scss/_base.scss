@@ -40,8 +40,12 @@
 }
 
 /******************************************************************************/
-/* scss features                                                              */
+/* util                                                                       */
 /******************************************************************************/
+
+@function change-lightness($input-color, $amount-to-change) {
+  @return hsl(from #{$input-color} h s calc(l + $amount-to-change));
+}
 
 /* use this mixin for all elements that should have a `---curr-fg` and/or `---curr-bg`
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
@@ -73,6 +77,10 @@
   }
 }
 
+/******************************************************************************/
+/* scss features                                                              */
+/******************************************************************************/
+
 %btn-base {
   // `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
   // elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use the
@@ -82,10 +90,9 @@
   // to derive the colors of different states
 
   /* colors should generally be overriden by simply setting `---base-bg` and/or `---curr-bg` */
-  /* default is flat fixed button */
 
-  ---curr-fg: var(---base-fg);
-  ---curr-bg: var(---base-bg);
+  ---curr-fg: var(---base-fg, inherit);
+  ---curr-bg: var(---base-bg, inherit);
 
   background-color: var(---curr-bg);
   color: var(---curr-fg);
@@ -116,12 +123,12 @@
     ---hover-fg:  #{$fixed-hover-fg};
     ---hover-bg:  #{$fixed-hover-bg};
     ---active-fg: var(---hover-fg);
-    ---active-bg: hsl(from var(---hover-bg) h s calc(l - 2.5%));
+    ---active-bg: change-lightness(var(---hover-bg), -2.5%);
   } @else {
     ---hover-fg:  var(---base-fg);
-    ---hover-bg:  hsl(from var(---base-bg) h s calc(l - 2.5%));
+    ---hover-bg:  change-lightness(var(---base-bg), -2.5%);
     ---active-fg: var(---hover-fg);
-    ---active-bg: hsl(from var(---base-bg) h s calc(l - 5%));
+    ---active-bg: change-lightness(var(---base-bg), -5%);
   }
 }
 
@@ -154,9 +161,9 @@
   @include btn-raised($selected-base-fg, $selected-base-bg);
 }
 
-@mixin border-on-hover($border-width: 2px) {
+@mixin border-on-hover($hover-border-color: var(--border-color), $border-width: 2px) {
   ---base-border-color:  transparent;
-  ---hover-border-color: var(--border-color);
+  ---hover-border-color: #{$hover-border-color};
   ---border-width:       #{$border-width};
 
   ---curr-border-color: var(---base-border-color);

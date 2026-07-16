@@ -28,19 +28,19 @@
 
     --destructive-color:    {{colors.error_source.default.hex}};
     --destructive-fg-color: {{colors.on_error.default.hex}};
-    --destructive-bg-color: var(--destructive-color);
+    --destructive-bg-color: base.change-lightness(var(--destructive-color), 10%);
 
     --error-color:    {{colors.error_source.default.hex}};
-    --error-fg-color: {{colors.on_error.default.hex}};
-    --error-bg-color: var(--error-color);
-
-    --success-color:    {{colors.terminal_normal_green.default.hex}};
-    --success-fg-color: {{colors.terminal_normal_green.default.hex}};
-    --success-bg-color: var(--success-color);
+    --error-fg-color: {{colors.error_fg_source.default.hex}};
+    --error-bg-color: base.change-lightness(var(--error-color), 10%);
 
     --warning-color:    {{colors.warning_source.default.hex}};
-    --warning-fg-color: var(--default-fg);
-    --warning-bg-color: var(--warning-color);
+    --warning-fg-color: {{colors.warning_fg_source.default.hex}};
+    --warning-bg-color: base.change-lightness(var(--warning-color), 10%);
+
+    --success-color:    {{colors.success_source.default.hex}};
+    --success-fg-color: {{colors.success_fg_source.default.hex}};
+    --success-bg-color: base.change-lightness(var(--success-color), 10%);
 
     /**************************************************************************/
     /* GNOME palette                                                          */
@@ -187,24 +187,36 @@ $selected-surfs: [
   @extend %btn-base;
 
   // these are built-in adwaita/GTK selectors
-  &:not(.raised) {
-    &:not(:selected) {
-      @include btn-flat;
+  &:not(.suggested-action):not(.destructive-action) {
+    &:not(.raised) {
+      &:not(:selected) {
+        @include btn-flat;
+      }
+
+      &:selected {
+        @include base.btn-selected;
+      }
     }
 
-    &:selected {
-      @include base.btn-selected;
+    &.raised,
+    // specificity hack because SPECIFICITY IS STUPID I HATE IT AAAAAAAAAAAAAA i am losing my marbles
+    &.text-button.text-button {
+        @include base.btn-raised;
+      }
+    }
+
+    &.suggested-action {
+      @include base.btn-raised(var(--accent-fg), var(--accent-bg));
+    }
+
+    &.destructive-action {
+      @include base.btn-raised(var(--destructive-fg-color), var(--destructive-bg-color));
     }
   }
 
-  &.raised {
-    @include base.btn-raised;
-  }
-}
-
-/******************************************************************************/
-/* styles                                                                     */
-/******************************************************************************/
+  /******************************************************************************/
+  /* styles                                                                     */
+  /******************************************************************************/
 
 button {
   @extend %gtk-btn;
@@ -238,10 +250,6 @@ button {
   splitbutton.raised & {
     @include base.btn-raised;
   }
-
-  &.text-button {
-    @include base.btn-raised;
-  }
 }
 
 card {
@@ -259,9 +267,10 @@ modelbutton {
     @include btn-flat;
 
     // for some godawful stupid fucking piece of shit reason, hovering one of these registers as
-    // fucking `:selected`
+    // fucking `:selected`. and this stupid fucking shit slop of a hack is the only way i could
+    // find to override it back without depending on knowing exactly what `btn-selected` does.
     &:selected {
-      ---curr-bg: var(---hover-bg);
+      @include btn-flat;
     }
   }
 }
