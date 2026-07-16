@@ -39,7 +39,7 @@ rec {
     pink_xlight      = "#ffadd6";
     pink_xxlight     = "#ffcbe6";
     pink_xxxlight    = "#ffdbed";
-    pink_xxxxlight   = "#ffebf5";
+    pink_xxxxlight   = "#ffe8f4";
 
     red              = "#ff0000";
   };

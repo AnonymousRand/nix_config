@@ -1,4 +1,4 @@
-@use "base" as *;
+@use "base";
 
 /******************************************************************************/
 /* variables                                                                  */
@@ -89,20 +89,20 @@
 
     --card-fg-color: var(--variant-fg);
     --card-bg-color: var(--variant-bg);
-    @include curr-colors(var(--card-fg-color), var(--card-bg-color),
+    @include base.curr-colors(var(--card-fg-color), var(--card-bg-color),
       ".boxed-list", ".boxed-list-separate", ".card"
     );
 
     --dialog-fg-color: var(--variant-fg);
     --dialog-bg-color: var(--variant-bg);
-    @include curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
+    @include base.curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
       "dialog"
     );
 
     --headerbar-fg-color:       var(--variant-fg);
     --headerbar-bg-color:       var(--variant-bg);
     --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
-    @include curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
+    @include base.curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
       "actionbar", "headerbar:not(.flat)", "searchbar:not(.inline)", "tabbar:not(.inline)",
       // `AdwToolbarView` top and bottom bars
       "toolbarview menubar", "toolbarview viewswitcherbar", "toolbarview .toolbar"
@@ -110,37 +110,37 @@
 
     --overview-fg-color: var(--variant-fg);
     --overview-bg-color: var(--variant-bg);
-    @include curr-colors(var(--overview-fg-color), var(--overview-bg-color),
+    @include base.curr-colors(var(--overview-fg-color), var(--overview-bg-color),
       "taboverview"
     );
 
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
-    @include curr-colors(var(--popover-fg-color), var(--popover-bg-color),
+    @include base.curr-colors(var(--popover-fg-color), var(--popover-bg-color),
       "popover > arrow", "popover > contents"
     );
 
     /* now why the heck do *you* exist ;-; */
     --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
-    --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.5%));
+    --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.25%));
     --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
 
     --sidebar-fg-color:       var(--variant-fg);
     --sidebar-bg-color:       var(--variant-bg);
     --sidebar-backdrop-color: var(--sidebar-bg-color);
-    @include curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
+    @include base.curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
       "navigation-split-view", "overlay-split-view", ".navigation-sidebar"
     );
 
     --view-fg-color: var(--variant-fg);
     --view-bg-color: var(--variant-bg);
-    @include curr-colors(var(--view-fg-color), var(--view-bg-color),
+    @include base.curr-colors(var(--view-fg-color), var(--view-bg-color),
       "textview.view"
     );
 
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
-    @include curr-colors(var(--window-fg-color), var(--window-bg-color),
+    @include base.curr-colors(var(--window-fg-color), var(--window-bg-color),
       "window.background"
     );
 }
@@ -149,29 +149,43 @@
 /* scss features                                                              */
 /******************************************************************************/
 
+$selected-surfs: [
+  ":not(tab):selected",
+  "tabbox:not(.single-tab) tab:selected"
+];
+
+@mixin btn-flat($is-variant: false) {
+  @if not $is-variant {
+    @include base.btn-flat($should-be-dynamic-sels: $selected-surfs);
+  } @else {
+    @include base.btn-flat(var(--hover-variant-fg), var(--hover-variant-bg), $selected-surfs);
+  }
+}
+
 %gtk-btn {
   @extend %btn-base;
 
   // these are built-in adwaita/GTK selectors
   &:not(.raised) {
     &:not(:selected) {
-      @include btn-flat($should-be-dynamic-sels: [":selected"]);
+      @include btn-flat;
 
       // on these lighter/variant surfaces, use lighter hover colors too to help differentiate
       // hovered flat buttons and raised/selected buttons
       headerbar &,
+      popover &,
       tabbar & {
-        @include btn-flat(var(--hover-variant-fg), var(--hover-variant-bg), [":selected"]);
+        @include btn-flat(true);
       }
     }
 
     &:selected {
-      @include btn-selected;
+      @include base.btn-selected;
     }
   }
 
   &.raised {
-    @include btn-raised;
+    @include base.btn-raised;
   }
 }
 
@@ -181,7 +195,7 @@
 
 button {
   @extend %gtk-btn;
-  @include border-on-hover;
+  @include base.border-on-hover;
 
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
@@ -197,39 +211,45 @@ button {
 
     &:not(.flat) > image {
       @extend %btn-base;
-      @include btn-raised;
-      @include border-on-hover;
+      @include base.btn-raised;
+      @include base.border-on-hover;
     }
   }
 
   menubutton:not(.raised) &,
   splitbutton:not(.raised) & {
-    @include btn-flat($should-be-dynamic-sels: [":selected"]);
+    @include btn-flat;
   }
 
   menubutton.raised &,
   splitbutton.raised & {
-    @include btn-raised;
+    @include base.btn-raised;
   }
 
   &.text-button {
-    @include btn-raised;
+    @include base.btn-raised;
   }
 }
 
 card {
   &.activatable {
     @extend %btn-base;
-    @include btn-flat;
+    @include base.btn-flat;
   }
 }
 
 modelbutton {
   @extend %gtk-btn;
-  @include border-on-hover;
+  @include base.border-on-hover;
 
   popover.menu & {
-    @include btn-flat;
+    @include btn-flat(true);
+
+    // for some godawful stupid fucking piece of shit reason, hovering one of these registers as
+    // fucking `:selected`
+    &:selected {
+      @include btn-flat(true);
+    }
   }
 }
 
@@ -237,7 +257,7 @@ splitbutton {
   @extend %gtk-btn;
 
   &:hover {
-    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1%));
+    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
     // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
     // (it's probably specificity again. it's always fucking specificity.)
     background-color: var(---secondary-hover-bg);
@@ -251,10 +271,10 @@ splitbutton {
 tab {
   tabbox:not(.single-tab) & {
     @extend %btn-base;
-    @include btn-flat(var(--hover-variant-fg), var(--hover-variant-bg));
+    @include base.btn-flat(var(--hover-variant-fg), var(--hover-variant-bg));
 
     &:selected {
-      @include btn-selected;
+      @include base.btn-selected;
     }
   }
 }
