@@ -23,8 +23,10 @@
   --accent-bg:         {{colors.tertiary.default.hex}};
   --selection-fg:      {{colors.selection_fg_source.default.hex}};
   --selection-bg:      {{colors.selection_bg_source.default.hex}};
-  --hover-fg:          {{colors.on_hover.default.hex}};
-  --hover-bg:          {{colors.hover.default.hex}};
+  --hover-fg:          {{colors.hover_fg_source.default.hex}};
+  --hover-bg:          {{colors.hover_bg_source.default.hex}};
+  --hover-variant-fg:  {{colors.hover_variant_fg_source.default.hex}};
+  --hover-variant-bg:  {{colors.hover_variant_bg_source.default.hex}};
 
   --border-color:      {{colors.outline_source.default.hex}};
   --disabled-opacity:  50%;
@@ -39,15 +41,15 @@
 /* scss features                                                              */
 /******************************************************************************/
 
-/* use this mixin for all elements that should have a `--curr-fg` and/or `--curr-bg`
+/* use this mixin for all elements that should have a `---curr-fg` and/or `---curr-bg`
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
 @mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $selectors...) {
   @at-root #{$selectors} {
-    --curr-fg: #{$fg};
-    --curr-bg: #{$bg};
+    ---curr-fg: #{$fg};
+    ---curr-bg: #{$bg};
     
-    background-color: var(--curr-bg);
-    color: var(--curr-fg);
+    background-color: var(---curr-bg);
+    color: var(---curr-fg);
   }
 }
 
@@ -59,67 +61,86 @@
   // on the other hand, `base` variables are fixed regardless of state, and they are mainly used
   // to derive the colors of different states
 
-  /* colors should generally be overriden by simply setting `--base-bg` and/or `--curr-bg` */
+  /* colors should generally be overriden by simply setting `---base-bg` and/or `---curr-bg` */
   /* default is flat fixed button */
 
-  --curr-fg: var(--base-fg);
-  --curr-bg: var(--base-bg);
+  ---curr-fg: var(---base-fg);
+  ---curr-bg: var(---base-bg);
 
-  background-color: var(--curr-bg);
-  color: var(--curr-fg);
+  background-color: var(---curr-bg);
+  color: var(---curr-fg);
 
   &:hover {
-    --curr-bg: var(--hover-bg);
+    ---curr-fg: var(---hover-fg);
+    ---curr-bg: var(---hover-bg);
   }
 
   &:active {
-    --curr-bg: var(--active-bg);
+    ---curr-fg: var(---active-fg);
+    ---curr-bg: var(---active-bg);
   }
 }
 
-@mixin _btn-colors($is-flat: true, $is-fixed: true) {
-  @if $is-flat {
-    --base-fg: var(--curr-fg, inherit);
-    --base-bg: var(--curr-bg, inherit);
+@mixin _btn-base-colors($is-raised, $raised-base-fg: null, $raised-base-bg: null) {
+  @if $is-raised {
+    ---base-fg: #{$raised-base-fg};
+    ---base-bg: #{$raised-base-bg};
   } @else {
-    --base-fg: var(--accent-fg);
-    --base-bg: var(--accent-bg);
+    ---base-fg: var(---curr-fg, inherit);
+    ---base-bg: var(---curr-bg, inherit);
   }
+}
 
+@mixin _btn-state-colors($is-fixed, $fixed-hover-fg: null, $fixed-hover-bg: null) {
   @if $is-fixed {
-    --hover-bg:  var(--accent-bg);
-    --active-bg: hsl(from var(--hover-bg) h s calc(l - 2.5%));
+    ---hover-fg:  #{$fixed-hover-fg};
+    ---hover-bg:  #{$fixed-hover-bg};
+    ---active-fg: var(---hover-fg);
+    ---active-bg: hsl(from var(---hover-bg) h s calc(l - 2.5%));
   } @else {
-    --hover-bg:  hsl(from var(--base-bg) h s calc(l - 2.5%));
-    --active-bg: hsl(from var(--base-bg) h s calc(l - 5%));
+    ---hover-fg:  var(---base-fg);
+    ---hover-bg:  hsl(from var(---base-bg) h s calc(l - 2.5%));
+    ---active-fg: var(---hover-fg);
+    ---active-bg: hsl(from var(---base-bg) h s calc(l - 5%));
   }
 }
 
-@mixin btn-flat {
-  @include _btn-colors(true, true);
+@mixin btn-flat(
+  $fixed-hover-fg: var(--hover-fg), $fixed-hover-bg: var(--hover-bg), $should-be-dynamic-sels: [] 
+) {
+  @include _btn-base-colors(false);
+  @include _btn-state-colors(true, $fixed-hover-fg, $fixed-hover-bg);
+
+  // this is so that e.g. flat buttons inside selected items adjust their hover/active colors
+  // to their selected parent's colors accordingly (otherwise, selected items may have darker
+  // background color than the hover color of non-dynamic flat buttons inside it, and hovering
+  // these buttons also hovers the selected parent item. thus, on hover, the parent's background
+  // color is darker than the button's, which is weird.)
+  @each $sel in $should-be-dynamic-sels {
+    @at-root #{$sel} & {
+      @include _btn-state-colors(false);
+    }
+  }
 }
 
-@mixin btn-flat-dynamic {
-  @include _btn-colors(true, false);
+@mixin btn-raised($raised-base-fg: var(--accent-fg), $raised-base-bg: var(--accent-bg)) {
+  @include _btn-base-colors(true, $raised-base-fg, $raised-base-bg);
+  @include _btn-state-colors(false);
 }
 
-@mixin btn-raised {
-  @include _btn-colors(false, false);
+@mixin btn-selected($selected-base-fg: var(--accent-fg), $selected-base-bg: var(--accent-bg)) {
+  @include btn-raised($selected-base-fg, $selected-base-bg);
 }
 
-@mixin btn-selected {
-  @include _btn-colors(false, false);
-}
+@mixin border-on-hover {
+  ---base-border:  transparent;
+  ---hover-border: var(--border-color);
 
-@mixin btn-reveals-border {
-  --base-border:  transparent;
-  --hover-border: var(--border-color);
-
-  --curr-border:  var(--base-border);
+  ---curr-border:  var(---base-border);
   border: 2px solid;
-  border-color: var(--curr-border);
+  border-color: var(---curr-border);
 
   &:hover {
-    --curr-border: var(--hover-border);
+    ---curr-border: var(---hover-border);
   }
 }

@@ -11,7 +11,6 @@
     // we override most of the built-in GTK/libadwaita CSS variables, which should
     // hopefully make our life slightly easier :33
 
-
     --accent-color:    var(--accent-bg);
     --accent-fg-color: var(--accent-fg);
     --accent-bg-color: var(--accent-color);
@@ -122,7 +121,7 @@
     );
 
     /* now why the heck do *you* exist ;-; */
-    --secondary-sidebar-fg-color:       var(--secondary-sidebar-fg-color);
+    --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
     --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.5%));
     --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
 
@@ -154,10 +153,9 @@
   @extend %btn-base;
 
   // these are built-in adwaita/GTK selectors
-  &.flat,
   &:not(.raised) {
-    &:not(:selected) {
-      @include btn-flat;
+    &:not(:selected) { // TODO can get rid of this :not?
+      @include btn-flat($should-be-dynamic-sels: [":selected"]);
     }
 
     &:selected {
@@ -174,15 +172,9 @@
 /* styles                                                                     */
 /******************************************************************************/
 
-card {
-  &.activatable {
-    @include btn-flat;
-  }
-}
-
 button {
   @extend %gtk-btn;
-  @include btn-reveals-border;
+  @include border-on-hover;
 
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
@@ -193,21 +185,19 @@ button {
 
     &:hover {
       // need to put in here for like specificity or something
-      --hover-bg: transparent;
+      ---hover-bg: transparent;
     }
 
     &:not(.flat) > image {
       @extend %btn-base;
       @include btn-raised;
-      @include btn-reveals-border;
+      @include border-on-hover;
     }
   }
 
-  menubutton.flat &,
-  splitbutton.flat &,
-  menubutton:not(.raised) &, // TODO can remove these two?
+  menubutton:not(.raised) &,
   splitbutton:not(.raised) & {
-    @include btn-flat;
+    @include btn-flat($should-be-dynamic-sels: [":selected"]);
   }
 
   menubutton.raised &,
@@ -220,9 +210,16 @@ button {
   }
 }
 
+card {
+  &.activatable {
+    @extend %btn-base;
+    @include btn-flat;
+  }
+}
+
 modelbutton {
   @extend %gtk-btn;
-  @include btn-reveals-border;
+  @include border-on-hover;
 
   popover.menu & {
     @include btn-flat;
@@ -233,29 +230,24 @@ splitbutton {
   @extend %gtk-btn;
 
   &:hover {
-    --secondary-hover-bg: hsl(from var(--hover-bg) h s calc(l + 3.5%));
-    // for some reason setting `--hover-bg` instead of `background-color` doesn't work.
+    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 2%));
+    // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
     // (it's probably specificity again. it's always fucking specificity.)
-    background-color: var(--secondary-hover-bg);
+    background-color: var(---secondary-hover-bg);
 
     button:not(:hover) {
-      --curr-bg: var(--secondary-hover-bg);
+      ---curr-bg: var(---secondary-hover-bg);
     }
   }
 }
 
 tab {
   tabbox:not(.single-tab) & {
-    @extend %gtk-btn;
+    @extend %btn-base;
+    @include btn-flat(var(--hover-variant-fg), var(--hover-variant-bg));
 
-    // this is so that flat buttons inside selected tabs adjust their hover/active colors to
-    // their selected parent's colors accordingly (otherwise, selected tabs currently have
-    // the same base background color as the hover color of non-dynamic flat buttons inside it,
-    // and hovering these buttons also hovers the tab. thus, on hover, the tab's background color
-    // is darker than the button's. which is weird.)
-    button.flat,
-    button:not(.raised) {
-      @include btn-flat-dynamic;
+    &:selected {
+      @include btn-selected;
     }
   }
 }

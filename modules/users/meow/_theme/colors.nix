@@ -38,7 +38,8 @@ rec {
     pink_light       = "#ff8cc6";
     pink_xlight      = "#ffadd6";
     pink_xxlight     = "#ffcbe6";
-    pink_xxxlight    = "#ffdeee";
+    pink_xxxlight    = "#ffdbed";
+    pink_xxxxlight   = "#ffebf5";
 
     red              = "#ff0000";
   };
@@ -61,6 +62,14 @@ rec {
       color_dark  = gray;
     };
 
+    variant_fg = {
+      color_light = gray;
+      color_dark  = gray_xlight;
+    };
+    variant_bg = {
+      color_light = "#fffafc";
+      color_dark  = gray_xxdark;
+    };
 
     selection_fg = {
       color_light = default_fg.color_light;
@@ -71,12 +80,27 @@ rec {
       color_dark  = pink_xxlight;
     };
 
+    hover_fg = {
+      color_light = default_fg.color_light;
+      color_dark  = gray_xdark;
+    };
+    hover_bg = {
+      color_light = pink_xxxlight;
+      color_dark  = pink_xxlight;
+    };
+    hover_variant_fg = {
+      color_light = variant_fg.color_light;
+      color_dark  = gray_dark;
+    };
+    hover_variant_bg = {
+      color_light = pink_xxxxlight;
+      color_dark  = pink_xxxlight;
+    };
 
     outline = {
       color_light = pink_xlight;
       color_dark  = pink_xlight;
     };
-
 
     search_fg      = selection_fg;
     search_bg      = selection_bg;
@@ -85,7 +109,6 @@ rec {
       color_light = green_light;
       color_dark  = green_light;
     };
-
 
     error   = {
       color_light = red;
@@ -96,7 +119,6 @@ rec {
       color_dark  = orange_deep;
     };
 
-
     link         = {
       color_light = blue_xdeep;
       color_dark  = blue;
@@ -105,7 +127,6 @@ rec {
       color_light = blue_xxdeep;
       color_dark  = blue_light;
     };
-
 
     class    = {
       color_light = orange_xdeep;
@@ -139,8 +160,8 @@ rec {
     light = rec {
       mSurface          = roles.default_bg.color_light; # main background color
       mOnSurface        = roles.default_fg.color_light; # main foreground color
-      mSurfaceVariant   = "#fffafc";                    # variant background color (cards, panels)
-      mOnSurfaceVariant = vars.gray;                    # variant foreground color
+      mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
+      mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
       mPrimary          = vars.pink_light;              # primary accent (buttons, links, highlights)
       mOnPrimary        = vars.gray_xxdark;             # text on primary surfaces
       mSecondary        = vars.pink_xxlight;            # secondary accent
@@ -149,8 +170,8 @@ rec {
       mOnTertiary       = vars.gray_dark;               # text on tertiary surfaces
       mOutline          = roles.outline.color_light;    # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
-      mHover            = mTertiary;                    # hover state background
-      mOnHover          = mOnTertiary;                  # text on hover surfaces
+      mHover            = roles.hover_bg.color_light;   # hover state background
+      mOnHover          = roles.hover_fg.color_light;   # text on hover surfaces
       mError            = roles.error.color_light;      # error color
       mOnError          = vars.white;                   # text on error surfaces
 
@@ -187,8 +208,8 @@ rec {
     dark = rec {
       mSurface          = roles.default_bg.color_dark;
       mOnSurface        = roles.default_fg.color_dark;
-      mSurfaceVariant   = vars.gray_xxdark;
-      mOnSurfaceVariant = vars.gray_xlight;
+      mSurfaceVariant   = roles.variant_bg.color_dark;
+      mOnSurfaceVariant = roles.variant_fg.color_dark;
       mPrimary          = vars.pink_light;
       mOnPrimary        = vars.gray_xxdark;
       mSecondary        = vars.pink_xlight;
@@ -197,8 +218,8 @@ rec {
       mOnTertiary       = vars.gray_xdark;
       mOutline          = roles.outline.color_dark;
       mShadow           = vars.gray_xdark;
-      mHover            = mTertiary;
-      mOnHover          = mOnTertiary;
+      mHover            = roles.hover_bg.color_dark;
+      mOnHover          = roles.hover_fg.color_dark;
       mError            = roles.error.color_dark;
       mOnError          = vars.white;
 
