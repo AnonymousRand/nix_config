@@ -49,7 +49,7 @@
 
 /* use this mixin for all elements that should have a `---curr-fg` and/or `---curr-bg`
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
-@mixin add-curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $sels...) {
+@mixin set-curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $sels...) {
   @if list.length($sels) > 0 {
     @at-root #{$sels} {
       ---curr-fg: #{$fg};
@@ -63,15 +63,17 @@
 
 /* use this mixin for all elements that should have a `---hover-fg` and/or `---hover-bg`
  * CSS variable for things like flat buttons to inherit */
-@mixin set-hover-colors($color-type, $sels...) {
+@mixin set-surf-hover-colors($color-type, $sels...) {
   @if list.length($sels) > 0 {
     @at-root #{$sels} {
       @if $color-type == "default" {
-        ---hover-fg: var(--hover-fg);
-        ---hover-bg: var(--hover-bg);
+        ---surf-hover-fg: var(--hover-fg);
+        ---surf-hover-bg: var(--hover-bg);
       } @else if $color-type == "variant" {
-        ---hover-fg: var(--hover-variant-fg);
-        ---hover-bg: var(--hover-variant-bg);
+        ---surf-hover-fg: var(--hover-variant-fg);
+        ---surf-hover-bg: var(--hover-variant-bg);
+      } @else {
+        @error "base.set-surf-hover-colors(): unrecognized $color-type: #{$color-type}";
       }
     }
   }
@@ -86,11 +88,10 @@
 //   typically parameterized by CSS variables.
 // - mixins set these CSS variables (depending on arguments, etc.), and hence define or generate
 //   different "variants" of the base feature.
-// - additionally, placeholders/mixins beginning with an underscore are meant to be "private" members
-//   and shouldn't need to be directly accessed by actual styles.
 //
 // thus, to "extend" such a feature, you would `@extend` the base placeholder and then `@include`
-// a choice of mixin.
+// a choice of mixin. one can almost think of extending the base placeholder as a toggle for whether
+// the feature is active or not.
 
 /******************************************************************************/
 /* `btn`                                                                      */
@@ -102,7 +103,8 @@
   // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
   //   of different states.
 
-  /* colors should generally be overriden by just setting `---base-bg` and/or `---curr-bg` */
+  /* colors should generally be overriden by just setting `---curr-bg` and/or `---base-bg`
+   * (unless, for example, some other style completely overrode `background-color`) */
 
   ---curr-fg: var(---base-fg, inherit);
   ---curr-bg: var(---base-bg, inherit);
@@ -123,9 +125,15 @@
 
 @mixin _btn-base-colors($is-raised, $raised-base-fg: null, $raised-base-bg: null) {
   @if $is-raised {
+    @if not $raised-base-fg or not $raised-base-bg {
+      @error "base._btn-base-color(): $is-raised is true, but $raised-base-fg or $raised-base-bg" +
+             "have not been provided";
+    }
     ---base-fg: #{$raised-base-fg};
     ---base-bg: #{$raised-base-bg};
   } @else {
+    // this will use the `--curr-fg` of the nearest parent surface (as set by `set-curr-colors()`)
+    // or `%btn` (e.g. the "x" button on selected tabs), so that it is truly flat on that surface
     ---base-fg: var(---curr-fg, inherit);
     ---base-bg: var(---curr-bg, inherit);
   }
@@ -133,6 +141,10 @@
 
 @mixin _btn-state-colors($is-fixed, $fixed-hover-fg: null, $fixed-hover-bg: null) {
   @if $is-fixed {
+    @if not $fixed-hover-fg or not $fixed-hover-bg {
+      @error "base._btn-state-color(): $is-fixed is true, but $fixed-hover-fg or $fixed-hover-bg" +
+             "have not been provided";
+    }
     ---hover-fg:  #{$fixed-hover-fg};
     ---hover-bg:  #{$fixed-hover-bg};
     ---active-fg: var(---hover-fg);
@@ -146,8 +158,8 @@
 }
 
 @mixin btn-flat(
-  $fixed-hover-fg: var(---hover-fg, var(--hover-fg)),
-  $fixed-hover-bg: var(---hover-bg, var(--hover-bg)),
+  $fixed-hover-fg: var(---surf-hover-fg, var(--hover-fg)),
+  $fixed-hover-bg: var(---surf-hover-bg, var(--hover-bg)),
   $should-be-dynamic-sels: [] 
 ) {
   @include _btn-base-colors(false);

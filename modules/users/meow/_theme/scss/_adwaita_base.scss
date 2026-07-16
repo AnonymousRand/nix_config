@@ -95,15 +95,15 @@
       ".card";
     --card-fg-color: var(--variant-fg);
     --card-bg-color: var(--variant-bg);
-    @include base.add-curr-colors(var(--card-fg-color), var(--card-bg-color), $card-sels...);
-    @include base.set-hover-colors("variant", $card-sels...);
+    @include base.set-curr-colors(var(--card-fg-color), var(--card-bg-color), $card-sels...);
+    @include base.set-surf-hover-colors("variant", $card-sels...);
 
     $dialog-sels:
       "dialog";
     --dialog-fg-color: var(--variant-fg);
     --dialog-bg-color: var(--variant-bg);
-    @include base.add-curr-colors(var(--dialog-fg-color), var(--dialog-bg-color), $dialog-sels...);
-    @include base.set-hover-colors("variant", $dialog-sels...);
+    @include base.set-curr-colors(var(--dialog-fg-color), var(--dialog-bg-color), $dialog-sels...);
+    @include base.set-surf-hover-colors("variant", $dialog-sels...);
 
     $headerbar-sels:
       "actionbar",
@@ -117,33 +117,33 @@
     --headerbar-fg-color:       var(--variant-fg);
     --headerbar-bg-color:       var(--variant-bg);
     --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
-    @include base.add-curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color), $headerbar-sels...);
-    @include base.set-hover-colors("variant", $headerbar-sels...);
+    @include base.set-curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color), $headerbar-sels...);
+    @include base.set-surf-hover-colors("variant", $headerbar-sels...);
 
     $overview-sels:
       "taboverview";
     --overview-fg-color: var(--variant-fg);
     --overview-bg-color: var(--variant-bg);
-    @include base.add-curr-colors(var(--overview-fg-color), var(--overview-bg-color), $overview-sels...);
-    @include base.set-hover-colors("variant", $overview-sels...);
+    @include base.set-curr-colors(var(--overview-fg-color), var(--overview-bg-color), $overview-sels...);
+    @include base.set-surf-hover-colors("variant", $overview-sels...);
 
     $popover-sels:
       "popover > arrow",
       "popover > contents";
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
-    @include base.add-curr-colors(var(--popover-fg-color), var(--popover-bg-color), $popover-sels...);
-    @include base.set-hover-colors("variant", $popover-sels...);
+    @include base.set-curr-colors(var(--popover-fg-color), var(--popover-bg-color), $popover-sels...);
+    @include base.set-surf-hover-colors("variant", $popover-sels...);
 
     /* now why the heck do *you* exist ;-; */
     $secondary-sidebar-sels: [];
     --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
     --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.25%));
     --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
-    @include base.add-curr-colors(
+    @include base.set-curr-colors(
       var(--secondary-sidebar-fg-color), var(--secondary-sidebar-bg-color), $secondary-sidebar-sels...
     );
-    @include base.set-hover-colors("variant", $secondary-sidebar-sels...);
+    @include base.set-surf-hover-colors("variant", $secondary-sidebar-sels...);
 
     $sidebar-sels:
       "navigation-split-view",
@@ -152,22 +152,22 @@
     --sidebar-fg-color:       var(--variant-fg);
     --sidebar-bg-color:       var(--variant-bg);
     --sidebar-backdrop-color: var(--sidebar-bg-color);
-    @include base.add-curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color), $sidebar-sels...);
-    @include base.set-hover-colors("variant", $sidebar-sels...);
+    @include base.set-curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color), $sidebar-sels...);
+    @include base.set-surf-hover-colors("variant", $sidebar-sels...);
 
     $view-sels:
       "textview.view";
     --view-fg-color: var(--variant-fg);
     --view-bg-color: var(--variant-bg);
-    @include base.add-curr-colors(var(--view-fg-color), var(--view-bg-color), $view-sels...);
-    @include base.set-hover-colors("variant", $view-sels...);
+    @include base.set-curr-colors(var(--view-fg-color), var(--view-bg-color), $view-sels...);
+    @include base.set-surf-hover-colors("variant", $view-sels...);
 
     $window-sels:
       "window.background";
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
-    @include base.add-curr-colors(var(--window-fg-color), var(--window-bg-color), $window-sels...);
-    @include base.set-hover-colors("default", $window-sels...);
+    @include base.set-curr-colors(var(--window-fg-color), var(--window-bg-color), $window-sels...);
+    @include base.set-surf-hover-colors("default", $window-sels...);
 }
 
 /******************************************************************************/
@@ -249,16 +249,14 @@ button {
   // causes issues with how other selectors like for buttons inside tabs are expanded)
   windowcontrols > &.image-button {
     border: none;
-
-    &:hover {
-      // need to put in here for like specificity or something
-      // TODO not working again?
-      ---hover-bg: transparent;
-    }
+    // setting `---base-bg` or `---hover-bg` fails probably because GTK changes `background-color`
+    // with higher specificity?
+    background-color: transparent;
 
     &:not(.flat) > image {
       @extend %btn-base;
       @include btn-raised;
+      @extend %border-on-hover-base;
     }
   }
 
@@ -288,11 +286,12 @@ modelbutton {
   popover.menu & {
     @include btn-flat;
 
-    // for some godawful stupid fucking piece of shit reason, hovering one of these registers as
+    // for some godawful fucking stupid piece of shit reason, hovering one of these registers as
     // fucking `:selected`. and this stupid fucking shit slop of a hack is the only way i could
     // find to override it back without depending on knowing exactly what `btn-selected` does.
     &:selected {
-      @include btn-flat;
+      ---curr-fg: var(---surf-hover-fg);
+      ---curr-bg: var(---surf-hover-bg);
     }
   }
 }

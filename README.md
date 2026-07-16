@@ -6,6 +6,8 @@ a shoddy attempt at dendritic pattern with `flake-parts`
 
 more documentation to come :3
 
+(maybe)
+
 ## structure
 
 ### so like what the heck is a dendritic pattern
