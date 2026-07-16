@@ -45,7 +45,7 @@
 
 /* use this mixin for all elements that should have a `---curr-fg` and/or `---curr-bg`
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
-@mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $sels...) {
+@mixin add-curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $sels...) {
   @if list.length($sels) > 0 {
     @at-root #{$sels} {
       ---curr-fg: #{$fg};
@@ -53,6 +53,22 @@
       
       background-color: var(---curr-bg);
       color: var(---curr-fg);
+    }
+  }
+}
+
+/* use this mixin for all elements that should have a `---hover-fg` and/or `---hover-bg`
+ * CSS variable for things like flat buttons to inherit */
+@mixin set-hover-colors($color-type, $sels...) {
+  @if list.length($sels) > 0 {
+    @at-root #{$sels} {
+      @if $color-type == "default" {
+        ---hover-fg: var(--hover-fg);
+        ---hover-bg: var(--hover-bg);
+      } @else if $color-type == "variant" {
+        ---hover-fg: var(--hover-variant-fg);
+        ---hover-bg: var(--hover-variant-bg);
+      }
     }
   }
 }
@@ -110,7 +126,9 @@
 }
 
 @mixin btn-flat(
-  $fixed-hover-fg: var(--hover-fg), $fixed-hover-bg: var(--hover-bg), $should-be-dynamic-sels: [] 
+  $fixed-hover-fg: var(---hover-fg, var(--hover-fg)),
+  $fixed-hover-bg: var(---hover-bg, var(--hover-bg)),
+  $should-be-dynamic-sels: [] 
 ) {
   @include _btn-base-colors(false);
   @include _btn-state-colors(true, $fixed-hover-fg, $fixed-hover-bg);
