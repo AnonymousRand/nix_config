@@ -115,24 +115,36 @@ rec {
       color_dark  = red;
     };
     error_fg = {
-      color_light = white;
-      color_dark  = white;
+      color_light = "#cc0000";
+      color_dark  = "#cc0000";
+    };
+    error_bg = {
+      color_light = "#ffe2e2";
+      color_dark  = "#ffe2e2";
     };
     warning = {
+      color_light = "#b36200";
+      color_dark  = "#b36200";
+    };
+    warning_fg = {
       color_light = orange_xxdeep;
       color_dark  = orange_deep;
     };
-    warning_fg = {
-      color_light = black;
-      color_dark  = black;
+    warning_bg = {
+      color_light = "#fff3d6";
+      color_dark  = "#fff3d6";
     };
     success = {
       color_light = green_deep_xdark;
       color_dark  = green;
     };
     success_fg = {
-      color_light = black;
-      color_dark  = black;
+      color_light = "#468000";
+      color_dark  = "#468000";
+    };
+    success_bg = {
+      color_light = "#f6ffe6";
+      color_dark  = "#f6ffe6";
     };
 
     link = {
@@ -188,7 +200,7 @@ rec {
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = roles.hover_bg.color_light;   # hover state background
       mOnHover          = roles.hover_fg.color_light;   # text on hover surfaces
-      mError            = roles.error.color_light;      # error color
+      mError            = roles.error_bg.color_light;   # error color
       mOnError          = roles.error_fg.color_light;   # text on error surfaces
 
       terminal = rec {
@@ -236,7 +248,7 @@ rec {
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;
       mOnHover          = roles.hover_fg.color_dark;
-      mError            = roles.error.color_dark;
+      mError            = roles.error_bg.color_dark;
       mOnError          = roles.error_fg.color_dark;
 
       terminal = rec {

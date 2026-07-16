@@ -81,15 +81,28 @@
 /* scss features                                                              */
 /******************************************************************************/
 
+// general design right now:
+// - placeholders define "base" functionality of a feature, setting consistent styles which are
+//   typically parameterized by CSS variables.
+// - mixins set these CSS variables (depending on arguments, etc.), and hence define or generate
+//   different "variants" of the base feature.
+// - additionally, placeholders/mixins beginning with an underscore are meant to be "private" members
+//   and shouldn't need to be directly accessed by actual styles.
+//
+// thus, to "extend" such a feature, you would `@extend` the base placeholder and then `@include`
+// a choice of mixin.
+
+/******************************************************************************/
+/* `btn`                                                                      */
+
 %btn-base {
-  // `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
-  // elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use the
-  // tab's hover background color, not the tab's base/non-hovered background color)
+  // - `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
+  //   elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use
+  //   the tab's hover background color, not the tab's base/non-hovered background color).
+  // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
+  //   of different states.
 
-  // on the other hand, `base` variables are fixed regardless of state, and they are mainly used
-  // to derive the colors of different states
-
-  /* colors should generally be overriden by simply setting `---base-bg` and/or `---curr-bg` */
+  /* colors should generally be overriden by just setting `---base-bg` and/or `---curr-bg` */
 
   ---curr-fg: var(---base-fg, inherit);
   ---curr-bg: var(---base-bg, inherit);
@@ -123,12 +136,12 @@
     ---hover-fg:  #{$fixed-hover-fg};
     ---hover-bg:  #{$fixed-hover-bg};
     ---active-fg: var(---hover-fg);
-    ---active-bg: change-lightness(var(---hover-bg), -2.5%);
+    ---active-bg: #{change-lightness(var(---hover-bg), -2.5%)};
   } @else {
     ---hover-fg:  var(---base-fg);
-    ---hover-bg:  change-lightness(var(---base-bg), -2.5%);
+    ---hover-bg:  #{change-lightness(var(---base-bg), -2.5%)};
     ---active-fg: var(---hover-fg);
-    ---active-bg: change-lightness(var(---base-bg), -5%);
+    ---active-bg: #{change-lightness(var(---base-bg), -5%)};
   }
 }
 
@@ -161,16 +174,22 @@
   @include btn-raised($selected-base-fg, $selected-base-bg);
 }
 
-@mixin border-on-hover($hover-border-color: var(--border-color), $border-width: 2px) {
-  ---base-border-color:  transparent;
-  ---hover-border-color: #{$hover-border-color};
-  ---border-width:       #{$border-width};
+/******************************************************************************/
+/* `border-on-hover`                                                          */
 
+%border-on-hover-base {
+  ---base-border-color: transparent;
   ---curr-border-color: var(---base-border-color);
+
   border: var(---border-width) solid;
   border-color: var(---curr-border-color);
 
   &:hover {
     ---curr-border-color: var(---hover-border-color);
   }
+}
+
+@mixin border-on-hover($hover-border-color: var(--border-color), $border-width: 2px) {
+  ---hover-border-color: #{$hover-border-color};
+  ---border-width:       #{$border-width};
 }

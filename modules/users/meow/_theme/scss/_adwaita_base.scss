@@ -27,20 +27,20 @@
     --accent-yellow:   {{colors.terminal_bright_yellow.default.hex}};
 
     --destructive-color:    {{colors.error_source.default.hex}};
-    --destructive-fg-color: {{colors.on_error.default.hex}};
-    --destructive-bg-color: base.change-lightness(var(--destructive-color), 10%);
+    --destructive-fg-color: {{colors.error_fg_source.default.hex}};
+    --destructive-bg-color: {{colors.error_bg_source.default.hex}};
 
     --error-color:    {{colors.error_source.default.hex}};
     --error-fg-color: {{colors.error_fg_source.default.hex}};
-    --error-bg-color: base.change-lightness(var(--error-color), 10%);
+    --error-bg-color: {{colors.error_bg_source.default.hex}};
 
     --warning-color:    {{colors.warning_source.default.hex}};
     --warning-fg-color: {{colors.warning_fg_source.default.hex}};
-    --warning-bg-color: base.change-lightness(var(--warning-color), 10%);
+    --warning-bg-color: {{colors.warning_bg_source.default.hex}};
 
     --success-color:    {{colors.success_source.default.hex}};
     --success-fg-color: {{colors.success_fg_source.default.hex}};
-    --success-bg-color: base.change-lightness(var(--success-color), 10%);
+    --success-bg-color: {{colors.success_bg_source.default.hex}};
 
     /**************************************************************************/
     /* GNOME palette                                                          */
@@ -181,6 +181,27 @@ $selected-surfs: [
 
 @mixin btn-flat {
   @include base.btn-flat($should-be-dynamic-sels: $selected-surfs);
+  @include base.border-on-hover;
+}
+
+@mixin btn-raised($raised-base-fg: var(--accent-fg), $raised-base-bg: var(--accent-bg)) {
+  @include base.btn-raised($raised-base-fg, $raised-base-bg);
+  @include base.border-on-hover;
+}
+
+@mixin btn-selected($selected-base-fg: var(--accent-fg), $selected-base-bg: var(--accent-bg)) {
+  @include base.btn-selected($selected-base-fg, $selected-base-bg);
+  @include base.border-on-hover;
+}
+
+@mixin btn-suggested {
+  @include base.btn-raised(var(--accent-fg), var(--accent-bg));
+  @include base.border-on-hover(var(--suggested-color));
+}
+
+@mixin btn-destructive {
+  @include base.btn-raised(var(--destructive-fg-color), var(--destructive-bg-color));
+  @include base.border-on-hover(var(--destructive-color));
 }
 
 %gtk-btn {
@@ -194,33 +215,33 @@ $selected-surfs: [
       }
 
       &:selected {
-        @include base.btn-selected;
+        @include btn-selected;
       }
     }
 
     &.raised,
     // specificity hack because SPECIFICITY IS STUPID I HATE IT AAAAAAAAAAAAAA i am losing my marbles
     &.text-button.text-button {
-        @include base.btn-raised;
-      }
-    }
-
-    &.suggested-action {
-      @include base.btn-raised(var(--accent-fg), var(--accent-bg));
-    }
-
-    &.destructive-action {
-      @include base.btn-raised(var(--destructive-fg-color), var(--destructive-bg-color));
+      @include btn-raised;
     }
   }
 
-  /******************************************************************************/
-  /* styles                                                                     */
-  /******************************************************************************/
+  &.suggested-action {
+    @include btn-suggested;
+  }
+
+  &.destructive-action {
+    @include btn-destructive;
+  }
+}
+
+/******************************************************************************/
+/* styles                                                                     */
+/******************************************************************************/
 
 button {
   @extend %gtk-btn;
-  @include base.border-on-hover;
+  @extend %border-on-hover-base;
 
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
@@ -231,13 +252,13 @@ button {
 
     &:hover {
       // need to put in here for like specificity or something
+      // TODO not working again?
       ---hover-bg: transparent;
     }
 
     &:not(.flat) > image {
       @extend %btn-base;
-      @include base.btn-raised;
-      @include base.border-on-hover;
+      @include btn-raised;
     }
   }
 
@@ -248,7 +269,7 @@ button {
 
   menubutton.raised &,
   splitbutton.raised & {
-    @include base.btn-raised;
+    @include btn-raised;
   }
 }
 
@@ -256,12 +277,13 @@ card {
   &.activatable {
     @extend %btn-base;
     @include btn-flat;
+    @extend %border-on-hover-base;
   }
 }
 
 modelbutton {
   @extend %gtk-btn;
-  @include base.border-on-hover;
+  @extend %border-on-hover-base;
 
   popover.menu & {
     @include btn-flat;
@@ -296,7 +318,7 @@ tab {
     @include btn-flat;
 
     &:selected {
-      @include base.btn-selected;
+      @include btn-selected;
     }
   }
 }
