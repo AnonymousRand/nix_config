@@ -300,6 +300,13 @@ modelbutton {
 splitbutton {
   @extend %gtk-btn;
 
+  // sooooooo like why is this sometimes -1px by default (and makes the borders clip into each other)
+  > button,
+  > menubutton {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   &:hover {
     ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
     // for some reason setting `---hover-bg` instead of `background-color` doesn't work.

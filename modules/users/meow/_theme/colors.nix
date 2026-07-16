@@ -119,8 +119,8 @@ rec {
       color_dark  = "#cc0000";
     };
     error_bg = {
-      color_light = "#ffe2e2";
-      color_dark  = "#ffe2e2";
+      color_light = "#ffe0e0";
+      color_dark  = "#ffe0e0";
     };
     warning = {
       color_light = "#b36200";
@@ -143,8 +143,8 @@ rec {
       color_dark  = "#468000";
     };
     success_bg = {
-      color_light = "#f6ffe6";
-      color_dark  = "#f6ffe6";
+      color_light = "#f3ffe3";
+      color_dark  = "#f3ffe3";
     };
 
     link = {

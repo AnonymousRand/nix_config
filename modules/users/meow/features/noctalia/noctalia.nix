@@ -26,6 +26,7 @@
 
         location = {
           auto_locate = false;
+          custom_schedule = true;
           sunrise = "09:00";
           sunset = "18:00";
         };
