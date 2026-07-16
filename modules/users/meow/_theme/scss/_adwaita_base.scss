@@ -154,8 +154,15 @@
 
   // these are built-in adwaita/GTK selectors
   &:not(.raised) {
-    &:not(:selected) { // TODO can get rid of this :not?
+    &:not(:selected) {
       @include btn-flat($should-be-dynamic-sels: [":selected"]);
+
+      // on these lighter/variant surfaces, use lighter hover colors too to help differentiate
+      // hovered flat buttons and raised/selected buttons
+      headerbar &,
+      tabbar & {
+        @include btn-flat(var(--hover-variant-fg), var(--hover-variant-bg), [":selected"]);
+      }
     }
 
     &:selected {
@@ -230,7 +237,7 @@ splitbutton {
   @extend %gtk-btn;
 
   &:hover {
-    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 2%));
+    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1%));
     // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
     // (it's probably specificity again. it's always fucking specificity.)
     background-color: var(---secondary-hover-bg);

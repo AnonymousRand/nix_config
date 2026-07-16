@@ -117,7 +117,7 @@
   // these buttons also hovers the selected parent item. thus, on hover, the parent's background
   // color is darker than the button's, which is weird.)
   @each $sel in $should-be-dynamic-sels {
-    @at-root #{$sel} & {
+    #{$sel} & {
       @include _btn-state-colors(false);
     }
   }
@@ -132,15 +132,16 @@
   @include btn-raised($selected-base-fg, $selected-base-bg);
 }
 
-@mixin border-on-hover {
-  ---base-border:  transparent;
-  ---hover-border: var(--border-color);
+@mixin border-on-hover($border-width: 2px) {
+  ---base-border-color:  transparent;
+  ---hover-border-color: var(--border-color);
+  ---border-width:       #{$border-width};
 
-  ---curr-border:  var(---base-border);
-  border: 2px solid;
-  border-color: var(---curr-border);
+  ---curr-border-color: var(---base-border-color);
+  border: var(---border-width) solid;
+  border-color: var(---curr-border-color);
 
   &:hover {
-    ---curr-border: var(---hover-border);
+    ---curr-border-color: var(---hover-border-color);
   }
 }
