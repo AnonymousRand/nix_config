@@ -1,3 +1,5 @@
+@use "sass:list";
+
 /******************************************************************************/
 /* variables                                                                  */
 /******************************************************************************/
@@ -43,13 +45,15 @@
 
 /* use this mixin for all elements that should have a `---curr-fg` and/or `---curr-bg`
  * CSS variable for things like flat buttons to inherit (e.g. windows, titlebars, popovers) */
-@mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $selectors...) {
-  @at-root #{$selectors} {
-    ---curr-fg: #{$fg};
-    ---curr-bg: #{$bg};
-    
-    background-color: var(---curr-bg);
-    color: var(---curr-fg);
+@mixin curr-colors($fg: var(--default-fg), $bg: var(--default-bg), $sels...) {
+  @if list.length($sels) > 0 {
+    @at-root #{$sels} {
+      ---curr-fg: #{$fg};
+      ---curr-bg: #{$bg};
+      
+      background-color: var(---curr-bg);
+      color: var(---curr-fg);
+    }
   }
 }
 

@@ -1,8 +1,17 @@
 @use "base";
 
+@use "sass:list";
+
 /******************************************************************************/
 /* variables                                                                  */
 /******************************************************************************/
+
+$selected-surfs: [
+  ":not(tab):selected",
+  "tabbox:not(.single-tab) tab:selected"
+];
+
+$variant-surfs : [];
 
 :root {
     /**************************************************************************/
@@ -87,78 +96,99 @@
 
     --border-opacity: 1;
 
+    $card-sels:
+      ".boxed-list",
+      ".boxed-list-separate",
+      ".card";
     --card-fg-color: var(--variant-fg);
     --card-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--card-fg-color), var(--card-bg-color),
-      ".boxed-list", ".boxed-list-separate", ".card"
-    );
+    @include base.curr-colors(var(--card-fg-color), var(--card-bg-color), $card-sels...);
+    $variant-surfs: list.join($variant-surfs, $card-sels, comma, false);
 
+    $dialog-sels:
+      "dialog";
     --dialog-fg-color: var(--variant-fg);
     --dialog-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--dialog-fg-color), var(--dialog-bg-color),
-      "dialog"
-    );
+    @include base.curr-colors(var(--dialog-fg-color), var(--dialog-bg-color), $dialog-sels...);
+    $variant-surfs: list.join($variant-surfs, $dialog-sels, comma, false);
 
+    $headerbar-sels:
+      "actionbar",
+      "headerbar:not(.flat)",
+      "searchbar:not(.inline)",
+      "tabbar:not(.inline)",
+      // `AdwToolbarView` top and bottom bars
+      "toolbarview menubar",
+      "toolbarview viewswitcherbar",
+      "toolbarview .toolbar";
     --headerbar-fg-color:       var(--variant-fg);
     --headerbar-bg-color:       var(--variant-bg);
     --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
-    @include base.curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color),
-      "actionbar", "headerbar:not(.flat)", "searchbar:not(.inline)", "tabbar:not(.inline)",
-      // `AdwToolbarView` top and bottom bars
-      "toolbarview menubar", "toolbarview viewswitcherbar", "toolbarview .toolbar"
-    );
+    @include base.curr-colors(var(--headerbar-fg-color), var(--headerbar-bg-color), $headerbar-sels...);
+    $variant-surfs: list.join($variant-surfs, $headerbar-sels, comma, false);
 
+    $overview-sels:
+      "taboverview";
     --overview-fg-color: var(--variant-fg);
     --overview-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--overview-fg-color), var(--overview-bg-color),
-      "taboverview"
-    );
+    @include base.curr-colors(var(--overview-fg-color), var(--overview-bg-color), $overview-sels...);
+    $variant-surfs: list.join($variant-surfs, $overview-sels, comma, false);
 
+    $popover-sels:
+      "popover > arrow",
+      "popover > contents";
     --popover-fg-color: var(--variant-fg);
     --popover-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--popover-fg-color), var(--popover-bg-color),
-      "popover > arrow", "popover > contents"
-    );
+    @include base.curr-colors(var(--popover-fg-color), var(--popover-bg-color), $popover-sels...);
+    $variant-surfs: list.join($variant-surfs, $popover-sels, comma, false);
 
     /* now why the heck do *you* exist ;-; */
+    $secondary-sidebar-sels: [];
     --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
     --secondary-sidebar-bg-color:       hsl(from var(--sidebar-bg-color) h s calc(l + 1.25%));
     --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
+    @include base.curr-colors(
+      var(--secondary-sidebar-fg-color), var(--secondary-sidebar-bg-color), $secondary-sidebar-sels...
+    );
+    $variant-surfs: list.join($variant-surfs, $secondary-sidebar-sels, comma, false);
 
+    $sidebar-sels:
+      "navigation-split-view",
+      "overlay-split-view",
+      ".navigation-sidebar";
     --sidebar-fg-color:       var(--variant-fg);
     --sidebar-bg-color:       var(--variant-bg);
     --sidebar-backdrop-color: var(--sidebar-bg-color);
-    @include base.curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color),
-      "navigation-split-view", "overlay-split-view", ".navigation-sidebar"
-    );
+    @include base.curr-colors(var(--sidebar-fg-color), var(--sidebar-bg-color), $sidebar-sels...);
+    $variant-surfs: list.join($variant-surfs, $sidebar-sels, comma, false);
 
+    $view-sels:
+      "textview.view";
     --view-fg-color: var(--variant-fg);
     --view-bg-color: var(--variant-bg);
-    @include base.curr-colors(var(--view-fg-color), var(--view-bg-color),
-      "textview.view"
-    );
+    @include base.curr-colors(var(--view-fg-color), var(--view-bg-color), $view-sels...);
+    $variant-surfs: list.join($variant-surfs, $view-sels, comma, false);
 
+    $window-sels:
+      "window.background";
     --window-fg-color: var(--default-fg);
     --window-bg-color: var(--default-bg);
-    @include base.curr-colors(var(--window-fg-color), var(--window-bg-color),
-      "window.background"
-    );
+    @include base.curr-colors(var(--window-fg-color), var(--window-bg-color), $window-sels...);
 }
 
 /******************************************************************************/
 /* scss features                                                              */
 /******************************************************************************/
 
-$selected-surfs: [
-  ":not(tab):selected",
-  "tabbox:not(.single-tab) tab:selected"
-];
+@mixin btn-flat {
+  @include base.btn-flat($should-be-dynamic-sels: $selected-surfs);
 
-@mixin btn-flat($is-variant: false) {
-  @if not $is-variant {
-    @include base.btn-flat($should-be-dynamic-sels: $selected-surfs);
-  } @else {
-    @include base.btn-flat(var(--hover-variant-fg), var(--hover-variant-bg), $selected-surfs);
+  // on these lighter/variant surfaces, use lighter hover colors too to help differentiate
+  // hovered flat buttons and raised/selected buttons, and to look prettier :3
+  @each $sel in $variant-surfs {
+    #{$sel} & {
+      @include base.btn-flat(var(--hover-variant-fg), var(--hover-variant-bg), $selected-surfs);
+    }
   }
 }
 
@@ -169,14 +199,6 @@ $selected-surfs: [
   &:not(.raised) {
     &:not(:selected) {
       @include btn-flat;
-
-      // on these lighter/variant surfaces, use lighter hover colors too to help differentiate
-      // hovered flat buttons and raised/selected buttons
-      headerbar &,
-      popover &,
-      tabbar & {
-        @include btn-flat(true);
-      }
     }
 
     &:selected {
@@ -243,12 +265,12 @@ modelbutton {
   @include base.border-on-hover;
 
   popover.menu & {
-    @include btn-flat(true);
+    @include btn-flat;
 
     // for some godawful stupid fucking piece of shit reason, hovering one of these registers as
     // fucking `:selected`
     &:selected {
-      @include btn-flat(true);
+      ---curr-bg: var(---hover-bg);
     }
   }
 }
@@ -271,7 +293,7 @@ splitbutton {
 tab {
   tabbox:not(.single-tab) & {
     @extend %btn-base;
-    @include base.btn-flat(var(--hover-variant-fg), var(--hover-variant-bg));
+    @include btn-flat;
 
     &:selected {
       @include base.btn-selected;
