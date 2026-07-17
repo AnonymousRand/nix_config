@@ -174,14 +174,16 @@
 /* scss features                                                              */
 /******************************************************************************/
 
-$selected-surfs: [
+// these are surfaces with the `--accent-bg` background color, on which things like flat buttons
+// and border-on-hovers may need to adjust their own colors
+$accented-surfs: [
   ":not(tab):selected",
   "tabbox:not(.single-tab) tab:selected"
 ];
 
 @mixin btn-flat {
-  @include base.btn-flat($should-be-dynamic-sels: $selected-surfs);
-  @include base.border-on-hover;
+  @include base.btn-flat($should-be-dynamic-sels: $accented-surfs);
+  @include base.border-on-hover($is-on-accent-sels: $accented-surfs);
 }
 
 @mixin btn-raised($raised-base-fg: var(--accent-fg), $raised-base-bg: var(--accent-bg)) {
@@ -326,6 +328,11 @@ tab {
 
     &:selected {
       @include btn-selected;
+    }
+
+    // buttons on tabs should match tab's hover etc. transitions
+    & button {
+      transition: background 150ms ease-in-out;
     }
   }
 }

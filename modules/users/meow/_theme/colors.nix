@@ -82,25 +82,29 @@ rec {
     };
 
     hover_fg = {
-      color_light = default_fg.color_light;
-      color_dark  = gray_xdark;
+      color_light = pink_light;
+      color_dark  = pink;
     };
     hover_bg = {
       color_light = pink_xxxxlight;
-      color_dark  = pink_xxxlight;
+      color_dark  = pink_xxlight;
     };
     hover_variant_fg = {
-      color_light = variant_fg.color_light;
-      color_dark  = gray_dark;
+      color_light = pink_xlight;
+      color_dark  = pink;
     };
     hover_variant_bg = {
       color_light = pink_xxxxxlight;
-      color_dark  = pink_xxxxlight;
+      color_dark  = pink_xxxlight;
     };
 
     outline = {
       color_light = pink_xxlight;
       color_dark  = pink_xxlight;
+    };
+    strong_outline = {
+      color_light = pink_xlight;
+      color_dark  = pink_xlight;
     };
 
     search_fg = selection_fg;
@@ -155,7 +159,7 @@ rec {
       color_light = blue_xdeep;
       color_dark  = blue;
     };
-    link_hover = {
+    link_hovered = {
       color_light = blue_xxdeep;
       color_dark  = blue_light;
     };
@@ -194,12 +198,12 @@ rec {
       mOnSurface        = roles.default_fg.color_light; # main foreground color
       mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
       mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
-      mPrimary          = vars.pink_xlight;             # primary accent (buttons, links, highlights)
-      mOnPrimary        = vars.gray_xxdark;             # text on primary surfaces
-      mSecondary        = vars.pink_xxxlight;           # secondary accent
-      mOnSecondary      = vars.pink;                    # text on secondary surfaces
-      mTertiary         = vars.pink_xxxxlight;          # tertiary accent
-      mOnTertiary       = vars.pink_light;              # text on tertiary surfaces
+      mPrimary          = vars.pink_xxxlight;           # primary accent (buttons, links, highlights)
+      mOnPrimary        = vars.pink;                    # text on primary surfaces
+      mSecondary        = vars.pink_xxxxlight;          # secondary accent
+      mOnSecondary      = vars.pink_light;              # text on secondary surfaces
+      mTertiary         = vars.pink_xxxxxlight;         # tertiary accent
+      mOnTertiary       = vars.pink_xlight;             # text on tertiary surfaces
       mOutline          = roles.outline.color_light;    # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = roles.hover_bg.color_light;   # hover state background
@@ -242,11 +246,11 @@ rec {
       mOnSurface        = roles.default_fg.color_dark;
       mSurfaceVariant   = roles.variant_bg.color_dark;
       mOnSurfaceVariant = roles.variant_fg.color_dark;
-      mPrimary          = vars.pink_xxxxlight;
-      mOnPrimary        = vars.pink_light;
-      mSecondary        = vars.pink_xxxlight;
+      mPrimary          = vars.pink_xlight;
+      mOnPrimary        = vars.gray_xxdark;
+      mSecondary        = vars.pink_xxlight;
       mOnSecondary      = vars.pink;
-      mTertiary         = vars.pink_xxlight;
+      mTertiary         = vars.pink_xxxlight;
       mOnTertiary       = vars.pink;
       mOutline          = roles.outline.color_dark;
       mShadow           = vars.gray_xdark;

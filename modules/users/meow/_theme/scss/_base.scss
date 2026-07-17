@@ -17,26 +17,27 @@
    //
    // so here's my attempt to make it somewhat make sense.
 
-  --default-fg:        {{colors.default_fg_source.default.hex}};
-  --default-bg:        {{colors.default_bg_source.default.hex}};
-  --variant-fg:        {{colors.variant_fg_source.default.hex}};
-  --variant-bg:        {{colors.variant_bg_source.default.hex}};
-  --accent-fg:         {{colors.on_secondary.default.hex}};
-  --accent-bg:         {{colors.tertiary.default.hex}};
-  --selection-fg:      {{colors.selection_fg_source.default.hex}};
-  --selection-bg:      {{colors.selection_bg_source.default.hex}};
-  --hover-fg:          {{colors.hover_fg_source.default.hex}};
-  --hover-bg:          {{colors.hover_bg_source.default.hex}};
-  --hover-variant-fg:  {{colors.hover_variant_fg_source.default.hex}};
-  --hover-variant-bg:  {{colors.hover_variant_bg_source.default.hex}};
+  --default-fg:       {{colors.default_fg_source.default.hex}};
+  --default-bg:       {{colors.default_bg_source.default.hex}};
+  --variant-fg:       {{colors.variant_fg_source.default.hex}};
+  --variant-bg:       {{colors.variant_bg_source.default.hex}};
+  --accent-fg:        {{colors.on_secondary.default.hex}};
+  --accent-bg:        {{colors.secondary.default.hex}};
+  --selection-fg:     {{colors.selection_fg_source.default.hex}};
+  --selection-bg:     {{colors.selection_bg_source.default.hex}};
+  --hover-fg:         {{colors.hover_fg_source.default.hex}};
+  --hover-bg:         {{colors.hover_bg_source.default.hex}};
+  --hover-variant-fg: {{colors.hover_variant_fg_source.default.hex}};
+  --hover-variant-bg: {{colors.hover_variant_bg_source.default.hex}};
 
-  --border-color:      {{colors.outline_source.default.hex}};
-  --disabled-opacity:  50%;
-  --error:             {{colors.error_source.default.hex}};
+  --border-color:        {{colors.outline_source.default.hex}};
+  --accent-border-color: {{colors.strong_outline_source.default.hex}};
+  --disabled-opacity:    50%;
+  --error:               {{colors.error_source.default.hex}};
 
-  --link:              {{colors.link_source.default.hex}};
-  --link-hover:        {{colors.link_hover_source.default.hex}};
-  --link-visited:      {{colors.link_hover_source.default.hex}};
+  --link:         {{colors.link_source.default.hex}};
+  --link-hovered: {{colors.link_hovered_source.default.hex}};
+  --link-visited: {{colors.link_hovered_source.default.hex}};
 }
 
 /******************************************************************************/
@@ -178,6 +179,9 @@
   }
 }
 
+// at the moment, there is no support for raised buttons on already accented surfaces (i.e.
+// surfaces with background color `--accent-bg`), only flat buttons. if that ever needs to
+// happen then fuck me, i guess. this code is enough of a dumpsterfire already >_<
 @mixin btn-raised($raised-base-fg: var(--accent-fg), $raised-base-bg: var(--accent-bg)) {
   @include _btn-base-colors(true, $raised-base-fg, $raised-base-bg);
   @include _btn-state-colors(false);
@@ -204,7 +208,17 @@
   }
 }
 
-@mixin border-on-hover($hover-border-color: var(--border-color), $border-width: 2px) {
+@mixin border-on-hover(
+  $hover-border-color: var(--border-color),
+  $border-width: 2px,
+  $is-on-accent-sels: []
+) {
   ---hover-border-color: #{$hover-border-color};
   ---border-width:       #{$border-width};
+
+  @each $sel in $is-on-accent-sels {
+    #{$sel} & {
+      ---hover-border-color: var(--accent-border-color);
+    }
+  }
 }
