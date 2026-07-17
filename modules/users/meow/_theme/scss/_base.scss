@@ -19,9 +19,9 @@
 
   --default-fg:        {{colors.default_fg_source.default.hex}};
   --default-bg:        {{colors.default_bg_source.default.hex}};
-  --variant-fg:        {{colors.on_surface_variant.default.hex}};
-  --variant-bg:        {{colors.surface_variant.default.hex}};
-  --accent-fg:         {{colors.on_tertiary.default.hex}};
+  --variant-fg:        {{colors.variant_fg_source.default.hex}};
+  --variant-bg:        {{colors.variant_bg_source.default.hex}};
+  --accent-fg:         {{colors.on_secondary.default.hex}};
   --accent-bg:         {{colors.tertiary.default.hex}};
   --selection-fg:      {{colors.selection_fg_source.default.hex}};
   --selection-bg:      {{colors.selection_bg_source.default.hex}};

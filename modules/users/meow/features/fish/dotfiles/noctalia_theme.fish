@@ -23,7 +23,7 @@ set -g fish_color_valid_path                             --underline
 set -g fish_pager_color_completion                       $fish_color_normal
 set -g fish_pager_color_description                      brmagenta
 set -g fish_pager_color_prefix                           magenta --bold
-set -g fish_pager_color_progress                         magenta
+set -g fish_pager_color_progress                         magenta --bold
 set -g fish_pager_color_selected_background --background "{{colors.hover_bg_source.default.hex}}"
 set -g fish_pager_color_selected_completion              "{{colors.hover_fg_source.default.hex}}"
 set -g fish_pager_color_selected_description             "{{colors.pink_source.default.hex}}"
