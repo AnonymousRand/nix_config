@@ -65,7 +65,7 @@ rec {
 
     variant_fg = {
       color_light = pink_xlight;
-      color_dark  = pink_light;
+      color_dark  = pink_xlight;
     };
     variant_bg = {
       color_light = "#fff7fa";

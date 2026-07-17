@@ -306,13 +306,14 @@ splitbutton {
     margin-right: 0px;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
     // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
     // (it's probably specificity again. it's always fucking specificity.)
     background-color: var(---secondary-hover-bg);
 
-    button:not(:hover) {
+    button:not(:hover):not(:focus) {
       ---curr-bg: var(---secondary-hover-bg);
     }
   }

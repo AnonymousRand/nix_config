@@ -1,8 +1,8 @@
 {
   # for active window border/focus ring gradient
   niri_active_gradient_start = {
-    color_light = "#ff369a";
-    color_dark  = "#ff369a";
+    color_light = "#ff409f";
+    color_dark  = "#ff409a";
   };
 
   niri_active_gradient_end = {

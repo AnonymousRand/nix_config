@@ -112,7 +112,8 @@
   background-color: var(---curr-bg);
   color: var(---curr-fg);
 
-  &:hover {
+  &:hover,
+  &:focus {
     ---curr-fg: var(---hover-fg);
     ---curr-bg: var(---hover-bg);
   }
@@ -195,8 +196,10 @@
 
   border: var(---border-width) solid;
   border-color: var(---curr-border-color);
+  outline-color: var(---curr-border-color);
 
-  &:hover {
+  &:hover,
+  &:focus {
     ---curr-border-color: var(---hover-border-color);
   }
 }
