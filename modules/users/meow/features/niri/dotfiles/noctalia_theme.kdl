@@ -3,7 +3,7 @@ layout {
         active-gradient from="{{colors.niri_active_gradient_start_source.default.hex}}" \
                           to="{{colors.niri_active_gradient_end_source.default.hex}}" \
                        angle=180 in="oklch longer hue"
-        inactive-color "{{colors.secondary.default.hex}}"
+        inactive-color "#00000000"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 
@@ -11,7 +11,7 @@ layout {
         active-gradient from="{{colors.niri_active_gradient_start_source.default.hex}}" \
                           to="{{colors.niri_active_gradient_end_source.default.hex}}" \
                        angle=180 in="oklch longer hue"
-        inactive-color "{{colors.secondary.default.hex}}"
+        inactive-color "{{colors.outline_source.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 

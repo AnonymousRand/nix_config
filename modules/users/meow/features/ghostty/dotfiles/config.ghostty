@@ -33,6 +33,7 @@ gtk-titlebar-style         = tabs
 scrollback-limit           = 10_000_000
 
 # misc
+# improve performance
 gtk-single-instance        = true
 working-directory          = home
 app-notifications          = no-clipboard-copy, no-config-reload

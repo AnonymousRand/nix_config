@@ -91,37 +91,17 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        off
+        //off
         width 4
-
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
-        //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
-
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     border {
-        // you probably don't want both focus ring and border at the same time
+        // normally you're advised to not have both the focus ring and border active at the same time,
+        // but my current setup does both so there's still a border when inactive, but a much stronger
+        // focus ring when active (and the active border and active focus ring should have the same
+        // colors, so as to make a thicker focus ring and look prettier :3)
         //off
-
-        width 4
-
-        // Gradients can use a few different interpolation color spaces.
-        // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-        //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        width 2
     }
 
     shadow {
@@ -132,7 +112,14 @@ layout {
         offset x=0 y=5
     }
 
-    struts {}
+    struts {
+        // this is to make the focus ring not clip at the edges of the screen (since `gaps 0` is set
+        // to not leave gaps between adjacent borders), and should be equal to the focus ring's width
+        left 4
+        right 4
+        top 4
+        bottom 4
+    }
 }
 
 // enable rounded corners for all windows
