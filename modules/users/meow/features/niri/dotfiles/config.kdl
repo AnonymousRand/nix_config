@@ -92,7 +92,7 @@ layout {
 
     focus-ring {
         //off
-        width 4
+        width 5
     }
 
     border {
@@ -115,10 +115,10 @@ layout {
     struts {
         // this is to make the focus ring not clip at the edges of the screen (since `gaps 0` is set
         // to not leave gaps between adjacent borders), and should be equal to the focus ring's width
-        left 4
-        right 4
-        top 4
-        bottom 4
+        left 5
+        right 5
+        top 5
+        bottom 5
     }
 }
 

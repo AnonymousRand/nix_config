@@ -36,7 +36,7 @@ rec {
 
     pink             = "#ff409f";
     pink_light       = "#ff73b9";
-    pink_xlight      = "#ff8cc6";
+    pink_xlight      = "#ff8fc7";
     pink_xxlight     = "#ffadd6";
     pink_xxxlight    = "#ffcbe6";
     pink_xxxxlight   = "#ffdeee";
@@ -242,12 +242,12 @@ rec {
       mOnSurface        = roles.default_fg.color_dark;
       mSurfaceVariant   = roles.variant_bg.color_dark;
       mOnSurfaceVariant = roles.variant_fg.color_dark;
-      mPrimary          = vars.pink_xlight;
-      mOnPrimary        = vars.gray_xxdark;
-      mSecondary        = vars.pink_xxlight;
-      mOnSecondary      = vars.gray_xxdark;
-      mTertiary         = vars.pink_xxxlight;
-      mOnTertiary       = vars.pink_light;
+      mPrimary          = vars.pink_xxxxlight;
+      mOnPrimary        = vars.pink_light;
+      mSecondary        = vars.pink_xxxlight;
+      mOnSecondary      = vars.pink;
+      mTertiary         = vars.pink_xxlight;
+      mOnTertiary       = vars.pink;
       mOutline          = roles.outline.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;
