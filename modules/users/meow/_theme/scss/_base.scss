@@ -17,18 +17,20 @@
    //
    // so here's my attempt to make it somewhat make sense.
 
-  --default-fg:       {{colors.default_fg_source.default.hex}};
-  --default-bg:       {{colors.default_bg_source.default.hex}};
-  --variant-fg:       {{colors.variant_fg_source.default.hex}};
-  --variant-bg:       {{colors.variant_bg_source.default.hex}};
-  --accent-fg:        {{colors.on_secondary.default.hex}};
-  --accent-bg:        {{colors.secondary.default.hex}};
-  --selection-fg:     {{colors.selection_fg_source.default.hex}};
-  --selection-bg:     {{colors.selection_bg_source.default.hex}};
-  --hover-fg:         {{colors.hover_fg_source.default.hex}};
-  --hover-bg:         {{colors.hover_bg_source.default.hex}};
-  --hover-variant-fg: {{colors.hover_variant_fg_source.default.hex}};
-  --hover-variant-bg: {{colors.hover_variant_bg_source.default.hex}};
+  --default-fg:        {{colors.default_fg_source.default.hex}};
+  --default-bg:        {{colors.default_bg_source.default.hex}};
+  --variant-fg:        {{colors.variant_fg_source.default.hex}};
+  --variant-bg:        {{colors.variant_bg_source.default.hex}};
+  --accent-fg:         {{colors.on_secondary.default.hex}};
+  --accent-bg:         {{colors.secondary.default.hex}};
+  --accent-variant-fg: {{colors.on_tertiary.default.hex}};
+  --accent-variant-bg: {{colors.tertiary.default.hex}};
+  --selection-fg:      {{colors.selection_fg_source.default.hex}};
+  --selection-bg:      {{colors.selection_bg_source.default.hex}};
+  --hover-fg:          {{colors.hover_fg_source.default.hex}};
+  --hover-bg:          {{colors.hover_bg_source.default.hex}};
+  --hover-variant-fg:  {{colors.hover_variant_fg_source.default.hex}};
+  --hover-variant-bg:  {{colors.hover_variant_bg_source.default.hex}};
 
   --border-color:        {{colors.outline_source.default.hex}};
   --accent-border-color: {{colors.strong_outline_source.default.hex}};
