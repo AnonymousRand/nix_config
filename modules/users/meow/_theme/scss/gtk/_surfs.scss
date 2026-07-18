@@ -6,7 +6,6 @@
 $default-surfs: [];
 $variant-surfs: [];
 $selected-surfs:
-  ":not(tab):selected",
   "tabbox:not(.single-tab) tab:selected";
 
 //------------------------------------------------------------------------------
@@ -63,7 +62,7 @@ $variant-surfs: utils.register-sels($variant-surfs, [
   "popover > contents"
 ]);
 
-/* why the heck do you exist ;-; */
+// why the heck do you exist ;-;
 :root {
   --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
   --secondary-sidebar-bg-color:       base.change-lightness(var(--sidebar-bg-color), 1.25%);

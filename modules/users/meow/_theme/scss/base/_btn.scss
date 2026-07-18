@@ -1,23 +1,12 @@
 @use "../utils";
 
-/* a general catch-all placeholder for all elements which should change colors on hover/activation */
-@mixin btn-builder($base-fg, $base-bg, $hover-fg, $hover-bg, $active-fg, $active-bg) {
-  // - `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
-  //   elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use
-  //   the tab's hover background color, not the tab's base/non-hovered background color).
-  // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
-  //   of different states.
+//------------------------------------------------------------------------------
+// buttons
+//------------------------------------------------------------------------------
 
-  /* colors should generally be overriden by just setting `---curr-bg` and/or `---base-bg`
-   * (unless, for example, some other style completely overrode `background-color`) */
-
-  ---base-fg: #{$base-fg};
-  ---base-bg: #{$base-bg};
-  ---hover-fg: #{$hover-fg};
-  ---hover-bg: #{$hover-bg};
-  ---active-fg: #{$active-fg};
-  ---active-bg: #{$active-bg};
-
+/* a general catch-all placeholder for all elements which may change colors on hover/activation */
+// assign this to the lowest possible specificities! so that force overriding these properties is easy
+%btn-base {
   ---curr-fg: var(---base-fg, var(--error-color));
   ---curr-bg: var(---base-bg, var(--error-color));
 
@@ -36,6 +25,24 @@
   }
 }
 
+@mixin btn-builder($base-fg, $base-bg, $hover-fg, $hover-bg, $active-fg, $active-bg) {
+  // - `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
+  //   elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use
+  //   the tab's hover background color, not the tab's base/non-hovered background color).
+  // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
+  //   of different states.
+
+  /* colors should generally be overriden by just setting `---curr-bg` and/or `---base-bg`
+   * (unless, for example, some other style completely overrode `background-color`) */
+
+  ---base-fg: #{$base-fg};
+  ---base-bg: #{$base-bg};
+  ---hover-fg: #{$hover-fg};
+  ---hover-bg: #{$hover-bg};
+  ---active-fg: #{$active-fg};
+  ---active-bg: #{$active-bg};
+}
+
 @mixin btn-raised-builder($base-fg, $base-bg) {
   @include btn-builder(
     $base-fg: #{$base-fg},
@@ -47,6 +54,12 @@
   );
 }
 
+// setting variables like `--btn-flat-base-fg` should be left to surfaces (e.g. using surface
+// registries, and individual selectors for more granularity) since they may depend on the color
+// of the ambient surface on which the button sits
+
+// note: if these are no longer needed as placeholders selector, changing all of them to mixins
+// (even if semantically less accurate) may produce significantly smaller and easier-to-read CSS
 %btn-flat {
   @include btn-builder(
     $base-fg: var(--btn-flat-base-fg, var(--error-color)),
@@ -58,6 +71,8 @@
   );
 
   %btn-selected & {
+    //background-color: inherit;
+    //color: inherit;
     @include btn-builder(inherit, inherit, inherit, inherit, inherit, inherit);
   }
 }
@@ -69,6 +84,8 @@
   );
 }
 
+// note: there is currently no support for raised buttons on selected buttons, only flat ones.
+// if this is to be changed, remember to add colors for `border-on-hover` for raised on selected btns.
 %btn-selected {
   @include btn-raised-builder(
     $base-fg: var(--btn-selected-base-fg, var(--error-color)),
@@ -76,11 +93,15 @@
   );
 }
 
+//------------------------------------------------------------------------------
+// border on hover
+//------------------------------------------------------------------------------
+
 @mixin btn-border-on-hover($border-color: var(--btn-border-on-hover-color), $border-width: 2px) {
   ---base-border-color: transparent;
   ---curr-border-color: var(---base-border-color);
 
-  border: var(---border-width) solid;
+  border: #{$border-width} solid;
   border-color: var(---curr-border-color);
   outline-color: var(---curr-border-color);
 
@@ -88,4 +109,14 @@
   &:focus {
     ---curr-border-color: #{$border-color};
   }
+}
+
+// border on hover color may depend on both ambient surface colors and button type (flat/raised)
+// the former is done through surface registries as usual, and the latter is done right here
+%btn-flat {
+  --btn-border-on-hover-color: var(--btn-flat-border-on-hover-color);
+}
+
+%btn-raised {
+  --btn-border-on-hover-color: var(--btn-raised-border-on-hover-color);
 }

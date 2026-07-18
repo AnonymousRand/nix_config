@@ -5,7 +5,7 @@ rec {
 
   vars = {
     black            = "#000000";
-    gray_xxdark      = "#202020";
+    gray_xxdark      = "#242424";
     gray_xdark       = "#505050";
     gray_dark        = "#707070";
     gray             = "#808080";
@@ -103,8 +103,8 @@ rec {
       color_dark  = pink_xxlight;
     };
     outline_strong = {
-      color_light = pink_xlight;
-      color_dark  = pink_xlight;
+      color_light = pink_light;
+      color_dark  = pink_light;
     };
 
     search_fg = selection_fg;
