@@ -30,24 +30,10 @@
 }
 
 /*
-flat: base color is transparent, hover color is ---btn-flat-hover-bg of surf (for default, variant, accented: --hover-bg, --hover-variant-bg, transparent? if we want to assume surf is always another btn; otherwise do the existing hack?), other colors are derived from hover color
-raised: base color is ---btn-raised-bg of surf (--accent-bg, --accent-variant-bg), other colors are derived from it
-selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent-bg), other colors are derived from it like a raised button
+flat: base color is transparent, hover color is --btn-flat-hover-bg of surf (for default, variant, accented: --hover-bg, --hover-variant-bg, transparent? if we want to assume surf is always another btn; otherwise do the existing hack?), other colors are derived from hover color
+raised: base color is --btn-raised-bg of surf (--accent-bg, --accent-variant-bg), other colors are derived from it
+selected: base color is --btn-selected-bg of surf (--accent-strong-bg, --accent-bg), other colors are derived from it like a raised button
 */
-
-@mixin _set-btn-base-colors($is-raised, $raised-base-fg: null, $raised-base-bg: null) {
-  @if $is-raised {
-    @if not $raised-base-fg or not $raised-base-bg {
-      @error "base._btn-base-colors(): $is-raised is true, but $raised-base-fg or $raised-base-bg " +
-             "have not been provided";
-    }
-    ---base-fg: #{$raised-base-fg};
-    ---base-bg: #{$raised-base-bg};
-  } @else {
-    ---base-fg: transparent;
-    ---base-bg: transparent;
-  }
-}
 
 @mixin _set-btn-state-colors($is-fixed-hover, $fixed-hover-fg: null, $fixed-hover-bg: null) {
   @if $is-fixed-hover {
@@ -68,11 +54,13 @@ selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent
 }
 
 @mixin btn-flat(
-  $hover-fg: var(---btn-flat-hover-fg),
-  $hover-bg: var(---btn-flat-hover-bg),
+  $hover-fg: var(--btn-flat-hover-fg, var(--success-color)),
+  $hover-bg: var(--btn-flat-hover-bg, var(--success-color)),
   $unfix-hover-colors-sels: []
 ) {
-  @include _set-btn-base-colors(false);
+  ---base-fg: var(--btn-flat-base-fg, var(--error-color));
+  ---base-bg: var(--btn-flat-base-bg, var(--error-color));
+
   @include _set-btn-state-colors(true, $hover-fg, $hover-bg);
 
   // this is so that e.g. flat buttons inside selected items adjust their hover/active colors
@@ -85,18 +73,28 @@ selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent
   // current element and its selected parent (which is currently enforced by using the same
   // `_set-btn-state-colors(false)` for both)
   #{$unfix-hover-colors-sels} & {
-    @include _set-btn-state-colors(false);
+    //@include _set-btn-state-colors(false);
+    ---base-fg: inherit;
+    ---base-bg: inherit;
+
+    ---hover-fg: inherit;
+    ---hover-bg: inherit;
+
+    ---active-fg: inherit;
+    ---active-bg: inherit;
   }
 }
 
 // (at the moment, there is no support for raised buttons on selected surfaces, only flat buttons.
 // if that ever needs to happen, then fuck me i guess...this is enough of a dumpsterfire already >_<)
-@mixin btn-raised($base-fg: var(---btn-raised-base-fg), $base-bg: var(---btn-raised-base-bg)) {
-  @include _set-btn-base-colors(true, $base-fg, $base-bg);
+@mixin btn-raised($base-fg: var(--btn-raised-base-fg), $base-bg: var(--btn-raised-base-bg)) {
+  ---base-fg: #{$base-fg};
+  ---base-bg: #{$base-bg};
+
   @include _set-btn-state-colors(false);
 }
 
-@mixin btn-selected($base-fg: var(---btn-selected-base-fg), $base-bg: var(---btn-selected-base-bg)) {
+@mixin btn-selected($base-fg: var(--btn-selected-base-fg), $base-bg: var(--btn-selected-base-bg)) {
   @include btn-raised($base-fg, $base-bg);
 }
 

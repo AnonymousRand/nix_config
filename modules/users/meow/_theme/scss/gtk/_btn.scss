@@ -3,7 +3,7 @@
 
 @use "sass:list";
 
-@if list.length(surfs.$default-surfs) != 0 {
+@if list.length(surfs.$default-surfs) > 0 {
   #{surfs.$default-surfs} {
     --btn-flat-base-fg: var(--default-fg);
     --btn-flat-base-bg: var(--default-bg);
@@ -23,7 +23,7 @@
   @debug "default-surfs empty!";
 }
 
-@if list.length(surfs.$variant-surfs) != 0 {
+@if list.length(surfs.$variant-surfs) > 0 {
   #{surfs.$variant-surfs} {
     --btn-flat-base-fg: var(--variant-fg);
     --btn-flat-base-bg: var(--variant-bg);
@@ -43,11 +43,8 @@
   @debug "variant-surfs empty!";
 }
 
-@if list.length(surfs.$selected-surfs) != 0 {
+@if list.length(surfs.$selected-surfs) > 0 {
   #{surfs.$selected-surfs} {
-    --btn-flat-base-fg: var(--btn-selected-base-fg);
-    --btn-flat-base-bg: var(--btn-selected-base-bg);
-
     --btn-raised-base-fg: var(---accent-strong-fg);
     --btn-raised-base-bg: var(---accent-strong-bg);
 
