@@ -45,6 +45,12 @@
 
 @if list.length(surfs.$selected-surfs) != 0 {
   #{surfs.$selected-surfs} {
+    --btn-flat-base-fg: var(--btn-selected-base-fg);
+    --btn-flat-base-bg: var(--btn-selected-base-bg);
+
+    --btn-raised-base-fg: var(---accent-strong-fg);
+    --btn-raised-base-bg: var(---accent-strong-bg);
+
     --btn-border-on-hover-color: var(--border-accented-color);
   }
 } @else {

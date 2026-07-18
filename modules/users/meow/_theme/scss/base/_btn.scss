@@ -44,11 +44,8 @@ selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent
     ---base-fg: #{$raised-base-fg};
     ---base-bg: #{$raised-base-bg};
   } @else {
-    // put `---curr-*` first in case our element is on another `btn`-like element which changes color
-    // using `---curr-*` depending on interaction state (e.g. selected tab); we want flat buttons'
-    // base colors to always match these parent colors even when only the parent is interacted with
-    ---base-fg: var(---curr-fg, var(--btn-flat-base-fg, inherit));
-    ---base-bg: var(---curr-bg, var(--btn-flat-base-bg, inherit));
+    ---base-fg: transparent;
+    ---base-bg: transparent;
   }
 }
 
@@ -83,6 +80,10 @@ selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent
   // background color than the hover color of non-dynamic flat buttons inside it, and hovering
   // these buttons also hovers the selected parent item. thus, on hover, the parent's background
   // color would be darker than the button's, which is Weird Behavior.)
+  //
+  // note that this does require the hover/active color changes to be the same between the
+  // current element and its selected parent (which is currently enforced by using the same
+  // `_set-btn-state-colors(false)` for both)
   #{$unfix-hover-colors-sels} & {
     @include _set-btn-state-colors(false);
   }
