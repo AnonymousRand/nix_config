@@ -102,7 +102,7 @@ rec {
       color_light = pink_xxlight;
       color_dark  = pink_xxlight;
     };
-    strong_outline = {
+    outline_strong = {
       color_light = pink_xlight;
       color_dark  = pink_xlight;
     };

@@ -44,7 +44,7 @@ in stdenv.mkDerivation {
     find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
   '';
 
-  # render SCSS to CSS with sass, and place generated CSS in `build/` in build environment
+  # render SCSS to CSS using sass, and place generated CSS in `build/` in build environment
   buildPhase = ''
     runHook preBuild
 

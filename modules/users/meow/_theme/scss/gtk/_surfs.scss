@@ -1,0 +1,101 @@
+@use "../utils";
+
+//------------------------------------------------------------------------------
+// surface registries
+
+$default-surfs: [];
+$variant-surfs: [];
+$selected-surfs:
+  ":not(tab):selected",
+  "tabbox:not(.single-tab) tab:selected";
+
+//------------------------------------------------------------------------------
+// registration
+
+$variant-surfs: utils.register-sels($variant-surfs, [
+  ".boxed-list",
+  ".boxed-list-separate",
+  ".card"
+]);
+:root {
+  --card-fg-color: var(--variant-fg);
+  --card-bg-color: var(--variant-bg);
+}
+
+:root {
+  --dialog-fg-color: var(--variant-fg);
+  --dialog-bg-color: var(--variant-bg);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "dialog"
+]);
+
+:root {
+  --headerbar-fg-color:       var(--variant-fg);
+  --headerbar-bg-color:       var(--variant-bg);
+  --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "actionbar",
+  "headerbar:not(.flat)",
+  "searchbar:not(.inline)",
+  "tabbar:not(.inline)",
+  // `AdwToolbarView` top and bottom bars
+  "toolbarview menubar",
+  "toolbarview viewswitcherbar",
+  "toolbarview .toolbar"
+]);
+
+:root {
+  --overview-fg-color: var(--variant-fg);
+  --overview-bg-color: var(--variant-bg);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "taboverview"
+]);
+
+:root {
+  --popover-fg-color: var(--variant-fg);
+  --popover-bg-color: var(--variant-bg);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "popover > arrow",
+  "popover > contents"
+]);
+
+/* why the heck do you exist ;-; */
+:root {
+  --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
+  --secondary-sidebar-bg-color:       base.change-lightness(var(--sidebar-bg-color), 1.25%);
+  --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+
+]);
+
+:root {
+  --sidebar-fg-color:       var(--variant-fg);
+  --sidebar-bg-color:       var(--variant-bg);
+  --sidebar-backdrop-color: var(--sidebar-bg-color);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "navigation-split-view",
+  "overlay-split-view",
+  ".navigation-sidebar"
+]);
+
+:root {
+  --view-fg-color: var(--variant-fg);
+  --view-bg-color: var(--variant-bg);
+}
+$variant-surfs: utils.register-sels($variant-surfs, [
+  "textview.view"
+]);
+
+:root {
+  --window-fg-color: var(--default-fg);
+  --window-bg-color: var(--default-bg);
+}
+$default-surfs: utils.register-sels($default-surfs, [
+  "window.background"
+]);

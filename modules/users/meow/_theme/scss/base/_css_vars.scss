@@ -1,0 +1,33 @@
+:root {
+  --default-fg:        {{colors.default_fg_source.default.hex}};
+  --default-bg:        {{colors.default_bg_source.default.hex}};
+  --variant-fg:        {{colors.variant_fg_source.default.hex}};
+  --variant-bg:        {{colors.variant_bg_source.default.hex}};
+  --selection-fg:      {{colors.selection_fg_source.default.hex}};
+  --selection-bg:      {{colors.selection_bg_source.default.hex}};
+
+  --accent-fg:                {{colors.on_secondary.default.hex}};
+  --accent-bg:                {{colors.secondary.default.hex}};
+  --accent-variant-fg:        {{colors.on_tertiary.default.hex}};
+  --accent-variant-bg:        {{colors.tertiary.default.hex}};
+  --accent-strong-fg:         {{colors.on_primary.default.hex}};
+  --accent-strong-bg:         {{colors.primary.default.hex}};
+  --accent-strong-variant-fg: var(--accent-fg);
+  --accent-strong-variant-bg: var(--accent-bg);
+
+  --hover-fg:         {{colors.hover_fg_source.default.hex}};
+  --hover-bg:         {{colors.hover_bg_source.default.hex}};
+  --hover-variant-fg: {{colors.hover_variant_fg_source.default.hex}};
+  --hover-variant-bg: {{colors.hover_variant_bg_source.default.hex}};
+
+  --border-color:          {{colors.outline_source.default.hex}};
+  --border-variant-color:  {{colors.outline_source.default.hex}};
+  --border-accented-color: {{colors.outline_strong_source.default.hex}};
+
+  --link:         {{colors.link_source.default.hex}};
+  --link-hovered: {{colors.link_hovered_source.default.hex}};
+  --link-visited: {{colors.link_hovered_source.default.hex}};
+
+  --error:            {{colors.error_source.default.hex}};
+  --disabled-opacity: 50%;
+}

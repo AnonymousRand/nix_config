@@ -1,0 +1,197 @@
+@use "../base";
+@use "surfs";
+
+@use "sass:list";
+
+@if list.length(surfs.$default-surfs) != 0 {
+  #{surfs.$default-surfs} {
+    --btn-flat-base-fg: var(--default-fg);
+    --btn-flat-base-bg: var(--default-bg);
+
+    --btn-flat-hover-fg: var(--hover-fg);
+    --btn-flat-hover-bg: var(--hover-bg);
+
+    --btn-raised-base-fg: var(--accent-fg);
+    --btn-raised-base-bg: var(--accent-bg);
+
+    --btn-selected-base-fg: var(--accent-strong-fg);
+    --btn-selected-base-bg: var(--accent-strong-bg);
+
+    --btn-border-on-hover-color: var(--border-color);
+  }
+} @else {
+  @debug "default-surfs empty!";
+}
+
+@if list.length(surfs.$variant-surfs) != 0 {
+  #{surfs.$variant-surfs} {
+    --btn-flat-base-fg: var(--variant-fg);
+    --btn-flat-base-bg: var(--variant-bg);
+
+    --btn-flat-hover-fg: var(--hover-variant-fg);
+    --btn-flat-hover-bg: var(--hover-variant-bg);
+
+    --btn-raised-base-fg: var(--accent-variant-fg);
+    --btn-raised-base-bg: var(--accent-variant-bg);
+
+    --btn-selected-base-fg: var(--accent-strong-variant-fg);
+    --btn-selected-base-bg: var(--accent-strong-variant-bg);
+
+    --btn-border-on-hover-color: var(--border-variant-color);
+  }
+} @else {
+  @debug "variant-surfs empty!";
+}
+
+@if list.length(surfs.$selected-surfs) != 0 {
+  #{surfs.$selected-surfs} {
+    --btn-border-on-hover-color: var(--border-accented-color);
+  }
+} @else {
+  @debug "selected-surfs empty!";
+}
+
+@mixin btn-flat {
+  @include base.btn-flat($unfix-hover-colors-sels: surfs.$selected-surfs);
+}
+
+@mixin btn-suggested {
+  @include base.btn-raised;
+}
+
+@mixin btn-destructive {
+  @include base.btn-raised(var(--destructive-fg-color), var(--destructive-bg-color));
+  --btn-border-on-hover-color: var(--destructive-color);
+}
+
+%gtk-btn {
+  @extend %btn-base;
+
+  // these are built-in adwaita/GTK selectors
+  &:not(.suggested-action):not(.destructive-action) {
+    &:not(.raised) {
+      &:not(:selected) {
+        @include btn-flat;
+      }
+
+      &:selected {
+        @include base.btn-selected;
+      }
+    }
+
+    &.raised,
+    // specificity hack because SPECIFICITY IS STUPID I HATE IT AAAAAAAAAAAAAA i am losing my marbles
+    &.text-button.text-button {
+      @include base.btn-raised;
+    }
+  }
+
+  &.suggested-action {
+    @include btn-suggested;
+  }
+
+  &.destructive-action {
+    @include btn-destructive;
+  }
+}
+
+/******************************************************************************/
+/* styles                                                                     */
+/******************************************************************************/
+
+button {
+  @extend %gtk-btn;
+  @include base.btn-border-on-hover;
+
+  // for `windowcontrols` buttons, we want the often round `image` child instead of the
+  // square `button` itself to be the one that highlights and stuff like a button
+  // (i could just exclude `windowcontrols > button` from extending `%gtk-btn` and such, but that
+  // causes issues with how other selectors like for buttons inside tabs are expanded)
+  windowcontrols > &.image-button {
+    border: none;
+    // setting `---base-bg` or `---hover-bg` fails probably because GTK changes `background-color`
+    // with higher specificity?
+    background-color: transparent;
+
+    &:not(.flat) > image {
+      @extend %btn-base;
+      @include base.btn-raised;
+      @include base.btn-border-on-hover;
+    }
+  }
+
+  menubutton:not(.raised) &,
+  splitbutton:not(.raised) & {
+    @include btn-flat;
+  }
+
+  menubutton.raised &,
+  splitbutton.raised & {
+    @include base.btn-raised;
+  }
+}
+
+card {
+  &.activatable {
+    @extend %btn-base;
+    @include btn-flat;
+    @include base.btn-border-on-hover;
+  }
+}
+
+modelbutton {
+  @extend %gtk-btn;
+  @include base.btn-border-on-hover;
+
+  popover.menu & {
+    @include btn-flat;
+
+    // for some godawful fucking stupid piece of shit reason, hovering one of these registers as
+    // fucking `:selected`. and this stupid fucking shit slop of a hack is the only way i could
+    // find to override it back without depending on knowing exactly what `btn-selected` does.
+    &:selected {
+      ---curr-fg: var(--btn-flat-hover-fg);
+      ---curr-bg: var(--btn-flat-hover-bg);
+    }
+  }
+}
+
+splitbutton {
+  @extend %gtk-btn;
+
+  // sooooooo like why is this sometimes -1px by default (and makes borders clip into each other)...
+  > button,
+  > menubutton {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  &:hover,
+  &:focus {
+    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
+    // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
+    // (it's probably specificity again. it's always fucking specificity.)
+    background-color: var(---secondary-hover-bg);
+
+    button:not(:hover):not(:focus) {
+      ---curr-bg: var(---secondary-hover-bg);
+    }
+  }
+}
+
+tab {
+  tabbox:not(.single-tab) & {
+    @extend %btn-base;
+    @include btn-flat;
+
+    &:selected {
+      @include base.btn-selected;
+    }
+
+    // buttons on tabs should match tab's hover etc. transitions
+    // TODO test if still needed
+    & button {
+      transition: background 150ms ease-in-out;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@use "../utils";
+
+/* a general catch-all placeholder for all elements which should change colors on hover/activation */
+%btn-base {
+  // - `curr` variables reflect the current colors depending on state, used for child `%btn` etc.
+  //   elements to inherit the correct value (e.g. child flat buttons on a hovered tab should use
+  //   the tab's hover background color, not the tab's base/non-hovered background color).
+  // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
+  //   of different states.
+
+  /* colors should generally be overriden by just setting `---curr-bg` and/or `---base-bg`
+   * (unless, for example, some other style completely overrode `background-color`) */
+
+  ---curr-fg: var(---base-fg, var(--error-color));
+  ---curr-bg: var(---base-bg, var(--error-color));
+
+  background-color: var(---curr-bg);
+  color: var(---curr-fg);
+
+  &:hover,
+  &:focus {
+    ---curr-fg: var(---hover-fg);
+    ---curr-bg: var(---hover-bg);
+  }
+
+  &:active {
+    ---curr-fg: var(---active-fg);
+    ---curr-bg: var(---active-bg);
+  }
+}
+
+/*
+flat: base color is transparent, hover color is ---btn-flat-hover-bg of surf (for default, variant, accented: --hover-bg, --hover-variant-bg, transparent? if we want to assume surf is always another btn; otherwise do the existing hack?), other colors are derived from hover color
+raised: base color is ---btn-raised-bg of surf (--accent-bg, --accent-variant-bg), other colors are derived from it
+selected: base color is ---btn-selected-bg of surf (--accent-strong-bg, --accent-bg), other colors are derived from it like a raised button
+*/
+
+@mixin _set-btn-base-colors($is-raised, $raised-base-fg: null, $raised-base-bg: null) {
+  @if $is-raised {
+    @if not $raised-base-fg or not $raised-base-bg {
+      @error "base._btn-base-colors(): $is-raised is true, but $raised-base-fg or $raised-base-bg " +
+             "have not been provided";
+    }
+    ---base-fg: #{$raised-base-fg};
+    ---base-bg: #{$raised-base-bg};
+  } @else {
+    // put `---curr-*` first in case our element is on another `btn`-like element which changes color
+    // using `---curr-*` depending on interaction state (e.g. selected tab); we want flat buttons'
+    // base colors to always match these parent colors even when only the parent is interacted with
+    ---base-fg: var(---curr-fg, var(--btn-flat-base-fg, inherit));
+    ---base-bg: var(---curr-bg, var(--btn-flat-base-bg, inherit));
+  }
+}
+
+@mixin _set-btn-state-colors($is-fixed-hover, $fixed-hover-fg: null, $fixed-hover-bg: null) {
+  @if $is-fixed-hover {
+    @if not $fixed-hover-fg or not $fixed-hover-bg {
+      @error "base._btn-state-colors(): $is-fixed-hover is true, but $fixed-hover-fg or "+
+             "$fixed-hover-bg have not been provided";
+    }
+    ---hover-fg:  #{$fixed-hover-fg};
+    ---hover-bg:  #{$fixed-hover-bg};
+    ---active-fg: var(---hover-fg);
+    ---active-bg: #{utils.change-lightness(var(---hover-bg), -2.5%)};
+  } @else {
+    ---hover-fg:  var(---base-fg);
+    ---hover-bg:  #{utils.change-lightness(var(---base-bg), -2.5%)};
+    ---active-fg: var(---hover-fg);
+    ---active-bg: #{utils.change-lightness(var(---hover-bg), -2.5%)};
+  }
+}
+
+@mixin btn-flat(
+  $hover-fg: var(---btn-flat-hover-fg),
+  $hover-bg: var(---btn-flat-hover-bg),
+  $unfix-hover-colors-sels: []
+) {
+  @include _set-btn-base-colors(false);
+  @include _set-btn-state-colors(true, $hover-fg, $hover-bg);
+
+  // this is so that e.g. flat buttons inside selected items adjust their hover/active colors
+  // to their selected parent's colors accordingly (otherwise, selected items may have darker
+  // background color than the hover color of non-dynamic flat buttons inside it, and hovering
+  // these buttons also hovers the selected parent item. thus, on hover, the parent's background
+  // color would be darker than the button's, which is Weird Behavior.)
+  #{$unfix-hover-colors-sels} & {
+    @include _set-btn-state-colors(false);
+  }
+}
+
+// (at the moment, there is no support for raised buttons on selected surfaces, only flat buttons.
+// if that ever needs to happen, then fuck me i guess...this is enough of a dumpsterfire already >_<)
+@mixin btn-raised($base-fg: var(---btn-raised-base-fg), $base-bg: var(---btn-raised-base-bg)) {
+  @include _set-btn-base-colors(true, $base-fg, $base-bg);
+  @include _set-btn-state-colors(false);
+}
+
+@mixin btn-selected($base-fg: var(---btn-selected-base-fg), $base-bg: var(---btn-selected-base-bg)) {
+  @include btn-raised($base-fg, $base-bg);
+}
+
+@mixin btn-border-on-hover($border-color: var(--btn-border-on-hover-color), $border-width: 2px) {
+  ---base-border-color: transparent;
+  ---curr-border-color: var(---base-border-color);
+
+  border: var(---border-width) solid;
+  border-color: var(---curr-border-color);
+  outline-color: var(---curr-border-color);
+
+  &:hover,
+  &:focus {
+    ---curr-border-color: #{$border-color};
+  }
+}

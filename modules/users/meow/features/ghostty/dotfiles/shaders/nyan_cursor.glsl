@@ -227,7 +227,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float catFade = morphT;
     float catAlpha = (1.0 - smoothstep(0.6 * 1.0, 1.0, catFade)) * alphaMult;
     float trailDt = max(dt - flyDuration, 0.0);
-    float trailAlpha = exp(2.75 * (-trailDt / trailFadeDuration)) * alphaMult;
+    float trailAlpha = exp(3.0 * (-trailDt / trailFadeDuration)) * alphaMult;
 
     // Crossfade-mask the default block cursor with catAlpha, but only once
     // the flying cat gets close to the destination. This leaves the block
