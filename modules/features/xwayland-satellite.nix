@@ -1,7 +1,7 @@
 {
   flake.nixosModules.xwayland-satellite = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      xwayland-satellite
+    environment.systemPackages = [
+      pkgs.xwayland-satellite
     ];
   };
 }

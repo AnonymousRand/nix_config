@@ -1,7 +1,7 @@
 {
   flake.nixosModules.nvtop = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      nvtopPackages.full
+    environment.systemPackages = [
+      pkgs.nvtopPackages.full
     ];
   };
 }

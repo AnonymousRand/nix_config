@@ -1,7 +1,7 @@
 {
   flake.nixosModules.playerctl = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      playerctl
+    environment.systemPackages = [
+      pkgs.playerctl
     ];
   };
 }

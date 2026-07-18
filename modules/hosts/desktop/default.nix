@@ -33,6 +33,7 @@
       self.nixosModules.playerctl    # control media players that use MPRIS
       self.nixosModules.nvtop        # GPU top
       self.nixosModules.solaar       # Logitech mouse config
+      self.nixosModules.tokei        # code counter
       self.nixosModules.wl-clipboard # wayland clipboard
     ];
   };
