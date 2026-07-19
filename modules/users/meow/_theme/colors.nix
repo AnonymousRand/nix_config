@@ -52,6 +52,7 @@ rec {
   # (use these on things which very clearly have any of the following roles)
 
   roles = with vars; rec {
+    # default fg/bg
     default_fg = {
       color_light = gray_dark;
       color_dark  = gray_xxlight;
@@ -65,6 +66,7 @@ rec {
       color_dark  = gray_light;
     };
 
+    # variant fg/bg
     variant_fg = {
       color_light = pink_xxlight;
       color_dark  = pink_xxlight;
@@ -74,6 +76,7 @@ rec {
       color_dark  = gray_xxdark;
     };
 
+    # selection
     selection_fg = {
       color_light = pink_xlight;
       color_dark  = pink_light;
@@ -83,6 +86,7 @@ rec {
       color_dark  = pink_xxxxlight;
     };
 
+    # hover
     hover_fg = {
       color_light = pink_xlight;
       color_dark  = pink_light;
@@ -100,30 +104,55 @@ rec {
       color_dark  = pink_xxxxlight;
     };
 
-    outline = {
-      color_light = pink_xxxlight;
-      color_dark  = pink_xxlight;
+    # accents
+    accent_1_fg = {
+      color_light = pink;
+      color_dark  = black;
     };
-    outline_strong = {
-      color_light = pink_xxlight;
+    accent_1_bg = {
+      color_light = pink_xxxlight;
       color_dark  = pink_xlight;
     };
-    outline_xstrong = {
+    accent_2_fg = {
+      color_light = pink_light;
+      color_dark  = gray_xxdark;
+    };
+    accent_2_bg = {
+      color_light = pink_xxxxlight;
+      color_dark  = pink_xxlight;
+    };
+    accent_3_fg = {
+      color_light = pink_xlight;
+      color_dark  = pink;
+    };
+    accent_3_bg = {
+      color_light = pink_xxxxxlight;
+      color_dark  = pink_xxxlight;
+    };
+    accent_4_fg = {
+      color_light = pink_xxlight;
+      color_dark  = pink_light;
+    };
+    accent_4_bg = {
+      color_light = pink_xxxxxxlight;
+      color_dark  = pink_xxxxlight;
+    };
+
+    # outlines
+    outline_1 = {
       color_light = pink_xlight;
       color_dark  = pink_light;
     };
-
-    search_fg = selection_fg;
-    search_bg = selection_bg;
-    search_curr_fg = {
-      color_light = default_fg.color_light;
-      color_dark  = default_bg.color_dark;
+    outline_2 = {
+      color_light = pink_xxlight;
+      color_dark  = pink_xlight;
     };
-    search_curr_bg = {
-      color_light = green_light;
-      color_dark  = green_light;
+    outline_3 = {
+      color_light = pink_xxxlight;
+      color_dark  = pink_xxlight;
     };
 
+    # statuses
     error = {
       color_light = red;
       color_dark  = red;
@@ -161,6 +190,19 @@ rec {
       color_dark  = "#e8ffcc";
     };
 
+    # search
+    search_fg = selection_fg;
+    search_bg = selection_bg;
+    search_curr_fg = {
+      color_light = default_fg.color_light;
+      color_dark  = default_bg.color_dark;
+    };
+    search_curr_bg = {
+      color_light = green_light;
+      color_dark  = green_light;
+    };
+
+    # links
     link = {
       color_light = blue_xdeep;
       color_dark  = blue;
@@ -170,6 +212,7 @@ rec {
       color_dark  = blue_light;
     };
 
+    # matching parens
     matching_paren_fg = {
       color_light = default_fg.color_light;
       color_dark  = default_bg.color_dark;
@@ -179,6 +222,7 @@ rec {
       color_dark  = green_xlight;
     };
 
+    # code syntax
     class = {
       color_light = orange_xdeep;
       color_dark  = orange;
@@ -213,13 +257,13 @@ rec {
       mOnSurface        = roles.default_fg.color_light; # main foreground color
       mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
       mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
-      mPrimary          = vars.pink_xxxxlight;          # primary accent (buttons, links, highlights)
-      mOnPrimary        = vars.pink_light;              # text on primary surfaces
-      mSecondary        = vars.pink_xxxxxlight;         # secondary accent
-      mOnSecondary      = vars.pink_xlight;             # text on secondary surfaces
-      mTertiary         = vars.pink_xxxxxxlight;        # tertiary accent
-      mOnTertiary       = vars.pink_xxlight;            # text on tertiary surfaces
-      mOutline          = roles.outline.color_light;    # borders and dividers
+      mPrimary          = accent_2_bg;                  # primary accent (buttons, links, highlights)
+      mOnPrimary        = accent_2_fg;                  # text on primary surfaces
+      mSecondary        = accent_3_bg;                  # secondary accent
+      mOnSecondary      = accent_3_fg;                  # text on secondary surfaces
+      mTertiary         = accent_4_bg;                  # tertiary accent
+      mOnTertiary       = accent_4_fg;                  # text on tertiary surfaces
+      mOutline          = roles.outline_3.color_light;  # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = roles.hover_bg.color_light;   # hover state background
       mOnHover          = roles.hover_fg.color_light;   # text on hover surfaces
@@ -261,13 +305,13 @@ rec {
       mOnSurface        = roles.default_fg.color_dark;
       mSurfaceVariant   = roles.variant_bg.color_dark;
       mOnSurfaceVariant = roles.variant_fg.color_dark;
-      mPrimary          = vars.pink_xxlight;
-      mOnPrimary        = vars.gray_xxdark;
-      mSecondary        = vars.pink_xxxlight;
-      mOnSecondary      = vars.pink;
-      mTertiary         = vars.pink_xxxxlight;
-      mOnTertiary       = vars.pink_light;
-      mOutline          = roles.outline.color_dark;
+      mPrimary          = accent_2_bg;
+      mOnPrimary        = accent_2_fg;
+      mSecondary        = accent_3_bg;
+      mOnSecondary      = accent_3_fg;
+      mTertiary         = accent_4_bg;
+      mOnTertiary       = accent_4_fg;
+      mOutline          = roles.outline_3.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;
       mOnHover          = roles.hover_fg.color_dark;

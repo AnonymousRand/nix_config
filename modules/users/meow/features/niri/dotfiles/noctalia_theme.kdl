@@ -11,7 +11,7 @@ layout {
         active-gradient from="{{colors.niri_active_gradient_start_source.default.hex}}" \
                           to="{{colors.niri_active_gradient_end_source.default.hex}}" \
                        angle=180 in="oklch longer hue"
-        inactive-color "{{colors.outline_source.default.hex}}"
+        inactive-color "{{colors.outline_3_source.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 
@@ -20,19 +20,19 @@ layout {
     }
 
     tab-indicator {
-        active-color   "{{colors.primary.default.hex}}"
-        inactive-color "{{colors.secondary.default.hex}}"
+        active-color   "{{colors.accent_1_bg_source.default.hex}}"
+        inactive-color "{{colors.accent_2_bg_source.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 
     insert-hint {
-        color "{{colors.primary.default.hex}}80"
+        color "{{colors.accent_2_bg_source.default.hex}}80"
     }
 }
 
 recent-windows {
     highlight {
-        active-color "{{colors.primary.default.hex}}ff"
+        active-color "{{colors.accent_1_bg_source.default.hex}}ff"
         urgent-color "{{colors.warning_source.default.hex}}"
     }
 }

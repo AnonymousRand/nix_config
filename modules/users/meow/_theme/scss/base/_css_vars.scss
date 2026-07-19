@@ -6,12 +6,12 @@
   --selection-fg:      {{colors.selection_fg_source.default.hex}};
   --selection-bg:      {{colors.selection_bg_source.default.hex}};
 
-  --accent-fg:                {{colors.on_secondary.default.hex}};
-  --accent-bg:                {{colors.secondary.default.hex}};
-  --accent-variant-fg:        {{colors.on_tertiary.default.hex}};
-  --accent-variant-bg:        {{colors.tertiary.default.hex}};
-  --accent-strong-fg:         {{colors.on_primary.default.hex}};
-  --accent-strong-bg:         {{colors.primary.default.hex}};
+  --accent-fg:                {{colors.accent_3_fg_source.default.hex}};
+  --accent-bg:                {{colors.accent_3_bg_source.default.hex}};
+  --accent-variant-fg:        {{colors.accent_4_fg_source.default.hex}};
+  --accent-variant-bg:        {{colors.accent_4_fg_source.default.hex}};
+  --accent-strong-fg:         {{colors.accent_2_fg_source.default.hex}};
+  --accent-strong-bg:         {{colors.accent_2_bg_source.default.hex}};
   --accent-strong-variant-fg: var(--accent-fg);
   --accent-strong-variant-bg: var(--accent-bg);
 
@@ -20,9 +20,9 @@
   --hover-variant-fg: {{colors.hover_variant_fg_source.default.hex}};
   --hover-variant-bg: {{colors.hover_variant_bg_source.default.hex}};
 
-  --border-color:         {{colors.outline_source.default.hex}};
-  --border-strong-color:  {{colors.outline_strong_source.default.hex}};
-  --border-xstrong-color: {{colors.outline_xstrong_source.default.hex}};
+  --border-color:         {{colors.outline_3_source.default.hex}};
+  --border-strong-color:  {{colors.outline_2_source.default.hex}};
+  --border-xstrong-color: {{colors.outline_1_source.default.hex}};
 
   --link:         {{colors.link_source.default.hex}};
   --link-hovered: {{colors.link_hovered_source.default.hex}};
