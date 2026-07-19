@@ -34,13 +34,14 @@ rec {
     orange_xdeep     = "#ffa600";
     orange_xxdeep    = "#ff9500";
 
-    pink             = "#ff409f";
-    pink_light       = "#ff73b9";
-    pink_xlight      = "#ff8fc7";
-    pink_xxlight     = "#ffadd6";
-    pink_xxxlight    = "#ffcbe6";
-    pink_xxxxlight   = "#ffdeee";
-    pink_xxxxxlight  = "#ffe8f4";
+    pink             = "#ff0080";
+    pink_light       = "#ff409f";
+    pink_xlight      = "#ff73b9";
+    pink_xxlight     = "#ff8fc7";
+    pink_xxxlight    = "#ffadd6";
+    pink_xxxxlight   = "#ffc7e4";
+    pink_xxxxxlight  = "#ffdeee";
+    pink_xxxxxxlight = "#ffe8f4";
 
     red              = "#ff0000";
   };
@@ -60,12 +61,12 @@ rec {
     };
     lighter_fg = {
       color_light = gray_xlight;
-      color_dark  = gray;
+      color_dark  = gray_light;
     };
 
     variant_fg = {
-      color_light = pink_xlight;
-      color_dark  = pink_xlight;
+      color_light = pink_xxlight;
+      color_dark  = pink_xxlight;
     };
     variant_bg = {
       color_light = "#fff7fa";
@@ -73,37 +74,41 @@ rec {
     };
 
     selection_fg = {
-      color_light = pink_light;
-      color_dark  = pink;
+      color_light = pink_xlight;
+      color_dark  = pink_light;
     };
     selection_bg = {
-      color_light = pink_xxxxlight;
-      color_dark  = pink_xxxlight;
+      color_light = pink_xxxxxlight;
+      color_dark  = pink_xxxxlight;
     };
 
     hover_fg = {
-      color_light = pink_light;
-      color_dark  = pink;
+      color_light = pink_xlight;
+      color_dark  = pink_light;
     };
     hover_bg = {
-      color_light = pink_xxxxlight;
-      color_dark  = pink_xxlight;
-    };
-    hover_variant_fg = {
-      color_light = pink_xlight;
-      color_dark  = pink;
-    };
-    hover_variant_bg = {
       color_light = pink_xxxxxlight;
       color_dark  = pink_xxxlight;
     };
+    hover_variant_fg = {
+      color_light = pink_xxlight;
+      color_dark  = pink_light;
+    };
+    hover_variant_bg = {
+      color_light = pink_xxxxxxlight;
+      color_dark  = pink_xxxxlight;
+    };
 
     outline = {
-      color_light = pink_xxlight;
+      color_light = pink_xxxlight;
       color_dark  = pink_xxlight;
     };
     outline_strong = {
-      color_light = pink_light;
+      color_light = pink_xxlight;
+      color_dark  = pink_xlight;
+    };
+    outline_xstrong = {
+      color_light = pink_xlight;
       color_dark  = pink_light;
     };
 
@@ -181,8 +186,8 @@ rec {
       color_dark  = orange;
     };
     keyword = {
-      color_light = pink_xlight;
-      color_dark  = pink_xxxlight;
+      color_light = pink_xxlight;
+      color_dark  = pink_xxxxlight;
     };
     variable = default_fg;
   };
@@ -198,12 +203,12 @@ rec {
       mOnSurface        = roles.default_fg.color_light; # main foreground color
       mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
       mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
-      mPrimary          = vars.pink_xxxlight;           # primary accent (buttons, links, highlights)
-      mOnPrimary        = vars.pink;                    # text on primary surfaces
-      mSecondary        = vars.pink_xxxxlight;          # secondary accent
-      mOnSecondary      = vars.pink_light;              # text on secondary surfaces
-      mTertiary         = vars.pink_xxxxxlight;         # tertiary accent
-      mOnTertiary       = vars.pink_xlight;             # text on tertiary surfaces
+      mPrimary          = vars.pink_xxxxlight;          # primary accent (buttons, links, highlights)
+      mOnPrimary        = vars.pink_light;              # text on primary surfaces
+      mSecondary        = vars.pink_xxxxxlight;         # secondary accent
+      mOnSecondary      = vars.pink_xlight;             # text on secondary surfaces
+      mTertiary         = vars.pink_xxxxxxlight;        # tertiary accent
+      mOnTertiary       = vars.pink_xxlight;            # text on tertiary surfaces
       mOutline          = roles.outline.color_light;    # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = roles.hover_bg.color_light;   # hover state background
@@ -214,17 +219,17 @@ rec {
       terminal = rec {
         background  = mSurface;
         foreground  = mOnSurface;
-        cursor      = vars.pink_xxxlight;
+        cursor      = vars.pink_xxxxlight;
         cursorText  = foreground;
         selectionBg = roles.selection_bg.color_light;
         selectionFg = roles.selection_fg.color_light;
         normal = {
           black   = vars.black;
-          red     = vars.pink_xlight;
+          red     = vars.pink_xxlight;
           green   = vars.green_deep_dark;
           yellow  = vars.orange_xdeep;
           blue    = vars.blue_xdeep_light;
-          magenta = vars.pink_xlight;
+          magenta = vars.pink_xxlight;
           cyan    = vars.blue_deep;
           white   = vars.gray_xxlight;
         };
@@ -234,7 +239,7 @@ rec {
           green   = vars.green_deep_xdark;
           yellow  = vars.orange_xdeep;
           blue    = vars.blue_xdeep;
-          magenta = vars.pink_xlight;
+          magenta = vars.pink_xxlight;
           cyan    = vars.blue_deep;
           white   = vars.white;
         };
@@ -246,12 +251,12 @@ rec {
       mOnSurface        = roles.default_fg.color_dark;
       mSurfaceVariant   = roles.variant_bg.color_dark;
       mOnSurfaceVariant = roles.variant_fg.color_dark;
-      mPrimary          = vars.pink_xlight;
+      mPrimary          = vars.pink_xxlight;
       mOnPrimary        = vars.gray_xxdark;
-      mSecondary        = vars.pink_xxlight;
+      mSecondary        = vars.pink_xxxlight;
       mOnSecondary      = vars.pink;
-      mTertiary         = vars.pink_xxxlight;
-      mOnTertiary       = vars.pink;
+      mTertiary         = vars.pink_xxxxlight;
+      mOnTertiary       = vars.pink_light;
       mOutline          = roles.outline.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;
@@ -262,17 +267,17 @@ rec {
       terminal = rec {
         background  = mSurface;
         foreground  = mOnSurface;
-        cursor      = vars.pink_xxxlight;
+        cursor      = vars.pink_xxxxlight;
         cursorText  = background;
         selectionBg = roles.selection_bg.color_dark;
         selectionFg = roles.selection_fg.color_dark;
         normal = {
           black   = vars.black;
-          red     = vars.pink_xxlight;
+          red     = vars.pink_xxxlight;
           green   = vars.green;
           yellow  = vars.orange;
           blue    = vars.blue_xdeep;
-          magenta = vars.pink_xxlight;
+          magenta = vars.pink_xxxlight;
           cyan    = vars.blue;
           white   = vars.gray_xxlight;
         };
@@ -282,7 +287,7 @@ rec {
           green   = vars.green_light;
           yellow  = vars.orange_light;
           blue    = vars.blue_xdeep_light;
-          magenta = vars.pink_xxxlight;
+          magenta = vars.pink_xxxxlight;
           cyan    = vars.blue_light;
           white   = vars.white;
         };

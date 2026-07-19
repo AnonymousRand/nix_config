@@ -26,8 +26,8 @@ set -g fish_pager_color_prefix                           magenta --bold
 set -g fish_pager_color_progress                         magenta --bold
 set -g fish_pager_color_selected_background --background "{{colors.hover_bg_source.default.hex}}"
 set -g fish_pager_color_selected_completion              "{{colors.hover_fg_source.default.hex}}"
-set -g fish_pager_color_selected_description             "{{colors.pink_source.default.hex}}"
-set -g fish_pager_color_selected_prefix                  "{{colors.pink_source.default.hex}}" --bold
+set -g fish_pager_color_selected_description             "{{colors.pink_light_source.default.hex}}"
+set -g fish_pager_color_selected_prefix                  "{{colors.pink_light_source.default.hex}}" --bold
 
 set -g __fish_git_prompt_color                           brcyan
 

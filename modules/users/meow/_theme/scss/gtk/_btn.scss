@@ -11,19 +11,21 @@
 
 @if list.length(surfs.$default-surfs) > 0 {
   #{surfs.$default-surfs} {
-    --btn-flat-base-fg: var(--default-fg);
-
-    g-btn-flat-hover-fg: var(--hover-fg);
+    --btn-flat-hover-fg: var(--hover-fg);
     --btn-flat-hover-bg: var(--hover-bg);
 
     --btn-raised-base-fg: var(--accent-fg);
     --btn-raised-base-bg: var(--accent-bg);
 
+    --btn-strong-raised-base-fg: var(--accent-strong-fg);
+    --btn-strong-raised-base-bg: var(--accent-strong-bg);
+
     --btn-selected-base-fg: var(--accent-strong-fg);
     --btn-selected-base-bg: var(--accent-strong-bg);
 
-    --btn-flat-border-on-hover-color:   var(--border-color);
-    --btn-raised-border-on-hover-color: var(--border-strong-color);
+    --btn-flat-hover-border-color:          var(--border-color);
+    --btn-raised-hover-border-color:        var(--border-strong-color);
+    --btn-strong-raised-hover-border-color: var(--border-xstrong-color);
   }
 } @else {
   @debug "gtk/btn: surfs.$default-surfs empty! uh oh >~<";
@@ -31,19 +33,21 @@
 
 @if list.length(surfs.$variant-surfs) > 0 {
   #{surfs.$variant-surfs} {
-    --btn-flat-base-fg: var(--variant-fg);
-
     --btn-flat-hover-fg: var(--hover-variant-fg);
     --btn-flat-hover-bg: var(--hover-variant-bg);
 
     --btn-raised-base-fg: var(--accent-variant-fg);
     --btn-raised-base-bg: var(--accent-variant-bg);
 
+    --btn-strong-raised-base-fg: var(--accent-strong-variant-fg);
+    --btn-strong-raised-base-bg: var(--accent-strong-variant-bg);
+
     --btn-selected-base-fg: var(--accent-strong-variant-fg);
     --btn-selected-base-bg: var(--accent-strong-variant-bg);
 
-    --btn-flat-border-on-hover-color:   var(--border-color);
-    --btn-raised-border-on-hover-color: var(--border-strong-color);
+    --btn-flat-hover-border-color:          var(--border-color);
+    --btn-raised-hover-border-color:        var(--border-strong-color);
+    --btn-strong-raised-hover-border-color: var(--border-xstrong-color);
   }
 } @else {
   @debug "gtk/btn: surfs.$variant-surfs empty! uh oh >~<";
@@ -51,7 +55,8 @@
 
 @if list.length(surfs.$selected-surfs) > 0 {
   #{surfs.$selected-surfs} {
-    --btn-flat-border-on-hover-color: var(--border-strong-color);
+    --btn-flat-hover-border-color:   var(--border-strong-color);
+    --btn-raised-hover-border-color: var(--border-xstrong-color);
   }
 } @else {
   @debug "gtk/btn: surfs.$selected-surfs empty! uh oh >~<";
@@ -71,7 +76,7 @@
     $base-bg: var(--destructive-bg-color)
   );
 
-  --btn-border-on-hover-color: var(--destructive-color);
+  --btn-hover-border-color: var(--destructive-color);
 }
 
 @mixin gtk-btn {
@@ -100,7 +105,7 @@
 button {
   @extend %btn-base;
   @include gtk-btn;
-  @include base.btn-border-on-hover;
+  @include base.btn-hover-border;
 
   // for `windowcontrols` buttons, we want the often round `image` child instead of the
   // square `button` itself to be the one that highlights and stuff like a button
@@ -111,8 +116,8 @@ button {
 
     &:not(.flat) > image {
       @extend %btn-base;
-      @extend %btn-raised;
-      @include base.btn-border-on-hover;
+      @extend %btn-strong-raised;
+      @include base.btn-hover-border;
     }
   }
 
@@ -131,14 +136,14 @@ card {
   &.activatable {
     @extend %btn-base;
     @extend %btn-flat;
-    @include base.btn-border-on-hover;
+    @include base.btn-hover-border;
   }
 }
 
 modelbutton {
   @extend %btn-base;
   @include gtk-btn;
-  @include base.btn-border-on-hover;
+  @include base.btn-hover-border;
 
   popover.menu & {
     @extend %btn-flat;
