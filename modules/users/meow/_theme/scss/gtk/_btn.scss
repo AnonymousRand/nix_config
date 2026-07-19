@@ -115,6 +115,7 @@ button {
     border: none;
 
     &:not(.flat) > image {
+      @extend %btn-base;
       @extend %btn-raised;
       @include base.btn-border-on-hover;
     }
@@ -168,6 +169,7 @@ splitbutton {
     ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
     // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
     // (it's probably specificity again. it's always fucking specificity.)
+    // TODO
     background-color: var(---secondary-hover-bg);
 
     button:not(:hover):not(:focus) {

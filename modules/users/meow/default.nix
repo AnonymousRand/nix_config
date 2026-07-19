@@ -12,6 +12,7 @@
       self.nixosModules.fish
       self.nixosModules.ghostty
       self.nixosModules.niri
+      self.nixosModules.nixowos # system-level to change os-release
       self.nixosModules.noctalia
       self.nixosModules.vim
     ];

@@ -1,0 +1,23 @@
+{
+    "preset": [
+        "rainbow",
+        "transgender",
+        "nonbinary",
+        "bisexual",
+        "asexual"
+    ],
+    "mode": "rgb",
+    "auto_detect_light_dark": true,
+    "lightness": 0.6,
+    "color_align": {
+        "mode": "horizontal"
+    },
+    "backend": "fastfetch",
+    "args": null,
+    "distro": null,
+    "pride_month_disable": false,
+    "custom_ascii_path": null,
+    "custom_presets": null,
+    "palette_glyph": null,
+    "palette_type": null
+}

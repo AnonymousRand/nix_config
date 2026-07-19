@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixowos = {
+      url = "github:yunfachi/nixowos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       #url = "github:AnonymousRand/noctalia/better-template-cli";
@@ -44,8 +49,12 @@
       "aarch64-linux"
     ];
     imports = [
+      # allows using `perSystem.overlayAttrs` to add to `self.overlays.default`
+      inputs.flake-parts.flakeModules.easyOverlay
+      # allows standalone Home Manager configs
+      inputs.home-manager.flakeModules.home-manager
+      # my config
       (inputs.import-tree ./modules)
-      inputs.home-manager.flakeModules.home-manager # to allow standalone Home Manager configs
     ];
   };
 }
