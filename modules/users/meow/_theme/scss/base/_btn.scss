@@ -48,8 +48,6 @@
 // registries, and individual selectors for more granularity) since they may depend on the color
 // of the ambient surface on which the button sits
 
-// note: if these are no longer needed as placeholders selector, changing all of them to mixins
-// (even if semantically less accurate) may produce significantly smaller and easier-to-read CSS
 %btn-flat {
   // don't set base colors so they take the default `inherit`/`transparent` values
   ---hover-fg: var(--btn-flat-hover-fg, var(--error-color));

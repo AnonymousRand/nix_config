@@ -7,8 +7,9 @@
         "asexual"
     ],
     "mode": "rgb",
-    "auto_detect_light_dark": true,
-    "lightness": 0.6,
+    "light_dark": "light",
+    "TODO": "we want 0.85 lightness on light and 0.58 on dark",
+    "lightness": 0.85,
     "color_align": {
         "mode": "horizontal"
     },
