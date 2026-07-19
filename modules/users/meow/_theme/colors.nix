@@ -23,6 +23,7 @@ rec {
 
     green            = "#8cff00";
     green_light      = "#a3ff33";
+    green_xlight     = "#baff66";
     green_deep       = "#8cff00";
     green_deep_dark  = "#76d600";
     green_deep_xdark = "#6fc900";
@@ -167,6 +168,15 @@ rec {
     link_hovered = {
       color_light = blue_xxdeep;
       color_dark  = blue_light;
+    };
+
+    matching_paren_fg = {
+      color_light = default_fg.color_light;
+      color_dark  = default_bg.color_dark;
+    };
+    matching_paren_bg = {
+      color_light = green_xlight;
+      color_dark  = green_xlight;
     };
 
     class = {

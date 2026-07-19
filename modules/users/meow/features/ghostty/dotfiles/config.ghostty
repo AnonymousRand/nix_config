@@ -3,40 +3,47 @@
 ################################################################################
 
 # styling
-theme                      = "noctalia_theme"
-# force ghostty to use ghostty config (instead of system GTK, for example) to style windows & titlebars
-window-theme               = "ghostty"
-font-size                  = 12
+theme                   = "noctalia_theme"
+# force ghostty to use ghostty config (instead of system GTK, for example) to style windows
+window-theme            = "ghostty"
+font-size               = 12
 # remove programming ligatures
-font-feature               = -calt
-gtk-custom-css             = ./custom.css
-custom-shader              = shaders/nyan_cursor.glsl
-custom-shader-animation    = true
+font-feature            = -calt
+gtk-custom-css          = ./custom.css
+custom-shader           = shaders/nyan_cursor.glsl
+custom-shader-animation = true
 
-# use fish shell
+# shell
 command                    = "fish --login --interactive"
 shell-integration          = fish
 shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
 
+# system
+app-notifications   = no-clipboard-copy, no-config-reload
+# improve performance by using the same process to spawn multiple instances of ghostty
+gtk-single-instance = true
+
+# launching and closing
+# open in same working directory as previous windows/tabs/splits
+window-inherit-working-directory = true
+tab-inherit-working-directory    = true
+split-inherit-working-directory  = true
+# if no previous windows, open in home directory
+working-directory                = home
+confirm-close-surface            = always
+
 # cursor
-adjust-cursor-thickness    = 200%
-cursor-click-to-move       = true
+adjust-cursor-thickness = 200%
+cursor-click-to-move    = true
 
 # layout
-confirm-close-surface      = true
-unfocused-split-opacity    = 0.6
+unfocused-split-opacity = 0.6
 
 # titlebar
-gtk-titlebar-style         = tabs
+gtk-titlebar-style = tabs
 
 # scrollback buffer max size in bytes (10MB ~= 100k lines at 100 UTF-8 chars/line)
-scrollback-limit           = 10_000_000
-
-# misc
-# improve performance
-gtk-single-instance        = true
-working-directory          = home
-app-notifications          = no-clipboard-copy, no-config-reload
+scrollback-limit = 10_000_000
 
 ################################################################################
 # keybinds

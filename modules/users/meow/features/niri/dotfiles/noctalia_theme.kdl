@@ -26,13 +26,13 @@ layout {
     }
 
     insert-hint {
-        color "{{colors.secondary.default.hex}}80"
+        color "{{colors.primary.default.hex}}80"
     }
 }
 
 recent-windows {
     highlight {
-        active-color "{{colors.primary.default.hex}}"
+        active-color "{{colors.primary.default.hex}}ff"
         urgent-color "{{colors.warning_source.default.hex}}"
     }
 }
