@@ -214,9 +214,9 @@ binds {
     Mod+D hotkey-overlay-title="Launcher"           { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "--autocopy"; }
 
-    Print          { screenshot; }
-    Mod+Print      { screenshot-screen; }
-    Mod+Ctrl+Print { screenshot-window; }
+    Mod+Print       { screenshot-screen; }
+    Mod+Shift+Print { screenshot; }
+    Mod+Ctrl+Print  { screenshot-window; }
 
     //--------------------------------------------------------------------------
     // layout

@@ -77,14 +77,13 @@
 @mixin gtk-btn {
   // these are built-in adwaita/GTK selectors
   &:not(.suggested-action):not(.destructive-action) {
-    // note: may need change if `gtk-btn`s can be `:selected`
-    &:not(.raised) {
+    // note: the logic here may need to change if we want `gtk-btn`s to be selectable
+    &.flat {
       @extend %btn-flat;
     }
 
     &.raised,
-    // specificity hack because SPECIFICITY IS STUPID I HATE IT AAAAAAAAAAAAAA i am losing my marbles
-    &.text-button.text-button {
+    &.text-button {
       @extend %btn-raised;
     }
   }
@@ -108,10 +107,6 @@ button {
   // (i could just exclude `windowcontrols > button` from extending `%gtk-btn` and such, but that
   // causes issues with how other selectors like for buttons inside tabs are expanded)
   windowcontrols > &.image-button {
-    // setting `---base-bg` or `---hover-bg` fails probably because GTK changes `background-color`
-    // with higher specificity?
-    // TODO
-    background-color: transparent;
     border: none;
 
     &:not(.flat) > image {
@@ -167,9 +162,7 @@ splitbutton {
   &:hover,
   &:focus {
     ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.5%));
-    // for some reason setting `---hover-bg` instead of `background-color` doesn't work.
-    // (it's probably specificity again. it's always fucking specificity.)
-    // TODO
+    // setting `---hover-bg` instead of `background-color` doesn't work (probably specificity again)
     background-color: var(---secondary-hover-bg);
 
     button:not(:hover):not(:focus) {
@@ -185,13 +178,6 @@ tab {
 
     &:selected {
       @extend %btn-selected;
-    }
-
-    // buttons on tabs should match tab's hover etc. transitions
-    // TODO test if still needed
-    & button {
-      //transition: inherit;
-      //transition: background 150ms ease-in-out;
     }
   }
 }
