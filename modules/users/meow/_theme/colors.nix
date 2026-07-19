@@ -123,36 +123,36 @@ rec {
       color_dark  = red;
     };
     error_fg = {
-      color_light = "#d90000";
+      color_light = "#cc0000";
       color_dark  = "#cc0000";
     };
     error_bg = {
-      color_light = "#ffe0e0";
-      color_dark  = "#ffe0e0";
+      color_light = "#ffcccc";
+      color_dark  = "#ffcccc";
     };
     warning = {
       color_light = orange_xxdeep;
       color_dark  = orange_deep;
     };
     warning_fg = {
-      color_light = "#bf6900";
-      color_dark  = "#b36200";
+      color_light = "#bd6800";
+      color_dark  = "#bd6800";
     };
     warning_bg = {
-      color_light = "#fff3d6";
-      color_dark  = "#fff3d6";
+      color_light = "#ffeecc";
+      color_dark  = "#ffeecc";
     };
     success = {
       color_light = green_deep_xdark;
       color_dark  = green;
     };
     success_fg = {
-      color_light = "#4d8c00";
-      color_dark  = "#468000";
+      color_light = "#4c8a00";
+      color_dark  = "#4c8a00";
     };
     success_bg = {
-      color_light = "#f3ffe3";
-      color_dark  = "#f3ffe3";
+      color_light = "#e8ffcc";
+      color_dark  = "#e8ffcc";
     };
 
     link = {

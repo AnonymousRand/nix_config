@@ -36,8 +36,8 @@
   --active-toggle-fg-color: var(--accent-fg);
   --active-toggle-bg-color: var(--accent-bg);
 
-  /**************************************************************************/
-  /* GNOME palette                                                          */
+  //----------------------------------------------------------------------------
+  // GNOME palette
   
   --blue-1: {{colors.blue_light_source.default.hex}};
   --blue-2: {{colors.blue_source.default.hex}};
