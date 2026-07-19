@@ -8,7 +8,10 @@
     ],
     "mode": "rgb",
     "auto_detect_light_dark": true,
-    "lightness": 0.85,
+    "lightness_per_theme": {
+        "light": 0.85,
+        "dark": 0.6
+    },
     "color_align": {
         "mode": "horizontal"
     },

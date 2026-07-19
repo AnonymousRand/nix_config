@@ -25,4 +25,4 @@ more documentation to come :3
 
 - home manager configurations are defined per user in `modules/users/<username>/`, and have versions for both standalone configs (built with `home-manager` command) and configs integrated into nixos config (built with `nixos-rebuild`).
 - in each `modules/users/<username>/default.nix`, both a `flake.homeModules.<name>` home manager module and a `flake.homeConfigurations.<name>` home manager configuration are defined. the home manager module is where all the config should go; the configuration simply imports the module. the configuration is the standalone version, while the module is integrated into the nixos config of each host in `modules/hosts/<host name>/default.nix`.
-- package-specific config is put into `modules/users/<username>/home_manager/`, using the same home manager *module* name as the one in `modules/users/<username>/default.nix`. (modules with the same name are merged by nix.)
+- package-specific config is put into `modules/users/<username>/features/`, using the same home manager *module* name as the one in `modules/users/<username>/default.nix`.
