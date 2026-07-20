@@ -86,8 +86,8 @@ keybind = ctrl+d=scroll_page_fractional:0.5
 keybind = ctrl+u=scroll_page_fractional:-0.5
 keybind = ctrl+home=scroll_to_top
 keybind = ctrl+end=scroll_to_bottom
-keybind = ctrl+i=jump_to_prompt:-1
-keybind = ctrl+o=jump_to_prompt:1
+keybind = unconsumed:ctrl+i=jump_to_prompt:-1
+keybind = unconsumed:ctrl+o=jump_to_prompt:1
 keybind = ctrl+shift+slash=write_scrollback_file:open
 
 # windows
