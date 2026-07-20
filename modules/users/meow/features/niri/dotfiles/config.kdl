@@ -100,6 +100,7 @@ layout {
         // but my current setup does both so there's still a border when inactive, but a much stronger
         // focus ring when active (and the active border and active focus ring should have the same
         // colors, so as to make a thicker focus ring and look prettier :3)
+
         //off
         width 2
     }
@@ -119,6 +120,14 @@ layout {
         right 5
         top 5
         bottom 5
+    }
+
+    // tab indicator when multiple windows in a column are in tabbed view
+    tab-indicator {
+        //off
+        gap 14
+        width 8
+        corner-radius 4
     }
 }
 
@@ -174,8 +183,8 @@ recent-windows {
     open-delay-ms 150
 
     highlight {
-        padding 30
-        corner-radius 6
+        padding 40
+        corner-radius 12
     }
 
     previews {

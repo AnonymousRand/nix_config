@@ -76,34 +76,6 @@ rec {
       color_dark  = gray_xxdark;
     };
 
-    # selection
-    selection_fg = {
-      color_light = pink_xlight;
-      color_dark  = pink_light;
-    };
-    selection_bg = {
-      color_light = pink_xxxxxlight;
-      color_dark  = pink_xxxxlight;
-    };
-
-    # hover
-    hover_fg = {
-      color_light = pink_xlight;
-      color_dark  = pink_light;
-    };
-    hover_bg = {
-      color_light = pink_xxxxxlight;
-      color_dark  = pink_xxxlight;
-    };
-    hover_variant_fg = {
-      color_light = pink_xxlight;
-      color_dark  = pink_light;
-    };
-    hover_variant_bg = {
-      color_light = pink_xxxxxxlight;
-      color_dark  = pink_xxxxlight;
-    };
-
     # accents
     accent_1_fg = {
       color_light = pink;
@@ -151,6 +123,56 @@ rec {
       color_light = pink_xxxlight;
       color_dark  = pink_xxlight;
     };
+
+    # selection
+    selection_fg = {
+      color_light = pink_xlight;
+      color_dark  = pink_light;
+    };
+    selection_bg = {
+      color_light = pink_xxxxxlight;
+      color_dark  = pink_xxxxlight;
+    };
+
+    # hover
+    hover_fg      = accent_3_fg;
+    hover_bg      = accent_3_bg;
+    hover_fg_vrnt = accent_4_fg;
+    hover_bg_vrnt = accent_4_bg;
+
+    # button-like elements
+    btn_flat_hover_fg    = hover_fg;
+    btn_flat_hover_bg    = hover_bg;
+    btn_flat_border      = outline_3;
+    btn_raised_base_fg   = accent_3_fg;
+    btn_raised_base_bg   = accent_3_bg;
+    btn_raised_border    = outline_2;
+    btn_xraised_base_fg  = accent_2_fg;
+    btn_xraised_base_bg  = accent_2_bg;
+    btn_xraised_border   = outline_1;
+    btn_selected_base_fg = btn_xraised_base_fg;
+    btn_selected_base_bg = btn_xraised_base_bg;
+    btn_selected_border  = btn_xraised_border;
+
+    # button-like elements on variant surfaces
+    btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
+    btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
+    btn_flat_border_vrnt      = outline_3;
+    btn_raised_base_fg_vrnt   = accent_4_fg;
+    btn_raised_base_bg_vrnt   = accent_4_bg;
+    btn_raised_border_vrnt    = outline_2;
+    btn_xraised_base_fg_vrnt  = accent_3_fg;
+    btn_xraised_base_bg_vrnt  = accent_3_bg;
+    btn_xraised_border_vrnt   = outline_1;
+    btn_selected_base_fg_vrnt = btn_xraised_base_fg_vrnt;
+    btn_selected_base_bg_vrnt = btn_xraised_base_bg_vrnt;
+    btn_selected_border_vrnt  = btn_xraised_border_vrnt;
+
+    # button-like elements on selected surfaces
+    btn_flat_border_slct      = outline_2;
+    btn_raised_base_fg_slct   = btn_xraised_base_fg;
+    btn_raised_base_bg_slct   = btn_xraised_base_bg;
+    btn_raised_border_slct    = outline_1;
 
     # statuses
     error = {
@@ -211,6 +233,7 @@ rec {
       color_light = blue_xxdeep;
       color_dark  = blue_light;
     };
+    link_visited = link_hovered;
 
     # matching parens
     matching_paren_fg = {
@@ -257,12 +280,12 @@ rec {
       mOnSurface        = roles.default_fg.color_light; # main foreground color
       mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
       mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
-      mPrimary          = accent_2_bg;                  # primary accent (buttons, links, highlights)
-      mOnPrimary        = accent_2_fg;                  # text on primary surfaces
-      mSecondary        = accent_3_bg;                  # secondary accent
-      mOnSecondary      = accent_3_fg;                  # text on secondary surfaces
-      mTertiary         = accent_4_bg;                  # tertiary accent
-      mOnTertiary       = accent_4_fg;                  # text on tertiary surfaces
+      mPrimary          = roles.accent_2_bg;            # primary accent (buttons, links, highlights)
+      mOnPrimary        = roles.accent_2_fg;            # text on primary surfaces
+      mSecondary        = roles.accent_3_bg;            # secondary accent
+      mOnSecondary      = roles.accent_3_fg;            # text on secondary surfaces
+      mTertiary         = roles.accent_4_bg;            # tertiary accent
+      mOnTertiary       = roles.accent_4_fg;            # text on tertiary surfaces
       mOutline          = roles.outline_3.color_light;  # borders and dividers
       mShadow           = vars.gray_xdark;              # shadows
       mHover            = roles.hover_bg.color_light;   # hover state background
@@ -305,12 +328,12 @@ rec {
       mOnSurface        = roles.default_fg.color_dark;
       mSurfaceVariant   = roles.variant_bg.color_dark;
       mOnSurfaceVariant = roles.variant_fg.color_dark;
-      mPrimary          = accent_2_bg;
-      mOnPrimary        = accent_2_fg;
-      mSecondary        = accent_3_bg;
-      mOnSecondary      = accent_3_fg;
-      mTertiary         = accent_4_bg;
-      mOnTertiary       = accent_4_fg;
+      mPrimary          = roles.accent_2_bg;
+      mOnPrimary        = roles.accent_2_fg;
+      mSecondary        = roles.accent_3_bg;
+      mOnSecondary      = roles.accent_3_fg;
+      mTertiary         = roles.accent_4_bg;
+      mOnTertiary       = roles.accent_4_fg;
       mOutline          = roles.outline_3.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;

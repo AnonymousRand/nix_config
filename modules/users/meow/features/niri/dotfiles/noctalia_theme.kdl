@@ -21,18 +21,18 @@ layout {
 
     tab-indicator {
         active-color   "{{colors.accent_1_bg_source.default.hex}}"
-        inactive-color "{{colors.accent_2_bg_source.default.hex}}"
+        inactive-color "{{colors.accent_3_bg_source.default.hex}}"
         urgent-color   "{{colors.warning_source.default.hex}}"
     }
 
     insert-hint {
-        color "{{colors.accent_2_bg_source.default.hex}}80"
+        color "{{colors.accent_2_bg_source.default.hex}}70"
     }
 }
 
 recent-windows {
     highlight {
-        active-color "{{colors.accent_1_bg_source.default.hex}}ff"
+        active-color "{{colors.accent_1_bg_source.default.hex}}"
         urgent-color "{{colors.warning_source.default.hex}}"
     }
 }

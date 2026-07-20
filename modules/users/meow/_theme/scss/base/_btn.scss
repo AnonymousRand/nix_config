@@ -69,10 +69,10 @@
   );
 }
 
-%btn-strong-raised {
+%btn-xraised {
   @include btn-raised-builder(
-    $base-fg: var(--btn-strong-raised-base-fg, var(--error-color)),
-    $base-bg: var(--btn-strong-raised-base-bg, var(--error-color)),
+    $base-fg: var(--btn-xraised-base-fg, var(--error-color)),
+    $base-bg: var(--btn-xraised-base-bg, var(--error-color)),
   );
 }
 
@@ -129,6 +129,6 @@
   --btn-hover-border-color: var(--btn-raised-hover-border-color);
 }
 
-%btn-strong-raised {
-  --btn-hover-border-color: var(--btn-strong-raised-hover-border-color);
+%btn-xraised {
+  --btn-hover-border-color: var(--btn-xraised-hover-border-color);
 }

@@ -1,3 +1,4 @@
+@use "../utils";
 @use "../base";
 @use "surfs";
 
@@ -11,21 +12,21 @@
 
 @if list.length(surfs.$default-surfs) > 0 {
   #{surfs.$default-surfs} {
-    --btn-flat-hover-fg: var(--hover-fg);
-    --btn-flat-hover-bg: var(--hover-bg);
+    --btn-flat-hover-fg:           {{colors.btn_flat_hover_fg_source.default.hex}};
+    --btn-flat-hover-bg:           {{colors.btn_flat_hover_bg_source.default.hex}};
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_source.default.hex}};
 
-    --btn-raised-base-fg: var(--accent-fg);
-    --btn-raised-base-bg: var(--accent-bg);
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_source.default.hex}};
 
-    --btn-strong-raised-base-fg: var(--accent-strong-fg);
-    --btn-strong-raised-base-bg: var(--accent-strong-bg);
+    --btn-xraised-base-fg:            {{colors.btn_xraised_base_fg_source.default.hex}};
+    --btn-xraised-base-bg:            {{colors.btn_xraised_base_bg_source.default.hex}};
+    --btn-xraised-hover-border-color: {{colors.btn_xraised_border_source.default.hex}};
 
-    --btn-selected-base-fg: var(--accent-strong-fg);
-    --btn-selected-base-bg: var(--accent-strong-bg);
-
-    --btn-flat-hover-border-color:          var(--border-color);
-    --btn-raised-hover-border-color:        var(--border-strong-color);
-    --btn-strong-raised-hover-border-color: var(--border-xstrong-color);
+    --btn-selected-base-fg:            {{colors.btn_selected_base_fg_source.default.hex}};
+    --btn-selected-base-bg:            {{colors.btn_selected_base_bg_source.default.hex}};
+    --btn-selected-hover-border-color: {{colors.btn_selected_border_source.default.hex}};
   }
 } @else {
   @debug "gtk/btn: surfs.$default-surfs empty! uh oh >~<";
@@ -33,21 +34,21 @@
 
 @if list.length(surfs.$variant-surfs) > 0 {
   #{surfs.$variant-surfs} {
-    --btn-flat-hover-fg: var(--hover-variant-fg);
-    --btn-flat-hover-bg: var(--hover-variant-bg);
+    --btn-flat-hover-fg:           {{colors.btn_flat_hover_fg_vrnt_source.default.hex}};
+    --btn-flat-hover-bg:           {{colors.btn_flat_hover_bg_vrnt_source.default.hex}};
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_vrnt_source.default.hex}};
 
-    --btn-raised-base-fg: var(--accent-variant-fg);
-    --btn-raised-base-bg: var(--accent-variant-bg);
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_vrnt_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_vrnt_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_vrnt_source.default.hex}};
 
-    --btn-strong-raised-base-fg: var(--accent-strong-variant-fg);
-    --btn-strong-raised-base-bg: var(--accent-strong-variant-bg);
+    --btn-xraised-base-fg:            {{colors.btn_xraised_base_fg_vrnt_source.default.hex}};
+    --btn-xraised-base-bg:            {{colors.btn_xraised_base_bg_vrnt_source.default.hex}};
+    --btn-xraised-hover-border-color: {{colors.btn_xraised_border_vrnt_source.default.hex}};
 
-    --btn-selected-base-fg: var(--accent-strong-variant-fg);
-    --btn-selected-base-bg: var(--accent-strong-variant-bg);
-
-    --btn-flat-hover-border-color:          var(--border-color);
-    --btn-raised-hover-border-color:        var(--border-strong-color);
-    --btn-strong-raised-hover-border-color: var(--border-xstrong-color);
+    --btn-selected-base-fg:            {{colors.btn_selected_base_fg_vrnt_source.default.hex}};
+    --btn-selected-base-bg:            {{colors.btn_selected_base_bg_vrnt_source.default.hex}};
+    --btn-selected-hover-border-color: {{colors.btn_selected_border_vrnt_source.default.hex}};
   }
 } @else {
   @debug "gtk/btn: surfs.$variant-surfs empty! uh oh >~<";
@@ -55,8 +56,11 @@
 
 @if list.length(surfs.$selected-surfs) > 0 {
   #{surfs.$selected-surfs} {
-    --btn-flat-hover-border-color:   var(--border-strong-color);
-    --btn-raised-hover-border-color: var(--border-xstrong-color);
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_slct_source.default.hex}};
+
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_slct_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_slct_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_slct_source.default.hex}};
   }
 } @else {
   @debug "gtk/btn: surfs.$selected-surfs empty! uh oh >~<";
@@ -116,7 +120,7 @@ button {
 
     &:not(.flat) > image {
       @extend %btn-base;
-      @extend %btn-strong-raised;
+      @extend %btn-xraised;
       @include base.btn-hover-border;
     }
   }
@@ -160,13 +164,13 @@ splitbutton {
   // sooooooo like why is this sometimes -1px by default (and makes borders clip into each other)...
   > button,
   > menubutton {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   &:hover,
   &:focus {
-    ---secondary-hover-bg: hsl(from var(---hover-bg) h s calc(l + 1.25%));
+    ---secondary-hover-bg: #{utils.change-lightness(var(---hover-bg), 1.25%)};
     // setting `---hover-bg` instead of `background-color` doesn't work
     // (it's Probably Specificity Again.)
     background-color: var(---secondary-hover-bg);

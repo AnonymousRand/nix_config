@@ -31,10 +31,10 @@
   --success-fg-color: {{colors.success_fg_source.default.hex}};
   --success-bg-color: {{colors.success_bg_source.default.hex}};
 
-  --border-opacity: 1;
-
   --active-toggle-fg-color: var(--accent-fg);
   --active-toggle-bg-color: var(--accent-bg);
+
+  --border-opacity: 1;
 
   //----------------------------------------------------------------------------
   // GNOME palette
