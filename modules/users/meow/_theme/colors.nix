@@ -144,8 +144,8 @@ rec {
       color_dark  = pink_light;
     };
     cursor_bg = {
-      color_light = pink_xxxlight;
-      color_dark  = pink_xxxlight;
+      color_light = pink_xxxxlight;
+      color_dark  = pink_xxxxlight;
     };
 
     # hover

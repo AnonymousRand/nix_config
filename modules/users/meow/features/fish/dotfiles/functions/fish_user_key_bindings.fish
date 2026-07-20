@@ -12,4 +12,9 @@ function fish_user_key_bindings
     # enable using `ctrl + backspace` to delete word and `alt + backspace` to delete argument in vim insert mode
     bind -M insert ctrl-backspace "if fish_in_macos_terminal; commandline -f backward-kill-token; else commandline -f backward-kill-word; end"
     bind -M insert alt-backspace "if fish_in_macos_terminal; commandline -f backward-kill-word; else commandline -f backward-kill-token; end"
+
+    # remove `ctrl + i` keybinds since ghostty uses them in `unconsumed` mode (for vim)
+    bind --erase --preset -M default ctrl-i
+    bind --erase --preset -M insert ctrl-i
+    bind --erase --preset -M visual ctrl-i
 end
