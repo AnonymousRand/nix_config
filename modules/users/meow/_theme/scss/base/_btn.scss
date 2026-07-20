@@ -93,13 +93,13 @@
 
 @mixin btn-hover-border(
   $hover-border-color: var(--btn-hover-border-color),
-  $hover-border-width: 2px
+  $border-width: 2px
 ) {
   ---base-border-color:  transparent;
   ---hover-border-color: #{$hover-border-color};
   ---curr-border-color:  var(---base-border-color);
 
-  border: #{$hover-border-width} solid;
+  border: #{$border-width} solid;
   border-color: var(---curr-border-color);
   outline-color: var(---curr-border-color);
   // match button's `background` transition

@@ -123,6 +123,10 @@ rec {
       color_light = pink_xxxlight;
       color_dark  = pink_xxlight;
     };
+    outline_4 = {
+      color_light = pink_xxxxlight;
+      color_dark  = pink_xxxlight;
+    };
 
     # selection
     selection_fg = {

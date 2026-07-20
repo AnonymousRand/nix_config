@@ -1,0 +1,118 @@
+@use "../utils";
+@use "../base";
+@use "btn";
+
+button {
+  @extend %btn-base;
+  @include btn.gtk-btn;
+  @include base.btn-hover-border;
+
+  // for `windowcontrols` buttons, we want the often round `image` child instead of the
+  // square `button` itself to be the one that highlights and stuff like a button
+  // (i could just exclude `windowcontrols > button` from extending `%gtk-btn` and such, but that
+  // causes issues with how other selectors like for buttons inside tabs are expanded)
+  windowcontrols > &.image-button {
+    border: none;
+
+    &:not(.flat) > image {
+      @extend %btn-base;
+      @extend %btn-xraised;
+      @include base.btn-hover-border;
+    }
+  }
+
+  menubutton:not(.raised) &,
+  splitbutton:not(.raised) & {
+    @extend %btn-flat;
+  }
+
+  menubutton.raised &,
+  splitbutton.raised & {
+    @extend %btn-raised;
+  }
+}
+
+card {
+  &.activatable {
+    @extend %btn-base;
+    @extend %btn-flat;
+    @include base.btn-hover-border;
+  }
+}
+
+modelbutton {
+  @extend %btn-base;
+  @include btn.gtk-btn;
+  @include base.btn-hover-border;
+
+  popover.menu & {
+    @extend %btn-flat;
+
+    // note: for some godawful stupid fucking piece of shit reason, hovering one of these registers
+    // as fucking `:selected`.
+  }
+}
+
+scrollbar {
+  // this is when you are hovering close enough to the scrollbar for the whole thing to appear,
+  // but not actually on top of the scrollbar itself
+  &.overlay-indicator.hovering > range > trough {
+    background-color: rgb(from var(--border-4-color) r g b / 0.35);
+  }
+
+  > range > trough {
+    // this is when you are actually hovering on top of the scrollbar
+    &:hover {
+      background-color: rgb(from var(--border-4-color) r g b / 0.55);
+    }
+
+    > slider {
+      @extend %btn-base;
+      @extend %btn-xraised;
+
+      &, &:hover {
+        //opacity: 1.0;
+      }
+
+      @at-root :root {
+        // (this is a libadwaita variable)
+        --scrollbar-outline-color: var(--border-3-color);
+      }
+    }
+  }
+}
+
+splitbutton {
+  @extend %btn-base;
+  @include btn.gtk-btn;
+
+  // sooooooo like why is this sometimes -1px by default (and makes borders clip into each other)...
+  > button,
+  > menubutton {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:focus {
+    ---secondary-hover-bg: #{utils.change-lightness(var(---hover-bg), 1.25%)};
+    // setting `---hover-bg` instead of `background-color` doesn't work
+    // (it's Probably Specificity Again.)
+    background-color: var(---secondary-hover-bg);
+
+    button:not(:hover):not(:focus) {
+      ---curr-bg: var(---secondary-hover-bg);
+    }
+  }
+}
+
+tab {
+  tabbox:not(.single-tab) & {
+    @extend %btn-base;
+    @extend %btn-flat;
+
+    &:selected {
+      @extend %btn-selected;
+    }
+  }
+}

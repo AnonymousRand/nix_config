@@ -14,6 +14,11 @@
   --hover-fg: {{colors.hover_fg_source.default.hex}};
   --hover-bg: {{colors.hover_bg_source.default.hex}};
 
+  --border-1-color: {{colors.outline_1_source.default.hex}};
+  --border-2-color: {{colors.outline_2_source.default.hex}};
+  --border-3-color: {{colors.outline_3_source.default.hex}};
+  --border-4-color: {{colors.outline_4_source.default.hex}};
+
   --link-color:         {{colors.link_source.default.hex}};
   --link-hovered-color: {{colors.link_hovered_source.default.hex}};
   --link-visited-color: {{colors.link_visited_source.default.hex}};
