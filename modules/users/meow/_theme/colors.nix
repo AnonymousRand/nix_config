@@ -138,6 +138,16 @@ rec {
       color_dark  = pink_xxxxlight;
     };
 
+    # cursor
+    cursor_fg = {
+      color_light = pink_light;
+      color_dark  = pink_light;
+    };
+    cursor_bg = {
+      color_light = pink_xxxlight;
+      color_dark  = pink_xxxlight;
+    };
+
     # hover
     hover_fg      = accent_3_fg;
     hover_bg      = accent_3_bg;
@@ -292,6 +302,9 @@ rec {
   # Material 3 palette (e.g. for Noctalia palette)
   # (use these on things which very clearly have a Material 3 role, and Noctalia didn't change the color)
   # (although treat the terminal ANSI colors more like fixed color variables)
+  #
+  # note: am maybe starting to move fully towards custom colors instead of m3,
+  # and keeping m3 only for noctalia to be happy?
 
   m3Palette = {
     light = rec {
@@ -315,8 +328,8 @@ rec {
       terminal = rec {
         background  = mSurface;
         foreground  = mOnSurface;
-        cursor      = vars.pink_xxxxlight;
-        cursorText  = foreground;
+        cursor      = roles.cursor_bg.color_light;
+        cursorText  = roles.cursor_fg.color_light;
         selectionBg = roles.selection_bg.color_light;
         selectionFg = roles.selection_fg.color_light;
         normal = {
@@ -363,8 +376,8 @@ rec {
       terminal = rec {
         background  = mSurface;
         foreground  = mOnSurface;
-        cursor      = vars.pink_xxxxlight;
-        cursorText  = background;
+        cursor      = roles.cursor_bg.color_dark;
+        cursorText  = roles.cursor_fg.color_dark;
         selectionBg = roles.selection_bg.color_dark;
         selectionFg = roles.selection_fg.color_dark;
         normal = {

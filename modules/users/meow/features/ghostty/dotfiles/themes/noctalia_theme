@@ -17,8 +17,8 @@ palette                    = 15={{colors.terminal_bright_white.default.hex}}
 
 foreground                 = {{colors.terminal_foreground.default.hex}}
 background                 = {{colors.terminal_background.default.hex}}
-cursor-color               = {{colors.terminal_cursor.default.hex}}
-cursor-text                = {{colors.terminal_cursor_text.default.hex}}
+cursor-color               = {{colors.cursor_bg_source.default.hex}}
+cursor-text                = {{colors.cursor_fg_source.default.hex}}
 cursor-opacity             = 1
 selection-foreground       = {{colors.terminal_selection_fg.default.hex}}
 selection-background       = {{colors.terminal_selection_bg.default.hex}}
