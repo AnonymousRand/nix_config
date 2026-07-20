@@ -1,6 +1,7 @@
 { self, inputs, ... }: {
   flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      self.nixosModules.hostsCommon
       self.nixosModules.desktopConfig
       
       # load custom overlays (e.g. from `perSystem.overlayAttrs`)

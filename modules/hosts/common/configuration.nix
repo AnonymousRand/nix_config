@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.base = { config, pkgs, ... }: {
+  flake.nixosModules.hostsCommon = { config, pkgs, ... }: {
     imports = [
       # features to be installed on every host
       self.nixosModules.efibootmgr

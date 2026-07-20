@@ -21,6 +21,7 @@
   ---curr-bg: var(---base-bg, transparent);
 
   background-color: var(---curr-bg);
+  text-decoration-color: var(---curr-fg);
   color: var(---curr-fg);
 
   &:hover,
@@ -58,6 +59,7 @@
   %btn-selected & {
     // on a selected `btn`-type element, we can just exactly mimic its colors at every state
     background-color: transparent;
+    text-decoration-color: inherit;
     color: inherit;
   }
 }

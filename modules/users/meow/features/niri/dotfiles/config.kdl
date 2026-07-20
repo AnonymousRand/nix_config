@@ -233,10 +233,10 @@ binds {
     Mod+grave repeat=false { toggle-overview; }
     Mod+Q     repeat=false { close-window; }
 
-    Mod+H { focus-column-left; }
-    Mod+J { focus-window-down; }
-    Mod+K { focus-window-up; }
-    Mod+L { focus-column-right; }
+    Mod+H { focus-column-or-monitor-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-or-monitor-right; }
 
     Mod+Ctrl+H { move-column-left; }
     Mod+Ctrl+J { move-window-down; }

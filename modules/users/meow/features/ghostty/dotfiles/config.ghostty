@@ -9,9 +9,11 @@ window-theme            = "ghostty"
 font-size               = 12
 # remove programming ligatures
 font-feature            = -calt
-gtk-custom-css          = ./custom.css
 custom-shader           = shaders/nyan_cursor.glsl
 custom-shader-animation = true
+gtk-custom-css          = ./custom.css
+gtk-titlebar            = true
+gtk-titlebar-style      = tabs
 
 # shell
 command                    = "fish --login --interactive"
@@ -38,9 +40,6 @@ cursor-click-to-move    = true
 
 # layout
 unfocused-split-opacity = 0.6
-
-# titlebar
-gtk-titlebar-style = tabs
 
 # scrollback buffer max size in bytes (10MB ~= 100k lines at 100 UTF-8 chars/line)
 scrollback-limit = 10_000_000

@@ -267,6 +267,21 @@ rec {
       color_dark  = pink_xxxxlight;
     };
     variable = default_fg;
+
+    # markdown syntax
+    markdown_bold = {
+      color_light = pink_xxlight;
+      color_dark  = pink_xxlight;
+    };
+    markdown_italic = markdown_bold;
+    markdown_code = {
+      color_light = pink_light;
+      color_dark  = pink_light;
+    };
+    markdown_title = {
+      color_light = pink_light;
+      color_dark  = pink_light;
+    };
   };
 
   ############################################################################

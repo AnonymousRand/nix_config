@@ -1,21 +1,12 @@
 { self, inputs, ... }: {
   flake.nixosModules.desktopConfig = { config, pkgs, ... }: {
-    imports = [
-      self.nixosModules.base
-    ];
-  
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    # this should be kept as the release version of the first install of this system
     system.stateVersion = "26.05"; # Did you read the comment?
   
     networking.hostName = "snow-rainbow";             # define hostname
     networking.networkmanager.wifi.powersave = false; # maybe help with wifi issues after suspend
 
-    # Nix store auto clean up
+    # nix store auto clean up
     nix.gc.automatic = true;
     nix.gc.dates = "weekly";
     nix.gc.options = "--delete-older-than 30d";
