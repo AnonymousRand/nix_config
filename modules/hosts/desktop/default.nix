@@ -34,8 +34,7 @@
       self.nixosModules.xwayland-satellite
 
       # system stuff
-      self.nixosModules.bottom       # even better `top`
-      self.nixosModules.htop         # better `top`
+      self.nixosModules.bottom       # better `top`, or `htop` with `--basic`
       self.nixosModules.hyprpicker   # color picker
       self.nixosModules.nvtop        # GPU top
       self.nixosModules.playerctl    # control media players that use MPRIS

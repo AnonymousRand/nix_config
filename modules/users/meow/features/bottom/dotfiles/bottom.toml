@@ -1,11 +1,68 @@
-# main text colors
+# note: use `--basic` for htop-like interface!
+
+################################################################################
+# general settings
+
+# main text color
 [field]
 color    = "{{colors.default_fg_source.default.hex}}"
 bg_color = "{{colors.default_bg_source.default.hex}}"
 
+[flags]
+process_memory_as_value = true # deprecated, but new option not working yet
+
+################################################################################
+# layout
+
+[[row]]
+    ratio = 30
+    [[row.child]]
+        ratio = 70
+        type = "cpu"
+    [[row.child]]
+        ratio = 30
+        type = "temp"
+[[row]]
+    ratio = 30
+    [[row.child]]
+        ratio = 50
+        type = "mem"
+    [[row.child]]
+        ratio = 50
+        type = "net"
+[[row]]
+    ratio = 40
+    [[row.child]]
+        ratio = 100
+        type = "proc"
+
+################################################################################
+# individual widget settings
+
+[memory]
+short_gpu_names = true
+
+[processes]
+default_memory_value = true
+columns = [
+    "pid",
+    "name",
+    "cpu%",
+    "mem%",
+    "gpu%",
+    "gmem%",
+    "read",
+    "write",
+    "tread",
+    "twrite"
+]
+
+################################################################################
+# styles
+
 [styles]
 
-# general widget settings
+# general widget styles
 [styles.widgets]
 text = {
     color    = "{{colors.default_fg_source.default.hex}}",
@@ -16,16 +73,55 @@ widget_title = {
     bg_color = "{{colors.accent_3_bg_source.default.hex}}",
     bold     = true
 }
+bg_color = "{{colors.default_bg_source.default.hex}}"
+
+selected_text = {
+    color    = "{{colors.selection_fg_source.default.hex}}",
+    bg_color = "{{colors.selection_bg_source.default.hex}}"
+}
 
 border_color          = "{{colors.outline_4_source.default.hex}}"
-selected_border_color = "{{colors.outline_2_source.default.hex}}"
+selected_border_color = "{{colors.outline_1_source.default.hex}}"
+
+[styles.graphs]
+graph_color = "{{colors.default_fg_source.default.hex}}"
+legend_text = {
+    color    = "{{colors.default_fg_source.default.hex}}",
+    bg_color = "{{colors.default_bg_source.default.hex}}"
+}
+
+[styles.tables]
+headers = {
+    color = "Yellow",
+    bold  = true
+}
 
 [styles.cpu]
 all_entry_color = "{{colors.default_fg_source.default.hex}}"
 avg_entry_color = "{{colors.default_fg_source.default.hex}}"
 cpu_core_colors = [
-    "LightMagenta",
-    "LightYellow",
-    "LightGreen",
-    "LightBlue"
+    "Magenta",
+    "Yellow",
+    "Green",
+    "Cyan"
+]
+
+[styles.memory]
+ram_color  = "Magenta"
+swap_color = "Yellow"
+gpu_colors = [
+    "Green",
+    "Cyan",
+]
+
+[styles.network]
+rx_color = "Magenta"
+tx_color = "Yellow"
+
+[styles.temp_graph]
+temp_graph_color_styles = [
+    "Magenta",
+    "Yellow",
+    "Green",
+    "Cyan"
 ]
