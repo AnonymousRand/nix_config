@@ -2,7 +2,6 @@
   flake.nixosModules.hostsCommon = { config, pkgs, ... }: {
     imports = [
       # features to be installed on every host
-      self.nixosModules.efibootmgr
       self.nixosModules.file
       self.nixosModules.git
       self.nixosModules.tree
