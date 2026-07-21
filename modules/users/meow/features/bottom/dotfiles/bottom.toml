@@ -1,0 +1,31 @@
+# main text colors
+[field]
+color    = "{{colors.default_fg_source.default.hex}}"
+bg_color = "{{colors.default_bg_source.default.hex}}"
+
+[styles]
+
+# general widget settings
+[styles.widgets]
+text = {
+    color    = "{{colors.default_fg_source.default.hex}}",
+    bg_color = "{{colors.default_bg_source.default.hex}}"
+}
+widget_title = {
+    color    = "{{colors.accent_3_fg_source.default.hex}}",
+    bg_color = "{{colors.accent_3_bg_source.default.hex}}",
+    bold     = true
+}
+
+border_color          = "{{colors.outline_4_source.default.hex}}"
+selected_border_color = "{{colors.outline_2_source.default.hex}}"
+
+[styles.cpu]
+all_entry_color = "{{colors.default_fg_source.default.hex}}"
+avg_entry_color = "{{colors.default_fg_source.default.hex}}"
+cpu_core_colors = [
+    "LightMagenta",
+    "LightYellow",
+    "LightGreen",
+    "LightBlue"
+]

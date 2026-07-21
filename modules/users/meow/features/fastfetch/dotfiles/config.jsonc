@@ -136,11 +136,11 @@
     "break",
 
     //--------------------------------------------------------------------------
-    // config group
+    // environment group
 
     {
       "type": "custom",
-      "format": "🌱 environment  ♡₊˚⊹  ฅ₍^•⩊ •マⳊ",
+      "format": "🌱 environment  ♡₊˚⊹  ฅ₍^•⩊ •マ⟆",
       "outputColor": "bright_yellow"
     },
 

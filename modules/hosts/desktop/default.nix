@@ -32,15 +32,19 @@
       self.nixosModules.noctalia
       self.nixosModules.noctaliaGreeter
       self.nixosModules.xwayland-satellite
-      
-      # other
-      self.nixosModules.firefox
+
+      # system stuff
+      self.nixosModules.bottom       # even better `top`
+      self.nixosModules.htop         # better `top`
       self.nixosModules.hyprpicker   # color picker
       self.nixosModules.nvtop        # GPU top
       self.nixosModules.playerctl    # control media players that use MPRIS
       self.nixosModules.solaar       # logitech mouse config
-      self.nixosModules.tokei        # code counter
       self.nixosModules.wl-clipboard # wayland clipboard
+      
+      # other
+      self.nixosModules.firefox
+      self.nixosModules.tokei        # code counter
     ];
   };
 }

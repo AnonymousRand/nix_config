@@ -127,6 +127,7 @@ rec {
       color_light = pink_xxxxlight;
       color_dark  = pink_xxxlight;
     };
+    outline_default = outline_3;
 
     # selection
     selection_fg = {
@@ -308,22 +309,22 @@ rec {
 
   m3Palette = {
     light = rec {
-      mSurface          = roles.default_bg.color_light; # main background color
-      mOnSurface        = roles.default_fg.color_light; # main foreground color
-      mSurfaceVariant   = roles.variant_bg.color_light; # variant background color (cards, panels)
-      mOnSurfaceVariant = roles.variant_fg.color_light; # variant foreground color
-      mPrimary          = roles.accent_2_bg;            # primary accent (buttons, links, highlights)
-      mOnPrimary        = roles.accent_2_fg;            # text on primary surfaces
-      mSecondary        = roles.accent_3_bg;            # secondary accent
-      mOnSecondary      = roles.accent_3_fg;            # text on secondary surfaces
-      mTertiary         = roles.accent_4_bg;            # tertiary accent
-      mOnTertiary       = roles.accent_4_fg;            # text on tertiary surfaces
-      mOutline          = roles.outline_3.color_light;  # borders and dividers
-      mShadow           = vars.gray_xdark;              # shadows
-      mHover            = roles.hover_bg.color_light;   # hover state background
-      mOnHover          = roles.hover_fg.color_light;   # text on hover surfaces
-      mError            = roles.error_bg.color_light;   # error color
-      mOnError          = roles.error_fg.color_light;   # text on error surfaces
+      mSurface          = roles.default_bg.color_light;      # main background color
+      mOnSurface        = roles.default_fg.color_light;      # main foreground color
+      mSurfaceVariant   = roles.variant_bg.color_light;      # variant background color (cards, panels)
+      mOnSurfaceVariant = roles.variant_fg.color_light;      # variant foreground color
+      mPrimary          = roles.accent_2_bg;                 # primary accent (buttons, links, highlights)
+      mOnPrimary        = roles.accent_2_fg;                 # text on primary surfaces
+      mSecondary        = roles.accent_3_bg;                 # secondary accent
+      mOnSecondary      = roles.accent_3_fg;                 # text on secondary surfaces
+      mTertiary         = roles.accent_4_bg;                 # tertiary accent
+      mOnTertiary       = roles.accent_4_fg;                 # text on tertiary surfaces
+      mOutline          = roles.outline_default.color_light; # borders and dividers
+      mShadow           = vars.gray_xdark;                   # shadows
+      mHover            = roles.hover_bg.color_light;        # hover state background
+      mOnHover          = roles.hover_fg.color_light;        # text on hover surfaces
+      mError            = roles.error_bg.color_light;        # error color
+      mOnError          = roles.error_fg.color_light;        # text on error surfaces
 
       terminal = rec {
         background  = mSurface;
@@ -366,7 +367,7 @@ rec {
       mOnSecondary      = roles.accent_3_fg;
       mTertiary         = roles.accent_4_bg;
       mOnTertiary       = roles.accent_4_fg;
-      mOutline          = roles.outline_3.color_dark;
+      mOutline          = roles.outline_default.color_dark;
       mShadow           = vars.gray_xdark;
       mHover            = roles.hover_bg.color_dark;
       mOnHover          = roles.hover_fg.color_dark;
