@@ -16,7 +16,7 @@
     color_dark  = "#8cff00";
   };
   cpu_color_blue = {
-    color_light = "#00eaff";
+    color_light = "#00d5ff";
     color_dark  = "#00eaff";
   };
   cpu_color_purple = {
