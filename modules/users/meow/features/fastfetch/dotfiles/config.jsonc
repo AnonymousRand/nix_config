@@ -1,0 +1,271 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+  "logo": {
+    "type": "auto",
+    "printRemaining": true
+  },
+
+  "display": {
+    "showErrors": false,
+    "disableLinewrap": true,
+    "hideCursor": false,
+    "brightColor": true,
+
+    //--------------------------------------------------------------------------
+    // basic components
+
+    "key": {
+      "width": 19
+    },
+
+    "separator": " → ",
+
+    "constants": [
+      "₊˚⊹ ",
+      "₊˚⊹ "
+      //"├─ ",
+      //"└─ "
+    ],
+
+    //--------------------------------------------------------------------------
+    // other components
+
+    "bar": {
+      "char": {
+        "elapsed": "■",
+        "total": "-"
+      },
+      "border": {
+        "left": "[",
+        "right": "]",
+        "leftElapsed": "",
+        "rightElapsed": ""
+      },
+      "color": {
+        "elapsed": "auto",
+        "total": "default",
+        "border": "default"
+      },
+      "width": 10
+    },
+
+    "duration": {
+      "abbreviation": true,
+      "spaceBeforeUnit": "default"
+    },
+
+    "freq": {
+      "ndigits": 1,
+      "spaceBeforeUnit": "default"
+    },
+
+    "percent": {
+      "type": 3,
+      "ndigits": 0,
+      "color": {
+        "green": "bright_green",
+        "yellow": "bright_yellow",
+        "red": "bright_red"
+      },
+      "spaceBeforeUnit": "default",
+      "width": 0
+    },
+
+    "size": {
+        "binaryPrefix": "iec",
+        "ndigits": 1,
+        "spaceBeforeUnit": "default"
+    },
+
+    "temp": {
+      "unit": "D",
+      "ndigits": 0,
+      "color": {
+        "green": "bright_green",
+        "yellow": "bright_yellow",
+        "red": "bright_red"
+      },
+      "spaceBeforeUnit": "default"
+    }
+  },
+  "modules": [
+    //--------------------------------------------------------------------------
+    // system group
+
+    {
+      "type": "custom",
+      "format": "🐱 system   ♡ ⊹˚₊ ₍^. .^₎Ⳋ",
+      "outputColor": "bright_magenta"
+    },
+
+    {
+      "type": "title",
+      "key": "{$1} login    ",
+      "keyColor": "bright_magenta",
+      "format": "{user-name}@{host-name}"
+    },
+
+    {
+      "type": "os",
+      "key": "{$1} os       ",
+      "keyColor": "bright_magenta",
+      "format": "{name} {version}"
+    },
+
+    {
+      "type": "kernel",
+      "key": "{$1} kernel   ",
+      "keyColor": "bright_magenta"
+    },
+
+    {
+      "type": "command",
+      "key": "{$1} nixos gen",
+      "keyColor": "bright_magenta",
+      "text": "readlink /nix/var/nix/profiles/system | awk -F'-' '{print $2}'"
+    },
+
+    {
+      "type": "packages",
+      "key": "{$2}󰏖 packages ",
+      "keyColor": "bright_magenta",
+      "combined": false
+    },
+
+    "break",
+
+    //--------------------------------------------------------------------------
+    // config group
+
+    {
+      "type": "custom",
+      "format": "🌱 environment  ♡₊˚⊹  ฅ₍^•⩊ •マⳊ",
+      "outputColor": "bright_yellow"
+    },
+
+    {
+      "type": "wm",
+      "key": "{$1} wm       ",
+      "keyColor": "bright_yellow",
+      "detectPlugin": true
+    },
+
+    {
+      "type": "command",
+      "key": "{$1} desktop  ",
+      "keyColor": "bright_yellow",
+      // note: may need updating!
+      "text": "pgrep -x '.noctalia-wrapp' > /dev/null && echo $(noctalia --version) || echo 'unknown :3'"
+    },
+
+    {
+      "type": "shell",
+      "key": "{$1} shell    ",
+      "keyColor": "bright_yellow"
+    },
+
+    {
+      "type": "terminal",
+      "key": "{$1} terminal ",
+      "keyColor": "bright_yellow"
+    },
+
+    {
+      "type": "editor",
+      "key": "{$1}󱩽 editor   ",
+      "keyColor": "bright_yellow"
+    },
+
+    {
+      "type": "font",
+      "key": "{$2} font     ",
+      "keyColor": "bright_yellow"
+    },
+
+    "break",
+
+    //--------------------------------------------------------------------------
+    // hardware group
+
+    {
+      "type": "custom",
+      "format": "🔧 hardware   ₊˚⊹ ᓚ₍⑅^..^₎♡",
+      "outputColor": "bright_green"
+    },
+
+    {
+      "type": "cpu",
+      "key": "{$1} cpu      ",
+      "keyColor": "bright_green",
+      "temp": true,
+      "format": "{name} ({cores-logical}) @ {freq-max} ({temperature})"
+    },
+
+    {
+      "type": "gpu",
+      "key": "{$1}󰾲 gpu {}    ",
+      "keyColor": "bright_green",
+      "driverSpecific": true,
+      "detectionMethod": "pci",
+      "hideType": "none",
+      "format": "{vendor} {name}"
+    },
+
+    {
+      "type": "memory",
+      "key": "{$1} memory   ",
+      "keyColor": "bright_green",
+      "percent": {
+        "green": 50,
+        "yellow": 80
+      }
+    },
+
+    {
+      "type": "swap",
+      "key": "{$1}󰓡 swap     ",
+      "keyColor": "bright_green",
+      "percent": {
+        "green": 50,
+        "yellow": 80
+      },
+      "separate": false
+    },
+
+    {
+      "type": "disk",
+      "key": "{$2} disk     ",
+      "keyColor": "bright_green",
+      "showExternal": true,
+      "showHidden": false,
+      "showReadOnly": true,
+      "showUnknown": false,
+      "hideFolders": "/efi:/boot:/boot/*",
+      "useAvailable": false,
+      "percent": {
+        "green": 50,
+        "yellow": 80
+      },
+      "format": "{size-percentage-bar} {size-used} / {size-total} ({size-percentage})"
+    },
+
+    "break",
+
+    {
+      "type": "colors",
+      "key": " ",
+      "symbol": "circle",
+      "paddingLeft": 0,
+      "brightness": "normal"
+    },
+
+    {
+      "type": "colors",
+      "key": " ",
+      "symbol": "circle",
+      "paddingLeft": 0,
+      "brightness": "light"
+    }
+  ]
+}

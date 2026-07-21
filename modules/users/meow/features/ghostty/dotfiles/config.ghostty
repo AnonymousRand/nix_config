@@ -78,12 +78,12 @@ keybind = ctrl+shift+i=show_gtk_inspector
 keybind = ctrl+shift+p=toggle_command_palette
 
 # scrolling
-keybind = ctrl+e=scroll_page_lines:1
-keybind = ctrl+y=scroll_page_lines:-1
-keybind = ctrl+f=scroll_page_down
-keybind = ctrl+b=scroll_page_up
-keybind = ctrl+d=scroll_page_fractional:0.5
-keybind = ctrl+u=scroll_page_fractional:-0.5
+keybind = unconsumed:ctrl+e=scroll_page_lines:1
+keybind = unconsumed:ctrl+y=scroll_page_lines:-1
+keybind = unconsumed:ctrl+f=scroll_page_down
+keybind = unconsumed:ctrl+b=scroll_page_up
+keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
+keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
 keybind = ctrl+home=scroll_to_top
 keybind = ctrl+end=scroll_to_bottom
 keybind = unconsumed:ctrl+i=jump_to_prompt:-1
