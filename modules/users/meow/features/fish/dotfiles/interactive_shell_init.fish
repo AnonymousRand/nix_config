@@ -17,4 +17,9 @@ set -g fish_cursor_external    block
 # aliases
 ################################################################################
 
-alias clear="tput reset" # make `clear` also clear scrollback history, like default behavior in bash
+# make `clear` also clear scrollback history, like default behavior in bash
+alias clear="tput reset"
+
+# make `nix-shell` and `nix develop` open in fish by default instead of bash
+alias nix-shell="nix-shell --run fish"
+alias nix develop="nix develop -c fish"

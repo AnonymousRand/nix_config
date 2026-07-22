@@ -1,9 +1,12 @@
 function fish_user_key_bindings
-    # change copy keybind from `ctrl + x` to `ctrl + c`
-    bind --erase --preset -M insert ctrl-x
-    bind --erase --preset -M visual ctrl-x
-    bind --erase --preset -M visual ctrl-c
-    bind -M visual ctrl-c fish_clipboard_copy
+    # remove `ctrl + x` and `ctrl + v` copy/paste keybinds, but leave them to the terminal emulator
+    # except for copying in visual mode, which ghostty at least doesn't seem to be able to do
+    bind --erase --preset -M insert  ctrl-x
+    bind --erase --preset -M visual  ctrl-x
+    bind --erase --preset -M default ctrl-v
+    bind --erase --preset -M insert  ctrl-v
+    bind --erase --preset -M visual  ctrl-v
+    bind -M visual ctrl-shift-c fish_clipboard_copy
 
     # enable `ctrl + r` and `ctrl + s` history pager in vim insert mode still
     bind -M insert ctrl-r history-pager

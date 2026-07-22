@@ -1,43 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configs
+" basics
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" misc settings
-set autowrite                                       " automatically save before commands like `:next` and `:make`
-set colorcolumn=121                                 " vertical rule to guide line widths
-set cursorline                                      " highlight line that cursor is on
-set hidden                                          " hide buffers when they are abandoned
-set laststatus=2                                    " always shows status line at bottom
-set mouse=a                                         " enable mouse usage (all modes)
-set nu rnu                                          " hybrid line numbers
-set scrolloff=2                                     " scrolling always keeps 2 lines visible around cursor
-set showcmd                                         " show (partial) command in status line
-set showmatch                                       " show matching brackets
-set viminfo='256,<65535                             " yank up to 65535 lines and remember marks from 256 files
-
-" cursor settings
-let &t_EI = "\e[2 q"                                " steady block cursor in normal mode
-let &t_SI = "\e[5 q"                                " blinking line cursor in insert mode
-let &t_SR = "\e[3 q"                                " blinking underscore cursor in replace mode
-
-" `iskeyword` settings
-set iskeyword-=_                                    " things like `w` in normal mode always stop at underscores too
-autocmd FileType fish setlocal iskeyword-=_
-autocmd FileType fish setlocal iskeyword-=.
-autocmd FileType css,fish,nix setlocal iskeyword-=- " things like `w` in normal mode always stop at hyphens too
-
-" search settings
-set smartcase                                       " smart case matching
-set incsearch                                       " incremental search
-set hlsearch                                        " searching permanently highlights all matches
-" search results are brought to middle of screen
-nnoremap n nzz
-nnoremap N Nzz
-
-" tab settings
-set shiftwidth=4                                    " `tab` is 4 spaces wide
-set smarttab expandtab                              " pressing `tab` gives `shiftwidth` spaces
-set tabstop=8                                       " actual tab chars are 8 spaces wide to avoid confusion with indents
+" don't operate in 'compatible with vi' mode
+set nocompatible
 
 " enable syntax highlighting
 if has('syntax')
@@ -49,12 +15,6 @@ filetype plugin indent on
 
 " go to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" break undo every time `space`, `enter`, or `ctrl + w` is pressed, allowing individual words to be undone
-inoremap <Space> <Space><C-g>u
-inoremap <CR> <CR><C-g>u
-inoremap <C-w> <C-g>u<C-w>
-nnoremap <p> <C-g>up
 
 " turn off bell sound and visuals in vim (for WSL mainly)
 set visualbell
@@ -99,25 +59,75 @@ endif
 
 " colorscheme
 set termguicolors
-autocmd BufEnter * :colorscheme noctalia_theme      " always apply custom colorscheme last when entering buffer
+autocmd BufEnter * :colorscheme noctalia_theme " always apply colorscheme last when entering a buffer
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" misc settings
+set autowrite           " automatically save before commands like `:next` and `:make`
+set colorcolumn=121     " vertical rule to guide line widths
+set cursorline          " highlight line that cursor is on
+set hidden              " hide buffers when they are abandoned
+set laststatus=2        " always shows status line at bottom
+set mouse=a             " enable mouse usage (all modes)
+set nu rnu              " hybrid line numbers
+set scrolloff=2         " scrolling always keeps 2 lines visible around cursor
+set showcmd             " show (partial) command in status line
+set showmatch           " show matching brackets
+set viminfo='256,<65535 " yank up to 65535 lines and remember marks from 256 files
+
+" cursor settings
+let &t_EI = "\e[2 q" " steady block cursor in normal mode
+let &t_SI = "\e[5 q" " blinking line cursor in insert mode
+let &t_SR = "\e[3 q" " blinking underscore cursor in replace mode
+
+" `iskeyword` settings
+set iskeyword-=_                                    " things like `w` in normal mode always stop at underscores too
+autocmd FileType fish setlocal iskeyword-=_
+autocmd FileType fish setlocal iskeyword-=.
+autocmd FileType css,fish,nix setlocal iskeyword-=- " things like `w` in normal mode always stop at hyphens too
+
+" search settings
+set smartcase " smart case matching
+set incsearch " incremental search
+set hlsearch  " searching permanently highlights all matches
+" search results are brought to middle of screen
+nnoremap n nzz
+nnoremap N Nzz
+
+" tab settings
+set shiftwidth=4       " `tab` is 4 spaces wide
+set smarttab expandtab " pressing `tab` gives `shiftwidth` spaces
+set tabstop=8          " actual tab chars are 8 spaces wide to avoid confusion with indents
+
+" break undo every time `space`, `enter`, or `ctrl + w` is pressed, allowing individual words to be undone
+inoremap <Space> <Space><C-g>u
+inoremap <CR> <CR><C-g>u
+inoremap <C-w> <C-g>u<C-w>
+nnoremap <p> <C-g>up
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader=','
+let mapleader=","
 
-" for CamelCaseMotion plugin
-let g:camelcasemotion_key='<leader>'
+" camelcasemotion
+let g:camelcasemotion_key="<leader>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keybinds
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" `ctrl + c` and `ctrl + v` to copy to/paste from system clipboard (XA_CLIPBOARD)
-" (may already be set by terminal, but just in case)
-vnoremap <C-c> "+y
-nnoremap <C-v> "+p
+" `ctrl + shift + c` in visual mode and `ctrl + shift + v` in normal and insert modes to
+" copy to/paste from *system* clipboard respectively (using oscyank plugin for copy to work over ssh)
+" (note that if vim is not running in a terminal supporting the kitty keyboard protocol,
+" `ctrl + shift` registers exactly the same as `ctrl`)
+vnoremap <C-S-c> <Plug>OSCYankVisual
+nnoremap <C-S-v> "+p
+inoremap <C-S-v> <C-r>+
 
 " `ctrl + p` to paste from `0` register (where the last yank lives, unaffected by deletes) in normal and visual modes
 nnoremap <C-p> "0p

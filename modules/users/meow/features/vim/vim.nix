@@ -6,6 +6,7 @@
         pkgs.vimPlugins.vim-sensible
         pkgs.vimPlugins.camelcasemotion
         pkgs.vimPlugins.vim-indentwise
+        pkgs.vimPlugins.vim-oscyank
       ];
       extraConfig = builtins.readFile ./dotfiles/vimrc;
     };
