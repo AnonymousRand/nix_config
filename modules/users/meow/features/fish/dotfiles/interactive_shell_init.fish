@@ -23,3 +23,11 @@ alias clear="tput reset"
 # make `nix-shell` and `nix develop` open in fish by default instead of bash
 alias nix-shell="nix-shell --run fish"
 alias nix develop="nix develop -c fish"
+
+################################################################################
+# misc
+################################################################################
+
+# generally match unicode specification for grapheme widths that many terminals follow
+set -g fish_ambiguous_width 2
+set -g fish_emoji_width 2

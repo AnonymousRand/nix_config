@@ -23,9 +23,12 @@ set ttymouse=sgr " make mouse work with wide terminals
 noremap <ScrollWheelUp> <C-y>
 noremap <ScrollWheelDown> <C-e>
 
-" turn off bell sound and visuals in vim (for WSL mainly)
-set visualbell
-set t_vb=
+" turn off all bells
+set belloff=all
+" old vim versions might need this following workaround instead
+"set noerrorbells
+"set visualbell
+"set t_vb=
 
 " kitty fixes, from kitty docs FAQ page
 " must come before setting colorscheme, and also `&term` should not be changed after this

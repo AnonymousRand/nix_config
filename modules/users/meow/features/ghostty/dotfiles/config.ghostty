@@ -6,14 +6,16 @@
 theme                   = "noctalia_theme"
 # force ghostty to use ghostty config (instead of system GTK, for example) to style windows
 window-theme            = "ghostty"
-font-size               = 12
-# remove programming ligatures
-font-feature            = -calt
 custom-shader           = shaders/nyan_cursor.glsl
 custom-shader-animation = true
 gtk-custom-css          = ./custom.css
 gtk-titlebar            = true
 gtk-titlebar-style      = tabs
+
+# font
+font-size               = 12
+# remove programming ligatures
+font-feature            = -calt
 
 # shell
 command                    = "fish --login --interactive"
@@ -22,6 +24,7 @@ shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
 
 # system
 app-notifications       = no-clipboard-copy, no-config-reload
+bell-features           = attention, no-audio, no-border, no-system, title
 # improve performance by using the same process to spawn multiple instances of ghostty
 gtk-single-instance     = true
 clipboard-read          = allow

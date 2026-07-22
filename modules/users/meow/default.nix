@@ -11,6 +11,7 @@
       # features to be activated at the system/host level (if this user is present on host)
       self.nixosModules.fish
       self.nixosModules.ghostty
+      self.nixosModules.kitty
       self.nixosModules.niri
       self.nixosModules.nixowos # system-level to change os-release
       self.nixosModules.noctalia
