@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = { config, ... }: {
+  flake.modules.homeManager.meow.fish = { config, ... }: {
     programs.fish = {
       enable = true;
       interactiveShellInit = builtins.readFile ./dotfiles/interactive_shell_init.fish +
@@ -23,6 +23,7 @@
     # Noctalia theming
     programs.noctalia = {
       settings = {
+        theme.templates.custom_colors = config.meow.theme.colors.fish;
         theme.templates.user.fish = {
           input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
           output_path = "$XDG_CONFIG_HOME/fish/noctalia_theme.fish";

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.file = { pkgs, ... }: {
+  flake.modules.nixos.file = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.file
     ];

@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { pkgs, ... }: {
+  flake.modules.homeManager.meow.hyfetch = { pkgs, ... }: {
     programs.hyfetch = {
       enable = true;
     };

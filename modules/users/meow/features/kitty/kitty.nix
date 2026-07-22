@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = { config, ... }: {
+  flake.modules.homeManager.meow.kitty = { config, ... }: {
     programs.kitty = {
       enable = true;
       extraConfig = builtins.readFile ./dotfiles/kitty.conf +

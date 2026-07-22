@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
-  flake.nixosModules.hostsCommon = { config, pkgs, ... }: {
+  flake.modules.nixos.hostsCommon = { config, pkgs, ... }: {
     imports = [
       # features to be installed on every host
-      self.nixosModules.file
-      self.nixosModules.git
-      self.nixosModules.tree
-      self.nixosModules.vim
-      self.nixosModules.wget
+      self.modules.nixos.file
+      self.modules.nixos.git
+      self.modules.nixos.tree
+      self.modules.nixos.vim
+      self.modules.nixos.wget
     ];
 
     # bootloader

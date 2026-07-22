@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.nvidia = {
+  flake.modules.nixos.nvidia = {
     hardware.graphics.enable = true;              # enable hardware acceleration
     services.xserver.videoDrivers = [ "nvidia" ]; # load NVIDIA driver to X server
     hardware.nvidia = {

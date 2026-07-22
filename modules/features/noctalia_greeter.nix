@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.noctaliaGreeter = {
+  flake.modules.nixos.noctaliaGreeter = {
     imports = [
       inputs.noctalia-greeter.nixosModules.default
     ];

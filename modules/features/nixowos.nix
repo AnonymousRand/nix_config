@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.nixowos = {
+  flake.modules.nixos.nixowos = {
     imports = [
       inputs.nixowos.nixosModules.default
     ];

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.firmware = { pkgs, ... }: {
+  flake.modules.nixos.firmware = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.dmidecode
     ];

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.tree = { pkgs, ... }: {
+  flake.modules.nixos.tree = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.tree
     ];

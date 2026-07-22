@@ -1,8 +1,8 @@
 { self, inputs, ... }: {
   flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.hostsCommon
-      self.nixosModules.desktopConfig
+      self.modules.nixos.hostsCommon
+      self.modules.nixos.desktop
       
       # load custom overlays (e.g. from `perSystem.overlayAttrs`)
       {
@@ -12,7 +12,7 @@
       ##########################################################################
       # users
 
-      self.nixosModules.meow
+      self.modules.nixos.meow
 
       # integrate Home Manager config for all users on this host
       # (so they're also built when `nixos-rebuild --flake .#<host name>` command is run)
@@ -21,34 +21,34 @@
         home-manager.useGlobalPkgs = true; # allow home manager to see overlays for `nixpkgs
         home-manager.useUserPackages = true;
 
-        home-manager.users.meow = self.homeModules.meow;
+        home-manager.users.meow = self.modules.homeManager.meow;
       }
 
       ##########################################################################
-      # packages
+      # features
 
       # desktop environment
-      self.nixosModules.niri
-      self.nixosModules.noctalia
-      self.nixosModules.noctaliaGreeter
+      self.modules.nixos.niri
+      self.modules.nixos.noctalia
+      self.modules.nixos.noctaliaGreeter
 
       # system
-      self.nixosModules.efibootmgr
-      self.nixosModules.firmware
-      self.nixosModules.nvidia
-      self.nixosModules.xwayland-satellite
+      self.modules.nixos.efibootmgr
+      self.modules.nixos.firmware
+      self.modules.nixos.nvidia
+      self.modules.nixos.xwayland-satellite
 
       # tools
-      self.nixosModules.bottom       # better `top`, or `htop` with `--basic`
-      self.nixosModules.hyprpicker   # color picker
-      self.nixosModules.nvtop        # GPU top
-      self.nixosModules.playerctl    # control media players that use MPRIS
-      self.nixosModules.solaar       # logitech mouse config
-      self.nixosModules.tokei        # code counter
-      self.nixosModules.wl-clipboard # wayland clipboard
+      self.modules.nixos.bottom       # better `top`, or `htop` with `--basic`
+      self.modules.nixos.hyprpicker   # color picker
+      self.modules.nixos.nvtop        # GPU top
+      self.modules.nixos.playerctl    # control media players that use MPRIS
+      self.modules.nixos.solaar       # logitech mouse config
+      self.modules.nixos.tokei        # code counter
+      self.modules.nixos.wl-clipboard # wayland clipboard
       
       # other
-      self.nixosModules.firefox
+      self.modules.nixos.firefox
     ];
   };
 }

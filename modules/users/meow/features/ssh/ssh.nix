@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = {
+  flake.modules.homeManager.meow.ssh = {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;

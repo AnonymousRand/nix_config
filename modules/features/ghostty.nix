@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.ghostty = { pkgs, ... }: {
+  flake.modules.nixos.ghostty = { pkgs, ... }: {
     environment.systemPackages = [
       inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

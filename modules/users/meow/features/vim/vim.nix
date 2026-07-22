@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = { config, pkgs, ... }: {
+  flake.modules.homeManager.meow.vim = { config, pkgs, ... }: {
     programs.vim = {
       enable = true;
       plugins = [

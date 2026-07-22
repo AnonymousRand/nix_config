@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.meow = {
+  flake.modules.nixos.meow = {
     # don't forget to set a password with ‘passwd’!
     users.users."meow" = {
       isNormalUser = true;
@@ -9,19 +9,19 @@
 
     imports = [
       # features to be activated at the system/host level (if this user is present on host)
-      self.nixosModules.fish
-      self.nixosModules.ghostty
-      self.nixosModules.kitty
-      self.nixosModules.niri
-      self.nixosModules.nixowos # system-level to change os-release
-      self.nixosModules.noctalia
-      self.nixosModules.vim
+      self.modules.nixos.fish
+      self.modules.nixos.ghostty
+      self.modules.nixos.kitty
+      self.modules.nixos.niri
+      self.modules.nixos.nixowos # system-level to change os-release
+      self.modules.nixos.noctalia
+      self.modules.nixos.vim
     ];
   };
 
-  # Home Manager config module, which can be both integrated into NixOS configs
-  # (i.e. built with `nixos-rebuild` command) or used standalone (i.e. built with `home-manager` command)
-  flake.homeModules.meow = { lib, pkgs, ... }: {
+  # Home Manager config module, which can be both integrated into NixOS configs (i.e. built with
+  # `nixos-rebuild` command) or used standalone (i.e. built with `home-manager` command)
+  flake.modules.homeManager.meow = { lib, pkgs, ... }: {
     home.username = "meow";
     home.homeDirectory = "/home/meow";
     home.stateVersion = "26.05";
@@ -32,12 +32,21 @@
 
     programs.home-manager.enable = true; # enables `home-manager` command
 
-    # expose top-level inputs to all instances of `flake.homeModules.meow`
-    _module.args = {
-      my = {
-        theme = import ./_theme { inherit inputs lib pkgs; };
-      };
-    };
+    imports = [
+      # features to be activated at the user level for this user (e.g. home manager configs)
+      self.modules.homeManager.bottom
+      self.modules.homeManager.fastfetch
+      self.modules.homeManager.fish
+      self.modules.homeManager.ghostty
+      self.modules.homeManager.git
+      self.modules.homeManager.hyfetch
+      self.modules.homeManager.kitty
+      self.modules.homeManager.niri
+      self.modules.homeManager.nixowos
+      self.modules.homeManager.noctalia
+      self.modules.homeManager.ssh
+      self.modules.homeManager.vim
+    ];
   };
 
   # the same Home Manager config as a standalone (to be used with `home-manager --flake .#<username>` command)
@@ -46,6 +55,8 @@
   # maybe passing it as parameter to a custom function?
   flake.homeConfigurations.meow = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    modules = [ self.homeModules.meow ];
+    modules = [
+      self.modules.homeManager.meow
+    ];
   };
 }

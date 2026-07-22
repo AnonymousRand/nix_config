@@ -12,7 +12,7 @@
     });
   };
 
-  flake.nixosModules.hyfetch = { pkgs, ... }: {
+  flake.modules.nixos.hyfetch = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.hyfetch
     ];

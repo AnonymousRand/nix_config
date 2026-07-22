@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = { config, my, ... }: {
+  flake.modules.homeManager.meow.ghostty = { config, ... }: {
     programs.ghostty = {
       enable = true;
     };
@@ -17,7 +17,7 @@
         };
 
         theme.templates.user.ghosttyCss = {
-          input_path = "${my.theme.cssConfig}/ghostty/dotfiles/custom.css";
+          input_path = "${config.meow.theme.cssConfig}/ghostty/dotfiles/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };

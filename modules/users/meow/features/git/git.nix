@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = {
+  flake.modules.homeManager.meow.git = {
     programs.git = {
       enable = true;
       settings = {

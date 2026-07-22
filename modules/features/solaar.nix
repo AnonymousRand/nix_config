@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.solaar = {
+  flake.modules.nixos.solaar = {
     imports = [
       inputs.solaar.nixosModules.default
     ];

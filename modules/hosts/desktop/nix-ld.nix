@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.desktopConfig = { pkgs, ... }: {
+  flake.modules.nixos.desktop = { pkgs, ... }: {
     programs.nix-ld = {
       enable = true;
       # make these libraries (e.g. installed through `pip`) work with nix store's non-standard filepaths

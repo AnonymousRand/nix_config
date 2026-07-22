@@ -1,7 +1,7 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { config, pkgs, ... }: {
+  flake.modules.homeManager.meow.niri = { config, pkgs, ... }: {
     imports = [
-      inputs.niri.homeModules.niri
+      inputs.niri.modules.homeManager.niri
     ];
 
     programs.niri = {
@@ -16,6 +16,7 @@
     # Noctalia theming
     programs.noctalia = {
       settings = {
+        theme.templates.custom_colors = config.meow.theme.colors.niri;
         theme.templates.user.niri = {
           input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;
           output_path = "$XDG_CONFIG_HOME/niri/noctalia_theme.kdl";

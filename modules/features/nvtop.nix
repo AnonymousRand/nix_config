@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.nvtop = { pkgs, ... }: {
+  flake.modules.nixos.nvtop = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.nvtopPackages.full
     ];

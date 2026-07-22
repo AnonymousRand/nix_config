@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.homeModules.meow = {
+  flake.modules.homeManager.meow.nixowos = {
     imports = [
       inputs.nixowos.homeModules.default
     ];

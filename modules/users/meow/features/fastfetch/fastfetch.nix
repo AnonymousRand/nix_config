@@ -1,5 +1,5 @@
 {
-  flake.homeModules.meow = {
+  flake.modules.homeManager.meow.fastfetch = {
     programs.fastfetch = {
       enable = true;
     };

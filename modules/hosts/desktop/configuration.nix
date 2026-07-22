@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktopConfig = { config, pkgs, ... }: {
+  flake.modules.nixos.desktop = { config, pkgs, ... }: {
     # this should be kept as the release version of the first install of this system
     system.stateVersion = "26.05"; # Did you read the comment?
   

@@ -1,12 +1,12 @@
 { inputs, ... }: {
-  flake.homeModules.meow = { my, ... }: {
+  flake.modules.homeManager.meow.noctalia = { config, ... }: {
     imports = [
       inputs.noctalia.homeModules.default
     ];
 
     programs.noctalia = {
       enable = true;
-      settings = rec {
+      settings = {
         theme = {
           # declare my custom color palette for Noctalia app theming
           source = "custom";
@@ -20,7 +20,7 @@
             # Noctalia color palette colors to each app's configs
             enable_builtin_templates = true;
             # load custom colors
-            custom_colors = my.theme.noctaliaCustomColors;
+            custom_colors = config.meow.theme.colors.vars // config.meow.theme.colors.roles;
           };
         };
 
@@ -30,17 +30,10 @@
           sunrise = "09:00";
           sunset = "18:00";
         };
-
-        # we also put custom colors in `config` as this is what the Noctalia template engine must use
-        # when running by itself (e.g. via `noctalia theme` CLI). on the other hand, when Noctalia
-        # starts up normally/reloads its config, `theme.templates.custom_colors` is fine since
-        # it sort of copies it to its internal `config.custom_colors`
-        config = {
-          custom_colors = theme.templates.custom_colors;
-        };
       };
     };
 
-    xdg.configFile."noctalia/palettes/anonymousrand.json".text = builtins.toJSON my.theme.colors.m3Palette;
+    xdg.configFile."noctalia/palettes/anonymousrand.json".text =
+        builtins.toJSON config.meow.theme.colors.m3Palette;
   };
 }

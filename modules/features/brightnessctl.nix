@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.brightnessctl = { pkgs, ... }: {
+  flake.modules.nixos.brightnessctl = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.brightnessctl
     ];

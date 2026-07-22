@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.efibootmgr = { pkgs, ... }: {
+  flake.modules.nixos.efibootmgr = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.efibootmgr
     ];
