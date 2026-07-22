@@ -16,6 +16,13 @@ filetype plugin indent on
 " go to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" enable mouse
+set mouse=a
+set ttymouse=sgr " make mouse work with wide terminals
+" make mouse scroll one line at a time (or at least per event; terminals can multiply this)
+noremap <ScrollWheelUp> <C-y>
+noremap <ScrollWheelDown> <C-e>
+
 " turn off bell sound and visuals in vim (for WSL mainly)
 set visualbell
 set t_vb=
@@ -23,7 +30,6 @@ set t_vb=
 " kitty fixes, from kitty docs FAQ page
 " must come before setting colorscheme, and also `&term` should not be changed after this
 if &term ==? "xterm-kitty"
-    set ttymouse=sgr
     set balloonevalterm
     let &t_AU = "\e[58:5:%dm"
     let &t_8u = "\e[58:2:%lu:%lu:%lum"
@@ -57,13 +63,13 @@ if &term ==? "xterm-kitty"
     let &t_ve = "\e[?25h"
 endif
 
-" colorscheme
-set termguicolors
-autocmd BufEnter * :colorscheme noctalia_theme " always apply colorscheme last when entering a buffer
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" colorscheme
+set termguicolors
+au BufEnter * :colorscheme noctalia_theme " always apply colorscheme last when entering a buffer
 
 " misc settings
 set autowrite           " automatically save before commands like `:next` and `:make`
@@ -71,29 +77,30 @@ set colorcolumn=121     " vertical rule to guide line widths
 set cursorline          " highlight line that cursor is on
 set hidden              " hide buffers when they are abandoned
 set laststatus=2        " always shows status line at bottom
-set mouse=a             " enable mouse usage (all modes)
 set nu rnu              " hybrid line numbers
 set scrolloff=2         " scrolling always keeps 2 lines visible around cursor
 set showcmd             " show (partial) command in status line
 set showmatch           " show matching brackets
 set viminfo='256,<65535 " yank up to 65535 lines and remember marks from 256 files
 
+au FileType * setlocal textwidth=0 " disable automatic line wrapping
+
 " cursor settings
 let &t_EI = "\e[2 q" " steady block cursor in normal mode
 let &t_SI = "\e[5 q" " blinking line cursor in insert mode
 let &t_SR = "\e[3 q" " blinking underscore cursor in replace mode
 
-" `iskeyword` settings
-set iskeyword-=_                                    " things like `w` in normal mode always stop at underscores too
-autocmd FileType fish setlocal iskeyword-=_
-autocmd FileType fish setlocal iskeyword-=.
-autocmd FileType css,fish,nix setlocal iskeyword-=- " things like `w` in normal mode always stop at hyphens too
+" force things like `w` in normal mode to always stop at these characters
+au FileType * setlocal iskeyword-=_
+au FileType * setlocal iskeyword-=-
+au FileType * setlocal iskeyword-=.
 
 " search settings
-set smartcase " smart case matching
-set incsearch " incremental search
-set hlsearch  " searching permanently highlights all matches
-" search results are brought to middle of screen
+set ignorecase " ignore case on search
+set smartcase  " unless a capital letter is typed, then be case-sensitive
+set incsearch  " incremental search
+set hlsearch   " searching permanently highlights all matches
+" automatically scroll such that search results are brought to middle of screen
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -101,12 +108,6 @@ nnoremap N Nzz
 set shiftwidth=4       " `tab` is 4 spaces wide
 set smarttab expandtab " pressing `tab` gives `shiftwidth` spaces
 set tabstop=8          " actual tab chars are 8 spaces wide to avoid confusion with indents
-
-" break undo every time `space`, `enter`, or `ctrl + w` is pressed, allowing individual words to be undone
-inoremap <Space> <Space><C-g>u
-inoremap <CR> <CR><C-g>u
-inoremap <C-w> <C-g>u<C-w>
-nnoremap <p> <C-g>up
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins
@@ -137,9 +138,19 @@ vnoremap <C-p> "0p
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>a
 
-" `ctrl + backspace` to delete whole word in insert mode (`ctrl + h` is sent instead on Linux terminals)
-inoremap <C-BS> <C-w>
-inoremap <C-h> <C-w>
-
-" `enter` to insert new line below in normal mode (`shift + enter` doesn't work though)
+" `enter` and `shift + enter` to insert new line below/after in normal mode
+" (`shift + enter` again only works with kitty keyboard protocol)
 nnoremap <Enter> o<ESC>
+nnoremap <S-Enter> O<ESC>
+
+" break undo every time `space`, `enter`, `ctrl + w` etc. is pressed, allowing individual words to be undone
+" also `ctrl + backspace` and `ctrl + del` to delete whole word backward and forward in insert mode
+" (on some terminals (without kitty keyboard protocol?), `ctrl + h` is sent instead of
+" `ctrl + backspace`, and `ctrl + del` may not work/may register as the same thing as `del`?)
+inoremap <Space> <Space><C-g>u
+inoremap <CR> <CR><C-g>u
+inoremap <C-w> <C-g>u<C-w>
+inoremap <C-BS> <C-g>u<C-w>
+inoremap <C-h> <C-g>u<C-w>
+inoremap <C-Del> <C-g>u<C-o>dw
+nnoremap <p> <C-g>up
