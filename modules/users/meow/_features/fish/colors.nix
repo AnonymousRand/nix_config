@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.meow = { config, ... }: {
-    config.theme.colors.fish = {
+    config.meow.theme.noctaliaCustomColors = {
       # for shell "scales" prompt; hardcode to not be affected by dependent color variable changes
       fish_scales_blue = {
         color_light = "#26edff";

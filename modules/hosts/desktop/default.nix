@@ -18,10 +18,16 @@
       # (so they're also built when `nixos-rebuild --flake .#<host name>` command is run)
       inputs.home-manager.nixosModules.home-manager # to allow integrated Home Manager configs
       {
-        home-manager.useGlobalPkgs = true; # allow home manager to see overlays for `nixpkgs
-        home-manager.useUserPackages = true;
+        home-manager = {
+          useGlobalPkgs = true; # allow home manager to see `nixpkgs overlays
+          useUserPackages = true;
 
-        home-manager.users.meow = self.modules.homeManager.meow;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+
+          users.meow = self.modules.homeManager.meow;
+        };
       }
 
       ##########################################################################

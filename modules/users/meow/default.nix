@@ -34,18 +34,18 @@
 
     imports = [
       # features to be activated at the user level for this user (e.g. home manager configs)
-      self.modules.homeManager.bottom
-      self.modules.homeManager.fastfetch
-      self.modules.homeManager.fish
-      self.modules.homeManager.ghostty
-      self.modules.homeManager.git
-      self.modules.homeManager.hyfetch
-      self.modules.homeManager.kitty
-      self.modules.homeManager.niri
-      self.modules.homeManager.nixowos
-      self.modules.homeManager.noctalia
-      self.modules.homeManager.ssh
-      self.modules.homeManager.vim
+      ./_features/bottom
+      ./_features/fastfetch
+      ./_features/fish
+      ./_features/ghostty
+      ./_features/git
+      ./_features/hyfetch
+      ./_features/kitty
+      ./_features/niri
+      ./_features/nixowos
+      ./_features/noctalia
+      ./_features/ssh
+      ./_features/vim
     ];
   };
 
@@ -55,6 +55,11 @@
   # maybe passing it as parameter to a custom function?
   flake.homeConfigurations.meow = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+
     modules = [
       self.modules.homeManager.meow
     ];

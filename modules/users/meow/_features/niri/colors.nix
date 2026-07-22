@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.meow = { config, ... }: {
-    config.theme.colors.niri = {
+    config.meow.theme.noctaliaCustomColors = {
       # for active window border/focus ring gradient
       niri_active_gradient_start = {
         color_light = "#ff75ba";

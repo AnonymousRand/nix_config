@@ -13,66 +13,64 @@
 # `pkgs` in its arguments and work just fine? >_<
 
 {
-  flake.modules.homeManager.meow = { config, pkgs, ... }: {
-    config.meow.theme.cssConfig =
-      let
-        compileScssConfig = { dart-sass, stdenv }: {
-          let
-            # SCSS paths to be loaded with `sass --load-path` (for imports in other SCSS files
-            # without needing relative paths). provide directories, not individual files
-            scssPathsToLoad = [
-              ./.
-            ];
-          in stdenv.mkDerivation {
-            pname = "compile-scss-config";
-            version = "0.0.0";
+  flake.modules.homeManager.meow = { config, pkgs, ... }:
 
-            # input SCSS files to be copied into build environment
-            srcs = scssPathsToLoad ++ [
-              ../../features
-            ];
-            # don't try to unpack single files in `srcs` as archives
-            dontUnpack = true;
+  let
+    # `scssPathsToLoad` is the SCSS paths to be loaded with `sass --load-path` (for imports in
+    # other SCSS files without needing relative paths). provide directories, not individual files
+    # `featuresPath` is the path to where all the features' SCSS files are
+    compileScssConfig = { dart-sass, stdenv, scssPathsToLoad, featuresPath }: stdenv.mkDerivation {
+      pname = "compile-scss-config";
+      version = "0.0.0";
 
-            # build-time dependencies
-            nativeBuildInputs = [
-              dart-sass
-            ];
+      # input SCSS files to be copied into build environment
+      srcs = scssPathsToLoad ++ [ featuresPath ];
+      # don't try to unpack single files in `srcs` as archives
+      dontUnpack = true;
 
-            # wrap all Noctalia template syntax in the SCSS files in quotes so sass compiles without error
-            # (i could render the templates before running sass with `noctalia theme`, but then
-            # the resulting CSS won't see and be tracked by Noctalia's light/dark mode changes)
-            # (i would like to apologize for the sheer absurdity of this hack)
-            preBuild = ''
-              find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
-            '';
+      # build-time dependencies
+      nativeBuildInputs = [
+        dart-sass
+      ];
 
-            # render SCSS to CSS using sass, and place generated CSS in `build/` in build environment
-            buildPhase = ''
-              runHook preBuild
+      # wrap all Noctalia template syntax in the SCSS files in quotes so sass compiles without error
+      # (i could render the templates before running sass with `noctalia theme`, but then
+      # the resulting CSS won't see and be tracked by Noctalia's light/dark mode changes)
+      # (i would like to apologize for the sheer absurdity of this hack)
+      preBuild = ''
+        find . -name '*.scss' -type f -exec sed -i 's/\({{ *\?colors\..\+\?}}\)/"\1"/g' {} +
+      '';
 
-              mkdir build/
-              sass ${../../features}:build/ --no-source-map \
-                  ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
-            '';
+      # render SCSS to CSS using sass, and place generated CSS in `build/` in build environment
+      buildPhase = ''
+        runHook preBuild
 
-            # copy `build/*` to the designated output directory for this derivation in the nix store (`$out`),
-            # which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
-            installPhase = ''
-              mkdir -p $out
-              cp -r build/* $out/
+        mkdir build/
+        sass ${featuresPath}:build/ --no-source-map \
+            ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
+      '';
 
-              runHook postInstall
-            '';
+      # copy `build/*` to the designated output directory for this derivation in the nix store (`$out`),
+      # which is accessible via `"${<this package>}/<desired file path>"` in home manager etc.
+      installPhase = ''
+        mkdir -p $out
+        cp -r build/* $out/
 
-            # take all the Noctalia template syntax in the generated CSS files back out of quotes lmao
-            # (since CSS doesn't recognize hex codes inside quotes/strings)
-            postInstall = ''
-              find $out -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
-            '';
-          }
-        };
-      in
-        pkgs.callPackage compileScssConfig { };
+        runHook postInstall
+      '';
+
+      # take all the Noctalia template syntax in the generated CSS files back out of quotes lmao
+      # (since CSS doesn't recognize hex codes inside quotes/strings)
+      postInstall = ''
+        find $out -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
+      '';
+      };
+  in {
+    config.meow.theme.cssConfig = pkgs.callPackage compileScssConfig {
+      scssPathsToLoad = [
+        ./.
+      ];
+      featuresPath = ../../_features;
+    };
   };
 }

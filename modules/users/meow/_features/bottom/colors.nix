@@ -1,27 +1,27 @@
 {
   flake.modules.homeManager.meow = { config, ... }: {
-    config.theme.colors.bottom = {
-      cpu_color_red = {
+    config.meow.theme.noctaliaCustomColors = {
+      bottom_cpu_red = {
         color_light = "#ff6666";
         color_dark  = "#ff6666";
       };
-      cpu_color_orange = {
+      bottom_cpu_orange = {
         color_light = "#ffa600";
         color_dark  = "#ffa600";
       };
-      cpu_color_yellow = {
+      bottom_cpu_yellow = {
         color_light = "#f7ce00";
         color_dark  = "#ffea00";
       };
-      cpu_color_green = {
+      bottom_cpu_green = {
         color_light = "#76d600";
         color_dark  = "#8cff00";
       };
-      cpu_color_blue = {
+      bottom_cpu_blue = {
         color_light = "#00d5ff";
         color_dark  = "#00eaff";
       };
-      cpu_color_purple = {
+      bottom_cpu_purple = {
         color_light = "#ff99f7";
         color_dark  = "#ffa6f8";
       };

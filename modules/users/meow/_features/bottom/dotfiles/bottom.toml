@@ -100,12 +100,12 @@ headers = {
 all_entry_color = "{{colors.default_fg_source.default.hex}}"
 avg_entry_color = "{{colors.default_fg_source.default.hex}}"
 cpu_core_colors = [
-    "{{colors.cpu_color_red_source.default.hex}}",
-    "{{colors.cpu_color_orange_source.default.hex}}",
-    "{{colors.cpu_color_yellow_source.default.hex}}",
-    "{{colors.cpu_color_green_source.default.hex}}",
-    "{{colors.cpu_color_blue_source.default.hex}}",
-    "{{colors.cpu_color_purple_source.default.hex}}"
+    "{{colors.bottom_cpu_red_source.default.hex}}",
+    "{{colors.bottom_cpu_orange_source.default.hex}}",
+    "{{colors.bottom_cpu_yellow_source.default.hex}}",
+    "{{colors.bottom_cpu_green_source.default.hex}}",
+    "{{colors.bottom_cpu_blue_source.default.hex}}",
+    "{{colors.bottom_cpu_purple_source.default.hex}}"
 ]
 
 [styles.memory]
