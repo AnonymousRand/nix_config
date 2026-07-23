@@ -27,6 +27,14 @@ more documentation to come :3
 - `flake-parts` also lets every such module access `self` and `input` as arguments on the very top of the file (i.e., arguments to the overarching module that assigns the regular module to `flake.modules`).
 - i'm sure there are better ways to explain why `flake-parts` is nice for dendritic but i kinda suck at this. i also jumped straight to `flake-parts` without ever using a traditional flake so i guess that doesn't help either
 
+### `flake.nix` and `flake-file`
+
+- i use [`flake-file`](https://github.com/denful/flake-file) to autogenerate my `flake.nix`. it allows me to put inputs (into `flake-file.inputs`) inside their corresponding feature's module instead of all in `flake.nix`, and `flake-file` aggregates all these inputs into `flake.nix` when `nix run .#write-flake` is run.
+- `flake-parts` modules still receive the exact same `inputs` argument (which contains all the aggregated `flake-file.inputs`).
+- remember to run `nix run .#write-flake` every time you update the inputs :3
+
+## okie i'll stop yapping :3
+
 ### nixos config
 
 - as per the dendritic pattern, features, hosts, and users should be their own top-level `flake.modules.nixos.<name>` nixos modules and put into the folders `modules/features/`, `modules/hosts/`, and `modules/users/` respectively.
