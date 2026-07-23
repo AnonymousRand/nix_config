@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.meow = { config, ... }: {
+  flake.modules.homeManager.meow = { config, lib, ... }: {
     config.meow.theme = rec {
       colors = rec {
         ########################################################################

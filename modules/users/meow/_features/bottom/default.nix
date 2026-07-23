@@ -1,4 +1,8 @@
 { config, ... }: {
+  imports = [
+    ./colors.nix
+  ];
+
   programs.bottom = {
     enable = true;
   };

@@ -1,4 +1,8 @@
 { config, ... }: {
+  imports = [
+    ./colors.nix
+  ];
+
   programs.fish = {
     enable = true;
     interactiveShellInit = builtins.readFile ./dotfiles/interactive_shell_init.fish +
