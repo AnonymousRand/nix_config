@@ -15,12 +15,18 @@ more documentation to come :3
 - don't quote me on this but [dendritic pattern](https://github.com/mightyiam/dendritic) is basically a way to organize Nix configs by *feature* or *aspect,* such as packages, users, and hosts. each feature gets a single top-level module, and hosts' nixos configurations/users' home manager configurations simply pick out the features they want by importing their top-level modules (such as under `self.modules`, instead of their relative filepaths). thus, instead of starting with hosts and defining the features they have as is the traditional approach, dendritic defines features first and hosts simply select them.
 
     this has a few advantages:
-        - it makes code reuse (e.g. sharing a package between multiple users or hosts) very easy, since we just have to import the module in every place we want it to be
-        - it also means our directory structure can be less "possessive" in that we won't tend to put host A's packages under `hostA/`, host B's packages under `hostB/`, and so on. this makes it easier to restructure things, remove features from a host, reuse features across multiple consumers, and so on.
+    - it makes code reuse (e.g. sharing a package between multiple users or hosts) very easy, since we just have to import the module in every place we want it to be
+    - it also means our directory structure can be less "possessive" in that we won't tend to put host A's packages under `hostA/`, host B's packages under `hostB/`, and so on. this makes it easier to restructure things, remove features from a host, reuse features across multiple consumers, and so on.
 
 - generally the reusable features get top-level modules, while non-reusable ones (e.g. user-specific home manager configs) fall back to lower-level modules like regular nix modules. this helps avoid cluttering the top-level namespace with a bunch of "private" modules.
+- (i might try out the even more evolved version of dendritic called [den](https://github.com/denful/den), which seems even more feature-focused in that we don't even divide a feature between nixos and home manager configs anymore—every feature is just a function that outputs configurations for *all* nix classes, depending on the host and user who called that function. stay tuned for more deranged 3am commits :3)
 
-- dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization. `flake-parts` gives us the top-level module namespaces like `flake.modules`/`self.modules` which we will put our top-level feature modules in. instead of being a regular nix module, these files are modules that *assign* regular nix modules to something in this top-level `flake.modules`. this in essence turns every module into an output of our flake that can be consumed anywhere via `self`, allowing us to modularize our flake outputs. `flake-parts` also lets every such module access `self` and `input` as arguments on the very top of the file (i.e., arguments to the overarching module that assigns the regular module to `flake.modules`).
+### `flake-parts`
+
+- dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization.
+- `flake-parts` gives us the top-level module namespaces like `flake.modules`/`self.modules` which we will put our top-level feature modules in. instead of being regular nix modules, these `flake-parts` module files *assign* regular nix modules to something in this top-level `flake.modules`. this in essence turns every module into an output of our flake that can be consumed anywhere via `self`, allowing us to modularize our flake outputs.
+- `flake-parts` also lets every such module access `self` and `input` as arguments on the very top of the file (i.e., arguments to the overarching module that assigns the regular module to `flake.modules`).
+- i'm sure there are better ways to explain why `flake-parts` is nice for dendritic but i kinda suck at this
 
 ### nixos config
 
