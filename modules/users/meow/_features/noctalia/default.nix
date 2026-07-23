@@ -9,6 +9,8 @@
       theme = {
         # declare my custom color palette for Noctalia app theming
         source = "custom";
+        custom_palette = "anonymousrand";
+
         # switch between light and dark themes automatically
         mode = "auto";
 
