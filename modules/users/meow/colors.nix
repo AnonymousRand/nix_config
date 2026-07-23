@@ -1,6 +1,18 @@
 {
   flake.modules.homeManager.meow = { config, lib, ... }: {
+    #options.meow.theme = lib.mkOption {
+    #  type = lib.types.attrsOf (lib.types.submodule {
+    #    freeformType = lib.types.attrs;
+    #  });
+    #};
+    options.meow.theme = lib.mkOption {
+      type = lib.types.attrsOf lib.types.anything;
+    };
+
     config.meow.theme = rec {
+      #options.meow.theme.noctaliaCustomColors = lib.mkOption {
+      #  type = lib.types.deferredModule;
+      #};
       colors = rec {
         ########################################################################
         # basic color variables

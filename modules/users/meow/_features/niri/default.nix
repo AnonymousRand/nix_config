@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }: {
   imports = [
     inputs.niri.homeModules.niri
-    ./colors.nix
   ];
 
   programs.niri = {
@@ -14,6 +13,7 @@
   };
 
   # Noctalia theming
+  meow.theme.noctaliaCustomColors = import ./colors.nix;
   programs.noctalia = {
     settings = {
       theme.templates.user.niri = {

@@ -1,13 +1,10 @@
 { config, ... }: {
-  imports = [
-    ./colors.nix
-  ];
-
   programs.bottom = {
     enable = true;
   };
 
   # Noctalia theming
+  meow.theme.noctaliaCustomColors = import ./colors.nix;
   programs.noctalia = {
     settings = {
       theme.templates.user.bottom = {

@@ -1,8 +1,4 @@
 { config, ... }: {
-  imports = [
-    ./colors.nix
-  ];
-
   programs.fish = {
     enable = true;
     interactiveShellInit = builtins.readFile ./dotfiles/interactive_shell_init.fish +
@@ -24,6 +20,7 @@
       ./dotfiles/functions/fish_user_key_bindings.fish;
 
   # Noctalia theming
+  meow.theme.noctaliaCustomColors = import ./colors.nix;
   programs.noctalia = {
     settings = {
       theme.templates.user.fish = {

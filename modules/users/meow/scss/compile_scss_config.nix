@@ -70,7 +70,7 @@
       scssPathsToLoad = [
         ./.
       ];
-      featuresPath = ../../_features;
+      featuresPath = ../_features;
     };
   };
 }
