@@ -1,18 +1,12 @@
 {
   flake.modules.homeManager.meow = { config, lib, ... }: {
-    #options.meow.theme = lib.mkOption {
-    #  type = lib.types.attrsOf (lib.types.submodule {
-    #    freeformType = lib.types.attrs;
-    #  });
-    #};
+    # this makes sure that `config.meow.theme` is not just a plain attribute set, but actually
+    # merges its child attribute sets when set in multiple files (which `lib.types.attrsOf` does)
     options.meow.theme = lib.mkOption {
       type = lib.types.attrsOf lib.types.anything;
     };
 
     config.meow.theme = rec {
-      #options.meow.theme.noctaliaCustomColors = lib.mkOption {
-      #  type = lib.types.deferredModule;
-      #};
       colors = rec {
         ########################################################################
         # basic color variables
@@ -64,7 +58,7 @@
 
         ########################################################################
         # custom color roles/variables (currently in format for Noctalia custom colors)
-        # (use these on things which very clearly have any of the following roles)
+        # (use these on things which clearly have any of the following roles)
 
         roles = with vars; rec {
           # default fg/bg
@@ -316,10 +310,10 @@
 
         ########################################################################
         # Material 3 palette (e.g. for Noctalia palette)
-        # (use these on things which very clearly have a Material 3 role, and Noctalia didn't change the color)
+        # (use these on things which clearly have a Material 3 role, and Noctalia didn't change the color)
         # (although treat the terminal ANSI colors more like fixed color variables)
         #
-        # note: am maybe starting to move fully towards custom colors instead of m3,
+        # note: i am maybe starting to move fully towards custom colors instead of m3,
         # and keeping m3 only for noctalia to be happy?
 
         m3Palette = {

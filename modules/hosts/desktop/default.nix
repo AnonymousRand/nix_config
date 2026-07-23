@@ -22,6 +22,8 @@
           useGlobalPkgs = true; # allow home manager to see `nixpkgs overlays
           useUserPackages = true;
 
+          # needed since user-specific modules are no longer flake-parts modules, and hence do not get
+          # `inputs` automatically. also `_module.args` doesn't work, infinite recursion :(
           extraSpecialArgs = {
             inherit inputs;
           };

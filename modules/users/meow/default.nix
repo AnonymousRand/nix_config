@@ -30,10 +30,15 @@
       TERMINAL = "ghostty";
     };
 
-    programs.home-manager.enable = true; # enables `home-manager` command
+    # enables standalone `home-manager` command
+    programs.home-manager.enable = true;
 
     imports = [
       # features to be activated at the user level for this user (e.g. home manager configs)
+      #
+      # note: these are regular nixos modules instead of top-level flake-parts modules (e.g.
+      # in `flake.modules.homeManager.<name>`) to keep them "private" and encapsulated
+      # within this user's config (as they contain configurations specific to this user)
       ./_features/bottom
       ./_features/fastfetch
       ./_features/fish
@@ -56,6 +61,8 @@
   flake.homeConfigurations.meow = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 
+    # needed since user-specific modules are no longer flake-parts modules, and hence do not get
+    # `inputs` automatically. also `_module.args` doesn't work, infinite recursion :(
     extraSpecialArgs = {
       inherit inputs;
     };
