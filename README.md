@@ -19,14 +19,13 @@ more documentation to come :3
     - it also means our directory structure can be less "possessive" in that we won't tend to put host A's packages under `hostA/`, host B's packages under `hostB/`, and so on. this makes it easier to restructure things, remove features from a host, reuse features across multiple consumers, and so on.
 
 - generally the reusable features get top-level modules, while non-reusable ones (e.g. user-specific home manager configs) fall back to lower-level modules like regular nix modules. this helps avoid cluttering the top-level namespace with a bunch of "private" modules.
-- (i might try out the even more evolved version of dendritic called [den](https://github.com/denful/den), which seems even more feature-focused in that we don't even divide a feature between nixos and home manager configs anymore—every feature is just a function that outputs configurations for *all* nix classes, depending on the host and user who called that function. stay tuned for more deranged 3am commits :3)
 
 ### `flake-parts`
 
 - dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization.
 - `flake-parts` gives us the top-level module namespaces like `flake.modules`/`self.modules` which we will put our top-level feature modules in. instead of being regular nix modules, these `flake-parts` module files *assign* regular nix modules to something in this top-level `flake.modules`. this in essence turns every module into an output of our flake that can be consumed anywhere via `self`, allowing us to modularize our flake outputs.
 - `flake-parts` also lets every such module access `self` and `input` as arguments on the very top of the file (i.e., arguments to the overarching module that assigns the regular module to `flake.modules`).
-- i'm sure there are better ways to explain why `flake-parts` is nice for dendritic but i kinda suck at this
+- i'm sure there are better ways to explain why `flake-parts` is nice for dendritic but i kinda suck at this. i also jumped straight to `flake-parts` without ever using a traditional flake so i guess that doesn't help either
 
 ### nixos config
 
