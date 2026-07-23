@@ -1,54 +1,43 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
+  outputs = inputs: import ./outputs.nix inputs;
+
   inputs = {
-    nixpkgs. url = "github:nixos/nixpkgs/nixos-26.05";
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    ghostty = {
+      url = "github:ghostty-org/ghostty/tip";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ghostty = {
-      # this version is 2026/7/10; for fixed `adjust-cursor-height` bug
-      url = "github:ghostty-org/ghostty/tip";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Niri has a built-in flake as a NixOS option but it doesn't have Home Manager options
+    import-tree.url = "github:vic/import-tree";
     niri = {
-      # sodiboo's flake is the common alternative but it's being slow with updates
       url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixowos = {
       url = "github:yunfachi/nixowos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
-      #url = "github:AnonymousRand/noctalia/better-template-cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     solaar = {
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    imports = [
-      # allows standalone Home Manager configs
-      inputs.home-manager.flakeModules.home-manager
-      # my config
-      (inputs.import-tree ./modules)
-    ];
   };
 }

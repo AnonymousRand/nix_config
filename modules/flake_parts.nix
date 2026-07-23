@@ -1,4 +1,17 @@
 { inputs, ... }: {
+  flake-file.inputs = {
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+  };
+
+  # systems to feed to flake-parts' `perSystem`
+  systems = [
+    "x86_64-linux"
+    "aarch64-linux"
+  ];
+
   imports = [
     # allows `flake.modules.<class>.<aspect>` instead of `flake.<class>Modules.<aspect>`, which are
     # essentially regular modules which allow you to set "options" as simply attrset key-value pairs,
@@ -10,11 +23,5 @@
     inputs.flake-parts.flakeModules.modules
     # allows using `perSystem.overlayAttrs` to add to `self.overlays.default`
     inputs.flake-parts.flakeModules.easyOverlay
-  ];
-
-  # systems to feed to `perSystem`
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
   ];
 }

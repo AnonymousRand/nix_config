@@ -1,4 +1,11 @@
 { inputs, ... }: {
+  flake-file.inputs = {
+    nixowos = {
+      url = "github:yunfachi/nixowos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
   flake.modules.nixos.nixowos = {
     imports = [
       inputs.nixowos.nixosModules.default
