@@ -23,9 +23,8 @@ more documentation to come :3
 ### `flake-parts`
 
 - dendritic pattern configs (including this one) often use [`flake-parts`](https://flake.parts) to help achieve this organization.
-- `flake-parts` gives us the top-level module namespaces like `flake.modules`/`self.modules` which we will put our top-level feature modules in. instead of being regular nix modules, these `flake-parts` module files *assign* regular nix modules to something in this top-level `flake.modules`. this in essence turns every module into an output of our flake that can be consumed anywhere via `self`, allowing us to modularize our flake outputs.
-- `flake-parts` also lets every such module access `self` and `input` as arguments on the very top of the file (i.e., arguments to the overarching module that assigns the regular module to `flake.modules`).
-- i'm sure there are better ways to explain why `flake-parts` is nice for dendritic but i kinda suck at this. i also jumped straight to `flake-parts` without ever using a traditional flake so i guess that doesn't help either
+- `flake-parts` allows us to modularize our flake's outputs into a bunch of "top-level modules" in `flake.modules`/`self.modules`, using nix's automatic module merging to let us define each such module in a different file.will put our top-level feature modules in. these are the top-level modules that a dendritic config will often use, and they can be consumed anywhere within other modules via `self`.
+- instead of being regular nix modules, the files containing these top-level `flake-parts` modules *assign* regular nix modules to something in this top-level `flake.modules`. they are also able to access `self` and `input` as arguments at the very top of the file.
 
 ### `flake.nix` and `flake-file`
 

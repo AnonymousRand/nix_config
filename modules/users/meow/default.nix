@@ -7,8 +7,6 @@
     includes = [
       den.batteries.primary-user
 
-      den.aspects.system.nixowos.meow
-
       den.aspects.desktop.niri.meow
       den.aspects.desktop.noctalia.meow
 

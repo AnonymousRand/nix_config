@@ -5,7 +5,7 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      den.aspects.system.nix-ld
+      den.aspects.nix-ld
 
       den.aspects.tools.git
       den.aspects.tools.utils

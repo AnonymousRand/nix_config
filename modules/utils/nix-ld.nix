@@ -3,7 +3,7 @@
     decription = "Libraries to patch with `nix-ld`";
   };
 
-  den.aspects.system.nix-ld = {
+  den.aspects.utils.nix-ld = {
     nixos = { nix-ld-libs, ... }: {
       programs.nix-ld = {
         enable = true;
