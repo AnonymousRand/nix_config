@@ -6,7 +6,7 @@
     };
   };
 
-  den.aspects.desktop.noctalia-greeter = {
+  den.aspects.features.desktop.noctalia-greeter = {
     nixos = {
       imports = [
         inputs.noctalia-greeter.nixosModules.default

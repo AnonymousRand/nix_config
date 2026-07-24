@@ -6,7 +6,7 @@
     };
   };
 
-  den.aspects.tools.solaar = {
+  den.aspects.features.tools.solaar = {
     # TODO im guessing there isn't a homeModules
     nixos = {
       imports = [

@@ -1,5 +1,5 @@
 {
-  den.aspects.tools.ssh-client = {
+  den.aspects.features.tools.ssh-client = {
     homeManager = {
       programs.ssh.enable = true;
     };

@@ -1,15 +1,13 @@
 {
-  den.schema.host = {
-    nixos = { host, ... }: {
-      # set `stateVersion` for host's nixos config
-      assert host ? stateVersion;
-      system.stateVersion = host.stateVersion;
-    };
+  den.schema.host.includes = [
+    {
+      nixos = { host, ... }: {
+        system.stateVersion = host.stateVersion;
+      };
 
-    homeManager = { host, ... }: {
-      # set `stateVersion` for all users' home manager configs
-      assert host ? stateVersion;
-      home.stateVersion = host.stateVersion;
+      homeManager = { host, ... }: {
+        home.stateVersion = host.stateVersion;
+      };
     };
-  };
+  ];
 }

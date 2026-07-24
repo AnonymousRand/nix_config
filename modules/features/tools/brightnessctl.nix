@@ -1,5 +1,5 @@
 {
-  den.aspects.tools.brightnessctl = {
+  den.aspects.features.tools.brightnessctl = {
     homeManager = { pkgs, ... }: {
       home.packages = [
         pkgs.brightnessctl

@@ -1,5 +1,5 @@
 {
-  den.aspects.desktop = {
+  den.aspects.hosts.desktop = {
     nixos = {
       # set time zone
       time.timeZone = "America/Los_Angeles";

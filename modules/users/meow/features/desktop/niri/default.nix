@@ -1,5 +1,5 @@
 {
-  den.aspects.desktop.niri.meow = {
+  meow.features.desktop.niri.meow = {
     homeManager = { config, pkgs, ... }: {
       programs.niri = {
         config = builtins.readFile ./dotfiles/config.kdl +

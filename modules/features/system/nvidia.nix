@@ -1,5 +1,5 @@
 {
-  den.aspects.system.nvidia = {
+  den.aspects.features.system.nvidia = {
     nixos = {
       hardware.graphics.enable = true;              # enable hardware acceleration
       services.xserver.videoDrivers = [ "nvidia" ]; # load NVIDIA driver to X server

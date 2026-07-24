@@ -1,5 +1,5 @@
 {
-  den.aspects.editors.vim = {
+  den.aspects.features.editors.vim = {
     homeManager = {
       programs.vim.enable = true;
     };

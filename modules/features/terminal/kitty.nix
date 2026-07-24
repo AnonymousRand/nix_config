@@ -1,5 +1,5 @@
 {
-  den.aspects.terminal.kitty = {
+  den.aspects.features.terminal.kitty = {
     homeManager = {
       programs.kitty.enable = true;
     };

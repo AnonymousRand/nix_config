@@ -1,5 +1,5 @@
 {
-  den.aspects.system.firmware = {
+  den.aspects.features.system.firmware = {
     nixos = { pkgs, ... }: {
       environment.systemPackages = [
         pkgs.dmidecode

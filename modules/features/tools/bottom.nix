@@ -1,5 +1,5 @@
 {
-  den.aspects.tools.bottom = {
+  den.aspects.features.tools.bottom = {
     homeManager = {
       programs.bottom = {
         enable = true;

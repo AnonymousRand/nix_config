@@ -6,7 +6,7 @@
     };
   };
 
-  den.aspects.system.nixowos = {
+  den.aspects.features.system.nixowos = {
     nixos = {
       imports = [
         inputs.nixowos.nixosModules.default

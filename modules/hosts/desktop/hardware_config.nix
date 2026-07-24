@@ -1,5 +1,5 @@
 {
-  den.aspects.desktop = {
+  den.aspects.hosts.desktop = {
     nixos = { config, lib, modulesPath, ... }: {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")

@@ -1,5 +1,5 @@
 {
-  den.aspects.tools.nvtop = {
+  den.aspects.features.tools.nvtop = {
     # TODO this might need nixos
     homeManager = { pkgs, ... }: {
       home.packages = [
