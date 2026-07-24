@@ -1,7 +1,7 @@
 {
   den.aspects.wayland-utils = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
+    homeManager = { pkgs, ... }: {
+      home.packages = [
         pkgs.hyprpicker   # color picker
         pkgs.wl-clipboard # wayland clipboard
       ];

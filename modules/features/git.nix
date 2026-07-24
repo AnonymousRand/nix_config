@@ -1,6 +1,6 @@
 {
   den.aspects.git = {
-    nixos = {
+    homeManager = {
       programs.git.enable = true;
     };
   };

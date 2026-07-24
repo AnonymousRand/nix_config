@@ -1,6 +1,6 @@
 {
   den.aspects.firefox = {
-    nixos = {
+    homeManager = {
       programs.firefox.enable = true;
     };
   };

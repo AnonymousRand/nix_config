@@ -1,7 +1,7 @@
 {
   den.aspects.brightnessctl = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
+    homeManager = { pkgs, ... }: {
+      home.packages = [
         pkgs.brightnessctl
       ];
     };

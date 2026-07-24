@@ -1,7 +1,8 @@
 {
   den.aspects.playerctl = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
+    # TODO: may need `services.playerctld.enable`
+    homeManager = { pkgs, ... }: {
+      home.packages = [
         pkgs.playerctl
       ];
     };

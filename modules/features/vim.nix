@@ -1,6 +1,6 @@
 {
   den.aspects.vim = {
-    nixos = {
+    homeManager = {
       programs.vim.enable = true;
     };
   };

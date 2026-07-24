@@ -7,6 +7,7 @@
   };
 
   den.aspects.solaar = {
+    # TODO im guessing there isn't a homeModules
     nixos = {
       imports = [
         inputs.solaar.nixosModules.default

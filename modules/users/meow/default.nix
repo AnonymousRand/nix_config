@@ -1,11 +1,32 @@
 { den, ... }: {
   den.aspects.meow = {
+    # aspects to be included for this user regardless of host
+    # (note that as of den v0.3.0, any `nixos` class modules in these includes are automatically
+    # forwarded to all hosts this user is defined on; while `homeManager` class modules are
+    # evaluated immediately within the context of this user as usual)
     includes = [
       den.batteries.primary-user
+
+      den.aspects.niri
+      den.aspects.noctalia
+      den.aspects.wayland-utils
+
+      # TODO: check if this imports all subaspects automatically
+      den.aspects.fetch
+      den.aspects.fish
+      den.aspects.ghostty
+      den.aspects.git
+      den.aspects.kitty
+      den.aspects.niri
+      den.aspects.nixowos
+      den.aspects.noctalia
+      den.aspects.ssh
+      den.aspects.vim
     ];
 
-    nixos = { user, ... }: {
-      users.users.${user.userName}.description = "AnonymousRand";
+    # `user` class is equivalent to `nixos.users.users.<username>`
+    user = {
+      description = "AnonymousRand";
     };
 
     homeManager = {
@@ -16,17 +37,6 @@
       programs.vim = {
         defaultEditor = true;
       };
-    };
-
-    # add to configurations of every host this user is on
-    # (e.g. user-specific features that require system-level permissions, like window managers)
-    provides.to-hosts = {
-      includes = [
-        den.aspects.niri
-        den.aspects.noctalia
-
-        den.aspects.wayland-utils
-      ];
     };
   };
 }

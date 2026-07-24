@@ -12,11 +12,20 @@
     });
   };
 
-  den.aspects.hyfetch = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
-        pkgs.hyfetch
-      ];
+  den.aspects.fetch = {
+    _.hyfetch = {
+      homeManager = { pkgs, ... }: {
+        programs.hyfetch = {
+          enable = true;
+          package = pkgs.hyfetch;
+        };
+      };
+    };
+
+    _.fastfetch = {
+      homeManager = { pkgs, ... }: {
+        programs.fastfetch.enable = true;
+      };
     };
   };
 }

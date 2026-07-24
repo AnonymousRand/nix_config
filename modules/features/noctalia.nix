@@ -12,5 +12,13 @@
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
+
+    homeManager = {
+      imports = [
+        inputs.noctalia.homeModules.default
+      ];
+
+      programs.noctalia.enable = true;
+    };
   };
 }

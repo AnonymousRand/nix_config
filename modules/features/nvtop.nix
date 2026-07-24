@@ -1,7 +1,8 @@
 {
   den.aspects.nvtop = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
+    # TODO this might need nixos
+    homeManager = { pkgs, ... }: {
+      home.packages = [
         pkgs.nvtopPackages.full
       ];
     };

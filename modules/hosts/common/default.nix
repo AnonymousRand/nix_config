@@ -5,9 +5,11 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      den.aspects.system-utils
       den.aspects.git
+      den.aspects.system-utils
       den.aspects.vim
+
+      den.aspects.nix-ld
     ];
 
     nixos = {

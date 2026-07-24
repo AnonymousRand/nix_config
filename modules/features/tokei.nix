@@ -1,7 +1,7 @@
 {
   den.aspects.tokei = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [
+    homeManager = { pkgs, ... }: {
+      home.packages = [
         pkgs.tokei
       ];
     };
