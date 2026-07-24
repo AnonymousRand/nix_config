@@ -1,5 +1,5 @@
 {
-  den.aspects.system.playerctl = {
+  den.aspects.tools.playerctl = {
     # TODO: may need `services.playerctld.enable`
     homeManager = { pkgs, ... }: {
       home.packages = [
