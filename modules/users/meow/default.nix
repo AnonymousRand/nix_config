@@ -7,15 +7,12 @@
       extraGroups = [ "networkmanager" "wheel" ];
     };
 
+    # features to be activated at the system/host level (if this user is present on host)
+    # (these should need root-level perms, and can be more opinionated than hosts' features)
     imports = [
-      # features to be activated at the system/host level (if this user is present on host)
-      self.modules.nixos.fish
-      self.modules.nixos.ghostty
-      self.modules.nixos.kitty
+      # desktop environment
       self.modules.nixos.niri
-      self.modules.nixos.nixowos # system-level to change os-release
       self.modules.nixos.noctalia
-      self.modules.nixos.vim
     ];
   };
 
@@ -33,12 +30,12 @@
     # enables standalone `home-manager` command
     programs.home-manager.enable = true;
 
+    # features to be activated at the user level for this user (e.g. home manager configs)
+    #
+    # note: these are regular nixos modules instead of top-level flake-parts modules (e.g.
+    # in `flake.modules.homeManager.<name>`) to keep them "private" and encapsulated
+    # within this user's config (as they contain configurations specific to this user)
     imports = [
-      # features to be activated at the user level for this user (e.g. home manager configs)
-      #
-      # note: these are regular nixos modules instead of top-level flake-parts modules (e.g.
-      # in `flake.modules.homeManager.<name>`) to keep them "private" and encapsulated
-      # within this user's config (as they contain configurations specific to this user)
       ./_features/bottom
       ./_features/fastfetch
       ./_features/fish

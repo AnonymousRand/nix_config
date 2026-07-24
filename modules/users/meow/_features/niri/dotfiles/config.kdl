@@ -53,13 +53,13 @@ input {
 //------------------------------------------------------------------------------
 
 // IMPORTANT: output settings may need changes on different setups! i haven't found a good workaround yet :/
-output "DP-4" {
+output "ASUSTek COMPUTER INC VG27A N7LMQS014382" {
     mode "2560x1440@143.972"
     scale 1.25
     position x=0 y=0
 }
 
-output "HDMI-A-5" {
+output "HP Inc. HP VH240a 6CM0211LWH" {
     mode "1920x1080@60.000"
     scale 1
     position x=-1920 y=0

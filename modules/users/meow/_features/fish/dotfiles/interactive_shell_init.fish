@@ -22,7 +22,14 @@ alias clear="tput reset"
 
 # make `nix-shell` and `nix develop` open in fish by default instead of bash
 alias nix-shell="nix-shell --run fish"
-alias nix develop="nix develop -c fish"
+# `nix develop` requires a function since you can't make a multi-word alias
+function nix
+    if test "$argv[1]" = "develop"
+        command nix develop -c fish
+    else
+        command nix $argv
+    end
+end
 
 ################################################################################
 # misc

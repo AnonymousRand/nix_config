@@ -7,7 +7,6 @@ function fish_prompt
         set prompt_venv (set_color $__fish_git_prompt_color)"($VIRTUAL_ENV_PROMPT) "(set_color --reset)
     end
 
-
     # color the prompt differently when we're root
     set -l color_cwd $fish_color_cwd
     if functions -q fish_is_root_user; and fish_is_root_user

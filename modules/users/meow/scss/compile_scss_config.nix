@@ -19,7 +19,7 @@
     # `scssPathsToLoad` is the SCSS paths to be loaded with `sass --load-path` (for imports in
     # other SCSS files without needing relative paths). provide directories, not individual files
     # `featuresPath` is the path to where all the features' SCSS files are
-    compileScssConfig = { dart-sass, stdenv, scssPathsToLoad, featuresPath }: stdenv.mkDerivation {
+    compile-scss-config = { dart-sass, stdenv, scssPathsToLoad, featuresPath }: stdenv.mkDerivation {
       pname = "compile-scss-config";
       version = "0.0.0";
 
@@ -66,7 +66,7 @@
       '';
       };
   in {
-    config.meow.theme.cssConfig = pkgs.callPackage compileScssConfig {
+    config.meow.theme.cssConfig = pkgs.callPackage compile-scss-config {
       scssPathsToLoad = [
         ./.
       ];

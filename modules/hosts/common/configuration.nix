@@ -1,14 +1,5 @@
 { self, inputs, ... }: {
   flake.modules.nixos.hostsCommon = { config, pkgs, ... }: {
-    imports = [
-      # features to be installed on every host
-      self.modules.nixos.file
-      self.modules.nixos.git
-      self.modules.nixos.tree
-      self.modules.nixos.vim
-      self.modules.nixos.wget
-    ];
-
     # bootloader
     # IMPORTANT: FOR UEFI DUAL-BOOTING WITH WINDOWS, use efibootmgr to put "UEFI OS"
     # or "Linux Boot Manager" higher in boot priority than Windows Boot Manager
@@ -28,5 +19,12 @@
   
     # enable Nix flakes
     nix.settings.experimental-features = ["nix-command" "flakes"];
+
+    # features to be installed on every host
+    imports = [
+      self.modules.nixos.system-utils
+      self.modules.nixos.git
+      self.modules.nixos.vim
+    ];
   };
 }

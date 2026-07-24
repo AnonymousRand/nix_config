@@ -8,7 +8,7 @@ more documentation to come :3
 
 (maybe)
 
-## structure
+## structure and conventions
 
 ### so like what the heck is a dendritic pattern
 
@@ -32,6 +32,10 @@ more documentation to come :3
 - i use [`flake-file`](https://github.com/denful/flake-file) to autogenerate my `flake.nix`. it allows me to put inputs (into `flake-file.inputs`) inside their corresponding feature's module instead of all in `flake.nix`, and `flake-file` aggregates all these inputs into `flake.nix` when `nix run .#write-flake` is run.
 - `flake-parts` modules still receive the exact same `inputs` argument (which contains all the aggregated `flake-file.inputs`).
 - remember to run `nix run .#write-flake` every time you update the inputs :3
+
+### naming conventions
+
+- generally, module and package/derivation names are kebab-case, while module *options* (that are themselves not submodules), plain attrset attribute names, local variables, function arguments are camel case.
 
 ## okie i'll stop yapping :3
 

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.bottom = { pkgs, ... }: {
+  flake.modules.nixos.system-monitors = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.bottom
     ];

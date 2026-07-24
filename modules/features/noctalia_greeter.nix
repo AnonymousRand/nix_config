@@ -6,7 +6,7 @@
     };
   };
 
-  flake.modules.nixos.noctaliaGreeter = {
+  flake.modules.nixos.noctalia-greeter = {
     imports = [
       inputs.noctalia-greeter.nixosModules.default
     ];

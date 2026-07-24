@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.tokei = { pkgs, ... }: {
+  flake.modules.nixos.code-counters = { pkgs, ... }: {
     environment.systemPackages = [
       pkgs.tokei
     ];
