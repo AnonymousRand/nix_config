@@ -9,16 +9,10 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      # networking.wireless.enable = true;  # enables wireless support via wpa_supplicant
-
-      # configure network proxy if necessary
-      # networking.proxy.default = "http://user:password@proxy:port/";
-      # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
       # enable network manager
       networking.networkmanager.enable = true;
 
-      # enable Nix flakes
+      # enable nix flakes
       nix.settings.experimental-features = ["nix-command" "flakes"];
     };
   };

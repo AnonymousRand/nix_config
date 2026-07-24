@@ -8,7 +8,7 @@
     };
   };
 
-  den.aspects.niri = {
+  den.aspects.desktop.niri = {
     nixos = { pkgs, ... }: {
       programs.niri = {
         enable = true;

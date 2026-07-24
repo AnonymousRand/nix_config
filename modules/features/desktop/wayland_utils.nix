@@ -1,5 +1,5 @@
 {
-  den.aspects.wayland-utils = {
+  den.aspects.tools.wayland-utils = {
     homeManager = { pkgs, ... }: {
       home.packages = [
         pkgs.hyprpicker   # color picker

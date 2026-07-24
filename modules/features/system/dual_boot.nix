@@ -1,5 +1,5 @@
 {
-  den.aspects.dual-boot = {
+  den.aspects.system.dual-boot = {
     nixos = { pkgs, ... }: {
       environment.systemPackages = [
         pkgs.efibootmgr

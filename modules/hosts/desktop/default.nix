@@ -29,22 +29,20 @@
     # automatically forwarded to all users on this host, while `nixos` class modules are
     # evaluated immediately within the context of this host as usual)
     includes = [
-      # system
-      den.aspects.dual-boot
-      den.aspects.firmware
-      den.aspects.nixowos
-      den.aspects.noctalia-greeter # (note that greeter can manage different WMs/DEs per user)
-      den.aspects.nvidia
+      den.aspects.system.dual-boot
+      den.aspects.system.firmware
+      den.aspects.system.nixowos
+      den.aspects.system.nvidia
 
-      # tools
-      den.aspects.bottom
-      den.aspects.nvtop     # `top` for GPUs
-      den.aspects.playerctl # control media players that use MPRIS
-      den.aspects.solaar    # logitech mouse config
-      den.aspects.tokei
+      den.aspects.desktop.noctalia-greeter # (note that greeter can manage different WMs/DEs per user)
 
-      # other
-      den.aspects.firefox
+      den.aspects.tools.bottom
+      den.aspects.tools.nvtop     # `top` for GPUs
+      den.aspects.tools.playerctl # control media players that use MPRIS
+      den.aspects.tools.solaar    # logitech mouse config
+      den.aspects.tools.tokei
+
+      den.aspects.apps.firefox
     ];
   };
 }

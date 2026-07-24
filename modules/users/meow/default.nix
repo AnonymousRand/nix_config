@@ -7,21 +7,22 @@
     includes = [
       den.batteries.primary-user
 
-      den.aspects.niri
-      den.aspects.noctalia
-      den.aspects.wayland-utils
+      den.aspects.system.nixowos.meow
 
-      # TODO: check if this imports all subaspects automatically
-      den.aspects.fetch
-      den.aspects.fish
-      den.aspects.ghostty
-      den.aspects.git
-      den.aspects.kitty
-      den.aspects.niri
-      den.aspects.nixowos
-      den.aspects.noctalia
-      den.aspects.ssh
-      den.aspects.vim
+      den.aspects.desktop.niri.meow
+      den.aspects.desktop.noctalia.meow
+
+      den.aspects.terminal.fish.meow
+      den.aspects.terminal.ghostty.meow
+      den.aspects.terminal.kitty.meow
+
+      den.aspects.editors.vim.meow
+
+      den.aspects.tools.fetch.hyfetch.meow
+      den.aspects.tools.fetch.fastfetch.meow
+      den.aspects.tools.git.meow
+      den.aspects.tools.ssh-client.meow
+      den.aspects.tools.wayland-utils
     ];
 
     # `user` class is equivalent to `nixos.users.users.<username>`

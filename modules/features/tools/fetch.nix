@@ -12,7 +12,7 @@
     });
   };
 
-  den.aspects.fetch = {
+  den.aspects.tools.fetch = {
     _.hyfetch = {
       homeManager = { pkgs, ... }: {
         programs.hyfetch = {

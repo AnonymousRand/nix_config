@@ -1,15 +1,16 @@
 { den, self, ... }: {
   den.schema.host = {
     # aspects to be included in every host entity
-    include = [
+    includes = [
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      den.aspects.git
-      den.aspects.system-utils
-      den.aspects.vim
+      den.aspects.system.nix-ld
 
-      den.aspects.nix-ld
+      den.aspects.tools.git
+      den.aspects.tools.utils
+
+      den.aspects.editors.vim
     ];
 
     nixos = {

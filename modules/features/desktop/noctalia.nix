@@ -6,7 +6,7 @@
     };
   };
 
-  den.aspects.noctalia = {
+  den.aspects.desktop.noctalia = {
     nixos = { pkgs, ... }: {
       environment.systemPackages = [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
