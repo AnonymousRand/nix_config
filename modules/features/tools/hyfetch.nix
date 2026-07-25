@@ -12,19 +12,11 @@
     });
   };
 
-  den.aspects.features.tools.fetch = {
-    _.hyfetch = {
-      homeManager = { pkgs, ... }: {
-        programs.hyfetch = {
-          enable = true;
-          package = pkgs.hyfetch;
-        };
-      };
-    };
-
-    _.fastfetch = {
-      homeManager = { pkgs, ... }: {
-        programs.fastfetch.enable = true;
+  den.aspects.features.tools.hyfetch = {
+    homeManager = { pkgs, ... }: {
+      programs.hyfetch = {
+        enable = true;
+        package = pkgs.hyfetch;
       };
     };
   };

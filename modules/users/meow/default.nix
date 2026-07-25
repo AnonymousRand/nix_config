@@ -18,10 +18,16 @@ in {
     includes = [
       den.batteries.primary-user
 
+      ##########################################################################
       # aspects unchanged from the base config
+
       den.aspects.features.tools.wayland-utils
 
+      den.aspects.utils.noctalia-theming # enable noctalia theming
+
+      ##########################################################################
       # aspects extending the base config with our own "private" config (using our custom namespace)
+
       meow.features.desktop.niri
       meow.features.desktop.noctalia
 
@@ -31,9 +37,9 @@ in {
 
       meow.features.editors.vim
 
-      meow.features.tools.fetch.hyfetch
-      meow.features.tools.fetch.fastfetch
+      meow.features.tools.fastfetch
       meow.features.tools.git
+      meow.features.tools.hyfetch
       meow.features.tools.ssh-client
     ];
 

@@ -47,7 +47,7 @@
 
         mkdir build/
         sass ${featuresPath}:build/ --no-source-map \
-            ${builtins.foldl' (acc: elem: acc + " --load-path ${elem}") "" scssPathsToLoad}
+            ${builtins.foldl' (acc: entry: acc + " --load-path ${entry}") "" scssPathsToLoad}
       '';
 
       # copy `build/*` to the designated output directory for this derivation in the nix store (`$out`),
