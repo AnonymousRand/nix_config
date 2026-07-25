@@ -1,4 +1,4 @@
-{
+{ den, ... }: {
   den.hosts.x86_64-linux.desktop = {
     hostName = "snow-rainbow";
     # this should be kept as the nixos release version of the first install of this system!

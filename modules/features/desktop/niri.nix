@@ -1,4 +1,4 @@
-{
+{ inputs, ... }: {
   flake-file.inputs = {
     # Niri has a built-in flake as a NixOS option but it doesn't have Home Manager options
     niri = {
@@ -10,29 +10,30 @@
 
   den.aspects.features.desktop.niri = {
     nixos = { pkgs, ... }: {
+      # enable `pkgs.niri-stable` etc. as if they were part of nixpkgs
+      nixpkgs.overlays = [
+        inputs.niri.overlays.niri
+      ];
+
       programs.niri = {
         enable = true;
+        package = pkgs.niri-stable; # uses overlay
       };
 
       environment.systemPackages = [
         # niri's main way of doing xwayland
         pkgs.xwayland-satellite
       ];
-
-      # enable `pkgs.niri-stable` etc. as if they were part of nixpkgs
-      nixpkgs.overlays = [
-        inputs.niri.overlays.niri
-      ];
     };
 
-    homeManager = {
+    homeManager = { pkgs, ... }: {
       imports = [
         inputs.niri.homeModules.niri
       ];
 
       programs.niri = {
         enable = true;
-        package = pkgs.niri-stable; # uses overlay
+        package = pkgs.niri-stable;
       };
     };
   };

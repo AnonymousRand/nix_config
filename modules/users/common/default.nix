@@ -1,7 +1,7 @@
 { den, ... }: {
-  den.schema.user = {
+  den.schema.user = { config, ... }: {
     # change default aspect name associated with user entities to fit our naming scheme
-    aspect = den.aspects.users.${name};
+    aspect = den.aspects.users.${config.name};
 
     # aspects to be included in every user entity
     includes = [

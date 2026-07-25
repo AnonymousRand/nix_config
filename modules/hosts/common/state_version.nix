@@ -8,6 +8,6 @@
       homeManager = { host, ... }: {
         home.stateVersion = host.stateVersion;
       };
-    };
+    }
   ];
 }

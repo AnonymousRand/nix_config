@@ -1,6 +1,6 @@
 { den, inputs, ... }:
 let
-  username = "meow"
+  username = "meow";
 in
 {
   imports = [
@@ -28,19 +28,19 @@ in
       ##########################################################################
       # aspects extending the base config with our own "private" config (using our custom namespace)
 
-      ${username}.features.desktop.niri
-      ${username}.features.desktop.noctalia
+      "${username}".features.desktop.niri
+      "${username}".features.desktop.noctalia
 
-      ${username}.features.terminal.fish
-      ${username}.features.terminal.ghostty
-      ${username}.features.terminal.kitty
+      "${username}".features.terminal.fish
+      "${username}".features.terminal.ghostty
+      "${username}".features.terminal.kitty
 
-      ${username}.features.editors.vim
+      "${username}".features.editors.vim
 
-      ${username}.features.tools.fastfetch
-      ${username}.features.tools.git
-      ${username}.features.tools.hyfetch
-      ${username}.features.tools.ssh-client
+      "${username}".features.tools.fastfetch
+      "${username}".features.tools.git
+      "${username}".features.tools.hyfetch
+      "${username}".features.tools.ssh-client
     ];
 
     # `user` class is equivalent to `nixos.users.users.<username>`

@@ -4,6 +4,7 @@
   outputs = inputs: import ./outputs.nix inputs;
 
   inputs = {
+    den.url = "github:denful/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

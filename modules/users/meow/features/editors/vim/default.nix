@@ -4,7 +4,7 @@
       den.aspects.features.editors.vim
     ];
 
-    homeManager = { config, ... }: {
+    homeManager = { config, pkgs, ... }: {
       programs.vim = {
         plugins = [
           pkgs.vimPlugins.vim-sensible
