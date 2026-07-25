@@ -1,14 +1,12 @@
 # base config for flake-file
 
 { inputs, ... }: {
+  flake-file.inputs = {
+    flake-file.url = "github:vic/flake-file";
+  };
+
   imports = [
+    # enables `flake-file.*` options, `write-flake`, etc.
     inputs.flake-file.flakeModules.default
   ];
-
-  flake-file.inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-file.url = "github:vic/flake-file";
-    import-tree.url = "github:vic/import-tree";
-  };
 }
