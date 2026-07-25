@@ -49,7 +49,7 @@
         postInstall = ''
           find $out -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
         '';
-        };
+      };
     in
     {
       theme.css = pkgs.callPackage compile-scss {

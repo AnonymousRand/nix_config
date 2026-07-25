@@ -1,0 +1,86 @@
+# from sini/nix-config on github! :3 (https://gist.github.com/sini/c67ccc0d38983e6636ba408e042e36be)
+# this lets aspects declare their own `settings` which is automatically mirrored to options under
+# an entity's `settings` options, giving us modular, per-aspect options. specifically:
+# `den.aspects.<aspect name>.settings.<setting name>` becomes
+# `den.hosts.<system>.<hostname>.settings.<aspect name>.<setting name>`
+
+{ den, lib, aspectTreeRoot }:
+let
+  inherit (lib) mkOption types;
+  inherit (den.lib.aspects.fx.keyClassification) structuralKeysSet;
+  classKeys = den.classes or { };
+  quirkKeys = den.quirks or { };
+  skipKey = k: structuralKeysSet ? ${k} || classKeys ? ${k} || quirkKeys ? ${k};
+
+  # Settings declarations may be plain option attrsets
+  # (`{ foo = mkOption {...}; }`) or module-shaped with explicit
+  # imports/config. Default the module keys so plain attrsets work.
+  #
+  # imports'/config' are bound under distinct names on purpose: writing
+  # `imports = raw.imports or [ ]` here gets rewritten by statix (W04) to
+  # `inherit (raw) imports`, which DROPS the `or` default and throws when
+  # raw is a plain options attrset with no imports/config key.
+  reshapeSettings =
+    raw:
+    let
+      imports' = raw.imports or [ ];
+      config' = raw.config or { };
+    in
+    {
+      imports = imports';
+      config = config';
+      options = removeAttrs raw [
+        "imports"
+        "config"
+      ];
+    };
+
+  # True if a node has .settings anywhere in its aspect subtree.
+  hasSettingsDeep =
+    node:
+    builtins.isAttrs node
+    && (
+      (node ? settings)
+      || lib.any (k: !(skipKey k) && hasSettingsDeep (node.${k} or null)) (builtins.attrNames node)
+    );
+
+  # Build the submodule for one aspect-tree node, mirroring the tree.
+  # A node may be BOTH an aspect with .settings AND a parent of child
+  # aspects that have settings (e.g. services.bgp has localAsn settings and
+  # also parents services.bgp.cilium-bgp). Merge the node's own settings
+  # options with recursion into its settings-bearing children.
+  nodeModule =
+    node:
+    let
+      ownSettings =
+        if node ? settings then
+          reshapeSettings node.settings
+        else
+          {
+            imports = [ ];
+            config = { };
+            options = { };
+          };
+      settingChildren = lib.filterAttrs (
+        k: v: !(skipKey k) && builtins.isAttrs v && hasSettingsDeep v
+      ) node;
+      childOptions = lib.mapAttrs (
+        name: child:
+        mkOption {
+          type = types.submodule (nodeModule child);
+          default = { };
+          description = "Settings under ${name}";
+        }
+      ) settingChildren;
+      # Distinct names so statix (W04) can't rewrite to
+      # `inherit (ownSettings) imports`, which would drop the `or` default.
+      ownImports = ownSettings.imports or [ ];
+      ownConfig = ownSettings.config or { };
+    in
+    {
+      imports = ownImports;
+      config = ownConfig;
+      options = (ownSettings.options or { }) // childOptions;
+    };
+in
+types.submodule (nodeModule (aspectTreeRoot or den.aspects or { })) # read the aspect tree here

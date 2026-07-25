@@ -1,7 +1,9 @@
 {
   den.hosts.x86_64-linux.desktop = {
-    nixLdLibs = { pkgs, ... }: [
-      pkgs.uv
-    ];
+    settings.utils.nix-ld = {
+      libs = { pkgs, ... }: [
+        pkgs.uv
+      ];
+    };
   };
 }
