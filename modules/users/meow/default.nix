@@ -1,4 +1,4 @@
-{ den, meow, inputs, ... }:
+{ den, inputs, ... }:
 let
   username = "meow";
 in
@@ -28,19 +28,21 @@ in
       ##########################################################################
       # aspects extending the base config with our own "private" config (using our custom namespace)
 
-      ${username}.features.desktop.niri
-      ${username}.features.desktop.noctalia
+      # stupid nix seems to prevent us from using `${}` at the very beginning of the name, so we
+      # have to use the full `den.ful.<namespace>` instead of just `<namespace>` here
+      den.ful.${username}.features.desktop.niri
+      den.ful.${username}.features.desktop.noctalia
 
-      ${username}.features.terminal.fish
-      ${username}.features.terminal.ghostty
-      ${username}.features.terminal.kitty
+      den.ful.${username}.features.terminal.fish
+      den.ful.${username}.features.terminal.ghostty
+      den.ful.${username}.features.terminal.kitty
 
-      ${username}.features.editors.vim
+      den.ful.${username}.features.editors.vim
 
-      ${username}.features.tools.fastfetch
-      ${username}.features.tools.git
-      ${username}.features.tools.hyfetch
-      ${username}.features.tools.ssh-client
+      den.ful.${username}.features.tools.fastfetch
+      den.ful.${username}.features.tools.git
+      den.ful.${username}.features.tools.hyfetch
+      den.ful.${username}.features.tools.ssh-client
     ];
 
     # `user` class is equivalent to `nixos.users.users.<username>`
