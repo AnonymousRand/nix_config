@@ -10,7 +10,7 @@
       meow = {
         # enable integrated home manager
         # (specifically, it allows a `homeManager= {};` class module in the user's aspect, which is
-        # fed to `home-manager.users.<username>` as with usual integrated home manager configs)
+        # forwarded to `home-manager.users.<username>` as with usual integrated home manager configs)
         classes = [ "homeManager" ];
       };
     };
