@@ -20,7 +20,7 @@
             libs = host.settings.utils.nix-ld.libs;
           in
           if (builtins.isFunction libs) then
-            libs { inherit pkgs; };
+            libs { inherit pkgs; }
           else
             libs;
       };

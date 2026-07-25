@@ -4,7 +4,7 @@
 # `den.aspects.<aspect name>.settings.<setting name>` becomes
 # `den.hosts.<system>.<hostname>.settings.<aspect name>.<setting name>`
 
-{ den, lib, aspectTreeRoot }:
+{ den, lib, aspectTreeRoot ? den.aspects }:
 let
   inherit (lib) mkOption types;
   inherit (den.lib.aspects.fx.keyClassification) structuralKeysSet;
@@ -83,4 +83,4 @@ let
       options = (ownSettings.options or { }) // childOptions;
     };
 in
-types.submodule (nodeModule (aspectTreeRoot or den.aspects or { })) # read the aspect tree here
+types.submodule (nodeModule (aspectTreeRoot)) # read the aspect tree here
