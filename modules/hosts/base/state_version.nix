@@ -1,5 +1,5 @@
 {
-  den.aspects.hosts.common = {
+  den.aspects.hosts.base = {
     nixos = { host, ... }: {
       system.stateVersion = host.stateVersion;
     };

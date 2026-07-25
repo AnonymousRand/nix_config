@@ -1,5 +1,5 @@
 {
-  den.aspects.hosts.common = {
+  den.aspects.hosts.base = {
     nixos = {
       # bootloader
       # IMPORTANT: FOR UEFI DUAL-BOOTING WITH WINDOWS, use efibootmgr to put "UEFI OS"

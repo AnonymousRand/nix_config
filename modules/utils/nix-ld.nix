@@ -1,14 +1,10 @@
 {
-  den.quirks.nix-ld-libs = {
-    decription = "Libraries to patch with `nix-ld`";
-  };
-
   den.aspects.utils.nix-ld = {
-    nixos = { nix-ld-libs, ... }: {
+    nixos = { host, pkgs, ... }: {
       programs.nix-ld = {
         enable = true;
         # make these libs (e.g. installed through `pip`) work with non-standard nix store filepaths
-        libraries = nix-ld-libs;
+        libraries = host.nixLdLibs { inherit pkgs; };
       };
     };
   };

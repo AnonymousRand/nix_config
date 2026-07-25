@@ -14,11 +14,8 @@ in
 
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
-    # (note that as of den v0.3.0, any `nixos` class modules in these includes are automatically
-    # forwarded to all hosts this user is defined on; while `homeManager` class modules are
-    # evaluated immediately within the context of this user as usual)
     includes = [
-      den.aspects.users.common
+      den.aspects.users.base
 
       den.batteries.primary-user
 

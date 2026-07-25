@@ -22,7 +22,7 @@
     };
 
     # TODO: needed?
-    homeManager = {
+    provides.to-users.homeManager = {
       imports = [
         inputs.nixowos.homeModules.default
       ];

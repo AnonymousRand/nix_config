@@ -1,21 +1,6 @@
 { den, self, ... }: {
-  # declare custom options/set default options for all host entities, as metadata used for aspects
-  den.schema.host = { host, lib, ... }: {
-    # require a `stateVersion` option in each host entity
-    options = {
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-      };
-    };
-
-    config = {
-      # change default aspect name associated with host entities to fit our naming scheme
-      aspect = den.aspects.hosts.${host.name};
-    };
-  };
-
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
-  den.aspects.hosts.common = {
+  den.aspects.hosts.base = {
     # aspects to be included in every host
     includes = [
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
@@ -25,8 +10,6 @@
       den.aspects.features.tools.utils
 
       den.aspects.features.editors.vim
-
-      den.aspects.utils.nix-ld
     ];
 
     nixos = {
@@ -45,10 +28,6 @@
         # can be convenient for certain system-level things
         useUserPackages = true;
       };
-    };
-
-    homeManager = { host, ... }: {
-      home.stateVersion = "26.05";
     };
   };
 }
