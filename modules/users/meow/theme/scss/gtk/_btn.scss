@@ -1,0 +1,107 @@
+@use "../utils";
+@use "../base";
+@use "surfs";
+
+@use "sass:list";
+
+//------------------------------------------------------------------------------
+// surface registries button config
+//------------------------------------------------------------------------------
+
+// set button-related CSS variables that may depend on the ambient surface here
+
+@if list.length(surfs.$default-surfs) > 0 {
+  #{surfs.$default-surfs} {
+    --btn-flat-hover-fg:           {{colors.btn_flat_hover_fg_source.default.hex}};
+    --btn-flat-hover-bg:           {{colors.btn_flat_hover_bg_source.default.hex}};
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_source.default.hex}};
+
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_source.default.hex}};
+
+    --btn-xraised-base-fg:            {{colors.btn_xraised_base_fg_source.default.hex}};
+    --btn-xraised-base-bg:            {{colors.btn_xraised_base_bg_source.default.hex}};
+    --btn-xraised-hover-border-color: {{colors.btn_xraised_border_source.default.hex}};
+
+    --btn-selected-base-fg:            {{colors.btn_selected_base_fg_source.default.hex}};
+    --btn-selected-base-bg:            {{colors.btn_selected_base_bg_source.default.hex}};
+    --btn-selected-hover-border-color: {{colors.btn_selected_border_source.default.hex}};
+  }
+} @else {
+  @debug "gtk/btn: surfs.$default-surfs empty! uh oh >~<";
+}
+
+@if list.length(surfs.$variant-surfs) > 0 {
+  #{surfs.$variant-surfs} {
+    --btn-flat-hover-fg:           {{colors.btn_flat_hover_fg_vrnt_source.default.hex}};
+    --btn-flat-hover-bg:           {{colors.btn_flat_hover_bg_vrnt_source.default.hex}};
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_vrnt_source.default.hex}};
+
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_vrnt_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_vrnt_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_vrnt_source.default.hex}};
+
+    --btn-xraised-base-fg:            {{colors.btn_xraised_base_fg_vrnt_source.default.hex}};
+    --btn-xraised-base-bg:            {{colors.btn_xraised_base_bg_vrnt_source.default.hex}};
+    --btn-xraised-hover-border-color: {{colors.btn_xraised_border_vrnt_source.default.hex}};
+
+    --btn-selected-base-fg:            {{colors.btn_selected_base_fg_vrnt_source.default.hex}};
+    --btn-selected-base-bg:            {{colors.btn_selected_base_bg_vrnt_source.default.hex}};
+    --btn-selected-hover-border-color: {{colors.btn_selected_border_vrnt_source.default.hex}};
+  }
+} @else {
+  @debug "gtk/btn: surfs.$variant-surfs empty! uh oh >~<";
+}
+
+@if list.length(surfs.$selected-surfs) > 0 {
+  #{surfs.$selected-surfs} {
+    --btn-flat-hover-border-color: {{colors.btn_flat_border_slct_source.default.hex}};
+
+    --btn-raised-base-fg:            {{colors.btn_raised_base_fg_slct_source.default.hex}};
+    --btn-raised-base-bg:            {{colors.btn_raised_base_bg_slct_source.default.hex}};
+    --btn-raised-hover-border-color: {{colors.btn_raised_border_slct_source.default.hex}};
+  }
+} @else {
+  @debug "gtk/btn: surfs.$selected-surfs empty! uh oh >~<";
+}
+
+//------------------------------------------------------------------------------
+// buttons
+//------------------------------------------------------------------------------
+
+%btn-suggested {
+  @extend %btn-raised;
+}
+
+%btn-destructive {
+  @include base.btn-raised-builder(
+    $base-fg: var(--destructive-fg-color),
+    $base-bg: var(--destructive-bg-color)
+  );
+
+  --btn-hover-border-color: var(--destructive-color);
+}
+
+@mixin gtk-btn {
+  // these are built-in adwaita/GTK selectors
+  &:not(.suggested-action):not(.destructive-action) {
+    // note: the logic here may need to change if we want `gtk-btn`s to be selectable
+    &.flat {
+      @extend %btn-flat;
+    }
+
+    &.raised,
+    &.text-button {
+      @extend %btn-raised;
+    }
+  }
+
+  &.suggested-action {
+    @extend %btn-suggested;
+  }
+
+  &.destructive-action {
+    @extend %btn-destructive;
+  }
+}

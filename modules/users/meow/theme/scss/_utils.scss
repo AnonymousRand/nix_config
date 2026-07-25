@@ -1,0 +1,9 @@
+@use "sass:list";
+
+@function register-sels($registry, $sels) {
+  @return list.join($registry, $sels, comma, false);
+}
+
+@function change-lightness($input-color, $amount-to-change) {
+  @return hsl(from #{$input-color} h s calc(l + $amount-to-change));
+}

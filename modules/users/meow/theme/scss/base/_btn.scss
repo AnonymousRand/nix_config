@@ -1,0 +1,136 @@
+@use "../utils";
+
+//------------------------------------------------------------------------------
+// buttons
+//------------------------------------------------------------------------------
+
+/* a general catch-all placeholder for all elements which may change colors on hover/activation */
+// assign this to the lowest possible specificities! so that force overriding these properties is easy
+%btn-base {
+  // - `curr` variables reflect the current colors depending on state. they can used for child `%btn`
+  //   etc. elements, for example, to inherit the correct value (e.g. child flat buttons on a hovered
+  //   tab should use the tab's hover background color, not its base/non-hovered background color).
+  // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
+  //   of different states.
+
+  /* colors should generally be overriden by just setting `---curr-bg` and/or `---base-bg`
+   * (unless, for example, some other style completely overrode `background-color`) */
+
+  // note: these defaults are important for flat buttons
+  ---curr-fg: var(---base-fg, inherit);
+  ---curr-bg: var(---base-bg, transparent);
+
+  background-color: var(---curr-bg);
+  text-decoration-color: var(---curr-fg);
+  color: var(---curr-fg);
+
+  &:hover,
+  &:focus {
+    ---curr-fg: var(---hover-fg);
+    ---curr-bg: var(---hover-bg);
+  }
+
+  &:active {
+    ---curr-fg: var(---active-fg);
+    ---curr-bg: var(---active-bg);
+  }
+}
+
+@mixin btn-raised-builder($base-fg, $base-bg) {
+  ---base-fg: #{$base-fg};
+  ---base-bg: #{$base-bg};
+  ---hover-fg: var(---base-fg);
+  ---hover-bg: #{utils.change-lightness(var(---base-bg), -2.5%)};
+  ---active-fg: var(---hover-fg);
+  ---active-bg: #{utils.change-lightness(var(---hover-bg), -2.5%)};
+}
+
+// setting variables like `--btn-flat-base-fg` should be left to surfaces (e.g. using surface
+// registries, and individual selectors for more granularity) since they may depend on the color
+// of the ambient surface on which the button sits
+
+%btn-flat {
+  // don't set base colors so they take the default `inherit`/`transparent` values
+  ---hover-fg: var(--btn-flat-hover-fg, var(--error-color));
+  ---hover-bg: var(--btn-flat-hover-bg, var(--error-color));
+  ---active-fg: var(---hover-fg);
+  ---active-bg: #{utils.change-lightness(var(---hover-bg), -2.5%)};
+
+  %btn-selected & {
+    // on a selected `btn`-type element, we can just exactly mimic its colors at every state
+    background-color: transparent;
+    text-decoration-color: inherit;
+    color: inherit;
+  }
+}
+
+%btn-raised {
+  @include btn-raised-builder(
+    $base-fg: var(--btn-raised-base-fg, var(--error-color)),
+    $base-bg: var(--btn-raised-base-bg, var(--error-color)),
+  );
+}
+
+%btn-xraised {
+  @include btn-raised-builder(
+    $base-fg: var(--btn-xraised-base-fg, var(--error-color)),
+    $base-bg: var(--btn-xraised-base-bg, var(--error-color)),
+  );
+}
+
+// note: there is currently no support for strong raised buttons on selected buttons, only flat ones.
+// if this is to be changed, remember to add colors for `hover-border` for raised on selected btns.
+%btn-selected {
+  @include btn-raised-builder(
+    $base-fg: var(--btn-selected-base-fg, var(--error-color)),
+    $base-bg: var(--btn-selected-base-bg, var(--error-color)),
+  );
+}
+
+//------------------------------------------------------------------------------
+// hover border
+//------------------------------------------------------------------------------
+
+@mixin btn-hover-border(
+  $hover-border-color: var(--btn-hover-border-color),
+  $border-width: 2px
+) {
+  ---base-border-color:  transparent;
+  ---hover-border-color: #{$hover-border-color};
+  ---curr-border-color:  var(---base-border-color);
+
+  border: #{$border-width} solid;
+  border-color: var(---curr-border-color);
+  outline-color: var(---curr-border-color);
+  // match button's `background` transition
+  // unfortunately CSS' `transition` property is maybe the most stupid thing in CSS (well, right after
+  // specificity, `position`, cascading, style, sheets, variables not being able to be `inherit`,
+  // the need for scss, what the hell all the different whitespace options are, why every fucking
+  // type of `display` has different words for centering things, the 2008 housing crash, and
+  // specificity), so i have to copy over all the built-in transitions from libadwaita too
+  transition: border 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              outline-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              outline-width 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              outline-offset 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:hover,
+  &:focus {
+    ---curr-border-color: var(---hover-border-color);
+  }
+}
+
+// border on hover color may depend on both ambient surface colors and button type (flat/raised)
+// the former is done through surface registries as usual, and the latter is done right here
+%btn-flat {
+  --btn-hover-border-color: var(--btn-flat-hover-border-color);
+}
+
+%btn-raised {
+  --btn-hover-border-color: var(--btn-raised-hover-border-color);
+}
+
+%btn-xraised {
+  --btn-hover-border-color: var(--btn-xraised-hover-border-color);
+}
