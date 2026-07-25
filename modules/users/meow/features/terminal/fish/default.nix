@@ -21,13 +21,15 @@
           source = ./dotfiles/functions;
           recursive = true;
         };
-      };
 
-      # noctalia theming
-      noctalia-custom-colors = import ./colors.nix;
-      noctalia-templates.fish = {
-        input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
-        output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+        # noctalia theming
+        theme.noctalia.customColors = import ./colors.nix;
+        programs.noctalia = {
+          settings.theme.templates.user.fish = {
+            input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
+            output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+          };
+        };
       };
     };
 }

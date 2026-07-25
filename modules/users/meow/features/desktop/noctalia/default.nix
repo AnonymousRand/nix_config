@@ -4,13 +4,13 @@
       den.aspects.features.desktop.noctalia
     ];
 
-    homeManager = {
+    homeManager = { config, ... }: {
       programs.noctalia = {
         settings = {
           theme = {
             # declare my custom color palette for Noctalia app theming
             source = "custom";
-            custom_palette = "anonymousrand";
+            custom_palette = "meow";
 
             # switch between light and dark themes automatically
             mode = "auto";
@@ -19,6 +19,8 @@
               # enable built-in app theming, which uses templates to map
               # Noctalia color palette colors to each app's configs
               enable_builtin_templates = true;
+              # load custom colors
+              custom_colors = config.theme.noctalia.customColors;
             };
           };
 
@@ -31,8 +33,8 @@
         };
       };
 
-      xdg.configFile."noctalia/palettes/anonymousrand.json".text =
-          builtins.toJSON config.meow.theme.colors.m3Palette;
+      xdg.configFile."noctalia/palettes/meow.json".text =
+          builtins.toJSON config.theme.noctalia.palette;
     };
   };
 }

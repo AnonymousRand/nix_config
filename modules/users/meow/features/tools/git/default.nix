@@ -4,11 +4,13 @@
       den.aspects.features.tools.git
     ];
 
-    programs.git = {
-      settings = {
-        user.name = "AnonymousRand";
-        user.email = "anonymouserand@gmail.com";
-        init.defaultBranch = "main";
+    homeManager = {
+      programs.git = {
+        settings = {
+          user.name = "AnonymousRand";
+          user.email = "anonymouserand@gmail.com";
+          init.defaultBranch = "main";
+        };
       };
     };
   };

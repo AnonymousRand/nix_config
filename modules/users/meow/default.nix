@@ -2,15 +2,18 @@
 
 let
   username = "meow"
-in {
+in
+{
   imports = [
+    # TODO can't do this in schema? ask about it/try to brute force? ok if it's a bit ugly i think
+    # oh try { config, ... }: { imports = [] } in top-level of schema? like aspect custom submodules
     # create a namespace for this user, which allows us to define "private" aspects
     # under `<username>.<aspect name>`
     # (the `false` means this namespace is only consumed internally, not exposed in flake outputs)
     (inputs.den.namespace username false)
   ];
 
-  den.aspects.users.meow = {
+  den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     # (note that as of den v0.3.0, any `nixos` class modules in these includes are automatically
     # forwarded to all hosts this user is defined on; while `homeManager` class modules are
@@ -23,24 +26,22 @@ in {
 
       den.aspects.features.tools.wayland-utils
 
-      den.aspects.utils.noctalia-theming # enable noctalia theming
-
       ##########################################################################
       # aspects extending the base config with our own "private" config (using our custom namespace)
 
-      meow.features.desktop.niri
-      meow.features.desktop.noctalia
+      ${username}.features.desktop.niri
+      ${username}.features.desktop.noctalia
 
-      meow.features.terminal.fish
-      meow.features.terminal.ghostty
-      meow.features.terminal.kitty
+      ${username}.features.terminal.fish
+      ${username}.features.terminal.ghostty
+      ${username}.features.terminal.kitty
 
-      meow.features.editors.vim
+      ${username}.features.editors.vim
 
-      meow.features.tools.fastfetch
-      meow.features.tools.git
-      meow.features.tools.hyfetch
-      meow.features.tools.ssh-client
+      ${username}.features.tools.fastfetch
+      ${username}.features.tools.git
+      ${username}.features.tools.hyfetch
+      ${username}.features.tools.ssh-client
     ];
 
     # `user` class is equivalent to `nixos.users.users.<username>`

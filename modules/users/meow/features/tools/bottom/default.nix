@@ -4,11 +4,15 @@
       den.aspects.features.tools.bottom
     ];
 
-    # noctalia theming
-    noctalia-custom-colors = import ./colors.nix;
-    noctalia-templates.niri = {
-      input_path = builtins.toString ./dotfiles/bottom.toml;
-      output_path = "$XDG_CONFIG_HOME/bottom/bottom.toml";
+    homeManager = {
+      # noctalia theming
+      theme.noctalia.customColors = import ./colors.nix;
+      programs.noctalia = {
+        settings.theme.templates.user.niri = {
+          input_path = builtins.toString ./dotfiles/bottom.toml;
+          output_path = "$XDG_CONFIG_HOME/bottom/bottom.toml";
+        };
+      };
     };
   };
 }

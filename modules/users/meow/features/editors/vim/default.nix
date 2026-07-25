@@ -4,7 +4,7 @@
       den.aspects.features.editors.vim
     ];
 
-    homeManager = {
+    homeManager = { config, ... }: {
       programs.vim = {
         plugins = [
           pkgs.vimPlugins.vim-sensible
@@ -14,13 +14,13 @@
         ];
         extraConfig = builtins.readFile ./dotfiles/vimrc;
       };
-    };
 
-    # noctalia theming
-    noctalia-templates = { config, ... }: {
-      vim = {
-        input_path = builtins.toString ./dotfiles/colors/noctalia_theme.vim;
-        output_path = "${config.home.homeDirectory}/.vim/colors/noctalia_theme.vim";
+      # noctalia theming
+      programs.noctalia = {
+        settings.theme.templates.user.vim = {
+          input_path = builtins.toString ./dotfiles/colors/noctalia_theme.vim;
+          output_path = "${config.home.homeDirectory}/.vim/colors/noctalia_theme.vim";
+        };
       };
     };
   };

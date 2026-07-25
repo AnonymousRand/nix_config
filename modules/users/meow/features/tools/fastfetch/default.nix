@@ -4,6 +4,8 @@
       den.aspects.features.tools.fastfetch
     ];
 
-    xdg.configFile."fastfetch/config.jsonc".source = ./dotfiles/config.jsonc;
+    homeManager = {
+      xdg.configFile."fastfetch/config.jsonc".source = ./dotfiles/config.jsonc;
+    };
   };
 }

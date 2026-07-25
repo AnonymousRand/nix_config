@@ -19,13 +19,15 @@
             include optional=true "${config.xdg.configHome}/${noctaliaThemeCfgPath}"
           '';
         };
-      };
 
-      # noctalia theming
-      noctalia-custom-colors = import ./colors.nix;
-      noctalia-templates.niri = {
-        input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;
-        output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+        # noctalia theming
+        theme.noctalia.customColors = import ./colors.nix;
+        programs.noctalia = {
+          settings.templates.user.niri = {
+            input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;
+            output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+          };
+        };
       };
     };
 }
