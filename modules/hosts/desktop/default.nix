@@ -24,10 +24,9 @@
 
   den.aspects.hosts.desktop = {
     # aspects to be included on this host regardless of user
-    # (as of den v0.3.0, any `homeManager` class modules in these includes are automatically
-    # forwarded to all users on this host, while `nixos` class modules are evaluated immediately
-    # within the context of this host as usual)
     includes = [
+      den.aspects.hosts.common
+
       den.aspects.features.system.dual-boot
       den.aspects.features.system.firmware
       den.aspects.features.system.nixowos

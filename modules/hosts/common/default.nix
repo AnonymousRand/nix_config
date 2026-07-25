@@ -1,4 +1,5 @@
 { den, self, ... }: {
+  # declare custom options/set default options for all host entities, as metadata used for aspects
   den.schema.host = { host, lib, ... }: {
     # require a `stateVersion` option in each host entity
     options = {
@@ -10,39 +11,44 @@
     config = {
       # change default aspect name associated with host entities to fit our naming scheme
       aspect = den.aspects.hosts.${host.name};
+    };
+  };
 
-      # aspects to be included in every host entity
-      includes = [
-        # sets `nixos.networking.hostName` from `host.hostName` in host entity
-        den.batteries.hostname
+  # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
+  den.aspects.hosts.common = {
+    # aspects to be included in every host
+    includes = [
+      # sets `nixos.networking.hostName` from `host.hostName` in host entity
+      den.batteries.hostname
 
-        den.aspects.features.tools.git
-        den.aspects.features.tools.utils
+      den.aspects.features.tools.git
+      den.aspects.features.tools.utils
 
-        den.aspects.features.editors.vim
+      den.aspects.features.editors.vim
 
-        den.aspects.utils.nix-ld
+      den.aspects.utils.nix-ld
+    ];
 
-        {
-          nixos = {
-            # load custom overlays (e.g. from `perSystem.overlayAttrs`)
-            # TODO: this probably won't work. might need to be in specific hosts, might not be able to access `self`
-            # if `self` doesn't work, try `inputs.self`. last resort try quirk?
-            nixpkgs.overlays = [ self.overlays.default ];
+    nixos = {
+      # load custom overlays (e.g. from `perSystem.overlayAttrs`)
+      # TODO: this probably won't work. might need to be in specific hosts, might not be able to access `self`
+      # if `self` doesn't work, try `inputs.self`. last resort try quirk?
+      nixpkgs.overlays = [ self.overlays.default ];
 
-            # this is only executed if this host has home manager in its inputs
-            # TODO check
-            home-manager = {
-              # allows home manager to see `nixpkgs overlays
-              useGlobalPkgs = true;
-              # installs user packages into `/etc/profile/per-user/<username>/` (i.e.
-              # `users.users.<username>.packages`) instead of the default `~/.nix-profile`
-              # can be convenient for certain system-level things
-              useUserPackages = true;
-            };
-          };
-        }
-      ];
+      # this is only executed if this host has home manager in its inputs
+      # TODO check
+      home-manager = {
+        # allows home manager to see `nixpkgs overlays
+        useGlobalPkgs = true;
+        # installs user packages into `/etc/profile/per-user/<username>/` (i.e.
+        # `users.users.<username>.packages`) instead of the default `~/.nix-profile`
+        # can be convenient for certain system-level things
+        useUserPackages = true;
+      };
+    };
+
+    homeManager = { host, ... }: {
+      home.stateVersion = "26.05";
     };
   };
 }

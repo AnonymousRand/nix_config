@@ -1,13 +1,13 @@
 {
-  den.schema.host.includes = [
-    {
-      nixos = { host, ... }: {
-        system.stateVersion = host.stateVersion;
-      };
+  den.aspects.hosts.common = {
+    nixos = { host, ... }: {
+      system.stateVersion = host.stateVersion;
+    };
 
+    provides.to-users = {
       homeManager = { host, ... }: {
         home.stateVersion = host.stateVersion;
       };
-    }
-  ];
+    };
+  };
 }

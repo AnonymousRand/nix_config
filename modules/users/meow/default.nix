@@ -18,6 +18,8 @@ in
     # forwarded to all hosts this user is defined on; while `homeManager` class modules are
     # evaluated immediately within the context of this user as usual)
     includes = [
+      den.aspects.users.common
+
       den.batteries.primary-user
 
       ##########################################################################

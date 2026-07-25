@@ -1,6 +1,7 @@
 { den, ... }: {
-  meow.features.terminal.fish =
+  meow.features.terminal.fish = { config, ... }:
     let
+      aspectCfg = config;
       noctaliaThemeCfgPath = "fish/noctalia_theme.fish";
     in
     {

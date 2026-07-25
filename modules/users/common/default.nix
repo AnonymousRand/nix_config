@@ -1,18 +1,21 @@
 { den, ... }: {
-  den.schema.user = { config, ... }: {
+  den.schema.user = { user, ... }: {
     # change default aspect name associated with user entities to fit our naming scheme
-    aspect = den.aspects.users.${config.name};
+    aspect = den.aspects.users.${user.name};
 
-    # aspects to be included in every user entity
     includes = [
       den.batteries.define-user
-
-      {
-        homeManager = {
-          # enables standalone `home-manager` command
-          programs.home-manager.enable = true;
-        };
-      }
     ];
+  };
+
+  # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
+  den.aspects.users.common = {
+    # aspects to be included in every user entity
+    includes = [];
+
+    homeManager = {
+      # enables standalone `home-manager` command
+      programs.home-manager.enable = true;
+    };
   };
 }
