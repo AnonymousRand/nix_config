@@ -1,5 +1,5 @@
 {
-  den.aspects.users.meow = {
+  den.aspects.users.meow.homeManager = {
     theme.colors = rec {
       ########################################################################
       # basic color variables

@@ -1,5 +1,5 @@
 {
-  den.aspects.users.meow =
+  den.aspects.users.meow.homeManager = { pkgs, ... }:
     let
       # `scssPathsToLoad` is the SCSS paths to be loaded with `sass --load-path` (for imports in
       # other SCSS files without needing relative paths). provide directories, not individual files
@@ -52,13 +52,11 @@
         };
     in
     {
-      homeManager = { pkgs, ... }: {
-        theme.css = pkgs.callPackage compile-scss {
-          scssPathsToLoad = [
-            ./.
-          ];
-          featuresPath = ../../features;
-        };
+      theme.css = pkgs.callPackage compile-scss {
+        scssPathsToLoad = [
+          ./.
+        ];
+        featuresPath = ../../features;
       };
     };
 }

@@ -38,6 +38,7 @@ in
 
       den.ful.${username}.features.editors.vim
 
+      den.ful.${username}.features.tools.bottom
       den.ful.${username}.features.tools.fastfetch
       den.ful.${username}.features.tools.git
       den.ful.${username}.features.tools.hyfetch
