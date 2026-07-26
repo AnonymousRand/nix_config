@@ -37,18 +37,18 @@
           # `inherit (raw) imports`, which DROPS the `or` default and throws when
           # `raw` is a plain options attrset with no `imports`/`config` key
           reshapeSettings = raw:
-            let
-              imports' = raw.imports or [];
-              config' = raw.config or {};
-            in
-            {
-              imports = imports';
-              config = config';
-              options = removeAttrs raw [
-                "imports"
-                "config"
-              ];
-            };
+          let
+            imports' = raw.imports or [];
+            config' = raw.config or {};
+          in
+          {
+            imports = imports';
+            config = config';
+            options = removeAttrs raw [
+              "imports"
+              "config"
+            ];
+          };
 
           # `true` if a node has `.settings` anywhere in its aspect subtree
           hasSettingsDeep =
@@ -64,37 +64,37 @@
           # (e.g. `services.bgp' has `localAsn` settings and also parents `services.bgp.cilium-bgp`).
           # merge the node's own settings options with recursion into its settings-bearing children
           nodeModule = node:
-            let
-              ownSettings =
-                if node ? settings then
-                  reshapeSettings node.settings
-                else
-                  {
-                    imports = [];
-                    config = {};
-                    options = {};
-                  };
-              settingChildren = lib.filterAttrs (
-                k: v: !(skipKey k) && builtins.isAttrs v && hasSettingsDeep v
-              ) node;
-              childOptions = lib.mapAttrs (
-                name: child:
-                mkOption {
-                  type = types.submodule (nodeModule child);
-                  default = {};
-                  description = "Settings under ${name}";
-                }
-              ) settingChildren;
-              # distinct names so statix (W04) can't rewrite to `inherit (ownSettings) imports`,
-              # which would drop the `or` default
-              ownImports = ownSettings.imports or [];
-              ownConfig = ownSettings.config or {};
-            in
-            {
-              imports = ownImports;
-              config = ownConfig;
-              options = (ownSettings.options or {}) // childOptions;
-            };
+          let
+            ownSettings =
+              if node ? settings then
+                reshapeSettings node.settings
+              else
+                {
+                  imports = [];
+                  config = {};
+                  options = {};
+                };
+            settingChildren = lib.filterAttrs (
+              k: v: !(skipKey k) && builtins.isAttrs v && hasSettingsDeep v
+            ) node;
+            childOptions = lib.mapAttrs (
+              name: child:
+              mkOption {
+                type = types.submodule (nodeModule child);
+                default = {};
+                description = "Settings under ${name}";
+              }
+            ) settingChildren;
+            # distinct names so statix (W04) can't rewrite to `inherit (ownSettings) imports`,
+            # which would drop the `or` default
+            ownImports = ownSettings.imports or [];
+            ownConfig = ownSettings.config or {};
+          in
+          {
+            imports = ownImports;
+            config = ownConfig;
+            options = (ownSettings.options or {}) // childOptions;
+          };
         in
         types.submodule (nodeModule (den.aspects or {})); # reads aspect tree here
     in

@@ -1,24 +1,28 @@
 {
   den.aspects.utils.noctalia-theming = {
+    # TODO: try making this aspect level as well, and set through den.aspects.utils.noctalia-theming.*
+    # from aspect level? see if that is too awkward
     homeManager = { user, config, lib, ... }: {
-      options = {
-        noctaliaTheming = lib.mkOption {
-          type = lib.types.submodule {
-            options = {
-              palette = lib.mkOption {
-                type = lib.types.attrsOf lib.types.anything;
-                default = {};
-              };
+      # declare these options (inside home manager class module instead of at aspect level to make
+      # it easier to access from within home manager class modules of feature aspects)
+      #
+      # set these options on any aspect that includes this :3
+      options.noctaliaTheming = lib.mkOption {
+        type = lib.types.submodule {
+          options = {
+            palette = lib.mkOption {
+              type = lib.types.attrsOf lib.types.anything;
+              default = {};
+            };
 
-              customColors = lib.mkOption {
-                type = lib.types.attrsOf lib.types.anything;
-                default = {};
-              };
+            customColors = lib.mkOption {
+              type = lib.types.attrsOf lib.types.anything;
+              default = {};
+            };
 
-              templates = lib.mkOption {
-                type = lib.types.attrsOf lib.types.anything;
-                default = {};
-              };
+            templates = lib.mkOption {
+              type = lib.types.attrsOf lib.types.anything;
+              default = {};
             };
           };
         };

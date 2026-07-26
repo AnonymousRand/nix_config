@@ -10,7 +10,7 @@
       colors = import ./_colors.nix;
     in
     {
-      # set base values for `noctalita-theming`'s options
+      # set base values for `noctalia-theming`'s options
       noctaliaTheming = {
         customColors = colors.vars // colors.roles;
 
