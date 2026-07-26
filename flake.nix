@@ -16,7 +16,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
-      url = "github:epireyn/niri-flake";
+      url = "git+https://codeberg.org/BANanaD3V/niri-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixowos = {

@@ -9,8 +9,8 @@
       ];
 
       homeManager = { config, ... }: {
-        programs.niri = {
-          config = ''
+        wayland.windowManager.niri = {
+          extraConfig = ''
             ${builtins.readFile ./dotfiles/config.kdl}
 
             // put at end as `include`s override prior options
