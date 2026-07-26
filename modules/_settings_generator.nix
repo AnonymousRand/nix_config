@@ -1,4 +1,5 @@
 # from sini/nix-config on github! :3 (https://gist.github.com/sini/c67ccc0d38983e6636ba408e042e36be)
+#
 # this lets aspects declare their own `settings` which is automatically mirrored to options under
 # an entity's `settings` options, giving us modular, per-aspect options. specifically:
 # `den.aspects.<aspect name>.settings.<setting name>` becomes
