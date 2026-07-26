@@ -6,12 +6,10 @@
 
     homeManager = {
       # noctalia theming
-      theme.noctalia.customColors = import ./_colors.nix;
-      programs.noctalia = {
-        settings.theme.templates.user.bottom = {
-          input_path = builtins.toString ./dotfiles/bottom.toml;
-          output_path = "$XDG_CONFIG_HOME/bottom/bottom.toml";
-        };
+      noctaliaTheming.customColors = import ./_colors.nix;
+      noctaliaTheming.templates.bottom = {
+        input_path = builtins.toString ./dotfiles/bottom.toml;
+        output_path = "$XDG_CONFIG_HOME/bottom/bottom.toml";
       };
     };
   };

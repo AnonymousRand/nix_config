@@ -21,12 +21,10 @@
         };
 
         # noctalia theming
-        theme.noctalia.customColors = import ./_colors.nix;
-        programs.noctalia = {
-          settings.templates.user.niri = {
-            input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;
-            output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
-          };
+        noctaliaTheming.customColors = import ./_colors.nix;
+        noctaliaTheming.templates.niri = {
+          input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;
+          output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
         };
       };
     };

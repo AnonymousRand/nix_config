@@ -9,19 +9,19 @@
       ];
 
       homeManager = { config, ... }: {
-        xdg.configFile."ghostty/config.ghostty".source           = ./dotfiles/config.ghostty;
+        xdg.configFile."ghostty/config.ghostty".source = ./dotfiles/config.ghostty;
         xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
         # noctalia theming
-        programs.noctalia = {
-          settings.theme.templates.user.ghostty = {
+        noctaliaTheming.templates = {
+          ghostty = {
             input_path = builtins.toString ./dotfiles/themes/noctalia_theme;
             output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme";
             post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
           };
 
-          settings.theme.templates.user.ghosttyCss = {
-            input_path = "${config.theme.css}/ghostty/dotfiles/custom.css";
+          ghosttyCss = {
+            input_path = "${config.css}/ghostty/dotfiles/custom.css";
             output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
             post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
           };

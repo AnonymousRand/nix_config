@@ -24,12 +24,10 @@
         };
 
         # noctalia theming
-        theme.noctalia.customColors = import ./_colors.nix;
-        programs.noctalia = {
-          settings.theme.templates.user.fish = {
-            input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
-            output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
-          };
+        noctaliaTheming.customColors = import ./_colors.nix;
+        noctaliaTheming.templates.fish = {
+          input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
+          output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
         };
       };
     };
