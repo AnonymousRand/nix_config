@@ -4,12 +4,12 @@
   den.aspects.utils.nix-ld = { config, lib, ... }: {
     imports = [
       {
-        # declare these options (on the aspect level; requires the `imports` above to work)
+        # declare these aspect-level options (requires the `imports` above to work)
         # set these options on any aspect that includes this :3
         options = {
           libs = lib.mkOption {
             # this should be a function accepting exactly the argument `{ pkgs }` and outputting
-            # a list of packages (seems impossible to strictly enforce this though?)
+            # a list of packages
             type = lib.types.functionTo (lib.types.listOf lib.types.package);
             default = { pkgs }: [];
           };

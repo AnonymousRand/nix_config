@@ -5,13 +5,12 @@
       den.aspects.utils.noctalia-theming
     ];
 
-    homeManager = { config, ... }:
-    let
-      colors = import ./_colors.nix;
-    in
-    {
-      # set base values for `noctalia-theming`'s options
-      noctaliaTheming = {
+    den.aspects.utils.noctalia-theming =
+      let
+        colors = import ./_colors.nix;
+      in
+      {
+        # set base values for `noctalia-theming`'s options
         customColors = colors.vars // colors.roles;
 
         # Material 3 palette for noctalia
@@ -115,6 +114,5 @@
           };
         };
       };
-    };
   };
 }

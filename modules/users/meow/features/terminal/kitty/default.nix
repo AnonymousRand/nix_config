@@ -16,13 +16,13 @@
             include ${noctaliaThemeKittyCfgPath}
           '';
         };
+      };
 
-        # noctalia theming
-        noctaliaTheming.templates.kitty = {
-          input_path = builtins.toString ./dotfiles/themes/noctalia_theme.conf;
-          output_path = "$XDG_CONFIG_HOME/kitty/${noctaliaThemeKittyCfgPath}";
-          post_hook = "kitty +runpy \"from kitty.utils import *; reload_conf_in_all_kitties()\"";
-        };
+      # noctalia theming
+      den.aspects.utils.noctalia-theming.templates.kitty = {
+        input_path = builtins.toString ./dotfiles/themes/noctalia_theme.conf;
+        output_path = "$XDG_CONFIG_HOME/kitty/${noctaliaThemeKittyCfgPath}";
+        post_hook = "kitty +runpy \"from kitty.utils import *; reload_conf_in_all_kitties()\"";
       };
     };
 }

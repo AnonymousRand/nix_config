@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.editors.vim = {
+  meow.features.editors.vim = { user, ... }: {
     includes = [
       den.aspects.features.editors.vim
     ];
@@ -14,12 +14,13 @@
         ];
         extraConfig = builtins.readFile ./dotfiles/vimrc;
       };
+    };
 
-      # noctalia theming
-      noctaliaTheming.templates.vim = {
-        input_path = builtins.toString ./dotfiles/colors/noctalia_theme.vim;
-        output_path = "${config.home.homeDirectory}/.vim/colors/noctalia_theme.vim";
-      };
+    # noctalia theming
+    # TODO path!!
+    den.aspects.utils.noctalia-theming.templates.vim = {
+      input_path = builtins.toString ./dotfiles/colors/noctalia_theme.vim;
+      output_path = "/home/${user.name}/.vim/colors/noctalia_theme.vim";
     };
   };
 }
