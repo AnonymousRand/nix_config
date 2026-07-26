@@ -5,9 +5,11 @@
       den.aspects.utils.compile-scss
     ];
 
-    den.aspects.utils.compile-scss = {
-      pathsToCompile = [ ./features ];
-      pathsToLoad = [ ./base_scss ];
+    homeManager = {
+      compile-scss = {
+        pathsToCompile = [ ./features ];
+        pathsToLoad = [ ./base_scss ];
+      };
     };
   };
 }

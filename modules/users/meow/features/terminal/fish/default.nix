@@ -1,15 +1,14 @@
 { den, ... }: {
-  meow.features.terminal.fish = { config, ... }:
-    let
-      aspectCfg = config;
-      noctaliaThemeCfgPath = "fish/noctalia_theme.fish";
-    in
-    {
-      includes = [
-        den.aspects.features.terminal.fish
-      ];
+  meow.features.terminal.fish = {
+    includes = [
+      den.aspects.features.terminal.fish
+    ];
 
-      homeManager = { config, ... }: {
+    homeManager = { config, ... }:
+      let
+        noctaliaThemeCfgPath = "fish/noctalia_theme.fish";
+      in
+      {
         programs.fish = {
           interactiveShellInit = builtins.readFile ./dotfiles/interactive_shell_init.fish +
               "\nsource ${config.xdg.configHome}/${noctaliaThemeCfgPath}";
@@ -22,13 +21,15 @@
           source = ./dotfiles/functions;
           recursive = true;
         };
-      };
 
-      # noctalia theming
-      den.aspects.utils.noctalia-theming.customColors = import ./_colors.nix;
-      den.aspects.utils.noctalia-theming.templates.fish = {
-        input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
-        output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+        # noctalia theming
+        noctalia-theming = {
+          customColors = import ./_colors.nix;
+          templates.fish = {
+            input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
+            output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
+          };
+        };
       };
-    };
+  };
 }

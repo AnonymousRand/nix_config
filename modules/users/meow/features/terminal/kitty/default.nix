@@ -1,14 +1,14 @@
 { den, ... }: {
-  meow.features.terminal.kitty =
-    let
-      noctaliaThemeKittyCfgPath = "themes/noctalia_theme.conf";
-    in
-    {
-      includes = [
-        den.aspects.features.terminal.kitty
-      ];
+  meow.features.terminal.kitty = {
+    includes = [
+      den.aspects.features.terminal.kitty
+    ];
 
-      homeManager = {
+    homeManager =
+      let
+        noctaliaThemeKittyCfgPath = "themes/noctalia_theme.conf";
+      in
+      {
         programs.kitty = {
           extraConfig = ''
             ${builtins.readFile ./dotfiles/kitty.conf}
@@ -16,13 +16,13 @@
             include ${noctaliaThemeKittyCfgPath}
           '';
         };
-      };
 
-      # noctalia theming
-      den.aspects.utils.noctalia-theming.templates.kitty = {
-        input_path = builtins.toString ./dotfiles/themes/noctalia_theme.conf;
-        output_path = "$XDG_CONFIG_HOME/kitty/${noctaliaThemeKittyCfgPath}";
-        post_hook = "kitty +runpy \"from kitty.utils import *; reload_conf_in_all_kitties()\"";
+        # noctalia theming
+        noctalia-theming.templates.kitty = {
+          input_path = builtins.toString ./dotfiles/themes/noctalia_theme.conf;
+          output_path = "$XDG_CONFIG_HOME/kitty/${noctaliaThemeKittyCfgPath}";
+          post_hook = "kitty +runpy \"from kitty.utils import *; reload_conf_in_all_kitties()\"";
+        };
       };
-    };
+  };
 }

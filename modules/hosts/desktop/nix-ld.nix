@@ -6,8 +6,10 @@
     ];
 
     # set values for `nix-ld`'s options
-    den.aspects.utils.nix-ld.libs = { pkgs }: [
-      pkgs.uv
-    ];
+    nixos = { pkgs, ... }: {
+      nix-ld.libs = [
+        pkgs.uv
+      ];
+    };
   };
 }
