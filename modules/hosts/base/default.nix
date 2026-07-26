@@ -6,6 +6,9 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
+      # enable `nix-ld` (putting such includes in host schema does not work)
+      den.aspects.utils.nix-ld
+
       den.aspects.features.tools.git
       den.aspects.features.tools.utils
 

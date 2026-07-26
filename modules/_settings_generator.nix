@@ -7,6 +7,9 @@
 { den, lib, aspectTreeRoot ? den.aspects }:
 let
   inherit (lib) mkOption types;
+  # Keys that are NOT child aspects: structural keys (includes, nixos, …),
+  # plus your framework's registered class names and quirk/extension keys.
+  # Adapt these three sources to your own framework.
   inherit (den.lib.aspects.fx.keyClassification) structuralKeysSet;
   classKeys = den.classes or { };
   quirkKeys = den.quirks or { };

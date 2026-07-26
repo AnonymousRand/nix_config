@@ -1,12 +1,13 @@
-{
-  # TODO test if lib arg can be put into `settings`
-  den.aspects.utils.nix-ld = { lib, ... }: {
+{ lib, ... }: {
+  # note: putting arguments like `lib` into the aspect's arguments here will break
+  # the `settings` option declaration
+  den.aspects.utils.nix-ld = {
     settings = {
       # declare `libs` option in each host entity
       libs = lib.mkOption {
         type = lib.types.either
           (lib.types.listOf lib.types.package)
-          (lib.types.functionTo (lib.types.listOf lib.types.package));
+          lib.types.raw;
         default = [];
       };
     };
