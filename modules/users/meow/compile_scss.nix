@@ -6,8 +6,8 @@
     ];
 
     den.aspects.utils.compile-scss = {
-      pathsToCompile = ./features;
-      pathsToLoad = ./base_scss;
+      pathsToCompile = [ ./features ];
+      pathsToLoad = [ ./base_scss ];
     };
   };
 }

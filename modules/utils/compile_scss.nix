@@ -53,18 +53,18 @@
           # render SCSS to CSS and place the generated CSS in `build/` in build environment
           buildPhase =
             let
-              loadPathsArgs = builtins.foldl'
+              loadPathArgs = builtins.foldl'
                 (acc: entry: acc + " --load-path ${entry}") "" config.pathsToLoad;
 
-              sassCommand = builtins.foldl'
-                (acc: entry: acc + "\nsass ${entry}:build/ --no-source-map ${loadPathsArgs}")
+              sassCommands = builtins.foldl'
+                (acc: entry: acc + "\nsass ${entry}:build/ --no-source-map ${loadPathArgs}")
                 "" config.pathsToCompile;
             in
             ''
               runHook preBuild
 
               mkdir build/
-              ${sassCommand}
+              ${sassCommands}
             '';
 
           # copy `build/*` to the designated output directory for this derivation in the nix store
