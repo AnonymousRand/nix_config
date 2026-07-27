@@ -88,7 +88,7 @@ in
           };
         in
         {
-          ${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+          ${aspectName}.cssOutput = pkgs.callPackage compileScss { };
         };
     };
   };
