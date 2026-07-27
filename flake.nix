@@ -4,6 +4,7 @@
   outputs = inputs: import ./outputs.nix inputs;
 
   inputs = {
+    den.url = "github:denful/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -15,7 +16,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
-      url = "github:epireyn/niri-flake";
+      url = "git+https://codeberg.org/BANanaD3V/niri-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixowos = {

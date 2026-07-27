@@ -1,3 +1,0 @@
-# host `desktop`
-
-desktop computer.
