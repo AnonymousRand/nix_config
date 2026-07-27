@@ -23,7 +23,7 @@ set -g fish_cursor_external    block
 # make `clear` also clear scrollback history, like default behavior in bash
 abbr --add clear tput reset
 
-# prompt for confirmation on destructive commands because i am careless and foolish
+# prompt for confirmation on destructive commands because i am stupid and foolish :3
 abbr --add --position anywhere -- rm rm -i
 abbr --add --position anywhere -- cp cp -i
 abbr --add --position anywhere -- mv mv -i

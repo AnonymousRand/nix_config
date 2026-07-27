@@ -19,7 +19,7 @@ font-feature            = -calt
 
 # shell
 command                    = "fish --login --interactive"
-shell-integration          = fish
+# (note that shell integration should work automatically)
 shell-integration-features = no-cursor, path, ssh-env, ssh-terminfo, sudo, title
 
 # system

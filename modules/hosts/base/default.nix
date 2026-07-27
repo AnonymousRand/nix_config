@@ -6,6 +6,8 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
+      den.aspects.features.terminal.bash
+
       den.aspects.features.tools.git
       den.aspects.features.tools.utils
 

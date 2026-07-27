@@ -25,6 +25,7 @@
       meow.features.desktop.niri
       meow.features.desktop.noctalia
 
+      meow.features.terminal.bash
       meow.features.terminal.fish
       meow.features.terminal.ghostty
       meow.features.terminal.kitty
