@@ -125,31 +125,41 @@ let g:camelcasemotion_key="<leader>"
 " keybinds
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" `ctrl + shift + c` in visual mode and `ctrl + shift + v` in normal and insert modes to
-" copy to/paste from *system* clipboard respectively (using oscyank plugin for copy to work over ssh)
-" (note that if vim is not running in a terminal supporting the kitty keyboard protocol,
-" `ctrl + shift` registers exactly the same as `ctrl`)
-vnoremap <C-S-c> <Plug>OSCYankVisual
-nnoremap <C-S-v> "+p
-inoremap <C-S-v> <C-r>+
+" (note that if vim is not running in a terminal supporting the kitty keyboard protocol, then
+" ctrl+shift registers exactly the same as ctrl, so certain keybinds may not work)
 
-" `ctrl + p` to paste from `0` register (where the last yank lives, unaffected by deletes) in normal and visual modes
+" ctrl+c in visual mode and ctrl+x in visual mode to copy/cut (respectively) to
+" *system* clipboard (using oscyank plugin for copy to work over ssh)
+"
+vnoremap <C-c> <Plug>OSCYankVisual
+vnoremap <C-x> <Plug>OSCYankVisualgv"_d
+
+" ctrl+v and ctrl+shift+v in normal mode to paste from system clipboard after/before
+" cursor, and ctrl+v in insert mode to do the same *before* the cursor (as *before* is the
+" usual behavior we expect from the insert mode cursor)
+nnoremap <C-v> "+p
+inoremap <C-v> <C-o>"+P
+"nnoremap <C-S-v> "+P " currently disabled since ghostty's ctrl+shift+v overrides this
+
+" ctrl+p and ctrl+shift+p in normal and visual modes to paste from `0` register
+" (where the last yank lives, unaffected by deletes) after/before cursor
 nnoremap <C-p> "0p
 vnoremap <C-p> "0p
+nnoremap <C-S-p> "0P
+vnoremap <C-S-p> "0P
 
-" `ctrl + s` to save in normal and insert modes
+" ctrl+s to save in normal and insert modes
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>a
 
-" `enter` and `shift + enter` to insert new line below/after in normal mode
-" (`shift + enter` again only works with kitty keyboard protocol)
+" enter and shift+enter to insert new line below/above in normal mode
 nnoremap <Enter> o<ESC>
 nnoremap <S-Enter> O<ESC>
 
-" break undo every time `space`, `enter`, `ctrl + w` etc. is pressed, allowing individual words to be undone
-" also `ctrl + backspace` and `ctrl + del` to delete whole word backward and forward in insert mode
-" (on some terminals (without kitty keyboard protocol?), `ctrl + h` is sent instead of
-" `ctrl + backspace`, and `ctrl + del` may not work/may register as the same thing as `del`?)
+" break undo every time space, enter, ctrl+w etc. is pressed, allowing individual words to be undone
+" also ctrl+backspace and ctrl+del to delete whole word backward and forward in insert mode
+" (on some terminals (without kitty keyboard protocol?), ctrl+h is sent instead of
+" ctrl+backspace, and ctrl+del may not work/may register as the same thing as del?)
 inoremap <Space> <Space><C-g>u
 inoremap <CR> <CR><C-g>u
 inoremap <C-w> <C-g>u<C-w>
