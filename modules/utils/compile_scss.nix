@@ -6,7 +6,6 @@ in
     homeManager = { config, lib, pkgs, ... }: {
       # declare these options in the home manager class module (aspect-level is weird)
       # set these options on any aspect that includes this :3
-      # TODO can this be something like options.my.compile-scss??
       options.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
