@@ -5,8 +5,6 @@
 # `den.aspects.<aspect name>.settings.<setting name>` becomes
 # `den.hosts.<system>.<hostname>.settings.<aspect name>.<setting name>`
 
-# TODO: if using `den.aspects` as the aspect tree root doesn't narrow down to user scope,
-# try manually passing tree root as an arg and using `meow` namespace for user
 { den, lib, ... }: {
   # reserve `settings` key so that den does not mistake a `settings` key in an aspect
   # for one of its special aspect keys

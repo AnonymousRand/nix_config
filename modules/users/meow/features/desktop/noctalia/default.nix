@@ -6,7 +6,8 @@
 
     homeManager = {
       programs.noctalia = {
-        # TODO can move this to dotfile now that dynamic parts have been taken out?
+        # (note: can't move to dotfile as `settings` also set in `den.aspects.utils.noctalia-theming`,
+        # and `settings` seems to completely set the entire config file)
         settings = {
           theme = {
             # switch between light and dark themes automatically

@@ -1,8 +1,6 @@
 { den, meow, inputs, ... }:
 {
   imports = [
-    # TODO can't do this in schema? ask about it/try to brute force? ok if it's a bit ugly i think
-    # oh try { config, ... }: { imports = [] } in top-level of schema? like aspect custom submodules
     # create a namespace for this user, which allows us to define "private" aspects
     # under `<username>.<aspect name>`
     # (the `false` means this namespace is only consumed internally, not exposed in flake outputs)

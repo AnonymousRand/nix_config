@@ -6,7 +6,7 @@
   };
 
   imports = [
-    # enables `flake-file.*` options, `write-flake`, etc.
+    # provides `flake-file.*` options, `write-flake`, etc.
     inputs.flake-file.flakeModules.default
   ];
 }

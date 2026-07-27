@@ -20,19 +20,5 @@
         };
       };
     };
-
-    # TODO: needed?
-    provides.to-users.homeManager = {
-      imports = [
-        inputs.nixowos.homeModules.default
-      ];
-
-      nixowos = {
-        enable = true;
-        overlays = {
-          hyfetch = false;
-        };
-      };
-    };
   };
 }
