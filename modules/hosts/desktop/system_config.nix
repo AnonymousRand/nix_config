@@ -24,12 +24,17 @@
         variant = "";
       };
 
-      # extend sudo password validity duration and remove incorrect password timer
       security.sudo = {
+        # only allow users in the `wheel` group to use `sudo` in the first place
+        execWheelOnly = true;
+        keepTerminfo = true; # is default but just in case
+
+        # extend sudo password validity duration
         extraConfig = ''
           Defaults timestamp_timeout=30
         '';
       };
+      # extend sudo password validity duration remove incorrect password timer
       security.pam.services.sudo.nodelay = true;
     
       # allow unfree packages
