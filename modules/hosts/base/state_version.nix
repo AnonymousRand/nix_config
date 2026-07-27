@@ -4,10 +4,8 @@
       system.stateVersion = host.stateVersion;
     };
 
-    provides.to-users = {
-      homeManager = { host, ... }: {
-        home.stateVersion = host.stateVersion;
-      };
+    homeManager = { host, ... }: {
+      home.stateVersion = host.stateVersion;
     };
   };
 }

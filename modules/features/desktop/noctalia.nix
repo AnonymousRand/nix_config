@@ -13,7 +13,7 @@
       ];
     };
 
-    provides.to-users.homeManager = {
+    homeManager = {
       imports = [
         inputs.noctalia.homeModules.default
       ];

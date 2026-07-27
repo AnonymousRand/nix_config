@@ -53,7 +53,7 @@
   };
 
   den.aspects.hosts.desktop = {
-    # aspects to be included on this host regardless of user (that only have `nixos` config)
+    # aspects to be included on this host regardless of user
     includes = [
       den.aspects.hosts.base
 
@@ -64,10 +64,7 @@
 
       # (note that greeter can manage different WMs/DEs per user)
       den.aspects.features.desktop.noctalia-greeter
-    ];
 
-    # aspects to be included on this host regardless of user (that have `homeManager` config)
-    provides.to-users.includes = [
       den.aspects.features.tools.nvtop     # `top` for GPUs
       den.aspects.features.tools.playerctl # control media players that use MPRIS
       den.aspects.features.tools.solaar    # logitech mouse config

@@ -4,7 +4,7 @@
       programs.bash.enable = true;
     };
 
-    provides.to-users.homeManager = {
+    homeManager = {
       programs.bash.enable = true;
     };
   };

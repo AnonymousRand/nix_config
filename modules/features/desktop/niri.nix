@@ -27,7 +27,7 @@
       ];
     };
 
-    provides.to-users.homeManager = { host, ... }: {
+    homeManager = { host, ... }: {
       imports = [
         inputs.niri.homeModules.default
       ];
