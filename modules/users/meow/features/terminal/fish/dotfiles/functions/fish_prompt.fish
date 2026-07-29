@@ -24,7 +24,7 @@ function fish_prompt
     # prompt suffix
     set -l prompt_suffix (set_color magenta --bold)"₊"\
                          (set_color yellow --bold)"˚"\
-                         (set_color green --bold)"₊"\
+                         (set_color brgreen --bold)"₊"\
                          (set_color brcyan --bold)"⊹ "(set_color --reset)
 
     # bracket colors

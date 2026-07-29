@@ -300,7 +300,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // the cat (t→0), so they fade out first.
     if (segLen > cell.x * 1.2 && liveTrailLen > cell.x * 0.5 && trailAlpha > 0.01) {
         const float travelTime = 0.18;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             float fi = float(i);
             float t = fract(0.15 + fi * 0.27 - iTime * 0.6);
             vec2 sp = mix(flyCenter, tailCenter, t);

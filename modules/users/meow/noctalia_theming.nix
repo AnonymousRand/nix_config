@@ -6,7 +6,7 @@
     ];
 
     homeManager = {
-      noctalia-theming =
+      my.noctalia-theming =
         let
           colors = import ./_colors.nix;
         in

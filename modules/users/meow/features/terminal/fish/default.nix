@@ -23,7 +23,7 @@
         };
 
         # noctalia theming
-        noctalia-theming = {
+        my.noctalia-theming = {
           customColors = import ./_colors.nix;
           templates.fish = {
             input_path = builtins.toString ./dotfiles/noctalia_theme.fish;

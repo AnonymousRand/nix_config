@@ -9,7 +9,7 @@
       xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
       # noctalia theming
-      noctalia-theming.templates = {
+      my.noctalia-theming.templates = {
         ghostty = {
           input_path = builtins.toString ./dotfiles/themes/noctalia_theme;
           output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme";
@@ -17,7 +17,7 @@
         };
 
         ghosttyCss = {
-          input_path = "${config.compile-scss.cssOutput}/terminal/ghostty/dotfiles/custom.css";
+          input_path = "${config.my.compile-scss.cssOutput}/terminal/ghostty/dotfiles/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };

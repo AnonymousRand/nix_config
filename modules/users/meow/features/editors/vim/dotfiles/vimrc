@@ -130,15 +130,18 @@ let g:camelcasemotion_key="<leader>"
 
 " ctrl+c in visual mode and ctrl+x in visual mode to copy/cut (respectively) to
 " *system* clipboard (using oscyank plugin for copy to work over ssh)
-"
 vnoremap <C-c> <Plug>OSCYankVisual
 vnoremap <C-x> <Plug>OSCYankVisualgv"_d
 
-" ctrl+v and ctrl+shift+v in normal mode to paste from system clipboard after/before
-" cursor, and ctrl+v in insert mode to do the same *before* the cursor (as *before* is the
-" "usual" behavior we expect from the insert mode cursor)
+" ctrl+v in normal and visual modes to paste from system clipboard after cursor, ctrl+v in insert
+" mode to do the same *before* the cursor (as *before* is the behavior we expect in insert mode),
+" and ctrl+shift+v in normal mode to paste from system clipboard before cursor (may not work if
+" ghostty captures ctrl+shift+v though)
+" (also note that there is no difference between ctrl+shift+v and ctrl+v in visual mode)
 nnoremap <C-v> "+p
+vnoremap <C-v> "+p
 inoremap <C-v> <C-o>"+P
+nnoremap <C-S-v> "+P
 
 " ctrl+p and ctrl+shift+p in normal and visual modes to paste from `0` register
 " (where the last yank lives, unaffected by deletes) after/before cursor

@@ -7,7 +7,7 @@
 
     # set values for `nix-ld`'s options
     nixos = { pkgs, ... }: {
-      nix-ld.libs = [
+      my.nix-ld.libs = [
         pkgs.uv
       ];
     };

@@ -1,4 +1,5 @@
 let
+  optsBase = "my";
   aspectName = "nix-ld";
 in
 {
@@ -6,7 +7,7 @@ in
     nixos = { config, lib, ... }: {
       # declare these options in the nixos class module (aspect-level is weird)
       # set these options on any aspect that includes this :3
-      options.${aspectName} = lib.mkOption {
+      options.${optsBase}.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
             libs = lib.mkOption {
@@ -21,7 +22,7 @@ in
         programs.nix-ld = {
           enable = true;
           # make these libs (e.g. installed through `pip`) work with non-standard nix store filepaths
-          libraries = config.${aspectName}.libs;
+          libraries = config.${optsBase}.${aspectName}.libs;
         };
       };
     };

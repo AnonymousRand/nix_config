@@ -23,7 +23,7 @@ function fish_user_key_bindings
     bind -M visual alt-comma  history-token-search-forward
 
     ############################################################################
-    # keybinds to remove for ghostty `unconsumed` mode
+    # keybinds to remove for ghostty `unconsumed` mode/that could cause confusion
 
     bind --erase --preset -M default ctrl-y
     bind --erase --preset -M insert  ctrl-y
