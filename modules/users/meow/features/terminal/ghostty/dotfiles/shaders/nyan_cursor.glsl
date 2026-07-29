@@ -212,8 +212,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float jumpStrength = min(jumpDist / maxJumpStrengthThresh, 1.0);
     float alphaMult = 1.1 + 0.1 * jumpStrength;
     float flyDuration = 0.07 + 0.33 * jumpStrength;
-    float catFadeDuration = 1.5 * flyDuration;   // fade time of cat after reaching destination
-    float trailFadeDuration = 3.0 * flyDuration; // fade time of trail after reaching destination
+    float catFadeDuration = 1.75 * flyDuration;   // fade time of cat after reaching destination
+    float trailFadeDuration = 3.25 * flyDuration; // fade time of trail after reaching destination
 
     // The cat now actually flies from the previous cursor position to the
     // current one (instead of appearing instantly at curCenter). catFadeDuration is

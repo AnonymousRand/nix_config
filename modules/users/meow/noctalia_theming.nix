@@ -46,21 +46,21 @@
                 normal = {
                   black   = colors.vars.black;
                   red     = colors.vars.pink_xxlight;
-                  green   = colors.vars.green_deep_dark;
-                  yellow  = colors.vars.orange_deep;
+                  green   = colors.vars.green_deep_xdark;
+                  yellow  = colors.vars.orange_xdeep;
                   blue    = colors.vars.blue_xdeep_light;
-                  magenta = colors.vars.pink_xxxlight;
-                  cyan    = colors.vars.blue;
+                  magenta = colors.vars.pink_xxlight;
+                  cyan    = colors.vars.blue_deep;
                   white   = colors.vars.gray_xxlight;
                 };
                 bright = {
                   black   = colors.vars.gray_xdark;
                   red     = colors.vars.red;
-                  green   = colors.vars.green_deep_xdark;
-                  yellow  = colors.vars.orange_xdeep;
-                  blue    = colors.vars.blue_xdeep;
-                  magenta = colors.vars.pink_xxlight;
-                  cyan    = colors.vars.blue_deep;
+                  green   = colors.vars.green_deep_dark;
+                  yellow  = colors.vars.orange_deep;
+                  blue    = colors.vars.blue_xdeep_xlight;
+                  magenta = colors.vars.pink_xxxlight;
+                  cyan    = colors.vars.blue;
                   white   = colors.vars.white;
                 };
               };
@@ -107,7 +107,7 @@
                   green   = colors.vars.green_light;
                   yellow  = colors.vars.orange_light;
                   blue    = colors.vars.blue_xdeep_light;
-                  magenta = colors.vars.pink_xxxxlight;
+                  magenta = colors.vars.pink_xxxlight;
                   cyan    = colors.vars.blue_light;
                   white   = colors.vars.white;
                 };

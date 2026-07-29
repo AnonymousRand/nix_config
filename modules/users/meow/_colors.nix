@@ -4,36 +4,37 @@ rec {
   # (avoid using these directly in templates as much as possible)
 
   vars = {
-    black            = "#000000";
-    gray_xxdark      = "#242424";
-    gray_xdark       = "#505050";
-    gray_dark        = "#707070";
-    gray             = "#808080";
-    gray_light       = "#909090";
-    gray_xlight      = "#a8a8a8";
-    gray_xxlight     = "#cccccc";
-    white            = "#ffffff";
+    black        = "#000000";
+    gray_xxdark  = "#242424";
+    gray_xdark   = "#505050";
+    gray_dark    = "#707070";
+    gray         = "#808080";
+    gray_light   = "#909090";
+    gray_xlight  = "#a8a8a8";
+    gray_xxlight = "#cccccc";
+    white        = "#ffffff";
 
-    blue             = "#00eaff";
-    blue_light       = "#66f2ff";
-    blue_deep        = "#00d0ff";
-    blue_xdeep       = "#00bbff";
-    blue_xdeep_light = "#33c9ff";
-    blue_xxdeep      = "#00a6ff";
+    blue              = "#00eaff";
+    blue_light        = "#66f2ff";
+    blue_deep         = "#00d0ff";
+    blue_xdeep        = "#00bbff";
+    blue_xdeep_light  = "#33c9ff";
+    blue_xdeep_xlight = "#59d3ff";
+    blue_xxdeep       = "#00a6ff";
 
     green            = "#8cff00";
     green_light      = "#a3ff33";
     green_xlight     = "#baff66";
     green_deep       = "#8cff00";
-    green_deep_dark  = "#77d900";
+    green_deep_dark  = "#78da00";
     green_deep_xdark = "#6fc900";
 
-    orange           = "#ffd500";
-    orange_light     = "#ffdb26";
-    orange_xlight    = "#ffdf40";
-    orange_deep      = "#ffbb00";
-    orange_xdeep     = "#ffaa00";
-    orange_xxdeep    = "#ff9500";
+    orange        = "#ffd500";
+    orange_light  = "#ffdb26";
+    orange_xlight = "#ffdf40";
+    orange_deep   = "#ffbb00";
+    orange_xdeep  = "#ffaa00";
+    orange_xxdeep = "#ff9500";
 
     pink             = "#ff0080";
     pink_light       = "#ff409f";
@@ -44,7 +45,7 @@ rec {
     pink_xxxxxlight  = "#ffdbed";
     pink_xxxxxxlight = "#ffe3f1";
 
-    red              = "#ff0000";
+    red = "#ff0000";
   };
 
   ##############################################################################

@@ -16,16 +16,16 @@ function fish_prompt
     end
 
     # kitten decorations :3
-    set -l kittens (set_color magenta)" ♡ ⊹˚₊ ₍^. .^₎Ⳋ" \
-                   (set_color magenta)" ♡₊˚⊹  ฅ₍^•⩊ •マ⟆" \
-                   (set_color magenta)" ₊˚⊹ ᓚ₍⑅^..^₎♡"
+    set -l kittens (set_color brmagenta)" ♡ ⊹˚₊ ₍^. .^₎Ⳋ" \
+                   (set_color brmagenta)" ♡₊˚⊹  ฅ₍^•⩊ •マ⟆" \
+                   (set_color brmagenta)" ₊˚⊹ ᓚ₍⑅^..^₎♡"
     set -l rand (random 1 (count $kittens))
 
     # prompt suffix
     set -l prompt_suffix (set_color magenta --bold)"₊"\
-                         (set_color yellow --bold)"˚"\
-                         (set_color brgreen --bold)"₊"\
-                         (set_color brcyan --bold)"⊹ "(set_color --reset)
+                         (set_color bryellow --bold)"˚"\
+                         (set_color green --bold)"₊"\
+                         (set_color cyan --bold)"⊹ "(set_color --reset)
 
     # bracket colors
     set -l color_start_bracket $fish_color_user

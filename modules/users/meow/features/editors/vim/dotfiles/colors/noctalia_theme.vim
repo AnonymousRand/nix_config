@@ -21,7 +21,7 @@ exe 'hi CurSearch'             'guifg={{colors.search_curr_fg_source.default.hex
                              \ 'guibg={{colors.search_curr_bg_source.default.hex}}'
 exe 'hi CursorLine'
                              \ 'guibg={{colors.variant_bg_source.default.hex}}'      'cterm=none'
-exe 'hi CursorLineNr'          'guifg={{colors.terminal_normal_yellow.default.hex}}' 'cterm=none'
+exe 'hi CursorLineNr'          'guifg={{colors.terminal_bright_yellow.default.hex}}' 'cterm=none'
 exe 'hi Define'                'guifg={{colors.keyword_source.default.hex}}'
 exe 'hi Error'                 'guifg={{colors.error_source.default.hex}}'
                              \ 'guibg=NONE'                                          'cterm=none'

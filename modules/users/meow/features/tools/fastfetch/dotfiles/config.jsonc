@@ -64,9 +64,9 @@
       "type": 3,
       "ndigits": 0,
       "color": {
-        "green": "green",
-        "yellow": "bright_yellow",
-        "red": "bright_red"
+        "green": "light_green",
+        "yellow": "light_yellow",
+        "red": "light_red"
       },
       "spaceBeforeUnit": "default",
       "width": 0
@@ -82,9 +82,9 @@
       "unit": "D",
       "ndigits": 0,
       "color": {
-        "green": "green",
-        "yellow": "bright_yellow",
-        "red": "bright_red"
+        "green": "light_green",
+        "yellow": "light_yellow",
+        "red": "light_red"
       },
       "spaceBeforeUnit": "default"
     }
@@ -141,20 +141,20 @@
     {
       "type": "custom",
       "format": "🌱 environment ♡₊˚⊹  ฅ₍^•⩊ •マ⟆",
-      "outputColor": "bold_yellow"
+      "outputColor": "bold_light_yellow"
     },
 
     {
       "type": "wm",
       "key": "{$1} wm       ",
-      "keyColor": "yellow",
+      "keyColor": "light_yellow",
       "detectPlugin": true
     },
 
     {
       "type": "command",
       "key": "{$1} desktop  ",
-      "keyColor": "yellow",
+      "keyColor": "light_yellow",
       // note: may need updating! currently only detects noctalia :3
       "text": "pgrep -x '.noctalia-wrapp' > /dev/null && echo $(noctalia --version) || echo 'unknown :3'"
     },
@@ -162,25 +162,25 @@
     {
       "type": "shell",
       "key": "{$1} shell    ",
-      "keyColor": "yellow"
+      "keyColor": "light_yellow"
     },
 
     {
       "type": "terminal",
       "key": "{$1} terminal ",
-      "keyColor": "yellow"
+      "keyColor": "light_yellow"
     },
 
     {
       "type": "editor",
       "key": "{$1}󱩽 editor   ",
-      "keyColor": "yellow"
+      "keyColor": "light_yellow"
     },
 
     {
       "type": "font",
       "key": "{$2} font     ",
-      "keyColor": "yellow"
+      "keyColor": "light_yellow"
     },
 
     "break",
@@ -191,13 +191,13 @@
     {
       "type": "custom",
       "format": "🔧 hardware ₊˚⊹ ᓚ₍⑅^..^₎♡",
-      "outputColor": "bold_green"
+      "outputColor": "bold_light_green"
     },
 
     {
       "type": "cpu",
       "key": "{$1} cpu      ",
-      "keyColor": "green",
+      "keyColor": "light_green",
       "temp": true,
       "format": "{name} ({cores-logical}) @ {freq-max} ({temperature})"
     },
@@ -205,7 +205,7 @@
     {
       "type": "gpu",
       "key": "{$1}󰾲 gpu {}    ",
-      "keyColor": "green",
+      "keyColor": "light_green",
       "driverSpecific": true,
       "detectionMethod": "pci",
       "hideType": "none",
@@ -215,7 +215,7 @@
     {
       "type": "memory",
       "key": "{$1} memory   ",
-      "keyColor": "green",
+      "keyColor": "light_green",
       "percent": {
         "green": 50,
         "yellow": 80
@@ -225,7 +225,7 @@
     {
       "type": "swap",
       "key": "{$1}󰓡 swap     ",
-      "keyColor": "green",
+      "keyColor": "light_green",
       "percent": {
         "green": 50,
         "yellow": 80
@@ -236,7 +236,7 @@
     {
       "type": "disk",
       "key": "{$2} disk     ",
-      "keyColor": "green",
+      "keyColor": "light_green",
       "showExternal": true,
       "showHidden": false,
       "showReadOnly": true,

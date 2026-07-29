@@ -5,11 +5,11 @@
   --accent-color:    var(--accent-bg);
   --accent-fg-color: var(--accent-fg);
   --accent-bg-color: var(--accent-color);
-  --accent-blue:     {{colors.terminal_normal_cyan.default.hex}};
-  --accent-green:    {{colors.terminal_normal_green.default.hex}};
-  --accent-orange:   {{colors.terminal_normal_yellow.default.hex}};
+  --accent-blue:     {{colors.terminal_bright_cyan.default.hex}};
+  --accent-green:    {{colors.terminal_bright_green.default.hex}};
+  --accent-orange:   {{colors.terminal_bright_yellow.default.hex}};
   --accent-pink:     {{colors.terminal_bright_magenta.default.hex}};
-  --accent-purple:   {{colors.terminal_normal_magenta.default.hex}};
+  --accent-purple:   var(--purple-2);
   --accent-red:      {{colors.terminal_bright_red.default.hex}};
   --accent-slate:    {{colors.terminal_bright_black.default.hex}};
   --accent-teal:     {{colors.terminal_normal_blue.default.hex}};
