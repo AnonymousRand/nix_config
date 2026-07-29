@@ -50,7 +50,7 @@
                   yellow  = colors.vars.orange_deep;
                   blue    = colors.vars.blue_xdeep_light;
                   magenta = colors.vars.pink_xxlight;
-                  cyan    = colors.vars.blue_deep;
+                  cyan    = colors.vars.blue;
                   white   = colors.vars.gray_xxlight;
                 };
                 bright = {

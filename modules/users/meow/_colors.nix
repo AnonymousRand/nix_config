@@ -16,7 +16,7 @@ rec {
 
     blue             = "#00eaff";
     blue_light       = "#66f2ff";
-    blue_deep        = "#00caff";
+    blue_deep        = "#00d0ff";
     blue_xdeep       = "#00bbff";
     blue_xdeep_light = "#33c9ff";
     blue_xxdeep      = "#00a6ff";
@@ -25,13 +25,13 @@ rec {
     green_light      = "#a3ff33";
     green_xlight     = "#baff66";
     green_deep       = "#8cff00";
-    green_deep_dark  = "#76d600";
+    green_deep_dark  = "#77d900";
     green_deep_xdark = "#6fc900";
 
     orange           = "#ffd500";
     orange_light     = "#ffdb26";
     orange_xlight    = "#ffdf40";
-    orange_deep      = "#ffbf00";
+    orange_deep      = "#ffbb00";
     orange_xdeep     = "#ffaa00";
     orange_xxdeep    = "#ff9500";
 
