@@ -11,9 +11,4 @@
     "x86_64-linux"
     "aarch64-linux"
   ];
-
-  imports = [
-    # allows using `perSystem.overlayAttrs` to add to `self.overlays.default`
-    inputs.flake-parts.flakeModules.easyOverlay
-  ];
 }

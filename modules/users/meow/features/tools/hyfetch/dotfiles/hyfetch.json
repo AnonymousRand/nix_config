@@ -10,7 +10,7 @@
     "auto_detect_light_dark": true,
     "lightness_per_theme": {
         "light": 0.87,
-        "dark": 0.6
+        "dark": 0.55
     },
     "color_align": {
         "mode": "horizontal"

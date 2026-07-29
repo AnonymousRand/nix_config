@@ -1,4 +1,4 @@
-{ den, self, ... }: {
+{ den, ... }: {
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
   den.aspects.hosts.base = {
     # aspects to be included in every host
@@ -15,11 +15,8 @@
     ];
 
     nixos = {
-      # load custom overlays (e.g. from `perSystem.overlayAttrs`)
-      nixpkgs.overlays = [ self.overlays.default ];
-
       home-manager = {
-        # allows home manager to see `nixpkgs overlays
+        # allows home manager to see `nixpkgs` overlays
         useGlobalPkgs = true;
         # installs user packages into `/etc/profile/per-user/<username>/` (i.e.
         # `users.users.<username>.packages`) instead of the default `~/.nix-profile`
