@@ -6,11 +6,6 @@ set editing-mode vi
 # do not bell on tab completion
 set bell-style none
 
-# if using tab to also cycle through autocomplete, the first tab input only shows list of
-# possible files (like default tab behavior) while the second tab input starts cycling through them
-set show-all-if-ambiguous on
-set menu-complete-display-prefix on
-
 $if mode=vi
     # change cursor shape depending on vim mode (note: requires readline 7.0/bash 4.4 or later)
     # (the `show-mode-in-prompt on` just enables you to set the mode strings, and we use a hack-ish
@@ -26,14 +21,6 @@ $if mode=vi
     ############################################################################
     # shared keybinds in all modes (requires manual duplication)
 
-    # tab cycles through autocomplete options and shift+tab does so backwards
-    set keymap vi-command
-    "TAB" : menu-complete
-    "\e[Z": menu-complete-backward
-    set keymap vi-insert
-    "TAB" : menu-complete
-    "\e[Z": menu-complete-backward
-
     # up and down cycles through history that matches what has already been typed on the line
     set keymap vi-command
     "\e[A": history-search-backward
@@ -42,13 +29,13 @@ $if mode=vi
     "\e[A": history-search-backward
     "\e[B": history-search-forward
 
-    # alt+, to search forward in previous arguments (alt+. should be set by default, but just in case :3)
+    # note: there doesn't seem to be a reliable way to make alt+, search forward in previous arguments
     set keymap vi-command
     "\e.": yank-last-arg
-    "\e,": yank-last-arg -1
+    "\e,": "\e-1\e."
     set keymap vi-insert
     "\e.": yank-last-arg
-    "\e,": yank-last-arg -1
+    "\e,": "\e-1\e."
 
     ############################################################################
     # normal mode keybinds

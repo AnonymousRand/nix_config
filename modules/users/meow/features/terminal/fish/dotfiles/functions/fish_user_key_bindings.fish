@@ -23,8 +23,8 @@ function fish_user_key_bindings
     # alt+, to search forward in previous arguments (alt+. should be set by default, but just in case :3)
     bind -M insert alt-. history-token-search-backward
     bind -M visual alt-. history-token-search-backward
-    bind -M insert alt-comma  history-token-search-forward
-    bind -M visual alt-comma  history-token-search-forward
+    bind -M insert alt-comma history-token-search-forward
+    bind -M visual alt-comma history-token-search-forward
 
     ############################################################################
     # keybinds to remove for ghostty `unconsumed` mode/to avoid confusion

@@ -51,6 +51,15 @@
 
             # disable ctrl+s and ctrl+q for XON/XOFF (disabling/enabling terminal input)
             stty -ixon
+
+            # tab cycles through autocomplete options and shift+tab does so backwards
+            # (note: setting these in readline doesn't seem to work; maybe gets overridden by bash?)
+            bind 'TAB:menu-complete'
+            bind '"\e[Z": menu-complete-backward'
+            # the first tab input only shows list of possible files (like default tab behavior)
+            # while the second tab input starts cycling through them
+            bind 'set show-all-if-ambiguous on'
+            bind 'set menu-complete-display-prefix on'
         '';
       };
     };
