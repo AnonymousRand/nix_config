@@ -47,7 +47,7 @@
                   black   = colors.vars.black;
                   red     = colors.vars.pink_xxlight;
                   green   = colors.vars.green_deep_dark;
-                  yellow  = colors.vars.orange_xdeep;
+                  yellow  = colors.vars.orange_deep;
                   blue    = colors.vars.blue_xdeep_light;
                   magenta = colors.vars.pink_xxlight;
                   cyan    = colors.vars.blue_deep;

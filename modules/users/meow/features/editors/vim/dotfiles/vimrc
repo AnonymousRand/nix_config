@@ -136,10 +136,9 @@ vnoremap <C-x> <Plug>OSCYankVisualgv"_d
 
 " ctrl+v and ctrl+shift+v in normal mode to paste from system clipboard after/before
 " cursor, and ctrl+v in insert mode to do the same *before* the cursor (as *before* is the
-" usual behavior we expect from the insert mode cursor)
+" "usual" behavior we expect from the insert mode cursor)
 nnoremap <C-v> "+p
 inoremap <C-v> <C-o>"+P
-"nnoremap <C-S-v> "+P " currently disabled since ghostty's ctrl+shift+v overrides this
 
 " ctrl+p and ctrl+shift+p in normal and visual modes to paste from `0` register
 " (where the last yank lives, unaffected by deletes) after/before cursor

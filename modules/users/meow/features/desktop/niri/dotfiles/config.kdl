@@ -138,7 +138,8 @@ window-rule {
     default-column-width {}
 }
 
-// open the Firefox picture-in-picture player as floating by default
+// open these windows as floating by default:
+// - firefox picture-in-picture video player
 window-rule {
     // this `app-id` regex should work for both:
     // - host Firefox (`app-id` is "firefox")

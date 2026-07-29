@@ -4,7 +4,7 @@ function fish_prompt
     set -g VIRTUAL_ENV_DISABLE_PROMPT 1
     set -l prompt_venv
     if set -q VIRTUAL_ENV_PROMPT
-        set prompt_venv (set_color $__fish_git_prompt_color)"($VIRTUAL_ENV_PROMPT) "(set_color --reset)
+        set prompt_venv (set_color $fish_color_user)"($VIRTUAL_ENV_PROMPT) "(set_color --reset)
     end
 
     # color the prompt differently when we're root
@@ -15,15 +15,36 @@ function fish_prompt
         end
     end
 
-    # use prompt suffix inspired by "scales"
-    set -l prompt_suffix (set_color $prompt_scales_pink)"❯"\
-                         (set_color $prompt_scales_orange)"❯"\
-                         (set_color $prompt_scales_green)"❯"\
-                         (set_color $prompt_scales_blue)"❯"(set_color --reset)
+    # kitten decorations :3
+    set -l kittens (set_color brmagenta)" ♡ ⊹˚₊ ₍^. .^₎Ⳋ" \
+                   (set_color brmagenta)" ♡₊˚⊹  ฅ₍^•⩊ •マ⟆" \
+                   (set_color brmagenta)" ₊˚⊹ ᓚ₍⑅^..^₎♡"
+    set -l rand (random 1 (count $kittens))
 
-    echo -n -s $prompt_venv \
+    # prompt suffix
+    set -l prompt_suffix (set_color brmagenta --bold)"₊"\
+                         (set_color bryellow --bold)"˚"\
+                         (set_color brgreen --bold)"₊"\
+                         (set_color brcyan --bold)"⊹ "(set_color --reset)
+
+    #set -l prompt_suffix (set_color $prompt_scales_pink)"❯"\
+    #                     (set_color $prompt_scales_orange)"❯"\
+    #                     (set_color $prompt_scales_green)"❯"\
+    #                     (set_color $prompt_scales_blue)"❯ "(set_color --reset)
+
+    # bracket colors
+    set -l color_start_bracket $fish_color_user
+    set -l color_end_bracket $color_cwd
+    if test -n "$(fish_vcs_prompt)" # this doesn't work without quotes and hence `$` too
+        set color_end_bracket $__fish_git_prompt_color
+    end
+
+    echo -n -s (set_color $color_start_bracket) "[" \
+               $prompt_venv \
                (prompt_login) " " \
                (set_color $color_cwd) (prompt_pwd) \
-               (set_color --reset) (fish_vcs_prompt) \
-               (set_color --reset) " " $prompt_suffix " "
+               (fish_vcs_prompt) \
+               (set_color $color_end_bracket) "]" \
+               $kittens[$rand] \
+               \n $prompt_suffix " "
 end

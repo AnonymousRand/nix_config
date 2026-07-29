@@ -64,7 +64,7 @@
       "type": 3,
       "ndigits": 0,
       "color": {
-        "green": "bright_green",
+        "green": "green",
         "yellow": "bright_yellow",
         "red": "bright_red"
       },
@@ -82,7 +82,7 @@
       "unit": "D",
       "ndigits": 0,
       "color": {
-        "green": "bright_green",
+        "green": "green",
         "yellow": "bright_yellow",
         "red": "bright_red"
       },
@@ -95,41 +95,41 @@
 
     {
       "type": "custom",
-      "format": "🐱 system   ♡ ⊹˚₊ ₍^. .^₎Ⳋ",
-      "outputColor": "bright_magenta"
+      "format": "🐱 system ♡ ⊹˚₊ ₍^. .^₎Ⳋ",
+      "outputColor": "bold_light_magenta"
     },
 
     {
       "type": "title",
       "key": "{$1} login    ",
-      "keyColor": "bright_magenta",
+      "keyColor": "light_magenta",
       "format": "{user-name}@{host-name}"
     },
 
     {
       "type": "os",
       "key": "{$1} os       ",
-      "keyColor": "bright_magenta",
+      "keyColor": "light_magenta",
       "format": "{name} {version}"
     },
 
     {
       "type": "kernel",
       "key": "{$1} kernel   ",
-      "keyColor": "bright_magenta"
+      "keyColor": "light_magenta"
     },
 
     {
       "type": "command",
       "key": "{$1} nixos gen",
-      "keyColor": "bright_magenta",
+      "keyColor": "light_magenta",
       "text": "readlink /nix/var/nix/profiles/system | awk -F'-' '{print $2}'"
     },
 
     {
       "type": "packages",
       "key": "{$2}󰏖 packages ",
-      "keyColor": "bright_magenta",
+      "keyColor": "light_magenta",
       "combined": false
     },
 
@@ -140,47 +140,47 @@
 
     {
       "type": "custom",
-      "format": "🌱 environment  ♡₊˚⊹  ฅ₍^•⩊ •マ⟆",
-      "outputColor": "bright_yellow"
+      "format": "🌱 environment ♡₊˚⊹  ฅ₍^•⩊ •マ⟆",
+      "outputColor": "bold_yellow"
     },
 
     {
       "type": "wm",
       "key": "{$1} wm       ",
-      "keyColor": "bright_yellow",
+      "keyColor": "yellow",
       "detectPlugin": true
     },
 
     {
       "type": "command",
       "key": "{$1} desktop  ",
-      "keyColor": "bright_yellow",
-      // note: may need updating!
+      "keyColor": "yellow",
+      // note: may need updating! currently only detects noctalia :3
       "text": "pgrep -x '.noctalia-wrapp' > /dev/null && echo $(noctalia --version) || echo 'unknown :3'"
     },
 
     {
       "type": "shell",
       "key": "{$1} shell    ",
-      "keyColor": "bright_yellow"
+      "keyColor": "yellow"
     },
 
     {
       "type": "terminal",
       "key": "{$1} terminal ",
-      "keyColor": "bright_yellow"
+      "keyColor": "yellow"
     },
 
     {
       "type": "editor",
       "key": "{$1}󱩽 editor   ",
-      "keyColor": "bright_yellow"
+      "keyColor": "yellow"
     },
 
     {
       "type": "font",
       "key": "{$2} font     ",
-      "keyColor": "bright_yellow"
+      "keyColor": "yellow"
     },
 
     "break",
@@ -190,14 +190,14 @@
 
     {
       "type": "custom",
-      "format": "🔧 hardware   ₊˚⊹ ᓚ₍⑅^..^₎♡",
-      "outputColor": "bright_green"
+      "format": "🔧 hardware ₊˚⊹ ᓚ₍⑅^..^₎♡",
+      "outputColor": "bold_green"
     },
 
     {
       "type": "cpu",
       "key": "{$1} cpu      ",
-      "keyColor": "bright_green",
+      "keyColor": "green",
       "temp": true,
       "format": "{name} ({cores-logical}) @ {freq-max} ({temperature})"
     },
@@ -205,7 +205,7 @@
     {
       "type": "gpu",
       "key": "{$1}󰾲 gpu {}    ",
-      "keyColor": "bright_green",
+      "keyColor": "green",
       "driverSpecific": true,
       "detectionMethod": "pci",
       "hideType": "none",
@@ -215,7 +215,7 @@
     {
       "type": "memory",
       "key": "{$1} memory   ",
-      "keyColor": "bright_green",
+      "keyColor": "green",
       "percent": {
         "green": 50,
         "yellow": 80
@@ -225,7 +225,7 @@
     {
       "type": "swap",
       "key": "{$1}󰓡 swap     ",
-      "keyColor": "bright_green",
+      "keyColor": "green",
       "percent": {
         "green": 50,
         "yellow": 80
@@ -236,7 +236,7 @@
     {
       "type": "disk",
       "key": "{$2} disk     ",
-      "keyColor": "bright_green",
+      "keyColor": "green",
       "showExternal": true,
       "showHidden": false,
       "showReadOnly": true,

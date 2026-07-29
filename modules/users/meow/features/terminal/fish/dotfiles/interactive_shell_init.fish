@@ -43,6 +43,7 @@ end
 # misc
 ################################################################################
 
-# generally match unicode specification for grapheme widths that many terminals follow
-set -g fish_ambiguous_width 2
+# i think unicode specification is generally 2 cells for ambiguous characters, but our
+# custom prompt suffix is glitchy when switching between insert/normal modes in that case
+set -g fish_ambiguous_width 1
 set -g fish_emoji_width 2

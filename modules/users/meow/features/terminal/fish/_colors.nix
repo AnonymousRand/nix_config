@@ -11,7 +11,7 @@
   };
 
   fish_scales_orange = {
-    color_light = "#ffc400";
+    color_light = "#ffbf00";
     color_dark  = "#ffd500";
   };
 

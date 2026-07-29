@@ -5,7 +5,7 @@ set -g fish_color_autosuggestion                         "{{colors.lighter_fg_so
 set -g fish_color_command                                $fish_color_normal
 set -g fish_color_comment                                "{{colors.comment_source.default.hex}}"
 set -g fish_color_cwd                                    brgreen
-set -g fish_color_cwd_root                               magenta
+set -g fish_color_cwd_root                               brgreen
 set -g fish_color_end                                    yellow
 set -g fish_color_error                                  "{{colors.error_source.default.hex}}"
 set -g fish_color_escape                                 yellow
