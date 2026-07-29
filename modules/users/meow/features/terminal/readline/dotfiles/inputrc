@@ -1,0 +1,75 @@
+# enable vim keybinds
+set editing-mode vi
+
+# do not bell on tab completion
+set bell-style none
+
+# if using tab to also cycle through autocomplete, the first tab input only shows list of
+# possible files (like default tab behavior) while the second tab input starts cycling through them
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+
+$if mode=vi
+    set show-mode-in-prompt off
+
+    # change cursor shape depending on vim mode (note: requires readline 7.0/bash 4.4 or later)
+    $if term=linux
+    $else
+        # steady block in normal mode and blinking line in insert mode (should be like my fish/vim)
+        set vi-cmd-mode-string "\1\e[2 q\2"
+        set vi-ins-mode-string "\1\e[5 q\2"
+    $endif
+
+    ############################################################################
+    # shared keybinds in all modes (requires manual duplication)
+
+    # tab cycles through autocomplete options and shift+tab does so backwards
+    set keymap vi-command
+    "TAB" : menu-complete
+    "\e[Z": menu-complete-backward
+    set keymap vi-insert
+    "TAB" : menu-complete
+    "\e[Z": menu-complete-backward
+
+    # up and down cycles through history that matches what has already been typed on the line
+    set keymap vi-command
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+    set keymap vi-insert
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+
+    # alt+, to search forward in previous arguments (alt+. should be set by default, but just in case :3)
+    set keymap vi-command
+    "\e.": yank-last-arg
+    "\e,": yank-last-arg -1
+    set keymap vi-insert
+    "\e.": yank-last-arg
+    "\e,": yank-last-arg -1
+
+    ############################################################################
+    # normal mode keybinds
+
+    set keymap vi-command
+
+    # j and k also cycle through history like up and down
+    "k": history-search-backward
+    "j": history-search-forward
+
+    ############################################################################
+    # normal mode keybinds
+
+    set keymap vi-insert
+
+    # ctrl+backspace and alt+backspace in insert mode to delete word/argument (respectively)
+    "\C-h": backward-kill-word
+    # this is `alt+delete` which is what `alt+backspace` is usually sent as
+    "\e\x7f": shell-backward-kill-word
+    # this is `alt+ctrl+h` which is an alternative for older terminals
+    "\e\x08": shell-backward-kill-word
+    # TODO: ctrl del and alt del?
+
+    # enable ctrl+r and ctrl+s history pager in insert mode still
+    "\C-r": reverse-search-history
+    "\C-s": forward-search-history
+$endif

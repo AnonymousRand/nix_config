@@ -1,7 +1,7 @@
 # apparently it's good practice to put functions in `./functions/`, so. do that!!
 
 ################################################################################
-# vim mode
+# vim keybinds
 ################################################################################
 
 set -g fish_key_bindings       fish_vi_key_bindings

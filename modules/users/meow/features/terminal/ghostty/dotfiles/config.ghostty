@@ -82,11 +82,11 @@ keybind = performable:escape=end_search
 keybind = ctrl+shift+delete=clear_screen
 keybind = ctrl+shift+q=close_surface
 
-# the config keybinds should be default, just codifying them here
+# (the two config keybinds should be default, just codifying them here)
 keybind = ctrl+,=open_config
 keybind = ctrl+shift+,=reload_config
 keybind = ctrl+shift+i=show_gtk_inspector
-keybind = ctrl+shift+p=toggle_command_palette
+keybind = ctrl+shift+space=toggle_command_palette
 
 # scrolling
 keybind = unconsumed:ctrl+e=scroll_page_lines:1

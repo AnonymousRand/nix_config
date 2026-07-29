@@ -154,18 +154,25 @@ vnoremap <C-S-p> "0P
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>a
 
-" enter and shift+enter to insert new line below/above in normal mode
+" enter and shift+enter in normal mode to insert new line below/above
 nnoremap <Enter> o<ESC>
 nnoremap <S-Enter> O<ESC>
 
 " break undo every time space, enter, ctrl+w etc. is pressed, allowing individual words to be undone
-" also ctrl+backspace and ctrl+del to delete whole word backward and forward in insert mode
+" also ctrl+backspace and alt+backspace in insert mode to delete word as if `db`/`dB` backward,
+" and ctrl+del and alt+del in insert mode to delete word as if `dw`/`dW` forward
 " (on some terminals (without kitty keyboard protocol?), ctrl+h is sent instead of
-" ctrl+backspace, and ctrl+del may not work/may register as the same thing as del?)
+" ctrl+backspace, and ctrl+del may not work/may register as the same thing as del?
+" also alt modifer not guaranteed to work, and alt+backspace might register as alt+del.
+" it would probably best just to avoid anything involving del and alt on those systems.)
 inoremap <Space> <Space><C-g>u
 inoremap <CR> <CR><C-g>u
 inoremap <C-w> <C-g>u<C-w>
+nnoremap <p> <C-g>up
+
 inoremap <C-BS> <C-g>u<C-w>
 inoremap <C-h> <C-g>u<C-w>
+inoremap <A-BS> <C-g>u<C-o>dB
+
 inoremap <C-Del> <C-g>u<C-o>dw
-nnoremap <p> <C-g>up
+inoremap <A-Del> <C-g>u<C-o>dW

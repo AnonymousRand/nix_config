@@ -8,22 +8,27 @@ function fish_user_key_bindings
     bind --erase --preset -M visual  ctrl-v
     bind -M visual ctrl-shift-c fish_clipboard_copy
 
-    # enable ctrl+r and ctrl+s history pager in vim insert mode still
-    bind -M insert ctrl-r history-pager
-    bind -M insert ctrl-s pager-toggle-search
-
-    # enable ctrl+backspace to delete word and alt+backspace to delete argument in vim insert mode
+    # ctrl+backspace and alt+backspace in insert mode to delete word/argument backward (respectively),
+    # and ctrl+shift+backspace and ctrl+alt+backspace in insert mode to delete word
     bind -M insert ctrl-backspace "if fish_in_macos_terminal; commandline -f backward-kill-token; else commandline -f backward-kill-word; end"
     bind -M insert alt-backspace  "if fish_in_macos_terminal; commandline -f backward-kill-word; else commandline -f backward-kill-token; end"
 
-    # enable alt+, to search forward in previous arguments (alt+. should be default, but just in case :3
+    # ctrl+delete and alt+delete in insert mode to delete word/argument forward
+    bind -M insert ctrl-delete "if fish_in_macos_terminal; commandline -f forward-kill-token; else commandline -f forward-kill-word; end"
+    bind -M insert alt-delete  "if fish_in_macos_terminal; commandline -f forward-kill-word; else commandline -f forward-kill-token; end"
+
+    # enable ctrl+r and ctrl+s history pager in insert mode still
+    bind -M insert ctrl-r history-pager
+    bind -M insert ctrl-s pager-toggle-search
+
+    # alt+, to search forward in previous arguments (alt+. should be set by default, but just in case :3)
     bind -M insert alt-. history-token-search-backward
     bind -M visual alt-. history-token-search-backward
     bind -M insert alt-comma  history-token-search-forward
     bind -M visual alt-comma  history-token-search-forward
 
     ############################################################################
-    # keybinds to remove for ghostty `unconsumed` mode/that could cause confusion
+    # keybinds to remove for ghostty `unconsumed` mode/to avoid confusion
 
     bind --erase --preset -M default ctrl-y
     bind --erase --preset -M insert  ctrl-y
