@@ -32,7 +32,7 @@ rec {
     orange_light     = "#ffdb26";
     orange_xlight    = "#ffdf40";
     orange_deep      = "#ffbf00";
-    orange_xdeep     = "#ffa600";
+    orange_xdeep     = "#ffaa00";
     orange_xxdeep    = "#ff9500";
 
     pink             = "#ff0080";

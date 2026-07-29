@@ -27,11 +27,6 @@ function fish_prompt
                          (set_color brgreen --bold)"₊"\
                          (set_color brcyan --bold)"⊹ "(set_color --reset)
 
-    #set -l prompt_suffix (set_color $prompt_scales_pink)"❯"\
-    #                     (set_color $prompt_scales_orange)"❯"\
-    #                     (set_color $prompt_scales_green)"❯"\
-    #                     (set_color $prompt_scales_blue)"❯ "(set_color --reset)
-
     # bracket colors
     set -l color_start_bracket $fish_color_user
     set -l color_end_bracket $color_cwd
