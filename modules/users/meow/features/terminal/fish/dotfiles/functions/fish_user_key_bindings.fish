@@ -8,8 +8,7 @@ function fish_user_key_bindings
     bind --erase --preset -M visual  ctrl-v
     bind -M visual ctrl-shift-c fish_clipboard_copy
 
-    # ctrl+backspace and alt+backspace in insert mode to delete word/argument backward (respectively),
-    # and ctrl+shift+backspace and ctrl+alt+backspace in insert mode to delete word
+    # ctrl+backspace and alt+backspace in insert mode to delete word/argument backward (respectively)
     bind -M insert ctrl-backspace "if fish_in_macos_terminal; commandline -f backward-kill-token; else commandline -f backward-kill-word; end"
     bind -M insert alt-backspace  "if fish_in_macos_terminal; commandline -f backward-kill-word; else commandline -f backward-kill-token; end"
 
