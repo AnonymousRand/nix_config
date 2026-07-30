@@ -12,7 +12,6 @@
   };
 
   # automatically forward/aggregate all user-provided quirk data to hosts
-  # TODO: test using hatch if it still works without this
   den.policies.aggregate-user-nix-ld = { host, user, ... }:
     let inherit (den.lib.policy) pipe; in
     [ (pipe.from "nix-ld-libs" [ pipe.expose ]) ];
