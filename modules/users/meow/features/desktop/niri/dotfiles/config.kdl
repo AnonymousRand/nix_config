@@ -208,8 +208,11 @@ binds {
     Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "--autocopy"; }
 
     Mod+Print       { screenshot-screen; }
-    Mod+Shift+Print { screenshot; }
-    Mod+Ctrl+Print  { screenshot-window; }
+    // note: ctrl+c within this interactive screenshot UI copies to clipboard without saving to disk
+    // hide mouse pointer by default in interactive screenshot UI
+    Mod+Shift+Print { screenshot show-pointer=false; }
+    // show mouse pointer in window screenshot only if pointer is on top of window
+    Mod+Ctrl+Print  { screenshot-window show-pointer=true; }
 
     //--------------------------------------------------------------------------
     // layout

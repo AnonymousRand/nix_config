@@ -1,10 +1,10 @@
-{
+{ den, ... }: {
   meow.features.fonts.maple-mono = {
-    homeManager = { pkgs, ... }: {
-      home.packages = [
-        pkgs.maple-mono.NF
-      ];
+    includes = [
+      den.aspects.features.fonts.maple-mono
+    ];
 
+    homeManager = { pkgs, ... }: {
       fonts.fontconfig = {
         configFile.mapleMono = {
           enable = true;
