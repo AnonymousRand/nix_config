@@ -15,8 +15,8 @@ gtk-titlebar-style      = tabs
 # font
 font-family            = "Maple Mono NF"
 font-size              = 12
-# remove programming ligatures
-font-feature           = -calt
+# remove programming ligatures, and other font features (ghostty's defaults override fontconfig)
+font-feature           = -calt, cv02, cv61
 # as fish uses a variant of the legacy `wcswidth`
 grapheme-width-method  = legacy
 
