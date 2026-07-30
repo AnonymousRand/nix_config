@@ -89,7 +89,7 @@ in
           };
         in
         {
-          ${optsBase}.${aspectName}.cssOutput = pkgs.callPackage compileScss { };
+          ${optsBase}.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
         };
     };
   };
