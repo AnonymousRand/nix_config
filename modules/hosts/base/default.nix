@@ -10,8 +10,8 @@
 
       den.aspects.features.editors.vim
 
+      den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
-      den.aspects.features.tools.utils
     ];
   };
 }

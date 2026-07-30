@@ -20,7 +20,7 @@ in
       ##########################################################################
       # aspects unchanged from the base config
 
-      den.aspects.features.tools.wayland-utils
+      den.aspects.features.tools.desktop-utils.wayland
 
       ##########################################################################
       # aspects extending the base config with our own "private" config (using our custom namespace)

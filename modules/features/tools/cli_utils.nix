@@ -1,5 +1,5 @@
 {
-  den.aspects.features.tools.utils = {
+  den.aspects.features.tools.cli-utils = {
     nixos = { pkgs, ... }: {
       environment.systemPackages = [
         pkgs.curl
