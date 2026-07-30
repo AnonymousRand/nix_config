@@ -9,10 +9,5 @@
       # users on that host (which include this battery), without needing `provides.to-users`
       den.batteries.host-aspects
     ];
-
-    homeManager = {
-      # enables standalone `home-manager` command
-      programs.home-manager.enable = true;
-    };
   };
 }

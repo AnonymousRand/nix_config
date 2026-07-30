@@ -1,0 +1,21 @@
+{ den, ... }: {
+  den.quirks.nix-ld-libs = {};
+
+  den.aspects.utils.quirks.nix-ld = {
+    nixos = { nix-ld-libs, config, lib, ... }: {
+      programs.nix-ld = {
+        enable = true;
+        # make these libs (e.g. installed through `pip`) work with non-standard nix store filepaths
+        libraries = nix-ld-libs;
+      };
+    };
+  };
+
+  # automatically forward/aggregate all user-provided quirk data to hosts
+  # TODO: test using hatch if it still works without this
+  den.policies.aggregate-user-nix-ld = { host, user, ... }:
+    let inherit (den.lib.policy) pipe; in
+    [ (pipe.from "nix-ld-libs" [ pipe.expose ]) ];
+
+  den.schema.user.includes = [ den.policies.aggregate-user-nix-ld ];
+}

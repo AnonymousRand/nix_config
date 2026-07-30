@@ -13,16 +13,5 @@
       den.aspects.features.tools.git
       den.aspects.features.tools.utils
     ];
-
-    nixos = {
-      home-manager = {
-        # allows home manager to see `nixpkgs` overlays
-        useGlobalPkgs = true;
-        # installs user packages into `/etc/profile/per-user/<username>/` (i.e.
-        # `users.users.<username>.packages`) instead of the default `~/.nix-profile`
-        # which can be convenient for certain system-level things
-        useUserPackages = true;
-      };
-    };
   };
 }

@@ -3,7 +3,7 @@
     # TODO: remove when merged + nixpkgs updated
     # my own fork with NixOwOS support :3 and lightness per light/dark mode settings
     # (wrapped in a function so den doesn't think the inline overlay is a parametric something idk)
-    nixos.nixpkgs.overlays = [
+    overlays = _: [
       (final: prev: {
         hyfetch = prev.hyfetch.overrideAttrs (previousAttrs: {
           src = prev.fetchFromGitHub {

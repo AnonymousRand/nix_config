@@ -1,12 +1,6 @@
-{ den, ... }: {
-  # declare custom options/set default options for all host entities, as metadata used for aspects
-  den.schema.host = { host, lib, ... }: {
+{
+  den.schema.host = { lib, ... }: {
     options = {
-      # required `stateVersion` option in each host entity
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-      };
-
       # optional `displayOutputs` option in each host entity for WMs/DEs
       displayOutputs = lib.mkOption {
         type = lib.types.listOf (lib.types.submodule {
@@ -28,14 +22,9 @@
             };
           };
         });
+
         default = [];
       };
-    };
-
-    config = {
-      # change default aspect name associated with host entities to fit our naming scheme
-      # (note that this requires the target aspect to exist *first*)
-      aspect = den.aspects.hosts.${host.name};
     };
   };
 }
