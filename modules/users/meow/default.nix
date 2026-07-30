@@ -30,6 +30,9 @@ in
       den.ful.${username}.features.desktop.niri
       den.ful.${username}.features.desktop.noctalia
 
+      den.ful.${username}.features.fonts.fontconfig
+      den.ful.${username}.features.fonts.fonts
+
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish
       den.ful.${username}.features.terminal.ghostty
