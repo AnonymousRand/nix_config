@@ -166,6 +166,7 @@ keybind = ctrl+shift+page_down=unbind
 keybind = ctrl+shift+page_up=unbind
 
 keybind = ctrl+shift+o=unbind
+keybind = ctrl+shift+p=unbind
 
 keybind = alt+1=unbind
 keybind = alt+2=unbind
