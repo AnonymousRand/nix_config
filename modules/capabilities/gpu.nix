@@ -8,7 +8,7 @@
             default = false;
           };
 
-          vendor = {
+          vendor = lib.mkOption {
             type = lib.types.enum [ "amd" "nvidia" ];
           };
         };

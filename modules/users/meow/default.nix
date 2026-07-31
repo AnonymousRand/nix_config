@@ -11,6 +11,10 @@ in
   ];
 
   den.aspects.users.${username} = {
+    provides.to-host = {
+      capabilities.graphics.displayProtocol = "wayland";
+    };
+
     # aspects to be included for this user regardless of host
     includes = [
       den.aspects.users.base
@@ -21,7 +25,7 @@ in
       # `den.ful` namespace names. grrr 3:<)
       den.ful.${username}.features.desktop.niri
       den.ful.${username}.features.desktop.noctalia
-      den.aspects.features.tools.desktop-utils.wayland
+      #den.aspects.features.tools.desktop-utils.wayland
       #den.aspects.features.tools.wayland-utils
 
       den.ful.${username}.features.fonts.fontconfig
