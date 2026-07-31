@@ -6,20 +6,21 @@
     };
   };
 
-  den.aspects.features.desktop.noctalia-greeter = {
-    nixos = {
-      imports = [
-        inputs.noctalia-greeter.nixosModules.default
-      ];
+  den.aspects.features.desktop.noctalia-greeter = { host, lib, ... }:
+    lib.mkIf host.capabilities.graphics.supported {
+      nixos = {
+        imports = [
+          inputs.noctalia-greeter.nixosModules.default
+        ];
 
-      programs.noctalia-greeter = {
-        enable = true;
-        settings = {
-          keyboard = {
-            layout = "us";
+        programs.noctalia-greeter = {
+          enable = true;
+          settings = {
+            keyboard = {
+              layout = "us";
+            };
           };
         };
       };
     };
-  };
 }

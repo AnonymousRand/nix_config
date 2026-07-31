@@ -11,46 +11,47 @@
     };
   };
 
-  den.aspects.features.desktop.niri = {
-    nixos = { pkgs, ... }: {
-      imports = [
-        inputs.niri.nixosModules.default
-      ];
+  den.aspects.features.desktop.niri = { host, lib, ... }:
+    lib.mkIf host.capabilities.graphics.supported {
+      nixos = { pkgs, ... }: {
+        imports = [
+          inputs.niri.nixosModules.default
+        ];
 
-      programs.niri = {
-        enable = true;
+        programs.niri = {
+          enable = true;
+        };
+
+        environment.systemPackages = [
+          # niri's main way of doing xwayland
+          pkgs.xwayland-satellite
+        ];
       };
 
-      environment.systemPackages = [
-        # niri's main way of doing xwayland
-        pkgs.xwayland-satellite
-      ];
-    };
+      homeManager = { host, ... }: {
+        imports = [
+          inputs.niri.homeModules.default
+        ];
 
-    homeManager = { host, ... }: {
-      imports = [
-        inputs.niri.homeModules.default
-      ];
-
-      wayland.windowManager.niri = {
-        enable = true;
-        settings = {
-          # dynamically generate display output settings based on `host.displayOutputs` custom option
-          output = builtins.map (entry:
-            {
-              _args = [ entry.name ];
-              mode = "${builtins.toString entry.resolution.width}" +
-                     "x${builtins.toString entry.resolution.height}" +
-                     "@${builtins.toString entry.refreshRate}";
-              scale = entry.scale;
-              position._props = {
-                x = entry.position.x;
-                y = entry.position.y;
-              };
-            }
-          ) host.displayOutputs;
+        wayland.windowManager.niri = {
+          enable = true;
+          settings = {
+            # dynamically generate display output settings based on `host.displayOutputs` custom option
+            output = builtins.map (entry:
+              {
+                _args = [ entry.name ];
+                mode = "${builtins.toString entry.resolution.width}" +
+                       "x${builtins.toString entry.resolution.height}" +
+                       "@${builtins.toString entry.refreshRate}";
+                scale = entry.scale;
+                position._props = {
+                  x = entry.position.x;
+                  y = entry.position.y;
+                };
+              }
+            ) host.displayOutputs;
+          };
         };
       };
     };
-  };
 }

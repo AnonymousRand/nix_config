@@ -1,4 +1,13 @@
 { den, ... }: {
+  den.schema.host = { lib, ... }: {
+    options = {
+      # required `stateVersion` option in each host entity
+      stateVersion = lib.mkOption {
+        type = lib.types.str;
+      };
+    };
+  }
+
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
   den.aspects.hosts.base = {
     # aspects to be included in every host
@@ -10,7 +19,9 @@
 
       den.aspects.features.editors.vim
 
+      den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
+      den.aspects.features.tools.desktop-utils
       den.aspects.features.tools.git
     ];
   };

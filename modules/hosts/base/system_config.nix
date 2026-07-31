@@ -9,11 +9,8 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      # enable network manager
-      networking.networkmanager.enable = true;
-
       # enable nix flakes
-      nix.settings.experimental-features = ["nix-command" "flakes"];
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
     };
   };
 }

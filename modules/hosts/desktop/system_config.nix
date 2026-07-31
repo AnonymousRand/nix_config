@@ -40,14 +40,8 @@
       # allow unfree packages
       nixpkgs.config.allowUnfree = true;
 
-      # enable bluetooth
-      hardware.bluetooth.enable = true;
-
       # enable power profile (e.g. for Noctalia)
       services.power-profiles-daemon.enable = true;
-
-      # maybe help with wifi issues after suspend
-      networking.networkmanager.wifi.powersave = false;
 
       # nix store auto clean up
       nix.gc.automatic = true;

@@ -17,18 +17,11 @@ in
 
       den.batteries.primary-user
 
-      ##########################################################################
-      # aspects unchanged from the base config
-
-      den.aspects.features.tools.desktop-utils.wayland
-
-      ##########################################################################
-      # aspects extending the base config with our own "private" config (using our custom namespace)
-
       # (nix doesn't let us start these with `${username}` so we have to use the full
       # `den.ful` namespace names. grrr 3:<)
       den.ful.${username}.features.desktop.niri
       den.ful.${username}.features.desktop.noctalia
+      den.aspects.features.tools.desktop-utils.wayland
 
       den.ful.${username}.features.fonts.fontconfig
       den.ful.${username}.features.fonts.maple-mono

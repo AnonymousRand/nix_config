@@ -1,6 +1,6 @@
 {
   den.hosts.x86_64-linux.desktop = {
-    displayOutputs = [
+    capabilities.graphics.displayOutputs = [
       {
         name = "ASUSTek COMPUTER INC VG27A N7LMQS014382";
         resolution = {
