@@ -1,8 +1,6 @@
 {
   den.aspects.features.tools.desktop-utils = {
-    meta.requiredCapabilities = [ "graphics" ];
-
-    homeManager = { host, lib, pkgs, ... }: {
+    homeManager = { host, lib, pkgs, ... }: import ../_requires_capabilities.nix host [ "graphics" ] {
       home.packages = [
         pkgs.normcap # OCR tool
       ] ++ lib.optional (host.capabilities.graphics.displayProtocol == "wayland") [

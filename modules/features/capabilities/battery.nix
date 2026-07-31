@@ -1,8 +1,6 @@
 {
   den.aspects.features.capabilities.battery = {
-    meta.requiredCapabilities = [ "battery" ];
-
-    nixos = {
+    nixos = { host, ... }: import ../_requires_capabilities.nix host [ "battery" ] {
       # enable battery status feature
       services.upower.enable = true; 
     };

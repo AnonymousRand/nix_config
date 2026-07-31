@@ -7,9 +7,7 @@
   };
 
   den.aspects.features.desktop.noctalia-greeter = {
-    meta.requiredCapabilities = [ "graphics" ];
-
-    nixos = {
+    nixos = { host, ... }: import ../_requires_capabilities.nix host [ "graphics" ] {
       imports = [
         inputs.noctalia-greeter.nixosModules.default
       ];

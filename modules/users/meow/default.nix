@@ -12,6 +12,8 @@ in
 
   den.aspects.users.${username} = {
     provides.to-host = {
+      # >TODO this not working?
+      # e.g. try config.capabilities?
       capabilities.graphics.displayProtocol = "wayland";
     };
 

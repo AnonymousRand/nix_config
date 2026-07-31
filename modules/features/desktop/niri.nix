@@ -12,9 +12,7 @@
   };
 
   den.aspects.features.desktop.niri = {
-    meta.requiredCapabilities = [ "graphics" ];
-
-    nixos = { pkgs, ... }: {
+    nixos = { host, pkgs, ... }: import ../_requires_capabilities.nix host [ "graphics" ] {
       imports = [
         inputs.niri.nixosModules.default
       ];
@@ -29,7 +27,7 @@
       ];
     };
 
-    homeManager = { host, ... }: {
+    homeManager = { host, ... }: import ../_requires_capabilities.nix host [ "graphics" ] {
       imports = [
         inputs.niri.homeModules.default
       ];
