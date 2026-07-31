@@ -21,7 +21,7 @@ in
       # `den.ful` namespace names. grrr 3:<)
       den.ful.${username}.features.desktop.niri
       den.ful.${username}.features.desktop.noctalia
-      den.aspects.features.tools.desktop-utils.wayland
+      den.aspects.features.tools.wayland-utils
 
       den.ful.${username}.features.fonts.fontconfig
       den.ful.${username}.features.fonts.maple-mono

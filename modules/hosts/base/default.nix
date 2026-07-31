@@ -6,7 +6,7 @@
         type = lib.types.str;
       };
     };
-  }
+  };
 
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
   den.aspects.hosts.base = {
