@@ -8,11 +8,6 @@
             default = false;
           };
 
-          displayProtocol = lib.mkOption {
-            type = lib.types.nullOr (lib.types.enum [ "wayland" "x11" ]);
-            default = null;
-          };
-
           displayOutputs = lib.mkOption {
             type = lib.types.listOf (lib.types.submodule {
               options = {

@@ -1,6 +1,6 @@
 {
   den.aspects.features.capabilities.gpu = {
-    nixos = { host, lib, ... }: import ../_requires_capabilities.nix host [ "gpu" ] (
+    nixos = { host, lib, ... }: import ../_require_capabilities.nix host [ "gpu" ] (
       let
         vendorSpecificConfig = {
           amd = {};

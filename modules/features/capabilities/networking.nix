@@ -1,6 +1,6 @@
 {
   den.aspects.features.capabilities.networking = {
-    nixos = { host, ... }: import ../_requires_capabilities.nix host [ "networking" ] {
+    nixos = { host, ... }: import ../_require_capabilities.nix host [ "networking" ] {
       # enable network manager
       networking.networkmanager.enable = true;
 
