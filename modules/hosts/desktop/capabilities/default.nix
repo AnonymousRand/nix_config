@@ -1,10 +1,10 @@
 {
   den.hosts.x86_64-linux.desktop = {
     capabilities = {
-      bluetooth.enable = true;
-      gpu.enable = true;
-      graphics.enable = true;
-      networking.enable = true;
+      bluetooth.supported = true;
+      gpu.supported = true;
+      graphics.supported = true;
+      networking.supported = true;
     };
   };
 }

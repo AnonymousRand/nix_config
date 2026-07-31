@@ -11,47 +11,48 @@
     };
   };
 
-  den.aspects.features.desktop.niri = { host, lib, ... }:
-    lib.mkIf host.capabilities.graphics.supported {
-      nixos = { pkgs, ... }: {
-        imports = [
-          inputs.niri.nixosModules.default
-        ];
+  den.aspects.features.desktop.niri = {
+    meta.requiredCapabilities = [ "graphics" ];
 
-        programs.niri = {
-          enable = true;
-        };
+    nixos = { pkgs, ... }: {
+      imports = [
+        inputs.niri.nixosModules.default
+      ];
 
-        environment.systemPackages = [
-          # niri's main way of doing xwayland
-          pkgs.xwayland-satellite
-        ];
+      programs.niri = {
+        enable = true;
       };
 
-      homeManager = { host, ... }: {
-        imports = [
-          inputs.niri.homeModules.default
-        ];
+      environment.systemPackages = [
+        # niri's main way of doing xwayland
+        pkgs.xwayland-satellite
+      ];
+    };
 
-        wayland.windowManager.niri = {
-          enable = true;
-          settings = {
-            # dynamically generate display output settings based on `host.displayOutputs` custom option
-            output = builtins.map (entry:
-              {
-                _args = [ entry.name ];
-                mode = "${builtins.toString entry.resolution.width}" +
-                       "x${builtins.toString entry.resolution.height}" +
-                       "@${builtins.toString entry.refreshRate}";
-                scale = entry.scale;
-                position._props = {
-                  x = entry.position.x;
-                  y = entry.position.y;
-                };
-              }
-            ) host.displayOutputs;
-          };
+    homeManager = { host, ... }: {
+      imports = [
+        inputs.niri.homeModules.default
+      ];
+
+      wayland.windowManager.niri = {
+        enable = true;
+        settings = {
+          # dynamically generate display output settings based on `host.displayOutputs` custom option
+          output = builtins.map (entry:
+            {
+              _args = [ entry.name ];
+              mode = "${builtins.toString entry.resolution.width}" +
+                     "x${builtins.toString entry.resolution.height}" +
+                     "@${builtins.toString entry.refreshRate}";
+              scale = entry.scale;
+              position._props = {
+                x = entry.position.x;
+                y = entry.position.y;
+              };
+            }
+          ) host.capabilities.graphics.displayOutputs;
         };
       };
     };
+  };
 }

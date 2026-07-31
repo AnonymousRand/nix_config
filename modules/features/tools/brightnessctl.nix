@@ -1,10 +1,11 @@
 {
-  den.aspects.features.tools.brightnessctl = { host, lib, ... }:
-    lib.mkIf host.capabilities.brightness.supported {
-      homeManager = { pkgs, ... }: {
-        home.packages = [
-          pkgs.brightnessctl
-        ];
-      };
+  den.aspects.features.tools.brightnessctl = {
+    meta.requiredCapabilities = [ "brightness" ];
+
+    homeManager = { pkgs, ... }: {
+      home.packages = [
+        pkgs.brightnessctl
+      ];
     };
+  };
 }
