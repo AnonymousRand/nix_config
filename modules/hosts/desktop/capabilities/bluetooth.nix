@@ -1,8 +1,7 @@
 {
   den.hosts.x86_64-linux.desktop = {
-    capabilities.gpu = {
+    capabilities.bluetooth = {
       supported = true;
-      vendor = "nvidia";
     };
   };
 }

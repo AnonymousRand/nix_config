@@ -8,7 +8,7 @@
     homeManager = {
       my.noctalia-theming =
         let
-          colors = import ./_colors.nix;
+          colors = import ../_colors.nix;
         in
         {
           # set base values for `noctalia-theming`'s options

@@ -5,15 +5,5 @@
         pkgs.brightnessctl
       ];
     };
-
-    #includes = [
-    #  den.aspects.capabilities.require-capabilities
-    #];
-    #requiredCapabilities = [ "graphics" ];
-    #rawHomeManager = { pkgs, ... }: {
-    #  home.packages = [
-    #    pkgs.brightnessctl
-    #  ];
-    #};
   };
 }
