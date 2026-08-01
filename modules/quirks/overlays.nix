@@ -3,7 +3,7 @@
 
   den.schema.host = { lib, ... }: {
     options.quirks.overlays = lib.mkOption {
-      type = lib.type.submodule {
+      type = lib.types.submodule {
         options = {
           hmUseGlobalPkgs = lib.mkOption {
             type = lib.types.bool;
