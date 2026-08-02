@@ -1,6 +1,6 @@
 let
   capabilities = {
-    audio = {
+    media = {
       supported = true;
     };
   };

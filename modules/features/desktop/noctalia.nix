@@ -7,7 +7,7 @@
   };
 
   den.aspects.features.desktop.noctalia = { host ? null, home ? null }: {
-    nixos = { host, lib, pkgs, ... }:
+    nixos = { pkgs, ... }:
       import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
         environment.systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default

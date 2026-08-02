@@ -1,6 +1,6 @@
 {
   den.aspects.features.tools.fastfetch = {
-    homeManager = { pkgs, ... }: {
+    homeManager = {
       programs.fastfetch.enable = true;
     };
   };

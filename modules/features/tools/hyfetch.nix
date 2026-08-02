@@ -16,7 +16,7 @@
       })
     ];
 
-    homeManager = { pkgs, ... }: {
+    homeManager = {
       programs.hyfetch = {
         enable = true;
       };

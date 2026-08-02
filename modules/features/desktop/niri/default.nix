@@ -1,6 +1,6 @@
 { den, inputs, ... }: {
   den.aspects.features.desktop.niri = { host ? null, home ? null }: {
-    nixos = { host, pkgs, ... }:
+    nixos = { pkgs, ... }:
       import ../../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
         programs.niri = {
           enable = true;
