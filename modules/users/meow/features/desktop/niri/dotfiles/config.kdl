@@ -195,14 +195,14 @@ binds {
     //--------------------------------------------------------------------------
     // basics
 
-    Super+Alt+P                                 { power-off-monitors; }
-    Super+Alt+L hotkey-overlay-title="Lock"     { spawn "noctalia" "msg" "session" "lock"; }
-    Super+Alt+S hotkey-overlay-title="Sleep"    { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
-    Super+Alt+E hotkey-overlay-title="Shutdown" { spawn "noctalia" "msg" "session" "shutdown"; }
-    Super+Alt+R hotkey-overlay-title="Reboot"   { spawn "noctalia" "msg" "session" "reboot"; }
-    Ctrl+Alt+Delete                             { quit; } // quit niri
+    Super+Alt+Slash            hotkey-overlay-title="Show Hotkeys" { show-hotkey-overlay; }
+    Super+Alt+P                hotkey-overlay-title="Screen Off"   { power-off-monitors; }
+    Super+Alt+L                hotkey-overlay-title="Lock"         { spawn "noctalia" "msg" "session" "lock"; }
+    Super+Alt+S                hotkey-overlay-title="Sleep"        { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
+    Super+Alt+E                hotkey-overlay-title="Exit Niri"    { quit; }
+    Super+Alt+Ctrl+Shift+Q     hotkey-overlay-title="Shutdown"     { spawn "noctalia" "msg" "session" "shutdown"; }
+    Super+Alt+Ctrl+Shift+R     hotkey-overlay-title="Reboot"       { spawn "noctalia" "msg" "session" "reboot"; }
 
-    Super+Alt+Slash                                 { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Terminal (ghostty)" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Launcher"           { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "--autocopy"; }
@@ -211,6 +211,8 @@ binds {
     // note: ctrl+c within this interactive screenshot UI copies to clipboard without saving to disk
     // hide mouse pointer by default in interactive screenshot UI
     Mod+Shift+Print { screenshot show-pointer=false; }
+    Mod+Shift+S     { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/annotated_screenshot.sh\" --show-pointer=false"; }
+    Mod+Shift+T     { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/ocr.sh\" --show-pointer=false"; }
     // show mouse pointer in window screenshot only if pointer is on top of window
     Mod+Ctrl+Print  { screenshot-window show-pointer=true; }
 

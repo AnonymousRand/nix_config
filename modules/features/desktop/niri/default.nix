@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ den, inputs, ... }: {
   flake-file.inputs = {
     # Niri has a built-in flake as a NixOS option but it doesn't have Home Manager options
     niri = {
@@ -12,7 +12,11 @@
   };
 
   den.aspects.features.desktop.niri = {
-    nixos = { host, pkgs, ... }: import ../_require_capabilities.nix host [ "graphics" ] {
+    includes = [
+      den.aspects.features.desktop.portals
+    ];
+
+    nixos = { host, pkgs, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
       imports = [
         inputs.niri.nixosModules.default
       ];
@@ -25,9 +29,26 @@
         # niri's main way of doing xwayland
         pkgs.xwayland-satellite
       ];
+
+      xdg.portal = {
+        config = {
+          niri = {
+            "default" = [ "gnome" "gtk" ];
+            "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+          };
+        };
+
+        extraPortals = [
+          pkgs.xdg-desktop-portal-gnome
+          pkgs.xdg-desktop-portal-gtk
+        ];
+      };
     };
 
-    homeManager = { host, ... }: import ../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
       imports = [
         inputs.niri.homeModules.default
       ];
@@ -51,6 +72,26 @@
           ) host.capabilities.graphics.displayOutputs;
         };
       };
+    };
+  };
+
+  den.aspects.features.desktop.niri.screenshots = {
+    includes = [
+      # (scripts require bash, inotifywait, and flock)
+      den.aspects.features.terminal.bash
+      den.aspects.features.tools.cli-utils
+    ];
+
+    homeManager = { host, pkgs, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
+      home.packages = [
+        pkgs.tesseract # OCR
+      ];
+
+      programs.satty.enable = true; # annotated screenshots
+
+      # copy over scripts for annotated screenshots/OCR (bind these to hotkeys in configs!)
+      xdg.configFile."niri/scripts/annotated_screenshot.sh".source = ./dotfiles/scripts/annotated_screenshot.sh;
+      xdg.configFile."niri/scripts/ocr.sh".source = ./dotfiles/scripts/ocr.sh;
     };
   };
 }

@@ -5,8 +5,10 @@
         pkgs.curl
         pkgs.file
         pkgs.findutils
+        pkgs.inotify-tools
         pkgs.rename
         pkgs.tree
+        pkgs.util-linux
         pkgs.wget
       ];
     };

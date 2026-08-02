@@ -11,3 +11,7 @@ source = "custom"
 
 [theme.templates]
 enable_builtin_templates = true
+
+[shell]
+show_location = false
+polkit_agent = true
