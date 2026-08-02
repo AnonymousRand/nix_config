@@ -8,8 +8,7 @@
   };
 
   imports = [
-    # integration of home manager for flake-parts
-    # TODO what happens if this is not imported
-    inputs.home-manager.flakeModules.home-manager
+    # integration of home manager for flake-parts; doesn't seem to be needed for den?
+    #inputs.home-manager.flakeModules.home-manager
   ];
 }

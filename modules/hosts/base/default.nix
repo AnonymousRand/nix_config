@@ -20,8 +20,6 @@
       den.aspects.quirks.nix-ld
       den.aspects.quirks.overlays
 
-      den.aspects.features.desktop.utils
-
       den.aspects.features.terminal.bash
 
       den.aspects.features.editors.vim
