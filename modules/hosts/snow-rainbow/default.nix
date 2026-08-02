@@ -20,7 +20,18 @@
   den.homes.x86_64-linux = {
     # by specifying both username and hostname, we tie this automatically to the user aspect,
     # and also allows you to invoke standalone home manager with just `home-manager switch`
-    "meow@snow-rainbow" = {};
+    "meow@snow-rainbow" = {
+      stateVersion = "26.05";
+
+      # TODO this isn't working with home-manager command!
+      includes = [
+        den.aspects.homes.base
+        den.aspects.core.state-version
+        {
+          homeManager.home.stateVersion = "26.05";
+        }
+      ];
+    };
   };
 
   den.aspects.hosts.snow-rainbow = {

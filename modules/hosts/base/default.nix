@@ -15,6 +15,7 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
+      den.aspects.core.state-version
       den.aspects.capabilities
 
       den.aspects.quirks.nix-ld
@@ -37,5 +38,11 @@
       #  in our inputs, and we import its `flakeModules`)
       home-manager.useUserPackages = true;
     };
+  };
+
+  den.aspects.homes.base = {
+    includes = [
+      den.aspects.core.state-version
+    ];
   };
 }
