@@ -11,4 +11,14 @@
       };
     };
   };
+
+  den.aspects.capabilities = {
+    nixos = { host, lib, ... }: lib.mkIf host.capabilities.networking.supported {
+      # enable network manager
+      networking.networkmanager.enable = true;
+
+      # maybe help with wifi issues after suspend
+      networking.networkmanager.wifi.powersave = false;
+    };
+  };
 }

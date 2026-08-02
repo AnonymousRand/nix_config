@@ -15,10 +15,7 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      den.aspects.features.capabilities.battery
-      den.aspects.features.capabilities.bluetooth
-      den.aspects.features.capabilities.gpu
-      den.aspects.features.capabilities.networking
+      den.aspects.capabilities
 
       den.aspects.features.desktop.utils
 

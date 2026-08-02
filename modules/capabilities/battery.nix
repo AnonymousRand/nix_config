@@ -11,4 +11,11 @@
       };
     };
   };
+
+  den.aspects.capabilities = {
+    nixos = { host, lib, ... }: lib.mkIf host.capabilities.battery.supported {
+      # enable battery status feature
+      services.upower.enable = true; 
+    };
+  };
 }

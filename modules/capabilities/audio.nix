@@ -11,4 +11,19 @@
       };
     };
   };
+
+  den.aspects.capabilities = {
+    nixos = { host, lib, ... }: lib.mkIf host.capabilities.audio.supported {
+      # grant real-time audio priority to prevent crackling
+      security.rtkit.enable = true;
+
+      # enable pipewire
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+    };
+  };
 }
