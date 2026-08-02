@@ -43,7 +43,6 @@ process_memory_as_value = true # deprecated, but new option not working yet
 short_gpu_names = true
 
 [processes]
-default_memory_value = true
 columns = [
     "pid",
     "name",
@@ -56,6 +55,8 @@ columns = [
     "tread",
     "twrite"
 ]
+default_sort = "mem%"
+default_memory_value = true
 
 ################################################################################
 # styles
