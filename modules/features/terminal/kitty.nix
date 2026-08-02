@@ -1,7 +1,8 @@
 {
-  den.aspects.features.terminal.kitty = {
-    homeManager = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
-      programs.kitty.enable = true;
-    };
+  den.aspects.features.terminal.kitty = { host ? null, home ? null }: {
+    homeManager =
+      import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
+        programs.kitty.enable = true;
+      };
   };
 }

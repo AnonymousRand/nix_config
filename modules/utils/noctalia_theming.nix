@@ -1,4 +1,5 @@
-let optsBase = "my";
+let
+  optsBase = "my";
   aspectName = "noctalia-theming";
 in
 {

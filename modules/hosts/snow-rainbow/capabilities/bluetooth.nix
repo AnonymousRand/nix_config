@@ -1,7 +1,18 @@
+let
+  capabilities = {
+    bluetooth = {
+      supported = true;
+    };
+  };
+in
 {
   den.hosts.x86_64-linux.snow-rainbow = {
-    capabilities.bluetooth = {
-      supported = true;
+    inherit capabilities;
+  };
+
+  den.homes.x86_64-linux = {
+    "meow@rainbow" = {
+      inherit capabilities;
     };
   };
 }

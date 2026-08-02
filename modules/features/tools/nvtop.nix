@@ -1,9 +1,10 @@
 {
-  den.aspects.features.tools.nvtop = { host, lib, ... }: {
-    homeManager = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "gpu" ]) {
-      home.packages = [
-        pkgs.nvtopPackages.full
-      ];
-    };
+  den.aspects.features.tools.nvtop = { host ? null, home ? null }: {
+    homeManager = { pkgs, ... }:
+      import ../_require_capabilities.nix { inherit host home; } [ "gpu" ] {
+        home.packages = [
+          pkgs.nvtopPackages.full
+        ];
+      };
   };
 }

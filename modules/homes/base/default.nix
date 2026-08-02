@@ -4,6 +4,7 @@
 
   den.aspects.homes.base = {
     includes = [
+      den.aspects.core.capabilities
       den.aspects.core.quirks.overlays
       den.aspects.core.state-version
     ];

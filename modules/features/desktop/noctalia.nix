@@ -6,19 +6,21 @@
     };
   };
 
-  den.aspects.features.desktop.noctalia = {
-    nixos = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
-      environment.systemPackages = [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
-    };
+  den.aspects.features.desktop.noctalia = { host ? null, home ? null }: {
+    nixos = { host, lib, pkgs, ... }:
+      import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
+        environment.systemPackages = [
+          inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
+      };
 
-    homeManager = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
-      imports = [
-        inputs.noctalia.homeModules.default
-      ];
+    homeManager =
+      import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
+        imports = [
+          inputs.noctalia.homeModules.default
+        ];
 
-      programs.noctalia.enable = true;
-    };
+        programs.noctalia.enable = true;
+      };
   };
 }

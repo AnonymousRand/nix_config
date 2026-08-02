@@ -1,9 +1,10 @@
 { den, ... }: {
-  den.aspects.features.tools.brightnessctl = {
-    homeManager = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "brightness" ]) {
-      home.packages = [
-        pkgs.brightnessctl
-      ];
-    };
+  den.aspects.features.tools.brightnessctl = { host ? null, home ? null }: {
+    homeManager = { pkgs, ... }:
+      import ../_require_capabilities.nix { inherit host home; } [ "brightness" ] {
+        home.packages = [
+          pkgs.brightnessctl
+        ];
+      };
   };
 }
