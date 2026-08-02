@@ -17,6 +17,8 @@ in
 
       den.batteries.primary-user
 
+      den.aspects.features.home-manager-standalone
+
       # (nix doesn't let us start these with `${username}` so we have to use the full
       # `den.ful` namespace names. grrr 3:<)
       den.ful.${username}.features.desktop.niri

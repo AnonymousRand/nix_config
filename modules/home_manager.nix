@@ -8,7 +8,8 @@
   };
 
   imports = [
-    # allows standalone Home Manager configs
+    # integration of home manager for flake-parts
+    # TODO what happens if this is not imported
     inputs.home-manager.flakeModules.home-manager
   ];
 }

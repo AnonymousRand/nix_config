@@ -17,6 +17,9 @@
 
       den.aspects.capabilities
 
+      den.aspects.quirks.nix-ld
+      den.aspects.quirks.overlays
+
       den.aspects.features.desktop.utils
 
       den.aspects.features.terminal.bash
@@ -27,5 +30,14 @@
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
     ];
+
+    nixos = {
+      # installs user packages into `/etc/profile/per-user/<username>/` (i.e.
+      # `users.users.<username>.packages`) instead of the default `~/.nix-profile` when
+      # home manager is used integrated, which can be convenient for some system-level things?
+      # (i think this should be fine even if a host doesn't have home manager?  since it's
+      #  in our inputs, and we import its `flakeModules`)
+      home-manager.useUserPackages = true;
+    };
   };
 }
