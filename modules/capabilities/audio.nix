@@ -13,7 +13,7 @@
   };
 
   den.aspects.capabilities = {
-    nixos = { host, lib, ... }: lib.mkIf (host.capabilities.has [ "audio" ]) {
+    nixos = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "audio" ]) {
       # grant real-time audio priority to prevent crackling
       security.rtkit.enable = true;
 
