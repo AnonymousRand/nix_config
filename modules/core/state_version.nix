@@ -18,6 +18,7 @@
   };
 
   # note: optional `host` and `home` args have to be at the aspect-level for this to be called?
+  # and it only happens when both args are put down
   den.aspects.core.state-version = { host ? null, home ? null }: {
     nixos = { host, ... }: {
       system.stateVersion = host.stateVersion;
