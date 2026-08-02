@@ -21,7 +21,7 @@
 
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
-  den.aspects.core.quirks.overlays = {
+  den.aspects.core.quirks.overlays = { host ? null, home ? null }: {
     nixos = { host, overlays, lib, ... }: {
       nixpkgs.overlays = lib.unique overlays;
 
@@ -29,10 +29,11 @@
       home-manager.useGlobalPkgs = lib.mkForce host.quirks.overlays.hmUseGlobalPkgs;
     };
 
-    homeManager = { host ? null, overlays, lib, ... }:
+    homeManager = { overlays, lib, ... }:
       # only set `nixpkgs.overlays` in home manager class module if `useGlobalPkgs` was `false`
-      # or if standalone (i.e. no `host`)! otherwise, this is not allowed
-      lib.optionalAttrs (host == null || !host.quirks.overlays.hmUseGlobalPkgs) {
+      # or if standalone (i.e. `home` present; note that checking `host == null` doesn't work?)!
+      # otherwise, this is not allowed
+      lib.optionalAttrs (home != null || (host != null && !host.quirks.overlays.hmUseGlobalPkgs)) {
         nixpkgs.overlays = lib.unique overlays;
       };
   };
