@@ -17,33 +17,25 @@
     };
   };
 
-  # TODO ok so like this just isn't getting called at all with home-manager
+  # note: optional `host` and `home` args have to be at the aspect-level for this to be called?
   den.aspects.core.state-version = { host ? null, home ? null }: {
     nixos = { host, ... }: {
       system.stateVersion = host.stateVersion;
     };
 
-    #homeManager = { host, ... }: {
-    #  home.stateVersion = host.stateVersion;
-    #};
-
-    homeManager = {
-      home.stateVersion = "26.05";
-    };
-
-    #homeManager = { lib, ... }:
-    #  let
-    #    homeCtx = home;
-    #  in
-    #  {
-    #    home.stateVersion =
-    #      if host ? stateVersion then
-    #        host.stateVersion
-    #      else
-    #        if homeCtx ? stateVersion then
-    #          homeCtx.stateVersion
-    #        else
-    #          lib.mkDefault "";
-    #  };
+    homeManager = { lib, ... }:
+      let
+        homeCtx = home;
+      in
+      {
+        home.stateVersion =
+          if host ? stateVersion then
+            host.stateVersion
+          else
+            if homeCtx ? stateVersion then
+              homeCtx.stateVersion
+            else
+              lib.mkDefault "";
+      };
   };
 }

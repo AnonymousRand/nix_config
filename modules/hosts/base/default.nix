@@ -9,6 +9,7 @@
   };
 
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
+  # (importing in schema means i have to add `provides.to-user` to all the `homeManager` modules)
   den.aspects.hosts.base = {
     # aspects to be included in every host
     includes = [
@@ -37,11 +38,5 @@
       #  in our inputs, and we import its `flakeModules`)
       home-manager.useUserPackages = true;
     };
-  };
-
-  den.aspects.homes.base = {
-    includes = [
-      den.aspects.core.state-version
-    ];
   };
 }
