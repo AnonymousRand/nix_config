@@ -7,11 +7,15 @@
   };
 
   den.aspects.features.tools.solaar = {
-    nixos = {
-      imports = [
-        inputs.solaar.nixosModules.default
-      ];
+    # put here so that this is imported regardless of if `syst` is in context (otherwise, other
+    # aspects wishing to set options defined in these imports must all require `syst` arg as well)
+    includes = [
+      {
+        nixos.imports = [ inputs.solaar.nixosModules.default ];
+      }
+    ];
 
+    nixos = {
       services.solaar.enable = true;
     };
   };

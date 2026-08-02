@@ -8,12 +8,12 @@ let
 in
 {
   den.hosts.x86_64-linux.snow-rainbow = {
-    inherit capabilities;
+    core = { inherit capabilities; };
   };
 
   den.homes.x86_64-linux = {
     "meow@rainbow" = {
-      inherit capabilities;
+      core = { inherit capabilities; };
     };
   };
 }

@@ -1,13 +1,13 @@
 { den, ... }: {
-  den.aspects.features.desktop.niri.screenshots = { host ? null, home ? null }: {
+  den.aspects.features.desktop.niri.screenshots = {
     includes = [
       # (scripts require `bash`, `inotifywait`, and `flock`)
       den.aspects.features.terminal.bash
       den.aspects.features.tools.cli-utils
     ];
 
-    homeManager = { pkgs, ... }:
-      import ../../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
+    homeManager = { syst, lib, pkgs, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "graphics" ]) {
         home.packages = [
           pkgs.tesseract # OCR
         ];

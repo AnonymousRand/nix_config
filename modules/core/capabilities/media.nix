@@ -1,6 +1,6 @@
 {
   den.schema.syst = { lib, ... }: {
-    options.capabilities.media = lib.mkOption {
+    options.core.capabilities.media = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -12,18 +12,19 @@
     };
   };
 
-  den.aspects.core.capabilities = {
-    nixos = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "media" ]) {
-      # grant real-time audio priority to prevent crackling
-      security.rtkit.enable = true;
+  den.aspects.core.capabilities = { syst }: {
+    nixos = { lib, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "media" ]) {
+        # grant real-time audio priority to prevent crackling
+        security.rtkit.enable = true;
 
-      # enable pipewire
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
+        # enable pipewire
+        services.pipewire = {
+          enable = true;
+          alsa.enable = true;
+          alsa.support32Bit = true;
+          pulse.enable = true;
+        };
       };
-    };
   };
 }

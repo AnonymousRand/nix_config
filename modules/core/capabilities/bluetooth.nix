@@ -1,6 +1,6 @@
 {
   den.schema.syst = { lib, ... }: {
-    options.capabilities.bluetooth = lib.mkOption {
+    options.core.capabilities.bluetooth = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -12,10 +12,11 @@
     };
   };
 
-  den.aspects.core.capabilities = {
-    nixos = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "bluetooth" ]) {
-      # enable bluetooth
-      hardware.bluetooth.enable = true;
-    };
+  den.aspects.core.capabilities = { syst }: {
+    nixos = { lib, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "bluetooth" ]) {
+        # enable bluetooth
+        hardware.bluetooth.enable = true;
+      };
   };
 }

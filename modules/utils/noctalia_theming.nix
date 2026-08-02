@@ -1,9 +1,14 @@
+{ den, ... }:
 let
   optsBase = "my";
   aspectName = "noctalia-theming";
 in
 {
   den.aspects.utils.${aspectName} = {
+    includes = [
+      den.aspects.features.desktop.noctalia
+    ];
+
     homeManager = { user, config, lib, ... }: {
       # declare these options in the home manager class module (aspect-level is weird)
       # set these options on any aspect that includes this :3

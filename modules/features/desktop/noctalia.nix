@@ -6,20 +6,24 @@
     };
   };
 
-  den.aspects.features.desktop.noctalia = { host ? null, home ? null }: {
-    nixos = { pkgs, ... }:
-      import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
+  den.aspects.features.desktop.noctalia = {
+    # put here so that this is imported regardless of if `syst` is in context (otherwise, other
+    # aspects wishing to set options defined in these imports must all require `syst` arg as well)
+    includes = [
+      {
+        homeManager.imports = [ inputs.noctalia.homeModules.default ];
+      }
+    ];
+
+    nixos = { syst, lib, pkgs, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "graphics" ]) {
         environment.systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
       };
 
-    homeManager =
-      import ../_require_capabilities.nix { inherit host home; } [ "graphics" ] {
-        imports = [
-          inputs.noctalia.homeModules.default
-        ];
-
+    homeManager = { syst, lib, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "graphics" ]) {
         programs.noctalia.enable = true;
       };
   };

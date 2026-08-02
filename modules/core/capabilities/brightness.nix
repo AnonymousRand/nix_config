@@ -1,6 +1,6 @@
 {
   den.schema.syst = { lib, ... }: {
-    options.capabilities.brightness = lib.mkOption {
+    options.core.capabilities.brightness = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {

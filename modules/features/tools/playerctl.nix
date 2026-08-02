@@ -1,8 +1,8 @@
 {
-  den.aspects.features.tools.playerctl = { host ? null, home ? null }: {
+  den.aspects.features.tools.playerctl = {
     # note: if this doesn't work, try `services.playerctld.enable` and/or services.mpris-proxy.enable`
-    homeManager = { pkgs, ... }:
-      import ../_require_capabilities.nix { inherit host home; } [ "media" ] {
+    homeManager = { syst, lib, pkgs, ... }:
+      lib.optionalAttrs (syst.core.capabilities.has [ "media" ]) {
         home.packages = [
           pkgs.playerctl
         ];
