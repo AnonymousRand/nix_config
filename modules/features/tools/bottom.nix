@@ -1,6 +1,6 @@
 {
   den.aspects.features.tools.bottom = {
-    homeManager = {
+    homeManager = { pkgs, ... }: {
       programs.bottom = {
         enable = true;
       };

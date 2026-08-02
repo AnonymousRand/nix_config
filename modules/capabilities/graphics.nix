@@ -9,9 +9,8 @@
           };
 
           displayOutputs = lib.mkOption {
-            type = lib.types.listOf (lib.types.submodule {
+            type = lib.types.attrsOf (lib.types.submodule {
               options = {
-                name       = lib.mkOption { type = lib.types.str; };
                 resolution = lib.mkOption {
                   type = lib.types.submodule {
                     options.width  = lib.mkOption { type = lib.types.int; };
@@ -29,7 +28,7 @@
               };
             });
 
-            default = [];
+            default = {};
           };
         };
       };

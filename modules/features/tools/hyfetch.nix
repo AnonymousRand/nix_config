@@ -5,7 +5,7 @@
     # (wrapped in a function so den doesn't think the inline overlay is a parametric something idk)
     overlays = _: [
       (final: prev: {
-        hyfetch = prev.hyfetch.overrideAttrs (previousAttrs: {
+        hyfetch = prev.hyfetch.overrideAttrs (prevAttrs: {
           src = prev.fetchFromGitHub {
             owner = "AnonymousRand";
             repo = "hyfetch";
@@ -19,7 +19,6 @@
     homeManager = { pkgs, ... }: {
       programs.hyfetch = {
         enable = true;
-        package = pkgs.hyfetch;
       };
     };
   };

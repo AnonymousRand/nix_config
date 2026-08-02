@@ -2,9 +2,9 @@
   den.hosts.x86_64-linux.desktop = {
     capabilities.graphics = {
       supported = true;
-      displayOutputs = [
-        {
-          name = "ASUSTek COMPUTER INC VG27A N7LMQS014382";
+
+      displayOutputs = {
+        "ASUSTek COMPUTER INC VG27A N7LMQS014382" = {
           resolution = {
             width = 2560;
             height = 1440;
@@ -15,10 +15,9 @@
             x = 0;
             y = 0;
           };
-        }
+        };
 
-        {
-          name = "HP Inc. HP VH240a 6CM0211LWH";
+        "HP Inc. HP VH240a 6CM0211LWH" = {
           resolution = {
             width = 1920;
             height = 1080;
@@ -29,8 +28,8 @@
             x = -1920;
             y = 0;
           };
-        }
-      ];
+        };
+      };
     };
   };
 }

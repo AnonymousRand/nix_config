@@ -8,9 +8,6 @@
 color    = "{{colors.default_fg_source.default.hex}}"
 bg_color = "{{colors.default_bg_source.default.hex}}"
 
-[flags]
-process_memory_as_value = true # deprecated, but new option not working yet
-
 ################################################################################
 # layout
 
@@ -43,20 +40,20 @@ process_memory_as_value = true # deprecated, but new option not working yet
 short_gpu_names = true
 
 [processes]
+default_memory_value = true
 columns = [
     "pid",
     "name",
     "cpu%",
-    "mem%",
+    "mem",
     "gpu%",
-    "gmem%",
+    "gmem",
     "read",
     "write",
     "tread",
     "twrite"
 ]
-default_sort = "mem%"
-default_memory_value = true
+default_sort = "mem"
 
 ################################################################################
 # styles
@@ -120,11 +117,3 @@ gpu_colors = [
 [styles.network]
 rx_color = "Magenta"
 tx_color = "Yellow"
-
-[styles.temp_graph]
-temp_graph_color_styles = [
-    "Magenta",
-    "Yellow",
-    "Green",
-    "Cyan"
-]

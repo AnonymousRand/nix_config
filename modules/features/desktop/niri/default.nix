@@ -11,25 +11,23 @@
       ];
     };
 
-    homeManager = { host, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, lib, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
       wayland.windowManager.niri = {
         enable = true;
-        settings = {
-          # dynamically generate display output settings based on `host.displayOutputs` custom option
-          output = builtins.map (entry:
-            {
-              _args = [ entry.name ];
-              mode = "${builtins.toString entry.resolution.width}" +
-                     "x${builtins.toString entry.resolution.height}" +
-                     "@${builtins.toString entry.refreshRate}";
-              scale = entry.scale;
-              position._props = {
-                x = entry.position.x;
-                y = entry.position.y;
-              };
-            }
-          ) host.capabilities.graphics.displayOutputs;
-        };
+
+        # dynamically generate display output settings based on `host.displayOutputs` custom option
+        settings = lib.mapAttrs' (name: value:
+          lib.nameValuePair ("output \"${name}\"") {
+            mode = "${builtins.toString value.resolution.width}" +
+                   "x${builtins.toString value.resolution.height}" +
+                   "@${builtins.toString value.refreshRate}";
+            scale = value.scale;
+            position._props = {
+              x = value.position.x;
+              y = value.position.y;
+            };
+          }
+        ) host.capabilities.graphics.displayOutputs;
       };
     };
   };
