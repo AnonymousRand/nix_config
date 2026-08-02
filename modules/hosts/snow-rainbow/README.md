@@ -1,3 +1,3 @@
-# `modules/hosts/snow-rainbow/`
+# host `snow-rainbow`
 
-desktop pc
+desktop :3
