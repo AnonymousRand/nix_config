@@ -1,6 +1,6 @@
 { den, inputs, ... }: {
   den.aspects.features.desktop.niri = {
-    nixos = { host, pkgs, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
+    nixos = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       programs.niri = {
         enable = true;
       };
@@ -11,7 +11,7 @@
       ];
     };
 
-    homeManager = { host, lib, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       wayland.windowManager.niri = {
         enable = true;
 
@@ -39,7 +39,7 @@
       den.aspects.features.tools.cli-utils
     ];
 
-    homeManager = { host, pkgs, ... }: import ../../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       home.packages = [
         pkgs.tesseract # OCR
       ];

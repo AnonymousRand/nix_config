@@ -13,7 +13,7 @@
   };
 
   den.aspects.capabilities = {
-    nixos = { host, lib, ... }: lib.mkIf host.capabilities.battery.supported {
+    nixos = { host, lib, ... }: lib.mkIf (host.capabilities.has [ "battery" ]) {
       # enable battery status feature
       services.upower.enable = true; 
     };

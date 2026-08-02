@@ -7,13 +7,13 @@
   };
 
   den.aspects.features.desktop.noctalia = {
-    nixos = { host, pkgs, ... }: import ../_require_capabilities.nix host [ "graphics" ] {
+    nixos = { host, lib, pkgs, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       environment.systemPackages = [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
 
-    homeManager = { host, ... }: import ../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       imports = [
         inputs.noctalia.homeModules.default
       ];

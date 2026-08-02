@@ -1,6 +1,6 @@
 {
   den.aspects.features.terminal.ghostty = {
-    homeManager = { host, ... }: import ../_require_capabilities.nix host [ "graphics" ] {
+    homeManager = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "graphics" ]) {
       programs.ghostty.enable = true;
     };
   };

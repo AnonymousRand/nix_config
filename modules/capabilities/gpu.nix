@@ -17,7 +17,7 @@
   };
 
   den.aspects.capabilities = {
-    nixos = { host, lib, ... }: lib.mkIf host.capabilities.gpu.supported (
+    nixos = { host, lib, ... }: lib.mkIf (host.capabilities.has [ "gpu" ]) (
       let
         vendorSpecificConfig = {
           amd = {};

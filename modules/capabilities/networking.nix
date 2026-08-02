@@ -13,7 +13,7 @@
   };
 
   den.aspects.capabilities = {
-    nixos = { host, lib, ... }: lib.mkIf host.capabilities.networking.supported {
+    nixos = { host, lib, ... }: lib.mkIf (host.capabilities.has [ "networking" ]) {
       # enable network manager
       networking.networkmanager.enable = true;
 

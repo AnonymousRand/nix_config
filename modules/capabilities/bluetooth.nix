@@ -13,7 +13,7 @@
   };
 
   den.aspects.capabilities = {
-    nixos = { host, lib, ... }: lib.mkIf host.capabilities.bluetooth.supported {
+    nixos = { host, lib, ... }: lib.mkIf (host.capabilities.has [ "bluetooth" ]) {
       # enable bluetooth
       hardware.bluetooth.enable = true;
     };
