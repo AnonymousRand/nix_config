@@ -21,7 +21,7 @@
 
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
-  den.aspects.quirks.overlays = { lib, ... }: {
+  den.aspects.core.quirks.overlays = { lib, ... }: {
     nixos = { host, overlays, ... }: {
       nixpkgs.overlays = lib.unique overlays;
 

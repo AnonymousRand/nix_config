@@ -16,7 +16,7 @@
     };
   };
 
-  den.aspects.capabilities = {
+  den.aspects.core.capabilities = {
     nixos = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "gpu" ]) (
       let
         vendorSpecificConfig = {

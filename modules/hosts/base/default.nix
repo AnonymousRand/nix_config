@@ -15,11 +15,10 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
+      den.aspects.core.capabilities
+      den.aspects.core.quirks.nix-ld
+      den.aspects.core.quirks.overlays
       den.aspects.core.state-version
-      den.aspects.capabilities
-
-      den.aspects.quirks.nix-ld
-      den.aspects.quirks.overlays
 
       den.aspects.features.terminal.bash
 

@@ -12,7 +12,7 @@
     };
   };
 
-  den.aspects.capabilities = {
+  den.aspects.core.capabilities = {
     nixos = { host, lib, ... }: lib.optionalAttrs (host.capabilities.has [ "audio" ]) {
       # grant real-time audio priority to prevent crackling
       security.rtkit.enable = true;
