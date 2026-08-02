@@ -1,5 +1,5 @@
 {
-  den.aspects.hosts.desktop = {
+  den.aspects.hosts.snow-rainbow = {
     nixos = {
       # set time zone
       time.timeZone = "America/Los_Angeles";

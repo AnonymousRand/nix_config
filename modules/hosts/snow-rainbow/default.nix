@@ -1,6 +1,5 @@
 { den, ... }: {
-  den.hosts.x86_64-linux.desktop = {
-    hostName = "snow-rainbow";
+  den.hosts.x86_64-linux.snow-rainbow = {
     # this should be kept as the nixos release version of the first install of this system!
     stateVersion = "26.05";
 
@@ -19,10 +18,10 @@
   # enable standalone home manager for users on this host
   # (standalone and integrated home manager entities both pull from `den.aspects.user.<username>`)
   den.homes.x86_64-linux = {
-    "meow@desktop" = {};
+    "meow@snow-rainbow" = {};
   };
 
-  den.aspects.hosts.desktop = {
+  den.aspects.hosts.snow-rainbow = {
     # aspects to be included on this host regardless of user
     includes = [
       den.aspects.hosts.base

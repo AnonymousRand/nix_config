@@ -1,5 +1,5 @@
 {
-  den.aspects.hosts.desktop = {
+  den.aspects.hosts.snow-rainbow = {
     nixos = { config, lib, modulesPath, ... }: {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
