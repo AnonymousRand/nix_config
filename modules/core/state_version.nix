@@ -1,16 +1,7 @@
 {
-  den.schema.host = { lib, ... }: {
+  den.schema.syst = { lib, ... }: {
     options = {
-      # required `stateVersion` option in each host entity
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-      };
-    };
-  };
-
-  den.schema.home = { lib, ... }: {
-    options = {
-      # required `stateVersion` option in each home entity
+      # required `stateVersion` option in each host and home entity
       stateVersion = lib.mkOption {
         type = lib.types.str;
       };

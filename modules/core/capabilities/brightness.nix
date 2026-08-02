@@ -1,5 +1,5 @@
 {
-  den.schema.host = { lib, ... }: {
+  den.schema.syst = { lib, ... }: {
     options.capabilities.brightness = lib.mkOption {
       type = lib.types.submodule {
         options = {
