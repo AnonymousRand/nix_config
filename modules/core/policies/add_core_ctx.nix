@@ -8,12 +8,12 @@
       core =
         if host ? core then
           host.core
-        else
+        else (
           if home ? core then
             home.core
-          else (
+          else
             throw "policy `add-core-ctx`: missing option values for `core`!"
-          );
+        );
     })
   ];
 
