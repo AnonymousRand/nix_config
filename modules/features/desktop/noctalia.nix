@@ -7,23 +7,21 @@
   };
 
   den.aspects.features.desktop.noctalia = {
-    # put here so that this is imported regardless of if `syst` is in context (otherwise, other
-    # aspects wishing to set options defined in these imports must all require `syst` arg as well)
+    # put here so that this is imported regardless of if `core` is in context (otherwise, other
+    # aspects wishing to set options defined in these imports must all require `core` arg as well)
     includes = [
-      {
-        homeManager.imports = [ inputs.noctalia.homeModules.default ];
-      }
+      { homeManager.imports = [ inputs.noctalia.homeModules.default ]; }
     ];
 
-    nixos = { syst, lib, pkgs, ... }:
-      lib.optionalAttrs (syst.core.capabilities.has [ "graphics" ]) {
+    nixos = { core, lib, pkgs, ... }:
+      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
         environment.systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
       };
 
-    homeManager = { syst, lib, ... }:
-      lib.optionalAttrs (syst.core.capabilities.has [ "graphics" ]) {
+    homeManager = { core, lib, ... }:
+      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
         programs.noctalia.enable = true;
       };
   };

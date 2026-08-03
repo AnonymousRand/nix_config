@@ -16,9 +16,9 @@
     };
   };
 
-  den.aspects.core.capabilities = { syst }: {
-    nixos = { lib, ... }:
-      lib.optionalAttrs (syst.core.capabilities.has [ "gpu" ]) (
+  den.aspects.core.capabilities = {
+    nixos = { core, lib, ... }:
+      lib.optionalAttrs (core.capabilities.has [ "gpu" ]) (
         let
           vendorSpecificConfig = {
             amd = {};
@@ -41,7 +41,7 @@
             hardware.graphics.enable = true;
           }
 
-          vendorSpecificConfig.${syst.core.capabilities.gpu.vendor}
+          vendorSpecificConfig.${core.capabilities.gpu.vendor}
         ]
       );
   };
