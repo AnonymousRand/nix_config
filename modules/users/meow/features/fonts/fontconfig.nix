@@ -7,6 +7,7 @@
     homeManager = {
       fonts.fontconfig = {
         defaultFonts = {
+          serif     = [ "Quicksand Medium" ];
           sansSerif = [ "Quicksand Medium" ];
           monospace = [ "Maple Mono NF" ];
         };

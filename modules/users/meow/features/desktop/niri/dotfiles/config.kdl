@@ -197,16 +197,16 @@ binds {
 
     Super+Alt+Slash            hotkey-overlay-title="Show Hotkeys" { show-hotkey-overlay; }
     Super+Alt+P                hotkey-overlay-title="Screen Off"   { power-off-monitors; }
-    Super+Alt+L                hotkey-overlay-title="Lock"         { spawn "noctalia" "msg" "session" "lock"; }
-    Super+Alt+S                hotkey-overlay-title="Sleep"        { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
+    Super+Alt+L                hotkey-overlay-title="Lock"         { spawn-sh "noctalia msg session lock"; }
+    Super+Alt+S                hotkey-overlay-title="Sleep"        { spawn-sh "noctalia msg session lock-and-suspend"; }
     Super+Alt+E                hotkey-overlay-title="Exit Niri"    { quit; }
-    Super+Alt+Ctrl+Shift+Q     hotkey-overlay-title="Shutdown"     { spawn "noctalia" "msg" "session" "shutdown"; }
-    Super+Alt+Ctrl+Shift+R     hotkey-overlay-title="Reboot"       { spawn "noctalia" "msg" "session" "reboot"; }
+    Super+Alt+Ctrl+Shift+Q     hotkey-overlay-title="Shutdown"     { spawn-sh "noctalia msg session shutdown"; }
+    Super+Alt+Ctrl+Shift+R     hotkey-overlay-title="Reboot"       { spawn-sh "noctalia msg session reboot"; }
 
     Mod+T hotkey-overlay-title="Terminal (ghostty)" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Launcher"           { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "--autocopy"; }
-    Mod+Shift+V hotkey-overlay-title="Clipboard"    { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+    Mod+D hotkey-overlay-title="Launcher"           { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn-sh "hyprpicker --autocopy"; }
+    Mod+Shift+V hotkey-overlay-title="Clipboard"    { spawn-sh "noctalia msg panel-toggle clipboard"; }
 
     Mod+Print       { screenshot-screen; }
     // note: ctrl+c within this interactive screenshot UI copies to clipboard without saving to disk
@@ -346,8 +346,8 @@ binds {
     //--------------------------------------------------------------------------
     // hardware
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -356,8 +356,8 @@ binds {
     XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    //XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    //XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     //--------------------------------------------------------------------------
     // other
