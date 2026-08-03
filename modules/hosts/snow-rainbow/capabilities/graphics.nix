@@ -39,7 +39,7 @@ in
   };
 
   den.homes.x86_64-linux = {
-    "meow@rainbow" = {
+    "meow@snow-rainbow" = {
       core = { inherit capabilities; };
     };
   };

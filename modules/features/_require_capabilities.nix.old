@@ -1,8 +1,0 @@
-{ host, home }:
-requiredCapabilities:
-output:
-if (host ? capabilities && host.core.capabilities.has requiredCapabilities)
-    || (home ? capabilities && home.core.capabilities.has requiredCapabilities) then
-  output
-else
-  {}

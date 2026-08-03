@@ -25,7 +25,7 @@ in
   den.homes.x86_64-linux = {
     # by specifying both username and hostname, we tie this automatically to the user aspect,
     # and also allows you to invoke standalone home manager with just `home-manager switch`
-    "meow@rainbow" = {
+    "meow@snow-rainbow" = {
       core = { inherit stateVersion; };
     };
   };
