@@ -1,7 +1,7 @@
 {
   den.aspects.features.terminal.ghostty = {
     homeManager = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         programs.ghostty.enable = true;
       };
   };

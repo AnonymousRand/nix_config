@@ -7,7 +7,7 @@
     ];
 
     homeManager = { core, lib, pkgs, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         home.packages = [
           pkgs.tesseract # OCR
         ];

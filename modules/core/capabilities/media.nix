@@ -14,7 +14,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "media" ]) {
+      lib.mkIf (core.capabilities.has [ "media" ]) {
         # grant real-time audio priority to prevent crackling
         security.rtkit.enable = true;
 

@@ -14,7 +14,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "bluetooth" ]) {
+      lib.mkIf (core.capabilities.has [ "bluetooth" ]) {
         # enable bluetooth
         hardware.bluetooth.enable = true;
       };

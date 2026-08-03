@@ -14,7 +14,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "networking" ]) {
+      lib.mkIf (core.capabilities.has [ "networking" ]) {
         # enable network manager
         networking.networkmanager.enable = true;
 

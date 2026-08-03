@@ -27,7 +27,7 @@ rec {
     green_xlight     = "#baff66";
     green_deep       = "#8cff00";
     green_deep_dark  = "#78da00";
-    green_deep_xdark = "#6fc900";
+    green_deep_xdark = "#70cc00";
 
     orange        = "#ffd500";
     orange_light  = "#ffdb26";

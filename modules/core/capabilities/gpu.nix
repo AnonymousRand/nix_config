@@ -18,7 +18,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "gpu" ]) (
+      lib.mkIf (core.capabilities.has [ "gpu" ]) (
         let
           vendorSpecificConfig = {
             amd = {};

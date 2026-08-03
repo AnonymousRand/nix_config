@@ -15,7 +15,7 @@
   # (for some reason putting `syst` as an arg to `nixos` here causes infinite recursion)
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "battery" ]) {
+      lib.mkIf (core.capabilities.has [ "battery" ]) {
         # enable battery status feature
         services.upower.enable = true; 
       };

@@ -1,7 +1,7 @@
 { den, inputs, ... }: {
   den.aspects.features.desktop.niri = {
     nixos = { core, lib, pkgs, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         programs.niri = {
           enable = true;
         };
@@ -13,7 +13,7 @@
       };
 
     homeManager = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         wayland.windowManager.niri = {
           enable = true;
 

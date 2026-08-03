@@ -14,14 +14,14 @@
     ];
 
     nixos = { core, lib, pkgs, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         environment.systemPackages = [
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
       };
 
     homeManager = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         programs.noctalia.enable = true;
       };
   };

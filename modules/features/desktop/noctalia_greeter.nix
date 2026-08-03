@@ -14,7 +14,7 @@
     ];
 
     nixos = { core, lib, ... }:
-      lib.optionalAttrs (core.capabilities.has [ "graphics" ]) {
+      lib.mkIf (core.capabilities.has [ "graphics" ]) {
         programs.noctalia-greeter = {
           enable = true;
           settings = {

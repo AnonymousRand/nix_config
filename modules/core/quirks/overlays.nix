@@ -34,7 +34,7 @@
       # only set `nixpkgs.overlays` in home manager class module if `useGlobalPkgs` was `false`
       # or if standalone (i.e. `home` present; note that checking `host == null` doesn't work?)!
       # otherwise, this is not allowed
-      lib.optionalAttrs (home != null || (host != null && !host.core.quirks.overlays.hmUseGlobalPkgs)) {
+      lib.mkIf (home != null || (host != null && !host.core.quirks.overlays.hmUseGlobalPkgs)) {
         nixpkgs.overlays = lib.unique overlays;
       };
   };
