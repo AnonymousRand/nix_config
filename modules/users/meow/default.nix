@@ -28,6 +28,7 @@ in
 
       den.ful.${username}.features.fonts.fontconfig
       den.ful.${username}.features.fonts.maple-mono
+      den.aspects.features.fonts.quicksand
 
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish

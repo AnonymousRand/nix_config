@@ -12,6 +12,8 @@
       den.aspects.core.quirks.overlays
       den.aspects.core.state-version
 
+      den.aspects.features.fonts.fontconfig
+
       den.aspects.features.terminal.bash
 
       den.aspects.features.editors.vim
