@@ -1,6 +1,9 @@
+let
+  capabilityName = "gpu";
+in
 {
   den.schema.syst = { lib, ... }: {
-    options.core.capabilities.gpu = lib.mkOption {
+    options.core.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -18,7 +21,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.mkIf (core.capabilities.has [ "gpu" ]) (
+      lib.mkIf (core.capabilities.has [ capabilityName ]) (
         let
           vendorSpecificConfig = {
             amd = {};
@@ -41,7 +44,7 @@
             hardware.graphics.enable = true;
           }
 
-          vendorSpecificConfig.${core.capabilities.gpu.vendor}
+          vendorSpecificConfig.${core.capabilities.${capabilityName}.vendor}
         ]
       );
   };

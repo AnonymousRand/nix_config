@@ -1,6 +1,9 @@
+let
+  capabilityName = "media";
+in
 {
   den.schema.syst = { lib, ... }: {
-    options.core.capabilities.media = lib.mkOption {
+    options.core.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -14,7 +17,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.mkIf (core.capabilities.has [ "media" ]) {
+      lib.mkIf (core.capabilities.has [ capabilityName ]) {
         # grant real-time audio priority to prevent crackling
         security.rtkit.enable = true;
 

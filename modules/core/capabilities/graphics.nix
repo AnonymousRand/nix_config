@@ -1,6 +1,9 @@
+let
+  capabilityName = "graphics";
+in
 {
   den.schema.syst = { lib, ... }: {
-    options.core.capabilities.graphics = lib.mkOption {
+    options.core.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {

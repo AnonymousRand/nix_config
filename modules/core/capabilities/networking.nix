@@ -1,6 +1,9 @@
+let
+  capabilityName = "networking";
+in
 {
   den.schema.syst = { lib, ... }: {
-    options.core.capabilities.networking = lib.mkOption {
+    options.core.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -14,7 +17,7 @@
 
   den.aspects.core.capabilities = {
     nixos = { core, lib, ... }:
-      lib.mkIf (core.capabilities.has [ "networking" ]) {
+      lib.mkIf (core.capabilities.has [ capabilityName ]) {
         # enable network manager
         networking.networkmanager.enable = true;
 
