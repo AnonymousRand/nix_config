@@ -206,6 +206,7 @@ binds {
     Mod+T hotkey-overlay-title="Terminal (ghostty)" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Launcher"           { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "--autocopy"; }
+    Mod+Shift+V hotkey-overlay-title="Clipboard"    { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 
     Mod+Print       { screenshot-screen; }
     // note: ctrl+c within this interactive screenshot UI copies to clipboard without saving to disk
