@@ -7,11 +7,12 @@
       username =
         if user ? name then
           user.name
-        else
+        else (
           if home ? name then
             home.name
           else
-            "";
+            throw "policy `add-username-ctx`: missing option values for `username`!"
+        );
     })
   ];
 

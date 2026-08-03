@@ -5,9 +5,9 @@ in
 {
   den.aspects.utils.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }: {
-      # declare these options in the home manager class module (aspect-level is weird)
+      # declare these options in the home manager module (aspect-level doesn't seem to set properly)
       # set these options on any aspect that includes this :3
-      options.${optsBase}.${aspectName} = lib.mkOption {
+      options.utils.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
             pathsToCompile = lib.mkOption {
@@ -38,7 +38,7 @@ in
             version = "0.0.0";
 
             # input SCSS files to be copied into build environment
-            srcs = config.${optsBase}.${aspectName}.pathsToLoad ++ config.${optsBase}.${aspectName}.pathsToCompile;
+            srcs = config.utils.${aspectName}.pathsToLoad ++ config.utils.${aspectName}.pathsToCompile;
             # don't try to unpack single files in `srcs` as archives
             dontUnpack = true;
 
@@ -59,11 +59,11 @@ in
             buildPhase =
               let
                 loadPathArgs = builtins.foldl'
-                  (acc: entry: acc + " --load-path ${entry}") "" config.${optsBase}.${aspectName}.pathsToLoad;
+                  (acc: entry: acc + " --load-path ${entry}") "" config.utils.${aspectName}.pathsToLoad;
 
                 sassCommands = builtins.foldl'
                   (acc: entry: acc + "\nsass ${entry}:build/ --no-source-map ${loadPathArgs}")
-                  "" config.${optsBase}.${aspectName}.pathsToCompile;
+                  "" config.utils.${aspectName}.pathsToCompile;
               in
               ''
                 runHook preBuild
@@ -89,7 +89,7 @@ in
           };
         in
         {
-          ${optsBase}.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+          utils.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
         };
     };
   };

@@ -21,7 +21,7 @@
         };
 
         # noctalia theming
-        my.noctalia-theming = {
+        utils.noctalia-theming = {
           customColors = import ./_colors.nix;
           templates.niri = {
             input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;

@@ -11,8 +11,9 @@
         else
           if home ? core then
             home.core
-          else
-            {};
+          else (
+            throw "policy `add-core-ctx`: missing option values for `core`!"
+          );
     })
   ];
 

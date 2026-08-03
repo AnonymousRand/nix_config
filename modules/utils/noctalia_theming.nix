@@ -1,6 +1,5 @@
 { den, ... }:
 let
-  optsBase = "my";
   aspectName = "noctalia-theming";
 in
 {
@@ -10,9 +9,9 @@ in
     ];
 
     homeManager = { username, config, lib, ... }: {
-      # declare these options in the home manager class module (aspect-level is weird)
+      # declare these options in the home manager module (aspect-level doesn't seem to set properly)
       # set these options on any aspect that includes this :3
-      options.${optsBase}.${aspectName} = lib.mkOption {
+      options.utils.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
             palette = lib.mkOption {
@@ -36,7 +35,7 @@ in
       config = lib.mkMerge [
         # declare custom color palette for Noctalia app theming, if provided
         (
-          lib.mkIf (lib.attrNames config.${optsBase}.${aspectName}.palette != [])
+          lib.mkIf (lib.attrNames config.utils.${aspectName}.palette != [])
           {
             programs.noctalia = {
               settings.theme = {
@@ -46,7 +45,7 @@ in
             };
 
             xdg.configFile."noctalia/palettes/${username}.json".text =
-              builtins.toJSON config.${optsBase}.${aspectName}.palette;
+              builtins.toJSON config.utils.${aspectName}.palette;
           }
         )
 
@@ -54,9 +53,9 @@ in
           programs.noctalia = {
             settings.theme.templates = {
               # load collected custom colors
-              custom_colors = config.${optsBase}.${aspectName}.customColors;
+              custom_colors = config.utils.${aspectName}.customColors;
               # load collected templates for rendering
-              user = config.${optsBase}.${aspectName}.templates;
+              user = config.utils.${aspectName}.templates;
             };
           };
         }

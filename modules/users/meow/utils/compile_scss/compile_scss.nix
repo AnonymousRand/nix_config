@@ -6,7 +6,7 @@
     ];
 
     homeManager = {
-      my.compile-scss = {
+      utils.compile-scss = {
         pathsToCompile = [ ../../features ];
         pathsToLoad = [ ./. ];
       };
