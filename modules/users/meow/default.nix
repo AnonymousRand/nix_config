@@ -43,6 +43,9 @@ in
       den.ful.${username}.features.tools.git
       den.ful.${username}.features.tools.hyfetch
       den.ful.${username}.features.tools.ssh-client
+
+      den.aspects.features.media.swayimg
+      den.ful.${username}.features.media.xdg-mime-apps
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>`

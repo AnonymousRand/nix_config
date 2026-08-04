@@ -21,6 +21,8 @@
       den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
+
+      den.aspects.features.media.xdg-mime-apps
     ];
 
     nixos = {
