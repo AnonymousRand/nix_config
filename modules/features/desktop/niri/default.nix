@@ -1,7 +1,7 @@
 { den, inputs, ... }: {
   den.aspects.features.desktop.niri = {
-    nixos = { core, lib, pkgs, ... }:
-      lib.mkIf (core.capabilities.has [ "graphics" ]) {
+    nixos = { systSettings, lib, pkgs, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
         programs.niri = {
           enable = true;
         };
@@ -12,8 +12,8 @@
         ];
       };
 
-    homeManager = { core, lib, ... }:
-      lib.mkIf (core.capabilities.has [ "graphics" ]) {
+    homeManager = { systSettings, lib, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
         wayland.windowManager.niri = {
           enable = true;
 
@@ -29,7 +29,7 @@
                 y = value.position.y;
               };
             }
-          ) core.capabilities.graphics.displayOutputs;
+          ) systSettings.capabilities.graphics.displayOutputs;
         };
       };
   };

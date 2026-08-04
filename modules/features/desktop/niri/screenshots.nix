@@ -6,8 +6,8 @@
       den.aspects.features.tools.cli-utils
     ];
 
-    homeManager = { core, lib, pkgs, ... }:
-      lib.mkIf (core.capabilities.has [ "graphics" ]) {
+    homeManager = { systSettings, lib, pkgs, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
         home.packages = [
           pkgs.tesseract # OCR
         ];

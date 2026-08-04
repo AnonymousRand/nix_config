@@ -1,7 +1,7 @@
 {
   den.aspects.features.apps.firefox = {
-    homeManager = { core, lib, ... }:
-      lib.mkIf (core.capabilities.has [ "graphics" ]) {
+    homeManager = { systSettings, lib, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
         programs.firefox.enable = true;
       };
   };

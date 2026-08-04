@@ -1,7 +1,7 @@
 { den, ... }: {
   den.aspects.features.tools.brightnessctl = {
-    homeManager = { core, lib, pkgs, ... }:
-      lib.mkIf (core.capabilities.has [ "brightness" ]) {
+    homeManager = { systSettings, lib, pkgs, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "brightness" ]) {
         home.packages = [
           pkgs.brightnessctl
         ];

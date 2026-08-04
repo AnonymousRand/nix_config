@@ -7,10 +7,10 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      den.aspects.core.capabilities
-      den.aspects.core.quirks.nix-ld
-      den.aspects.core.quirks.overlays
-      den.aspects.core.state-version
+      den.aspects.syst-settings.capabilities
+      den.aspects.syst-settings.quirks.nix-ld
+      den.aspects.syst-settings.quirks.overlays
+      den.aspects.syst-settings.state-version
 
       den.aspects.features.theme.fonts.fontconfig
 

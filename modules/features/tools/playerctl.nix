@@ -1,7 +1,7 @@
 {
   den.aspects.features.tools.playerctl = {
-    homeManager = { core, lib, pkgs, ... }:
-      lib.mkIf (core.capabilities.has [ "media" ]) {
+    homeManager = { systSettings, lib, pkgs, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "media" ]) {
         home.packages = [
           pkgs.playerctl
         ];
