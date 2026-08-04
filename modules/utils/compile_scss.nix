@@ -7,6 +7,11 @@ in
     homeManager = { config, lib, pkgs, ... }: {
       # declare these options in the home manager module (aspect-level doesn't seem to set properly)
       # set these options on any aspect that includes this :3
+      #
+      # options:
+      # - `pathsToCompile` are the paths containing all the SCSS files to compile
+      # - `pathsToLoad` are the SCSS paths to be loaded with `sass --load-path` (for imports in
+      #   other SCSS files without needing relative paths). provide directories, not single files
       options.utils.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
@@ -29,10 +34,6 @@ in
 
       config =
         let
-          # params:
-          # - `pathsToLoad` is the SCSS paths to be loaded with `sass --load-path` (for imports in
-          #   other SCSS files without needing relative paths). provide directories, not single files
-          # - `pathToCompile` is a path containing all the SCSS files to compile
           compileScss = { dart-sass, stdenv }: stdenv.mkDerivation {
             pname = "compile-scss";
             version = "0.0.0";
