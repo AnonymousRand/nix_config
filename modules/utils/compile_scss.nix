@@ -6,7 +6,6 @@ in
   den.aspects.utils.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }: {
       # declare these options in the home manager module (aspect-level doesn't seem to set properly)
-      # set these options on any aspect that includes this :3
       #
       # options:
       # - `pathsToCompile` are the paths containing all the SCSS files to compile

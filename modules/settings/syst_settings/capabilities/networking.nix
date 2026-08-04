@@ -15,14 +15,13 @@ in
     };
   };
 
-  den.aspects.syst-settings.capabilities = {
-    nixos = { systSettings, lib, ... }:
-      lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
-        # enable network manager
-        networking.networkmanager.enable = true;
+  den.aspects.syst-settings.capabilities = { systSettings }: {
+    nixos = { lib, ... }: lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
+      # enable network manager
+      networking.networkmanager.enable = true;
 
-        # maybe help with wifi issues after suspend
-        networking.networkmanager.wifi.powersave = false;
-      };
+      # maybe help with wifi issues after suspend
+      networking.networkmanager.wifi.powersave = false;
+    };
   };
 }

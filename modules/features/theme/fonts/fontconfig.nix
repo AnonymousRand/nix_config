@@ -1,6 +1,6 @@
 {
-  den.aspects.features.theme.fonts.fontconfig = {
-    homeManager = { userSettings, ... }: {
+  den.aspects.features.theme.fonts.fontconfig = { userSettings }: {
+    homeManager = {
       fonts.fontconfig = {
         enable = true;
         antialiasing = true;
