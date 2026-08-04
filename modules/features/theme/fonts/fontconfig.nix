@@ -1,5 +1,5 @@
 {
-  den.aspects.features.fonts.fontconfig = {
+  den.aspects.features.theme.fonts.fontconfig = {
     homeManager = {
       fonts.fontconfig = {
         enable = true;

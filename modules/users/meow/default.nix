@@ -26,10 +26,10 @@ in
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      den.ful.${username}.features.fonts.fontconfig
-      den.ful.${username}.features.fonts.maple-mono
-      den.aspects.features.fonts.quicksand
-      #den.ful.${username}.features.fonts.quicksand
+      den.ful.${username}.features.theme.fonts.fontconfig
+      den.ful.${username}.features.theme.fonts.maple-mono
+      den.aspects.features.theme.fonts.quicksand
+      #den.ful.${username}.features.theme.fonts.quicksand
 
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish

@@ -1,7 +1,7 @@
 { den, ... }: {
-  meow.features.fonts.fontconfig = {
+  meow.features.theme.fonts.fontconfig = {
     includes = [
-      den.aspects.features.fonts.fontconfig
+      den.aspects.features.theme.fonts.fontconfig
     ];
 
     homeManager = {
