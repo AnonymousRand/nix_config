@@ -36,7 +36,7 @@ layout {
 
     shadow {
         off
-        draw-behind-window true
+        draw-behind-window false
         softness 30
         spread 5
         offset x=0 y=5
@@ -63,4 +63,8 @@ layout {
 // uncomment to ask apps to turn off client-side decorations
 // this is an alternative to `draw-behind-window` for shadows, focus rings, and borders
 // that is better if you want translucent windows
-// prefer-no-csd
+prefer-no-csd
+
+window-rule {
+    draw-border-with-background false
+}

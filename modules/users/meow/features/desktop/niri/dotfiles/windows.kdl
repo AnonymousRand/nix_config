@@ -1,12 +1,12 @@
+window-rule {
+    opacity 0.95
+}
+
 // turn on drop shadows for floating windows
 window-rule {
     match is-floating=true
     shadow {
         on
-        draw-behind-window true
-        softness 30
-        spread 5
-        offset x=0 y=5
     }
 }
 

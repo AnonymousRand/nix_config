@@ -9,7 +9,7 @@ enable_builtin_templates = true
 enabled = true
 fill_mode = "fit"
 transition = ["fade"]
-transition_duration = 1500
+transition_duration = 2500
 transition_on_startup = true
 
 [wallpaper.automation]
