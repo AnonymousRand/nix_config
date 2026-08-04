@@ -1,4 +1,5 @@
 window-rule {
+    exclude app-id="swayimg"
     opacity 0.95
 }
 
