@@ -1,6 +1,6 @@
 # `modules/utils/`
 
-reusable util aspects—to use one in an aspect, simply include it and set any declared options if appropriate.
+reusable util aspects. to use one in an aspect, simply include it and set any declared options if appropriate.
 
 ### notes
 
