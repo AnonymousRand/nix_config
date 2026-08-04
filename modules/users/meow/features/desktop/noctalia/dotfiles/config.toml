@@ -1,0 +1,52 @@
+[theme]
+# switch between light and dark themes automatically
+mode = "auto"
+
+[theme.templates]
+enable_builtin_templates = true
+
+[wallpaper]
+enabled = true
+fill_mode = "fit"
+transition = ["fade"]
+transition_duration = 1500
+transition_on_startup = true
+
+[wallpaper.automation]
+enabled = true
+interval_seconds = 1800
+order = "random"
+recursive = false
+
+[lockscreen]
+enabled = true
+# (don't use blurred version of current desktop's contents as wallpaper/background)
+blurred_desktop = false
+blur_intensity = 0.0
+tint_intensity = 0.0
+# (empty uses desktop wallpaper)
+wallpaper = ""
+
+[location]
+auto_locate = false
+custom_schedule = true
+sunrise = "09:00"
+sunset = "18:00"
+
+[shell]
+polkit_agent = true
+show_location = false
+
+# keybinds in noctalia panels (e.g. launcher, clipboard)
+[keybinds]
+validate     = ["return", "kp_enter"]
+cancel       = ["escape"]
+left         = ["shift+h", "left"]
+down         = ["shift+j", "down"]
+up           = ["shift+k", "up"]
+right        = ["shift+l", "right"]
+tab_next     = ["tab"]
+tab_previous = ["shift+tab", "iso_left_tab"]
+copy         = ["ctrl+c"]
+save         = ["ctrl+s"]
+delete       = ["del"]

@@ -1,0 +1,66 @@
+layout {
+    gaps 0
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        on
+        width 5
+    }
+
+    border {
+        // normally you're advised to not have both the focus ring and border active at the same time,
+        // but my current setup does both so there's still a border when inactive, but a much stronger
+        // focus ring when active (and the active border and active focus ring should have the same
+        // colors, so as to make a thicker focus ring and look prettier :3)
+
+        on
+        width 2
+    }
+
+    shadow {
+        off
+        draw-behind-window true
+        softness 30
+        spread 5
+        offset x=0 y=5
+    }
+
+    struts {
+        // this is to make the focus ring not clip at the edges of the screen (since `gaps 0` is set
+        // to not leave gaps between adjacent borders), and should be equal to the focus ring's width
+        left 5
+        right 5
+        top 5
+        bottom 5
+    }
+
+    // tab indicator when multiple windows in a column are in tabbed view
+    tab-indicator {
+        on
+        gap 14
+        width 8
+        corner-radius 4
+    }
+}
+
+// uncomment to ask apps to turn off client-side decorations
+// this is an alternative to `draw-behind-window` for shadows, focus rings, and borders
+// that is better if you want translucent windows
+// prefer-no-csd

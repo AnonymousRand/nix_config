@@ -1,0 +1,24 @@
+// recent windows switcher ("alt + tab")
+recent-windows {
+    //off
+
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        padding 40
+        corner-radius 12
+    }
+
+    previews {
+        max-scale 0.5
+        max-height 480
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     scope="workspace"; }
+        Alt+Shift+grave { previous-window scope="workspace"; }
+    }
+}

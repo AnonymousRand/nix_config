@@ -1,0 +1,19 @@
+// (the backdrop is the background in overview mode)
+
+// place the regular noctalia wallpaper on the backdrop
+layer-rule {
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
+}
+
+// set transparent workspace background color so the backdrop is visible at all times.
+layout {
+  background-color "transparent"
+}
+
+// optionally, disable workspace shadows in the overview
+overview {
+  workspace-shadow {
+    off
+  }
+}

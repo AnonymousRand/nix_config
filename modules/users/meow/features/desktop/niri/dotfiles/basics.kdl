@@ -1,0 +1,10 @@
+// spawn Noctalia on startup
+spawn-at-startup "noctalia"
+
+hotkey-overlay {
+    // disable "important hotkeys" popup at startup
+    skip-at-startup
+}
+
+// path is formatted with `strftime`
+screenshot-path "~/pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"

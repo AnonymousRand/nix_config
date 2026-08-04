@@ -1,0 +1,20 @@
+input {
+    keyboard {
+        // use default keyboard settings provided by host's nix config
+        xkb {}
+        // enable numlock on startup
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        // turn off dynamic mouse acceleration
+        accel-profile "flat"
+        scroll-method "two-finger"
+    }
+
+    mouse {
+        accel-profile "flat"
+    }
+}
