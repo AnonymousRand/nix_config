@@ -1,0 +1,13 @@
+# keybinds in noctalia panels (e.g. launcher, clipboard)
+[keybinds]
+validate     = ["return", "kp_enter"]
+cancel       = ["escape"]
+left         = ["shift+h", "left"]
+down         = ["shift+j", "down"]
+up           = ["shift+k", "up"]
+right        = ["shift+l", "right"]
+tab_next     = ["tab"]
+tab_previous = ["shift+tab", "iso_left_tab"]
+copy         = ["ctrl+c"]
+save         = ["ctrl+s"]
+delete       = ["del"]
