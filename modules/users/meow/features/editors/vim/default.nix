@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.editors.vim = { userSettings }: {
+  meow.features.editors.vim = {
     includes = [
       den.aspects.features.editors.vim
     ];

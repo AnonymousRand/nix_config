@@ -5,8 +5,12 @@
   # instead of needing `host ? null, home ? null`
   # (this never seems to work if i make the context arg `syst`; idk how to make entity kinds work lol)
   den.policies.add-syst-settings-ctx = { host ? null, home ? null, ... }:
-    # we can't seem to use `lib.optionals` here since adding `lib` to the args above breaks :/
+    # we can't use `lib.optionals` since adding `lib` to the args above makes this policy never run :/
     if (host != null || home != null) then [
+      # note that the fact that this context arg might not be defined means it *must* be passed as
+      # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's in
+      # a class module arg list, nix will say "unknown attribute" instead of skipping
+      # (although technically i think it is impossible? for this particular context arg to not exist)
       (den.lib.policy.resolve {
         systSettings =
           if host ? systSettings then

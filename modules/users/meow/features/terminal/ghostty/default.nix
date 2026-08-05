@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.terminal.ghostty = { userSettings }: {
+  meow.features.terminal.ghostty = {
     includes = [
       den.aspects.features.terminal.ghostty
     ];

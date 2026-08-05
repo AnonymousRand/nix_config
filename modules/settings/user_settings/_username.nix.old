@@ -1,7 +1,7 @@
 {
-  den.aspects.users.base = { user ? null, home ? null, lib, ... }: {
+  den.aspects.users.base = { lib, ... }: {
     imports = [
-      {
+      ({
         options.userSettings = {
           username = lib.mkOption {
             type = lib.types.str;
@@ -17,7 +17,7 @@
               );
           };
         };
-      }
+      })
     ];
   };
 }

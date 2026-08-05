@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.terminal.fish = { userSettings }: {
+  meow.features.terminal.fish = {
     includes = [
       den.aspects.features.terminal.fish
     ];

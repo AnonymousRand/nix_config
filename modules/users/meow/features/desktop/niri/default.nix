@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.desktop.niri = { userSettings }: {
+  meow.features.desktop.niri = {
     includes = [
       den.aspects.features.desktop.niri
     ];
