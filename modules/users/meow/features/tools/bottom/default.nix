@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.tools.bottom = {
+  meow.features.tools.bottom = { userSettings }: {
     includes = [
       den.aspects.features.tools.bottom
     ];

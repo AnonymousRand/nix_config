@@ -1,7 +1,7 @@
 { den, ... }: {
   den.aspects.users.meow = {
-    # enable `compile-scss`
     includes = [
+      # enable `compile-scss`
       den.aspects.utils.compile-scss
     ];
 
