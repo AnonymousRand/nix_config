@@ -29,6 +29,7 @@ in
       den.ful.${username}.features.theme.fonts.maple-mono
       den.aspects.features.theme.fonts.quicksand
       #den.ful.${username}.features.theme.fonts.quicksand
+      den.aspects.features.theme.gtk
 
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish
