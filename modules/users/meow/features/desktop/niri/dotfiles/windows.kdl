@@ -7,7 +7,10 @@ window-rule {
 // make these noctalia surfaces also translucent
 layer-rule {
     match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
-    opacity 0.95
+    opacity 0.925
+    background-effect {
+        blur false
+    }
 }
 
 // turn on drop shadows for floating windows
