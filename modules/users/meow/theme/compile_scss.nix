@@ -1,7 +1,6 @@
-{ den, ... }: {
-  den.aspects.users.meow = {
+{ den, meow, ... }: {
+  meow.theme.compile-scss = {
     includes = [
-      # enable `compile-scss`
       den.aspects.theme.compile-scss
     ];
 

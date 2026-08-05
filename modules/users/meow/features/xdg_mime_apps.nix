@@ -1,7 +1,7 @@
 { den, meow, ... }: {
-  meow.features.media.xdg-mime-apps = {
+  meow.features.xdg-mime-apps = {
     includes = [
-      den.aspects.features.media.xdg-mime-apps
+      den.aspects.features.xdg-mime-apps
     ];
 
     homeManager = {

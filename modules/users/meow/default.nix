@@ -17,9 +17,12 @@ in
 
       den.batteries.primary-user
 
-      den.aspects.theme.gtk
+      den.ful.${username}.theme.compile-scss
+      den.ful.${username}.theme.gtk
+      den.ful.${username}.theme.noctalia-theming
 
       den.aspects.features.home-manager-standalone
+      den.ful.${username}.features.xdg-mime-apps
 
       # (nix doesn't let us start these with `${username}` so we have to use the full
       # `den.ful` namespace names. grrr 3:<)
@@ -46,7 +49,6 @@ in
       den.ful.${username}.features.tools.ssh-client
 
       den.aspects.features.media.swayimg
-      den.ful.${username}.features.media.xdg-mime-apps
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>`

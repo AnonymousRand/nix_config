@@ -12,6 +12,8 @@
       den.aspects.syst-settings.quirks.overlays
       den.aspects.syst-settings.state-version
 
+      den.aspects.features.xdg-mime-apps
+
       den.aspects.features.fonts.fontconfig
 
       den.aspects.features.terminal.bash
@@ -21,8 +23,6 @@
       den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
-
-      den.aspects.features.media.xdg-mime-apps
     ];
 
     nixos = {

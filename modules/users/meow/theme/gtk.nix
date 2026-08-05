@@ -1,5 +1,5 @@
-{ den, ... }: {
-  den.aspects.users.meow = {
+{ den, meow, ... }: {
+  meow.theme.gtk = {
     includes = [
       den.aspects.theme.gtk
     ];

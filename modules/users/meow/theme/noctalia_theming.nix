@@ -1,7 +1,6 @@
-{ den, ... }: {
-  den.aspects.users.meow = {
+{ den, meow, ... }: {
+  meow.theme.noctalia-theming = {
     includes = [
-      # enable noctalia theming
       den.aspects.theme.noctalia-theming
 
       ({ userSettings }: {
