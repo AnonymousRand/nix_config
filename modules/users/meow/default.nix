@@ -17,6 +17,8 @@ in
 
       den.batteries.primary-user
 
+      den.aspects.theme.gtk
+
       den.aspects.features.home-manager-standalone
 
       # (nix doesn't let us start these with `${username}` so we have to use the full
@@ -26,10 +28,9 @@ in
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      den.ful.${username}.features.theme.fonts.maple-mono
-      den.aspects.features.theme.fonts.quicksand
-      #den.ful.${username}.features.theme.fonts.quicksand
-      den.aspects.features.theme.gtk
+      den.ful.${username}.features.fonts.maple-mono
+      den.aspects.features.fonts.quicksand
+      #den.ful.${username}.features.fonts.quicksand
 
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish

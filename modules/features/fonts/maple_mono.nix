@@ -1,14 +1,14 @@
 {
-  den.aspects.features.theme.fonts.quicksand = {
+  den.aspects.features.fonts.maple-mono = {
     nixos = { pkgs, ... }: {
       fonts.packages = [
-        pkgs.quicksand
+        pkgs.maple-mono.NF
       ];
     };
 
     homeManager = { pkgs, ... }: {
       home.packages = [
-        pkgs.quicksand
+        pkgs.maple-mono.NF
       ];
     };
   };

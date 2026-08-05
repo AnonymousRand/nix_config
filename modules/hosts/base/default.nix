@@ -12,7 +12,7 @@
       den.aspects.syst-settings.quirks.overlays
       den.aspects.syst-settings.state-version
 
-      den.aspects.features.theme.fonts.fontconfig
+      den.aspects.features.fonts.fontconfig
 
       den.aspects.features.terminal.bash
 

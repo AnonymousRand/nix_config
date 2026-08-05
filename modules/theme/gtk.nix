@@ -1,5 +1,5 @@
 {
-  den.aspects.features.theme.gtk = { systSettings, userSettings }: {
+  den.aspects.theme.gtk = { systSettings, userSettings }: {
     homeManager = { lib, ... }: lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
       gtk = {
         enable = true;

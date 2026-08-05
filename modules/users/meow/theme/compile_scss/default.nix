@@ -2,11 +2,11 @@
   den.aspects.users.meow = {
     includes = [
       # enable `compile-scss`
-      den.aspects.utils.compile-scss
+      den.aspects.theme.compile-scss
     ];
 
     homeManager = {
-      utils.compile-scss = {
+      theme.compile-scss = {
         pathsToCompile = [ ../../features ];
         pathsToLoad = [ ./. ];
       };

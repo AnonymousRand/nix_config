@@ -6,7 +6,7 @@
 
     homeManager = {
       # noctalia theming
-      utils.noctalia-theming = {
+      theme.noctalia-theming = {
         customColors = import ./_colors.nix;
         templates.bottom = {
           input_path = builtins.toString ./dotfiles/bottom.toml;

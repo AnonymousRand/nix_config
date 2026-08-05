@@ -3,7 +3,7 @@ let
   aspectName = "compile-scss";
 in
 {
-  den.aspects.utils.${aspectName} = {
+  den.aspects.theme.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }: {
       # declare these options in the home manager module (aspect-level doesn't seem to set properly)
       #
@@ -11,7 +11,7 @@ in
       # - `pathsToCompile` are the paths containing all the SCSS files to compile
       # - `pathsToLoad` are the SCSS paths to be loaded with `sass --load-path` (for imports in
       #   other SCSS files without needing relative paths). provide directories, not single files
-      options.utils.${aspectName} = lib.mkOption {
+      options.theme.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
             pathsToCompile = lib.mkOption {
@@ -38,7 +38,7 @@ in
             version = "0.0.0";
 
             # input SCSS files to be copied into build environment
-            srcs = config.utils.${aspectName}.pathsToLoad ++ config.utils.${aspectName}.pathsToCompile;
+            srcs = config.theme.${aspectName}.pathsToLoad ++ config.theme.${aspectName}.pathsToCompile;
             # don't try to unpack single files in `srcs` as archives
             dontUnpack = true;
 
@@ -59,11 +59,11 @@ in
             buildPhase =
               let
                 loadPathArgs = builtins.foldl'
-                  (acc: entry: acc + " --load-path ${entry}") "" config.utils.${aspectName}.pathsToLoad;
+                  (acc: entry: acc + " --load-path ${entry}") "" config.theme.${aspectName}.pathsToLoad;
 
                 sassCommands = builtins.foldl'
                   (acc: entry: acc + "\nsass ${entry}:build/ --no-source-map ${loadPathArgs}")
-                  "" config.utils.${aspectName}.pathsToCompile;
+                  "" config.theme.${aspectName}.pathsToCompile;
               in
               ''
                 runHook preBuild
@@ -89,7 +89,7 @@ in
           };
         in
         {
-          utils.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+          theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
         };
     };
   };

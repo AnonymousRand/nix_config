@@ -2,11 +2,11 @@
   den.aspects.users.meow = {
     includes = [
       # enable noctalia theming
-      den.aspects.utils.noctalia-theming
+      den.aspects.theme.noctalia-theming
 
       ({ userSettings }: {
         homeManager = {
-          utils.noctalia-theming =
+          theme.noctalia-theming =
             let
               colors = userSettings.theme.colors;
             in

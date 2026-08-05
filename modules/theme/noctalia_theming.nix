@@ -3,7 +3,7 @@ let
   aspectName = "noctalia-theming";
 in
 {
-  den.aspects.utils.${aspectName} = {
+  den.aspects.theme.${aspectName} = {
     includes = [
       den.aspects.features.desktop.noctalia
 
@@ -17,7 +17,7 @@ in
           # need to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.utils.${aspectName} = lib.mkOption {
+          options.theme.${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 palette = lib.mkOption {
@@ -47,7 +47,7 @@ in
           in
           lib.mkMerge [
             # declare custom color palette for Noctalia app theming, if provided
-            (lib.mkIf (lib.attrNames config.utils.${aspectName}.palette != []) {
+            (lib.mkIf (lib.attrNames config.theme.${aspectName}.palette != []) {
               programs.noctalia = {
                 settings.theme = {
                   source = "custom";
@@ -56,16 +56,16 @@ in
               };
 
               xdg.configFile."noctalia/palettes/${paletteName}.json".text =
-                builtins.toJSON config.utils.${aspectName}.palette;
+                builtins.toJSON config.theme.${aspectName}.palette;
             })
 
             {
               programs.noctalia = {
                 settings.theme.templates = {
                   # load collected custom colors
-                  custom_colors = config.utils.${aspectName}.customColors;
+                  custom_colors = config.theme.${aspectName}.customColors;
                   # load collected templates for rendering
-                  user = config.utils.${aspectName}.templates;
+                  user = config.theme.${aspectName}.templates;
                 };
               };
             }
