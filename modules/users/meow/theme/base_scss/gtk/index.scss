@@ -1,0 +1,10 @@
+@forward "surfs";
+@forward "btn";
+@forward "styles";
+
+// also `use` to make this file itself compile to usable CSS for gtk as well
+@use "surfs";
+@use "btn";
+@use "styles";
+
+@use "css_vars";

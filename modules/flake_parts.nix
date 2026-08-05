@@ -7,8 +7,7 @@
   };
 
   # systems to feed to flake-parts' `perSystem`
-  # (i think this is how you do it in den...haven't really needed this yet though >w<)
-  den.systems = [
+  systems = [
     "x86_64-linux"
     "aarch64-linux"
   ];

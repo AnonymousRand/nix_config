@@ -1,5 +1,4 @@
 let
-  optsBase = "my";
   aspectName = "compile-scss";
 in
 {
@@ -59,10 +58,15 @@ in
             buildPhase =
               let
                 loadPathArgs = builtins.foldl'
-                  (acc: entry: acc + " --load-path ${entry}") "" config.theme.${aspectName}.pathsToLoad;
+                  (acc: entry: acc + " --load-path ${entry}") ""
+                  config.theme.${aspectName}.pathsToLoad;
 
                 sassCommands = builtins.foldl'
-                  (acc: entry: acc + "\nsass ${entry}:build/ --no-source-map ${loadPathArgs}")
+                  (
+                    acc: entry:
+                      acc + "\nsass ${entry}:build/${builtins.baseNameOf entry}" +
+                        " --no-source-map ${loadPathArgs}"
+                  )
                   "" config.theme.${aspectName}.pathsToCompile;
               in
               ''

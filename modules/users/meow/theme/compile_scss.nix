@@ -7,8 +7,8 @@
 
     homeManager = {
       theme.compile-scss = {
-        pathsToCompile = [ ../../features ];
-        pathsToLoad = [ ./. ];
+        pathsToCompile = [ ../features ./base_scss ];
+        pathsToLoad = [ ./base_scss ];
       };
     };
   };
