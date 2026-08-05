@@ -1,9 +1,12 @@
+{ den, ... }:
 let
-  aspectName = "gtk";
+  aspectName = "gtk-theming";
 in
 {
   den.aspects.theme.${aspectName} = {
     includes = [
+      den.aspects.features.desktop.gtk
+
       {
         homeManager = { lib, ... }: {
           # declare these options in the home manager module (aspect-level doesn't seem to set
@@ -37,20 +40,12 @@ in
       ({ userSettings }: {
         homeManager = { config, ... }: {
           gtk = {
-            enable = true;
             font = {
               name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
             };
 
-            gtk3 = {
-              enable = true;
-              extraCss = config.theme.${aspectName}.gtk3Css;
-            };
-
-            gtk4 = {
-              enable = true;
-              extraCss = config.theme.${aspectName}.gtk4Css;
-            };
+            gtk3.extraCss = config.theme.${aspectName}.gtk3Css;
+            gtk4.extraCss = config.theme.${aspectName}.gtk4Css;
           };
         };
       })

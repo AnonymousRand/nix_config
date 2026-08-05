@@ -18,7 +18,7 @@ in
       den.batteries.primary-user
 
       den.ful.${username}.theme.compile-scss
-      den.ful.${username}.theme.gtk
+      den.ful.${username}.theme.gtk-theming
       den.ful.${username}.theme.noctalia-theming
 
       den.aspects.features.home-manager-standalone
