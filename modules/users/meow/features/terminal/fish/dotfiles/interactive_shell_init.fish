@@ -17,11 +17,13 @@ set -g fish_cursor_external    block
 # aliases/abbreviations
 ################################################################################
 
-# (use abbreviations with `--position anywhere` instead of aliases to make them work
-# with `sudo` as well; no `'sudo '` trick in fish!)
+# (note: use abbreviations with `--position anywhere` instead of aliases to make them
+# work with `sudo` as well; no `'sudo '` trick in fish!)
 
 # make `clear` also clear scrollback history, like default behavior in bash
-abbr --add clear tput reset
+# (use alias instead of abbreviation here since abbreviations only expanded with spaces,
+# and this doesn't need to be run with `sudo` anyway)
+alias clear="tput reset"
 
 # prompt for confirmation on destructive commands because i am stupid and foolish :3
 abbr --add --position anywhere -- rm rm -i
