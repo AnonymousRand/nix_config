@@ -99,8 +99,8 @@ au FileType * setlocal iskeyword-=-
 au FileType * setlocal iskeyword-=.
 
 " search settings
-set ignorecase " ignore case on search
-set smartcase  " unless a capital letter is typed, then be case-sensitive
+"set ignorecase " ignore case on search
+"set smartcase  " however if a capital letter is typed, then be case-sensitive
 set incsearch  " incremental search
 set hlsearch   " searching permanently highlights all matches
 " automatically scroll such that search results are brought to middle of screen
