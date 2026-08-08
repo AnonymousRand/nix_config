@@ -51,9 +51,9 @@ cursor-click-to-move    = true
 # layout
 unfocused-split-opacity = 0.6
 
-# scrollback buffer max size in bytes (62.5 MB ~= 50k lines at 100 cells/line, ~12.5 bytes/cell)
+# scrollback buffer max size in bytes (50 MB ~= 40k lines at 100 cells/line, ~12.5 bytes/cell)
 # (see https://github.com/ghostty-org/ghostty/discussions/10175)
-scrollback-limit = 62_500_000
+scrollback-limit = 50_000_000
 
 ################################################################################
 # keybinds
