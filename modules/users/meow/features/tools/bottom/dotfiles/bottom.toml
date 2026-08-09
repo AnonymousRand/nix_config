@@ -40,7 +40,6 @@ bg_color = "{{colors.default_bg_source.default.hex}}"
 short_gpu_names = true
 
 [processes]
-default_memory_value = true
 columns = [
     "pid",
     "name",
@@ -53,6 +52,8 @@ columns = [
     "tread",
     "twrite"
 ]
+default_memory_value = true
+default_grouped = true
 default_sort = "mem"
 
 ################################################################################
