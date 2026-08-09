@@ -110,7 +110,7 @@ nnoremap N Nzz
 " tab settings
 set shiftwidth=4       " `tab` is 4 spaces wide
 set smarttab expandtab " pressing `tab` gives `shiftwidth` spaces
-set tabstop=8          " actual tab chars are 8 spaces wide to avoid confusion with indents
+set tabstop=4          " actual tab chars are 4 spaces wide as well
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins
