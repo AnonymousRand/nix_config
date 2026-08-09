@@ -30,3 +30,5 @@ set -g fish_pager_color_selected_description             "{{colors.pink_light_so
 set -g fish_pager_color_selected_prefix                  "{{colors.pink_light_source.default.hex}}" --bold
 
 set -g __fish_git_prompt_color                           brcyan --bold
+
+set -g fish_right_prompt_color                           brmagenta --bold

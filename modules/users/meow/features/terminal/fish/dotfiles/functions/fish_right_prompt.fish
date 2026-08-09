@@ -1,4 +1,17 @@
 function fish_right_prompt
+    # add indication if we are in a `nix-shell`/`nix develop`
+    set -l prompt_nix
+    if set -q IN_NIX_SHELL
+        set prompt_nix "(nix) "
+    end
+
+    # disable python's native "(venv)" prompt since they set their own colors
+    set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+    set -l prompt_venv
+    if set -q VIRTUAL_ENV_PROMPT
+        set prompt_venv "($VIRTUAL_ENV_PROMPT) "
+    end
+
     # pipestatus
     set -l last_pipestatus $pipestatus
     set -lx __fish_last_status $status # export for `__fish_print_pipestatus`
@@ -17,13 +30,22 @@ function fish_right_prompt
     # if there is a nonzero status, print it in right prompt; otherwise print kitty :3
     if test -n "$prompt_status"
         echo -n -s $prompt_status
-    else if string match -qi "*UTF-8*" "$LANG"
-            and set -q TERM
-            and not string match -qi "linux" "$TERM"
-            and not string match -qi "dumb" "$TERM"
-        # if emojis are (probably) suppported
-        echo -n -s "🐱"
     else
-        echo -n -s ":3"
+        set -l prompt_decoration
+        if string match -qi "*UTF-8*" "$LANG"
+                and set -q TERM
+                and not string match -qi "linux" "$TERM"
+                and not string match -qi "dumb" "$TERM"
+            # if emojis are (probably) suppported
+            set prompt_decoration "🐱"
+        else
+            set prompt_decoration ":3"
+        end
+
+        echo -n -s (set_color $fish_right_prompt_color) \
+                   $prompt_venv \
+                   $prompt_nix \
+                   $prompt_decoration \
+                   (set_color --reset)
     end
 end
