@@ -2,7 +2,7 @@ let
   aspectName = "compile-scss";
 in
 {
-  den.aspects.theme.${aspectName} = {
+  den.aspects.features.theme.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }: {
       # declare these options in the home manager module (aspect-level doesn't seem to set properly)
       #
@@ -10,7 +10,7 @@ in
       # - `pathsToCompile` are the paths containing all the SCSS files to compile
       # - `pathsToLoad` are the SCSS paths to be loaded with `sass --load-path` (for imports in
       #   other SCSS files without needing relative paths). provide directories, not single files
-      options.theme.${aspectName} = lib.mkOption {
+      options.features.theme.${aspectName} = lib.mkOption {
         type = lib.types.submodule {
           options = {
             pathsToCompile = lib.mkOption {
@@ -32,12 +32,14 @@ in
 
       config =
         let
+          myOpts = config.features.theme;
+
           compileScss = { dart-sass, stdenv }: stdenv.mkDerivation {
             pname = "compile-scss";
             version = "0.0.0";
 
             # input SCSS files to be copied into build environment
-            srcs = config.theme.${aspectName}.pathsToLoad ++ config.theme.${aspectName}.pathsToCompile;
+            srcs = myOption.${aspectName}.pathsToLoad ++ myOption.${aspectName}.pathsToCompile;
             # don't try to unpack single files in `srcs` as archives
             dontUnpack = true;
 
@@ -59,7 +61,7 @@ in
               let
                 loadPathArgs = builtins.foldl'
                   (acc: entry: acc + " --load-path ${entry}") ""
-                  config.theme.${aspectName}.pathsToLoad;
+                  myOpts.${aspectName}.pathsToLoad;
 
                 sassCommands = builtins.foldl'
                   (
@@ -67,7 +69,7 @@ in
                       acc + "\nsass ${entry}:build/${builtins.baseNameOf entry}" +
                         " --no-source-map ${loadPathArgs}"
                   )
-                  "" config.theme.${aspectName}.pathsToCompile;
+                  "" myOption.${aspectName}.pathsToCompile;
               in
               ''
                 runHook preBuild

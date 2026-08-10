@@ -1,11 +1,11 @@
 { den, meow, ... }: {
-  meow.theme.noctalia-theming = {
+  meow.features.theme.noctalia-theming = {
     includes = [
-      den.aspects.theme.noctalia-theming
+      den.aspects.features.theme.noctalia-theming
 
       ({ userSettings }: {
         homeManager = {
-          theme.noctalia-theming =
+          features.theme.noctalia-theming =
             let
               colors = userSettings.theme.colors;
             in

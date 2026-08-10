@@ -1,7 +1,7 @@
 { den, ... }: {
-  meow.features.fonts.quicksand = {
+  meow.features.theme.fonts.quicksand = {
     includes = [
-      den.aspects.features.fonts.quicksand
+      den.aspects.features.theme.fonts.quicksand
     ];
 
     homeManager = { pkgs, ... }: {

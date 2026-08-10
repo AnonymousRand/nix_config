@@ -1,7 +1,7 @@
 { den, ... }: {
-  meow.features.fonts.maple-mono = {
+  meow.features.theme.fonts.maple-mono = {
     includes = [
-      den.aspects.features.fonts.maple-mono
+      den.aspects.features.theme.fonts.maple-mono
     ];
 
     homeManager = { pkgs, ... }: {

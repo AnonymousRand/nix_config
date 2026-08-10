@@ -17,10 +17,6 @@ in
 
       den.batteries.primary-user
 
-      den.ful.${username}.theme.compile-scss
-      den.ful.${username}.theme.gtk-theming
-      den.ful.${username}.theme.noctalia-theming
-
       den.aspects.features.home-manager-standalone
       den.ful.${username}.features.xdg-mime-apps
 
@@ -31,9 +27,12 @@ in
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      den.ful.${username}.features.fonts.maple-mono
-      den.aspects.features.fonts.quicksand
-      #den.ful.${username}.features.fonts.quicksand
+      den.ful.${username}.features.theme.compile-scss
+      den.ful.${username}.features.theme.gtk-theming
+      den.ful.${username}.features.theme.noctalia-theming
+      den.ful.${username}.features.theme.fonts.maple-mono
+      den.aspects.features.theme.fonts.quicksand
+      #den.ful.${username}.features.theme.fonts.quicksand
 
       den.ful.${username}.features.terminal.bash
       den.ful.${username}.features.terminal.fish

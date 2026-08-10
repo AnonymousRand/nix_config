@@ -3,7 +3,7 @@ let
   aspectName = "noctalia-theming";
 in
 {
-  den.aspects.theme.${aspectName} = {
+  den.aspects.features.theme.${aspectName} = {
     includes = [
       den.aspects.features.desktop.noctalia
 
@@ -17,7 +17,8 @@ in
           # need to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.theme.${aspectName} = lib.mkOption {
+          # TODO can use myOpts here too?
+          options.features.theme.${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 palette = lib.mkOption {
@@ -45,11 +46,12 @@ in
       ({ userSettings }: {
         homeManager = { config, lib, ... }:
           let
+            myOpts = config.features.theme;
             paletteName = userSettings.username;
           in
           lib.mkMerge [
             # declare custom color palette for Noctalia app theming, if provided
-            (lib.mkIf (lib.attrNames config.theme.${aspectName}.palette != []) {
+            (lib.mkIf (lib.attrNames myOpts.${aspectName}.palette != []) {
               programs.noctalia = {
                 settings.theme = {
                   source = "custom";
@@ -58,16 +60,16 @@ in
               };
 
               xdg.configFile."noctalia/palettes/${paletteName}.json".text =
-                builtins.toJSON config.theme.${aspectName}.palette;
+                builtins.toJSON myOpts.${aspectName}.palette;
             })
 
             {
               programs.noctalia = {
                 settings.theme.templates = {
                   # load collected custom colors
-                  custom_colors = config.theme.${aspectName}.customColors;
+                  custom_colors = myOpts.${aspectName}.customColors;
                   # load collected templates for rendering
-                  user = config.theme.${aspectName}.templates;
+                  user = myOpts.${aspectName}.templates;
                 };
               };
             }

@@ -14,7 +14,7 @@
 
       den.aspects.features.xdg-mime-apps
 
-      den.aspects.features.fonts.fontconfig
+      den.aspects.features.theme.fonts.fontconfig
 
       den.aspects.features.terminal.bash
 

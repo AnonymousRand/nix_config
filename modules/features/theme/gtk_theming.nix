@@ -3,7 +3,7 @@ let
   aspectName = "gtk-theming";
 in
 {
-  den.aspects.theme.${aspectName} = {
+  den.aspects.features.theme.${aspectName} = {
     includes = [
       den.aspects.features.desktop.gtk
 
@@ -17,7 +17,7 @@ in
           # need to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.theme.${aspectName} = lib.mkOption {
+          options.features.theme.${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 gtk3Css = lib.mkOption {
@@ -38,16 +38,20 @@ in
       }
 
       ({ userSettings }: {
-        homeManager = { config, ... }: {
-          gtk = {
-            font = {
-              name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
-            };
+        homeManager = { config, ... }:
+          let
+            myOpts = config.features.theme;
+          in
+          {
+            gtk = {
+              font = {
+                name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
+              };
 
-            gtk3.extraCss = config.theme.${aspectName}.gtk3Css;
-            gtk4.extraCss = config.theme.${aspectName}.gtk4Css;
+              gtk3.extraCss = myOpts.${aspectName}.gtk3Css;
+              gtk4.extraCss = myOpts.${aspectName}.gtk4Css;
+            };
           };
-        };
       })
     ];
   };
