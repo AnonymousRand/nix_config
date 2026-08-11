@@ -145,8 +145,11 @@ binds {
 
     Mod+Minus      { set-column-width "-5%"; }
     Mod+Equal      { set-column-width "+5%"; }
+    // (there isn't a `reset-column-width` :( )
+    Mod+0          { set-column-width "50%"; }
     Mod+Ctrl+Minus { set-window-height "-5%"; }
     Mod+Ctrl+Equal { set-window-height "+5%"; }
+    Mod+Ctrl+0     { reset-window-height; }
 
     Mod+V      { toggle-window-floating; }
     Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
