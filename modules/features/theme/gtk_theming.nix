@@ -38,20 +38,16 @@ in
       }
 
       ({ userSettings }: {
-        homeManager = { config, ... }:
-          let
-            myOpts = config.features.theme;
-          in
-          {
-            gtk = {
-              font = {
-                name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
-              };
-
-              gtk3.extraCss = myOpts.${aspectName}.gtk3Css;
-              gtk4.extraCss = myOpts.${aspectName}.gtk4Css;
+        homeManager = { config, ... }: {
+          gtk = {
+            font = {
+              name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
             };
+
+            gtk3.extraCss = config.features.theme.${aspectName}.gtk3Css;
+            gtk4.extraCss = config.features.theme.${aspectName}.gtk4Css;
           };
+        };
       })
     ];
   };

@@ -76,7 +76,7 @@ au BufEnter * :colorscheme noctalia_theme " always apply colorscheme last when e
 
 " misc settings
 set autowrite           " automatically save before commands like `:next` and `:make`
-set colorcolumn=121     " vertical rule to guide line widths
+set colorcolumn=101,121 " vertical rule(s) to guide line widths
 set cursorline          " highlight line that cursor is on
 set hidden              " hide buffers when they are abandoned
 set laststatus=2        " always shows status line at bottom

@@ -32,7 +32,7 @@
         ) cfgFiles);
 
         # noctalia theming
-        theme.noctalia-theming = {
+        features.theme.noctalia-theming = {
           customColors = import ./_colors.nix;
           templates.niri = {
             input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;

@@ -32,14 +32,13 @@ in
 
       config =
         let
-          myOpts = config.features.theme;
-
           compileScss = { dart-sass, stdenv }: stdenv.mkDerivation {
             pname = "compile-scss";
             version = "0.0.0";
 
             # input SCSS files to be copied into build environment
-            srcs = myOption.${aspectName}.pathsToLoad ++ myOption.${aspectName}.pathsToCompile;
+            srcs = config.features.theme.${aspectName}.pathsToLoad
+              ++ config.features.theme.${aspectName}.pathsToCompile;
             # don't try to unpack single files in `srcs` as archives
             dontUnpack = true;
 
@@ -61,7 +60,7 @@ in
               let
                 loadPathArgs = builtins.foldl'
                   (acc: entry: acc + " --load-path ${entry}") ""
-                  myOpts.${aspectName}.pathsToLoad;
+                  config.features.theme.${aspectName}.pathsToLoad;
 
                 sassCommands = builtins.foldl'
                   (
@@ -69,7 +68,7 @@ in
                       acc + "\nsass ${entry}:build/${builtins.baseNameOf entry}" +
                         " --no-source-map ${loadPathArgs}"
                   )
-                  "" myOption.${aspectName}.pathsToCompile;
+                  "" config.features.theme.${aspectName}.pathsToCompile;
               in
               ''
                 runHook preBuild
@@ -95,7 +94,7 @@ in
           };
         in
         {
-          theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+          features.theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
         };
     };
   };
