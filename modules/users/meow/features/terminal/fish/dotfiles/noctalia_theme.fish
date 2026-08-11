@@ -15,7 +15,8 @@ set -g fish_color_param                                  magenta
 set -g fish_color_quote                                  "{{colors.constant_source.default.hex}}"
 set -g fish_color_redirection                            $fish_color_end
 set -g fish_color_search_match                           magenta --bold
-set -g fish_color_selection --background                 br"{{colors.selection_bg_source.default.hex}}"
+set -g fish_color_selection                              "{{colors.selection_fg_source.default.hex}}" \
+    --background                                         "{{colors.selection_bg_source.default.hex}}"
 set -g fish_color_status                                 green
 set -g fish_color_user                                   brmagenta --bold
 set -g fish_color_valid_path                             --underline
