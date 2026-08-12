@@ -2,3 +2,8 @@
 
 [widget.clock]
 format = "{:%Y/%m/%d}     ₊˚⊹ ᓚ₍⑅^..^₎♡      {:%H:%M}      ♡ ⊹˚₊ ₍^. .^₎⟆      {:%A} :3"
+
+# TODO: to get hotkey to use/copy current item on clipboard panel, try writing a script (possibly
+# bound to a key in niri?) that when clipboard panel is active, performs the action tab>tab>enter
+# which should click the copy button when focus is on the clipboard history list/typing in the
+# search bar)
