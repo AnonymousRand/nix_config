@@ -38,28 +38,32 @@ in
       }
 
       ({ userSettings }: {
-        homeManager = { config, ... }: {
-          gtk = {
-            font = {
-              name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
-              size = userSettings.theme.fonts.sizes.normalGtk;
+        homeManager = { config, ... }:
+          let
+            cfg = config.features.theme.${aspectName};
+          in
+          {
+            gtk = {
+              font = {
+                name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
+                size = userSettings.theme.fonts.sizes.normalGtk;
+              };
+
+              gtk3.extraCss = cfg.gtk3Css;
+              gtk4.extraCss = cfg.gtk4Css;
             };
 
-            gtk3.extraCss = config.features.theme.${aspectName}.gtk3Css;
-            gtk4.extraCss = config.features.theme.${aspectName}.gtk4Css;
-          };
-
-          # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
-          dconf.settings = {
-            "org/gnome/desktop/interface" = rec {
-              font-name = "${config.gtk.font.name} ${builtins.toString config.gtk.font.size}";
-              document-font-name = font-name;
-              monospace-font-name =
-                "${builtins.head (userSettings.theme.fonts.defaults.monospace or [ "" ])}"
-                + " ${builtins.toString config.gtk.font.size}";
+            # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
+            dconf.settings = {
+              "org/gnome/desktop/interface" = rec {
+                font-name = "${config.gtk.font.name} ${builtins.toString config.gtk.font.size}";
+                document-font-name = font-name;
+                monospace-font-name =
+                  "${builtins.head (userSettings.theme.fonts.defaults.monospace or [ "" ])}"
+                  + " ${builtins.toString config.gtk.font.size}";
+              };
             };
           };
-        };
       })
     ];
   };

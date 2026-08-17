@@ -45,11 +45,12 @@ in
       ({ userSettings }: {
         homeManager = { config, lib, ... }:
           let
+            cfg = config.features.theme.${aspectName};
             paletteName = userSettings.username;
           in
           lib.mkMerge [
             # declare custom color palette for Noctalia app theming, if provided
-            (lib.mkIf (lib.attrNames config.features.theme.${aspectName}.palette != []) {
+            (lib.mkIf (lib.attrNames cfg.palette != []) {
               programs.noctalia = {
                 settings.theme = {
                   source = "custom";
@@ -58,16 +59,16 @@ in
               };
 
               xdg.configFile."noctalia/palettes/${paletteName}.json".text =
-                builtins.toJSON config.features.theme.${aspectName}.palette;
+                builtins.toJSON cfg.palette;
             })
 
             {
               programs.noctalia = {
                 settings.theme.templates = {
                   # load collected custom colors
-                  custom_colors = config.features.theme.${aspectName}.customColors;
+                  custom_colors = cfg.customColors;
                   # load collected templates for rendering
-                  user = config.features.theme.${aspectName}.templates;
+                  user = cfg.templates;
                 };
               };
             }

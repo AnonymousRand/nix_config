@@ -1,6 +1,7 @@
 { den, inputs, ... }:
 let
   username = "meow";
+  meow = den.ful.${username};
 in
 {
   imports = [
@@ -18,34 +19,32 @@ in
       den.batteries.primary-user
 
       den.aspects.features.home-manager-standalone
-      den.ful.${username}.features.xdg-mime-apps
+      meow.features.xdg-mime-apps
 
-      # (nix doesn't let us start these with `${username}` so we have to use the full
-      # `den.ful` namespace names. grrr 3:<)
-      den.ful.${username}.features.desktop.niri
-      den.ful.${username}.features.desktop.noctalia
+      meow.features.desktop.niri
+      meow.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      den.ful.${username}.features.theme.compile-scss
-      den.ful.${username}.features.theme.gtk-theming
-      den.ful.${username}.features.theme.noctalia-theming
-      den.ful.${username}.features.theme.fonts.maple-mono
+      meow.features.theme.compile-scss
+      meow.features.theme.gtk-theming
+      meow.features.theme.noctalia-theming
+      meow.features.theme.fonts.maple-mono
       den.aspects.features.theme.fonts.quicksand
-      #den.ful.${username}.features.theme.fonts.quicksand
+      #meow.features.theme.fonts.quicksand
 
-      den.ful.${username}.features.terminal.bash
-      den.ful.${username}.features.terminal.fish
-      den.ful.${username}.features.terminal.ghostty
-      den.ful.${username}.features.terminal.kitty
+      meow.features.terminal.bash
+      meow.features.terminal.fish
+      meow.features.terminal.ghostty
+      meow.features.terminal.kitty
 
-      den.ful.${username}.features.editors.vim
+      meow.features.editors.vim
 
-      den.ful.${username}.features.tools.bottom
-      den.ful.${username}.features.tools.fastfetch
-      den.ful.${username}.features.tools.git
-      den.ful.${username}.features.tools.hyfetch
-      den.ful.${username}.features.tools.ssh-client
+      meow.features.tools.bottom
+      meow.features.tools.fastfetch
+      meow.features.tools.git
+      meow.features.tools.hyfetch
+      meow.features.tools.ssh-client
 
       den.aspects.features.media.swayimg
     ];
