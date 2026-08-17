@@ -71,7 +71,7 @@
 
         # variant fg/bg
         variant_fg = {
-          color_light = pink_xxlight;
+          color_light = pink_xlight;
           color_dark  = pink_xxlight;
         };
         variant_bg = {
