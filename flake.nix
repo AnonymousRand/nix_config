@@ -15,10 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    niri = {
-      url = "git+https://codeberg.org/BANanaD3V/niri-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixowos = {
       url = "github:yunfachi/nixowos";
       inputs.nixpkgs.follows = "nixpkgs";
