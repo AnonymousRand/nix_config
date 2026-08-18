@@ -1,13 +1,5 @@
-{ den, meow, ... }:
-let
-  aspectName = "gtk-theming";
-in
 {
-  meow.utils.theme.${aspectName} = {
-    includes = [
-      den.aspects.utils.theme.${aspectName}
-    ];
-
+  den.aspects.users.meow = {
     homeManager = { config, ... }: {
       # noctalia theming (not using `gtk-theming` aspect's options to accommodate noctalia theming)
       utils.theme.noctalia-theming.templates = {

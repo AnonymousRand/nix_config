@@ -18,6 +18,11 @@ in
 
       den.batteries.primary-user
 
+      # activate these utils
+      den.aspects.utils.theme.compile-scss
+      den.aspects.utils.theme.gtk-theming
+      den.aspects.utils.theme.noctalia-theming
+
       den.aspects.features.home-manager-standalone
       meow.features.xdg-mime-apps
 
@@ -43,11 +48,6 @@ in
       meow.features.tools.ssh-client
 
       den.aspects.features.media.swayimg
-
-      meow.utils.nix-ld
-      meow.utils.theme.compile-scss
-      meow.utils.theme.gtk-theming
-      meow.utils.theme.noctalia-theming
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>`

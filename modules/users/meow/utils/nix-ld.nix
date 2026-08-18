@@ -1,9 +1,5 @@
-{ meow, ... }:
-let
-  aspectName = "nix-ld";
-in
 {
-  meow.aspects.utils.${aspectName} = {
+  den.aspects.users.meow = {
     nixos = { pkgs, ... }: {
       utils.${aspectName} = {
         libs = [

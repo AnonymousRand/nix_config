@@ -7,8 +7,13 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
+      # these are essentially like batteries
       den.aspects.syst-settings.capabilities
       den.aspects.syst-settings.state-version
+
+      # activate these utils
+      den.aspects.utils.nix-ld
+      den.aspects.utils.overlays
 
       den.aspects.features.xdg-mime-apps
 
@@ -19,8 +24,6 @@
       den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
-
-      den.aspects.utils.overlays
     ];
 
     nixos = {
