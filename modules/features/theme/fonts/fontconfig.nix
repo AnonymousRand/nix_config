@@ -10,9 +10,9 @@
           antialiasing = true;
           hinting = "slight";
           defaultFonts = {
-            serif = fontSettings.defaults.serif or [];
-            sansSerif = fontSettings.defaults.sansSerif or [];
-            monospace = fontSettings.defaults.monospace or [];
+            serif = fontSettings.defaults.serif;
+            sansSerif = fontSettings.defaults.sansSerif;
+            monospace = fontSettings.defaults.monospace;
           };
 
           # automatically generate fontconfig files for each font based on the settings
@@ -40,15 +40,15 @@
                       <test name="family" compare="eq">
                         <string>${name}</string>
                       </test>
-
+                '' + lib.optionalString (value.size.normal != null) ''
                       <edit name="size" mode="assign">
-                        <double>${value.size.normal}</double>
+                        <double>${builtins.toString value.size.normal}</double>
                       </edit>
-
+                '' + lib.optionalString (value.weight.fontconfig != null) ''
                       <edit name="weight" mode="assign">
-                        <int>${value.weight.fontconfig}</int>
+                        <int>${builtins.toString value.weight.fontconfig}</int>
                       </edit>
-
+                '' + ''
                       <edit name="fontfeatures" mode="append">
                         ${enabledFontFeaturesStr}
                         ${disabledFontFeaturesStr}

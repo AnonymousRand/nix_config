@@ -1,8 +1,8 @@
 {
   den.schema.usr = { config, lib, ... }:
     let
-      cfg = config.usrSettings.theme.fonts;
-      fontList = cfg.list;
+      aspCfg = config.usrSettings.theme.fonts;
+      fontList = aspCfg.list;
     in
     {
       options.usrSettings.theme.fonts =
@@ -13,13 +13,14 @@
                 type = lib.types.submodule {
                   options = {
                     normal = lib.mkOption {
-                      type = lib.types.number;
-                      default = 12;
+                      # use `null` for default font sizes
+                      type = lib.types.nullOr lib.types.number;
+                      default = null;
                     };
                     # workaround for font clipping issues on non-100% scaling; set as needed :3
                     # (this should look the same as the nearest integer to which this rounds)
                     gtk = lib.mkOption {
-                      type = lib.types.number;
+                      type = lib.types.nullOr lib.types.number;
                       default = fontList.${name}.size.normal;
                     };
                   };
@@ -30,11 +31,11 @@
                 type = lib.types.submodule {
                   options = {
                     opentype = lib.mkOption {
-                      type = lib.types.int;
-                      default = 400;
+                      type = lib.types.nullOr lib.types.int;
+                      default = null;
                     };
                     fontconfig = lib.mkOption {
-                      type = lib.types.int;
+                      type = lib.types.nullOr lib.types.int;
                       default =
                         let
                           # conversion table from https://stackoverflow.com/a/70011705
@@ -55,8 +56,8 @@
                           };
                         in
                         opentypeToFontconfig.${
-                          builtins.toString fontList.${name}.weight.opentype
-                        } or 80;
+                          builtins.toString fontList.${name}.weight.opentype or null
+                        } or null;
                     };
                   };
                 };
@@ -88,7 +89,7 @@
                   options = {
                     general = lib.mkOption {
                       type = lib.types.listOf lib.types.str;
-                      default = cfg.defaults.sansSerif;
+                      default = aspCfg.defaults.sansSerif;
                     };
                     serif = lib.mkOption {
                       type = lib.types.listOf lib.types.str;
@@ -106,6 +107,7 @@
                     };
                   };
                 };
+
                 default = {};
               };
             };

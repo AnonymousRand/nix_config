@@ -9,6 +9,11 @@
       # IMPORTANT: since this context arg might not always be defined, it *must* be passed as
       # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's
       # in a class module arg list, nix will say "unknown attribute" instead of skipping
+      #
+      # MOREOVER, since this context arg only exists when users/homes are in scope, aspects
+      # that require this CANNOT be included by a host entity, only a home or user entity,
+      # or with `provides.to-users` from a host entity! otherwise, there will never be a
+      # user or home in scope, and the aspect will be quietly skipped
       (den.lib.policy.resolve {
         usrSettings =
           if user ? usrSettings then

@@ -14,8 +14,6 @@
 
       den.aspects.features.xdg-mime-apps
 
-      den.aspects.features.theme.fonts.fontconfig
-
       den.aspects.features.terminal.bash
 
       den.aspects.features.editors.vim

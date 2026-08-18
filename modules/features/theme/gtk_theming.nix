@@ -36,9 +36,9 @@ in
       }
 
       ({ usrSettings }: {
-        homeManager = { config, ... }:
+        homeManager = { config, lib, ... }:
           let
-            cfg = config.features.theme.${aspectName};
+            hmCfg = config.features.theme.${aspectName};
             fontSettings = usrSettings.theme.fonts;
 
             # TODO see if possible to enforce in font option that the names of default fonts
@@ -51,6 +51,7 @@ in
                 else
                   throw ("den.aspects.features.theme.${aspectName}: default font ${name} "
                     + "not found in `usrSettings.theme.fonts.list`!");
+              dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
             };
 
             monospaceFont = rec {
@@ -61,6 +62,7 @@ in
                 else
                   throw ("den.aspects.features.theme.${aspectName}: monospace font ${name} "
                     + "not found in `usrSettings.theme.fonts.list`!");
+              dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
             };
           in
           {
@@ -70,8 +72,8 @@ in
                 size = defaultFont.size;
               };
 
-              gtk3.extraCss = cfg.gtk3Css;
-              gtk4.extraCss = cfg.gtk4Css;
+              gtk3.extraCss = hmCfg.gtk3Css;
+              gtk4.extraCss = hmCfg.gtk4Css;
             };
 
             # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
@@ -79,10 +81,9 @@ in
               "org/gnome/desktop/interface" = rec {
                 # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
                 # to an empty string
-                font-name = "${defaultFont.name} ${builtins.toString defaultFont.size}";
+                font-name = "${defaultFont.name}${defaultFont.dconfSizeStr}";
                 document-font-name = font-name;
-                monospace-font-name =
-                  "${monospaceFont.name} ${builtins.toString monospaceFont.size}";
+                monospace-font-name = "${monospaceFont.name}${monospaceFont.dconfSizeStr}";
               };
             };
           };
