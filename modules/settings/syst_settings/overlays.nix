@@ -22,7 +22,7 @@
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
   # (for some reason moving these args to class module-level causes infinite recursion)
-  den.aspects.syst-settings.quirks.overlays = { host ? null, home ? null }: {
+  den.aspects.syst-settings.overlays = { host ? null, home ? null }: {
     nixos = { host, overlays, lib, ... }: {
       nixpkgs.overlays = lib.unique overlays;
 

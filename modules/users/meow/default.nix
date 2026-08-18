@@ -31,6 +31,7 @@ in
       meow.features.theme.noctalia-theming
       meow.features.theme.fonts.maple-mono
       den.aspects.features.theme.fonts.quicksand
+      # commented out since the fontconfig weights are all bwoken for Quicksand 3:
       #meow.features.theme.fonts.quicksand
 
       meow.features.terminal.bash

@@ -8,8 +8,8 @@
       den.batteries.hostname
 
       den.aspects.syst-settings.capabilities
-      den.aspects.syst-settings.quirks.nix-ld
-      den.aspects.syst-settings.quirks.overlays
+      den.aspects.syst-settings.nix-ld
+      den.aspects.syst-settings.overlays
       den.aspects.syst-settings.state-version
 
       den.aspects.features.xdg-mime-apps

@@ -38,15 +38,36 @@ in
       }
 
       ({ userSettings }: {
-        homeManager = { config, ... }:
+        homeManager = { lib, config, ... }:
           let
             cfg = config.features.theme.${aspectName};
+            fontSettings = userSettings.theme.fonts;
+
+            # TODO see if possible to enforce in font option that the names of default fonts
+            # must all exist as attrs in `userSettings.theme.fonts`
+            defaultFont = rec {
+              name = builtins.head (fontSettings.defaults.general or [ "" ]);
+              size =
+                if fontSettings.list ? "${name}" then
+                  fontSettings.list.${name}.size.gtk
+                else
+                  null;
+            };
+
+            monospaceFont = rec {
+              name = builtins.head (fontSettings.defaults.monospace or [ "" ]);
+              size =
+                if fontSettings.list ? "${name}" then
+                  fontSettings.list.${name}.size.gtk
+                else
+                  null;
+            };
           in
           {
             gtk = {
-              font = {
-                name = builtins.head (userSettings.theme.fonts.defaults.sansSerif or [ "" ]);
-                size = userSettings.theme.fonts.sizes.normalGtk;
+              font = rec {
+                name = defaultFont.name;
+                size = defaultFont.size;
               };
 
               gtk3.extraCss = cfg.gtk3Css;
@@ -56,11 +77,11 @@ in
             # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
             dconf.settings = {
               "org/gnome/desktop/interface" = rec {
-                font-name = "${config.gtk.font.name} ${builtins.toString config.gtk.font.size}";
+                # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
+                # to an empty string
+                font-name = "${defaultFont.name} ${defaultFont.size}";
                 document-font-name = font-name;
-                monospace-font-name =
-                  "${builtins.head (userSettings.theme.fonts.defaults.monospace or [ "" ])}"
-                  + " ${builtins.toString config.gtk.font.size}";
+                monospace-font-name = "${monospaceFont.name} ${monospaceFont.size}";
               };
             };
           };
