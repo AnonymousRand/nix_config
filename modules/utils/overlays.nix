@@ -8,13 +8,13 @@
 
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
-  # TODO if infinite recursion/breaks, may need to put host/home on aspect level?
-  den.aspects.utils.overlays = {
+  # (putting `hostSettings` and `home` in class module args does break with "attribute missing")
+  den.aspects.utils.overlays = { hostSettings ? null, home ? null }: {
     nixos = { quirks-overlays, lib, ... }: {
       nixpkgs.overlays = lib.unique quirks-overlays;
     };
 
-    homeManager = { hostSettings ? null, home ? null, quirks-overlays, lib, ... }:
+    homeManager = { quirks-overlays, lib, ... }:
       # only set `nixpkgs.overlays` in home manager class module if `useGlobalPkgs` was `false`
       # or if standalone (i.e. `home` present)! otherwise, this is not allowed
       lib.mkIf (home != null || !hostSettings.hmUseGlobalPkgs) {
