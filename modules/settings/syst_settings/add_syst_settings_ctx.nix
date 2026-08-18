@@ -4,8 +4,8 @@
   # to get settings regardless of if we are building nixos or standalone home manager,
   # instead of needing `host ? null, home ? null`
   #
-  # (this never seems to work if i make the context arg `syst`; idk how to make entity kinds work lol)
-  # (also, note that we can't use add `lib` to the args above, as that makes this policy never run)
+  # (this doesn't work if i make the context arg `syst`; idk how to make entity kinds work lol)
+  # (also, note that we can't use add `lib` to these args, as that makes this policy never run)
   den.policies.add-syst-settings-ctx = { host ? null, home ? null, ... }: [
     # note that in practice, it seems impossible for both `host` and `home` to be `null`
     (den.lib.policy.resolve {

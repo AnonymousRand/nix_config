@@ -1,6 +1,6 @@
 # `modules/utils/`
 
-reusable utility aspects that usually declare their own options/consume extra data for configuration. to use one, simply include it into a host/user aspect to *activate* it, and set declared options as needed (preferably into the host/user aspect directly, so no additional include is needed) to *configure* it.
+reusable utility or "battery" aspects that usually declare their own options/consume extra data for configuration. to use one, simply include it into a host/user aspect to *activate* it, and set declared options as needed (preferably into the host/user aspect directly, so no additional include is needed) to *configure* it.
 
 ### notes
 

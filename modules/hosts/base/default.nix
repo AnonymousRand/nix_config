@@ -7,9 +7,10 @@
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 
-      # these are essentially like batteries
+      # activate the "batteries" associated with these settings
       den.aspects.syst-settings.capabilities
       den.aspects.syst-settings.state-version
+      den.aspects.host-settings.hm-use-global-pkgs
 
       # activate these utils
       den.aspects.utils.nix-ld

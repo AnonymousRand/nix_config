@@ -1,34 +1,20 @@
-{ den, ... }:
-let
-  aspectName = "nix-ld";
-in
-{
-  den.aspects.utils.${aspectName} = {
-    nixos = { config, lib, ... }: {
-      options.utils.${aspectName} = lib.mkOption {
-        type = lib.types.submodule {
-          options = {
-            libs = lib.mkOption {
-              type = lib.types.listOf lib.types.package;
-              default = [];
-            };
-          };
-        };
+{ den, ... }: {
+  den.quirks.quirks-nix-ld = {};
 
-        default = {};
+  # automatically forward/aggregate all user-provided quirk data to hosts
+  den.policies.aggregate-user-nix-ld = { host, user, ... }:
+    let inherit (den.lib.policy) pipe; in
+    [ (pipe.from "quirks-nix-ld" [ pipe.expose ]) ];
+
+  den.schema.user.includes = [ den.policies.aggregate-user-nix-ld ];
+
+  den.aspects.utils.nix-ld = {
+    nixos = { quirks-nix-ld, lib, ... }: {
+      programs.nix-ld = {
+        enable = true;
+        # make these libraries/binaries work with non-standard nix store filepaths
+        libraries = quirks-nix-ld;
       };
-
-      config =
-        let
-          nixosCfg = config.utils.${aspectName};
-        in
-        {
-          programs.nix-ld = {
-            enable = true;
-            # make these libraries/binaries work with non-standard nix store filepaths
-            libraries = nixosCfg.libs;
-          };
-        };
     };
   };
 }

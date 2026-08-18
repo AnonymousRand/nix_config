@@ -4,9 +4,12 @@
 
   den.aspects.homes.base = {
     includes = [
+      # activate the "batteries" associated with these settings
       den.aspects.syst-settings.capabilities
-      den.aspects.utils.overlays
       den.aspects.syst-settings.state-version
+
+      # activate these utils
+      den.aspects.utils.overlays
     ];
   };
 }
