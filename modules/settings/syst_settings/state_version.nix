@@ -7,12 +7,12 @@
     };
   };
 
-  den.aspects.syst-settings.state-version = { systSettings }: {
-    nixos = {
+  den.aspects.syst-settings.state-version = {
+    nixos = { systSettings, ... }: {
       system.stateVersion = systSettings.stateVersion;
     };
 
-    homeManager = {
+    homeManager = { systSettings, ... }: {
       home.stateVersion = systSettings.stateVersion;
     };
   };

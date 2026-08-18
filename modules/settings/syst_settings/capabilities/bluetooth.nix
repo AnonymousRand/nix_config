@@ -15,10 +15,11 @@ in
     };
   };
 
-  den.aspects.syst-settings.capabilities = { systSettings }: {
-    nixos = { lib, ... }: lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
-      # enable bluetooth
-      hardware.bluetooth.enable = true;
-    };
+  den.aspects.syst-settings.capabilities = {
+    nixos = { systSettings, lib, ... }:
+      lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
+        # enable bluetooth
+        hardware.bluetooth.enable = true;
+      };
   };
 }

@@ -35,60 +35,47 @@ in
           };
         };
       }
-
-      ({ usrSettings }: {
-        homeManager = { config, lib, ... }:
-          let
-            hmCfg = config.utils.theme.${aspectName};
-            fontSettings = usrSettings.theme.fonts;
-
-            defaultFont = rec {
-              name = lib.optionalString (fontSettings.defaults.general != []) (
-                builtins.head (fontSettings.defaults.general)
-              );
-              size =
-                if (name != "") then
-                  fontSettings.list.${name}.size.gtk
-                else
-                  null;
-              dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
-            };
-
-            monospaceFont = rec {
-              name = lib.optionalString (fontSettings.defaults.monospace != []) (
-                builtins.head (fontSettings.defaults.monospace)
-              );
-              size =
-                if (name != "") then
-                  fontSettings.list.${name}.size.gtk
-                else
-                  null;
-              dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
-            };
-          in
-          {
-            gtk = {
-              font = rec {
-                name = defaultFont.name;
-                size = defaultFont.size;
-              };
-
-              gtk3.extraCss = hmCfg.gtk3Css;
-              gtk4.extraCss = hmCfg.gtk4Css;
-            };
-
-            # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
-            dconf.settings = {
-              "org/gnome/desktop/interface" = rec {
-                # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
-                # to an empty string
-                font-name = "${defaultFont.name}${defaultFont.dconfSizeStr}";
-                document-font-name = font-name;
-                monospace-font-name = "${monospaceFont.name}${monospaceFont.dconfSizeStr}";
-              };
-            };
-          };
-      })
     ];
+
+    homeManager = { usrSettings, config, lib, ... }:
+      let
+        hmCfg = config.utils.theme.${aspectName};
+        fontSettings = usrSettings.theme.fonts;
+
+        fontParams = fontType:
+          if (fontSettings.defaults.${fontType} != []) then rec {
+            name = builtins.head (fontSettings.defaults.${fontType});
+            size = fontSettings.list.${name}.size.gtk;
+            dconfSizeStr = " ${builtins.toString size}";
+          } else {
+            name = "";
+            size = null;
+            dconfSizeStr = "";
+          };
+        defaultFont = fontParams "general";
+        monospaceFont = fontParams "monospace";
+      in
+      {
+        gtk = {
+          font = rec {
+            name = defaultFont.name;
+            size = defaultFont.size;
+          };
+
+          gtk3.extraCss = hmCfg.gtk3Css;
+          gtk4.extraCss = hmCfg.gtk4Css;
+        };
+
+        # this is needed for some things (e.g. libadwaita apps?) for which `gtk` above doesn't work
+        dconf.settings = {
+          "org/gnome/desktop/interface" = rec {
+            # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
+            # to an empty string
+            font-name = "${defaultFont.name}${defaultFont.dconfSizeStr}";
+            document-font-name = font-name;
+            monospace-font-name = "${monospaceFont.name}${monospaceFont.dconfSizeStr}";
+          };
+        };
+      };
   };
 }

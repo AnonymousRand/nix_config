@@ -8,10 +8,6 @@
   # (also, note that we can't use add `lib` to the args above, as that makes this policy never run)
   den.policies.add-syst-settings-ctx = { host ? null, home ? null, ... }: [
     # note that in practice, it seems impossible for both `host` and `home` to be `null`
-    # however, i think it is possible for this context arg to not be defined at all during a pass,
-    # meaning it MUST be passed as an ASPECT-LEVEL arg (or parametrically as an inline aspect
-    # in `includes`), as if it's in a class module arg list, nix will say "unknown attribute"
-    # instead of skipping
     (den.lib.policy.resolve {
       systSettings =
         if host ? systSettings then

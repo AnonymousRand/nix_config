@@ -40,39 +40,37 @@ in
           };
         };
       }
-
-      ({ usrSettings }: {
-        homeManager = { config, lib, ... }:
-          let
-            cfg = config.utils.theme.${aspectName};
-            paletteName = usrSettings.username;
-          in
-          lib.mkMerge [
-            # declare custom color palette for Noctalia app theming, if provided
-            (lib.mkIf (lib.attrNames cfg.palette != []) {
-              programs.noctalia = {
-                settings.theme = {
-                  source = "custom";
-                  custom_palette = paletteName;
-                };
-              };
-
-              xdg.configFile."noctalia/palettes/${paletteName}.json".text =
-                builtins.toJSON cfg.palette;
-            })
-
-            {
-              programs.noctalia = {
-                settings.theme.templates = {
-                  # load collected custom colors
-                  custom_colors = cfg.customColors;
-                  # load collected templates for rendering
-                  user = cfg.templates;
-                };
-              };
-            }
-          ];
-      })
     ];
+
+    homeManager = { usrSettings, config, lib, ... }:
+      let
+        cfg = config.utils.theme.${aspectName};
+        paletteName = usrSettings.username;
+      in
+      lib.mkMerge [
+        # declare custom color palette for Noctalia app theming, if provided
+        (lib.mkIf (lib.attrNames cfg.palette != []) {
+          programs.noctalia = {
+            settings.theme = {
+              source = "custom";
+              custom_palette = paletteName;
+            };
+          };
+
+          xdg.configFile."noctalia/palettes/${paletteName}.json".text =
+            builtins.toJSON cfg.palette;
+        })
+
+        {
+          programs.noctalia = {
+            settings.theme.templates = {
+              # load collected custom colors
+              custom_colors = cfg.customColors;
+              # load collected templates for rendering
+              user = cfg.templates;
+            };
+          };
+        }
+      ];
   };
 }

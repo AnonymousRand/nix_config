@@ -15,18 +15,19 @@ in
     };
   };
 
-  den.aspects.syst-settings.capabilities = { systSettings }: {
-    nixos = { lib, ... }: lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
-      # grant real-time audio priority to prevent crackling
-      security.rtkit.enable = true;
+  den.aspects.syst-settings.capabilities = {
+    nixos = { systSettings, lib, ... }:
+      lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
+        # grant real-time audio priority to prevent crackling
+        security.rtkit.enable = true;
 
-      # enable pipewire
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
+        # enable pipewire
+        services.pipewire = {
+          enable = true;
+          alsa.enable = true;
+          alsa.support32Bit = true;
+          pulse.enable = true;
+        };
       };
-    };
   };
 }

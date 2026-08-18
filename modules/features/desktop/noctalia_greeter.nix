@@ -12,19 +12,18 @@
       # (otherwise, other aspects wishing to set options defined in these imports must all
       # require `systSettings` arg as well)
       { nixos.imports = [ inputs.noctalia-greeter.nixosModules.default ]; }
+    ];
 
-      ({ systSettings }: {
-        nixos = { lib, ... }: lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
-          programs.noctalia-greeter = {
-            enable = true;
-            settings = {
-              keyboard = {
-                layout = "us";
-              };
+    nixos = { systSettings, lib, ... }:
+      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
+        programs.noctalia-greeter = {
+          enable = true;
+          settings = {
+            keyboard = {
+              layout = "us";
             };
           };
         };
-      })
-    ];
+      };
   };
 }
