@@ -10,10 +10,10 @@
     # note that in practice, it seems impossible for both `user` and `home` to be `null`
     (den.lib.policy.resolve {
       usrSettings =
-        if user ? usrSettings then
+        if (user ? usrSettings) then
           user.usrSettings
         else (
-          if home ? usrSettings then
+          if (home ? usrSettings) then
             home.usrSettings
           else
             throw "den.policies.add-usr-settings-ctx: this shouldn't be possible!"
