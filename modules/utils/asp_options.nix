@@ -4,7 +4,7 @@ let
     each = targetClasses;
     fromClass = _: "aspOptions";
     intoClass = lib.id;
-    intoPath = _: [ ];
+    intoPath = _: [ "options" ];
     fromAspect = _: lib.head aspect-chain;
   };
 
@@ -12,7 +12,7 @@ let
     each = targetClasses;
     fromClass = _: "aspConfig";
     intoClass = lib.id;
-    intoPath = _: [ ];
+    intoPath = _: [ "config" ];
     fromAspect = _: lib.head aspect-chain;
   };
 in
