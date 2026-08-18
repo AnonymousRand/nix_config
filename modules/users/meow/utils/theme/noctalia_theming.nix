@@ -1,11 +1,15 @@
-{ den, meow, ... }: {
-  meow.utils.theme.noctalia-theming = {
+{ den, meow, ... }:
+let
+  aspectName = "noctalia-theming";
+in
+{
+  meow.utils.theme.${aspectName} = {
     includes = [
-      den.aspects.utils.theme.noctalia-theming
+      den.aspects.utils.theme.${aspectName}
 
       ({ usrSettings }: {
         homeManager = {
-          utils.theme.noctalia-theming =
+          utils.theme.${aspectName} =
             let
               colors = usrSettings.theme.colors;
             in

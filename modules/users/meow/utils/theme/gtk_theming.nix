@@ -1,7 +1,11 @@
-{ den, meow, ... }: {
-  meow.utils.theme.gtk-theming = {
+{ den, meow, ... }:
+let
+  aspectName = "gtk-theming";
+in
+{
+  meow.utils.theme.${aspectName} = {
     includes = [
-      den.aspects.utils.theme.gtk-theming
+      den.aspects.utils.theme.${aspectName}
     ];
 
     homeManager = { config, ... }: {

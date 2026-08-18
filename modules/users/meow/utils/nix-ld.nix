@@ -1,7 +1,13 @@
+{ meow, ... }:
+let
+  aspectName = "nix-ld";
+in
 {
-  den.aspects.users.meow = {
-    nix-ld-libs = { pkgs, ... }: [
-      pkgs.uv
-    ];
+  meow.aspects.utils.${aspectName} = { pkgs, ... }: {
+    utils.${aspectName} = {
+      libs = [
+        pkgs.uv
+      ];
+    };
   };
 }

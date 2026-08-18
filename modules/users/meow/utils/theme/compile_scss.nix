@@ -1,11 +1,15 @@
-{ den, meow, ... }: {
-  meow.utils.theme.compile-scss = {
+{ den, meow, ... }:
+let
+  aspectName = "compile-scss";
+in
+{
+  meow.utils.theme.${aspectName} = {
     includes = [
-      den.aspects.utils.theme.compile-scss
+      den.aspects.utils.theme.${aspectName}
     ];
 
     homeManager = {
-      utils.theme.compile-scss = {
+      utils.theme.${aspectName} = {
         pathsToCompile = [ ../../features ./base_scss ];
         pathsToLoad = [ ./base_scss ];
       };
