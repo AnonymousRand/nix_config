@@ -10,7 +10,7 @@
       # note that the fact that this context arg might not be defined means it *must* be passed as
       # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's in
       # a class module arg list, nix will say "unknown attribute" instead of skipping
-      # (although technically i think it is impossible? for this particular context arg to not exist)
+      # (although technically i think it is impossible for it to not exist in this case?)
       (den.lib.policy.resolve {
         systSettings =
           if host ? systSettings then

@@ -1,7 +1,6 @@
 {
   den.schema.syst = { lib, ... }: {
     options.systSettings = {
-      # required `stateVersion` option in each host and home entity
       stateVersion = lib.mkOption {
         type = lib.types.str;
       };

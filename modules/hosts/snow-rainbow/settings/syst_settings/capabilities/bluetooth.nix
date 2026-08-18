@@ -1,4 +1,5 @@
 let
+  # TODO try systSettings.capabilities here instead if works with user settings
   capabilities = {
     bluetooth = {
       supported = true;
