@@ -44,6 +44,7 @@ in
 
       den.aspects.features.media.swayimg
 
+      meow.utils.nix-ld
       meow.utils.theme.compile-scss
       meow.utils.theme.gtk-theming
       meow.utils.theme.noctalia-theming

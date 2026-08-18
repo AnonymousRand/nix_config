@@ -20,7 +20,6 @@
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
 
-      den.aspects.utils.nix-ld
       den.aspects.utils.overlays
     ];
 
