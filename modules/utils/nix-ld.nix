@@ -16,5 +16,7 @@
         libraries = quirks-nix-ld;
       };
     };
+
+    aspOptions = {};
   };
 }

@@ -1,11 +1,7 @@
 {
   den.aspects.users.meow = {
-    nixos = { pkgs, ... }: {
-      utils.nix-ld = {
-        libs = [
-          pkgs.uv
-        ];
-      };
-    };
+    quirks-nix-ld = { pkgs, ... }: [
+      pkgs.uv
+    ];
   };
 }
