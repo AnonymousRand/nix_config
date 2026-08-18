@@ -27,8 +27,7 @@
       })
     ] else [];
 
-  # TODO test:
-  # (for some reason putting this into `den.schema.syst.includes` causes infinite recursion)
+  # (for some reason putting this into `den.schema.usr.includes` breaks)
   den.schema.user.includes = [ den.policies.add-usr-settings-ctx ];
   den.schema.home.includes = [ den.policies.add-usr-settings-ctx ];
 }

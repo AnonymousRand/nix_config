@@ -1,19 +1,12 @@
 let
-  # TODO try systSettings.capabilities here instead if works with user settings
-  capabilities = {
-    bluetooth = {
-      supported = true;
-    };
+  systSettings.capabilities.bluetooth = {
+    supported = true;
   };
 in
 {
-  den.hosts.x86_64-linux.snow-rainbow = {
-    systSettings = { inherit capabilities; };
-  };
+  den.hosts.x86_64-linux.snow-rainbow = { inherit systSettings; };
 
   den.homes.x86_64-linux = {
-    "meow@snow-rainbow" = {
-      systSettings = { inherit capabilities; };
-    };
+    "meow@snow-rainbow" = { inherit systSettings; };
   };
 }

@@ -56,7 +56,7 @@ more documentation to come :3
 
 ## important notes
 
-- in den, an aspect cannot take both den context args (e.g. `host`, `user`) and nixos module args (e.g. `config`, `lib`, `pkgs`)! only class modules within aspects can do this (using "flat form"). every other case should work.
+- in den, an aspect cannot take both den context args (e.g. `host`, `user`) and nixos module args (e.g. `config`, `lib`, `pkgs`)! only class modules within aspects can do this (using "flat form"). it also seems that sometimes taking `pkgs, ...` on the aspect level also fails for whatever reason.
 
 ## unimportant notes
 

@@ -1,18 +1,12 @@
 let
-  capabilities = {
-    media = {
-      supported = true;
-    };
+  systSettings.capabilities.media = {
+    supported = true;
   };
 in
 {
-  den.hosts.x86_64-linux.snow-rainbow = {
-    systSettings = { inherit capabilities; };
-  };
+  den.hosts.x86_64-linux.snow-rainbow = { inherit systSettings; };
 
   den.homes.x86_64-linux = {
-    "meow@snow-rainbow" = {
-      systSettings = { inherit capabilities; };
-    };
+    "meow@snow-rainbow" = { inherit systSettings; };
   };
 }
