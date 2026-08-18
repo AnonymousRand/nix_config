@@ -11,8 +11,6 @@ in
     (inputs.den.namespace username false)
   ];
 
-  den.hosts.x86_64-linux.snow-rainbow.users.meow.usrSettings = { inherit username; };
-
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     includes = [

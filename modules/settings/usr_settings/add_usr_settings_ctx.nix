@@ -20,9 +20,9 @@
             user.usrSettings
           else (
             if home ? usrSettings then
-              user.usrSettings
+              home.usrSettings
             else
-              throw "den.policies.add-usr-settings-ctx: missing option values for `usrSettings`!"
+              throw "den.policies.add-usr-settings-ctx: this shouldn't be possible!"
           );
       })
     ] else [];

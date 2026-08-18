@@ -98,7 +98,7 @@
                           val
                         else
                           throw (
-                            "den.schema.usr: the value "
+                            "den.schema.usr.usrSettings.theme.fonts: the value "
                             + "[ \"${builtins.concatStringsSep "\" \"" val}\" ] "
                             + "passed to `usrSettings.theme.fonts.defaults.${fontType}` "
                             + "contains a font not listed in `usrSettings.theme.fonts.list`!"
