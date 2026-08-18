@@ -1,10 +1,14 @@
 # `modules/settings/`
 
-static and broad entity (e.g. host/user) settings that aspects may need to reference.
+static, general settings that:
+- *belong* to ENTITIES (i.e., hosts/users/standalone homes etc.),
+- are only *produced* by THAT ENTITY,
+- can be *consumed* by MULTIPLE ASPECTS.
 
-settings should:
-- declare options under `systSettings`/`usrSettings` etc. in an entity kind/schema
-- not produce any data on its own
-- optionally include an associated "battery" aspect that reads the values from the declared options and does basic, unopinionated configs with them
+(settings belonging to just an ASPECT should see [modules/utils/](../utils/) instead.)
 
-entities are responsible for producing the data on these options.
+### notes
+
+- settings should declare options under `systSettings`/`usrSettings` etc. in an entity schema.
+- settings data should only be produced by ENTITIES, not the entities' aspects or any other aspect.
+- settings may include associated "battery" aspects that read the relevant values from the declared settings options and do basic, unopinionated configs using them. to use these batteries, include them in an entity's *aspect* to *activate* them, and set the corresponding settings in the entity to *configure* them (as you should probably be doing anyway).
