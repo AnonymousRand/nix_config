@@ -40,9 +40,15 @@
                       <test name="family" compare="eq">
                         <string>${name}</string>
                       </test>
+
+                      <edit name="size" mode="assign">
+                        <double>${value.size.normal}</double>
+                      </edit>
+
                       <edit name="weight" mode="assign">
                         <int>${value.weight.fontconfig}</int>
                       </edit>
+
                       <edit name="fontfeatures" mode="append">
                         ${enabledFontFeaturesStr}
                         ${disabledFontFeaturesStr}

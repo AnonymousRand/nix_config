@@ -19,7 +19,7 @@
             if home ? systSettings then
               home.systSettings
             else
-              throw "policy `add-syst-settings-ctx`: missing option values for `systSettings`!"
+              throw "den.policies.add-syst-settings-ctx: missing option values for `systSettings`!"
           );
       })
     ] else [];

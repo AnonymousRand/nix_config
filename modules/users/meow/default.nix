@@ -11,6 +11,8 @@ in
     (inputs.den.namespace username false)
   ];
 
+  den.hosts.x86_64-linux.snow-rainbow.users.meow.usrSettings = { inherit username; };
+
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     includes = [
@@ -29,10 +31,8 @@ in
       meow.features.theme.compile-scss
       meow.features.theme.gtk-theming
       meow.features.theme.noctalia-theming
-      meow.features.theme.fonts.maple-mono
+      den.aspects.features.theme.fonts.maple-mono
       den.aspects.features.theme.fonts.quicksand
-      # commented out since the fontconfig weights are all bwoken for Quicksand 3:
-      #meow.features.theme.fonts.quicksand
 
       meow.features.terminal.bash
       meow.features.terminal.fish

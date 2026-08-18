@@ -24,14 +24,12 @@ in
                   type = lib.types.str;
                   default = "";
                 };
-
                 gtk4Css = lib.mkOption {
                   type = lib.types.str;
                   default = "";
                 };
               };
             };
-
             default = {};
           };
         };
@@ -51,7 +49,8 @@ in
                 if fontSettings.list ? "${name}" then
                   fontSettings.list.${name}.size.gtk
                 else
-                  null;
+                  throw ("den.aspects.features.theme.${aspectName}: default font ${name} "
+                    + "not found in `usrSettings.theme.fonts.list`!");
             };
 
             monospaceFont = rec {
@@ -60,7 +59,8 @@ in
                 if fontSettings.list ? "${name}" then
                   fontSettings.list.${name}.size.gtk
                 else
-                  null;
+                  throw ("den.aspects.features.theme.${aspectName}: monospace font ${name} "
+                    + "not found in `usrSettings.theme.fonts.list`!");
             };
           in
           {
@@ -79,9 +79,10 @@ in
               "org/gnome/desktop/interface" = rec {
                 # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
                 # to an empty string
-                font-name = "${defaultFont.name} ${defaultFont.size}";
+                font-name = "${defaultFont.name} ${builtins.toString defaultFont.size}";
                 document-font-name = font-name;
-                monospace-font-name = "${monospaceFont.name} ${monospaceFont.size}";
+                monospace-font-name =
+                  "${monospaceFont.name} ${builtins.toString monospaceFont.size}";
               };
             };
           };

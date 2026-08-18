@@ -12,14 +12,15 @@
               size = lib.mkOption {
                 type = lib.types.submodule {
                   options = {
-                    default = lib.mkOption {
+                    normal = lib.mkOption {
                       type = lib.types.number;
+                      default = 12;
                     };
                     # workaround for font clipping issues on non-100% scaling; set as needed :3
                     # (this should look the same as the nearest integer to which this rounds)
                     gtk = lib.mkOption {
                       type = lib.types.number;
-                      default = fontList.${name}.size.default;
+                      default = fontList.${name}.size.normal;
                     };
                   };
                 };
@@ -82,7 +83,7 @@
                 default = {};
               };
 
-              def = lib.mkOption {
+              defaults = lib.mkOption {
                 type = lib.types.submodule {
                   options = {
                     general = lib.mkOption {
@@ -91,24 +92,26 @@
                     };
                     serif = lib.mkOption {
                       type = lib.types.listOf lib.types.str;
-                      default = [];
+                      # note: these defaults are not just empty lists since we may need to call
+                      # `builtins.head` on them
+                      default = [ "" ];
                     };
                     sansSerif = lib.mkOption {
                       type = lib.types.listOf lib.types.str;
-                      default = [];
+                      default = [ "" ];
                     };
                     monospace = lib.mkOption {
                       type = lib.types.listOf lib.types.str;
-                      default = [];
+                      default = [ "" ];
                     };
                   };
                 };
                 default = {};
               };
             };
-
-            default = {};
           };
+
+          default = {};
         };
     };
 }
