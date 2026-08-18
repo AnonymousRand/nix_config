@@ -4,8 +4,8 @@
       fontName = "Quicksand";
     in
     {
-      # make this font exist in `userSettings`
-      #userSettings.theme.fonts.list.${fontName} = {};
+      # make this font exist in `usrSettings`
+      #usrSettings.theme.fonts.list.${fontName} = {};
 
       nixos = { pkgs, ... }: {
         fonts.packages = [

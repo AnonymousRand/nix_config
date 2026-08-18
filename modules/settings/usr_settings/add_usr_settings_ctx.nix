@@ -1,6 +1,6 @@
 { den, ... }: {
-  # create new `userSettings` context arg that duplicates either `host.userSettings` or
-  # `home.userSettings`, so that other aspects can just receive a `userSettings` context arg
+  # create new `usrSettings` context arg that duplicates either `host.usrSettings` or
+  # `home.usrSettings`, so that other aspects can just receive a `usrSettings` context arg
   # to get settings regardless of if we are building nixos or standalone home manager,
   # instead of needing `user ? null, home ? null`
   den.policies.add-user-settings-ctx = { user ? null, home ? null, ... }:
@@ -10,14 +10,14 @@
       # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's
       # in a class module arg list, nix will say "unknown attribute" instead of skipping
       (den.lib.policy.resolve {
-        userSettings =
-          if (user ? aspect && user.aspect ? userSettings) then
-            user.aspect.userSettings // { username = user.name; }
+        usrSettings =
+          if (user ? aspect && user.aspect ? usrSettings) then
+            user.aspect.usrSettings // { username = user.name; }
           else (
-            if (home ? aspect && home.aspect ? userSettings) then
-              home.aspect.userSettings // { username = home.name; }
+            if (home ? aspect && home.aspect ? usrSettings) then
+              home.aspect.usrSettings // { username = home.name; }
             else
-              throw "policy `add-user-settings-ctx`: missing option values for `userSettings`!"
+              throw "policy `add-user-settings-ctx`: missing option values for `usrSettings`!"
           );
       })
     ] else [];

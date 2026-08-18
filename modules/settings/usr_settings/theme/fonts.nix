@@ -1,13 +1,13 @@
 {
   den.aspects.users.base = { config, lib, ... }:
     let
-      cfg = config.userSettings.theme.fonts;
+      cfg = config.usrSettings.theme.fonts;
       fontList = cfg.list;
     in
     {
       imports = [
         {
-          options.userSettings.theme.fonts =
+          options.usrSettings.theme.fonts =
             let
               font = lib.types.submodule ({ name, ... }: {
                 options = {

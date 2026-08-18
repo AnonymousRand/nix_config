@@ -1,6 +1,6 @@
 {
   den.aspects.users.meow = {
-    userSettings.theme.colors = rec {
+    usrSettings.theme.colors = rec {
       ##############################################################################
       # basic color variables
       # (avoid using these directly in templates as much as possible)

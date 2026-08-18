@@ -1,7 +1,7 @@
 {
-  den.aspects.features.theme.fonts.fontconfig = { userSettings }:
+  den.aspects.features.theme.fonts.fontconfig = { usrSettings }:
     let
-      fontSettings = userSettings.theme.fonts;
+      fontSettings = usrSettings.theme.fonts;
     in
     {
       homeManager = { lib, ... }: {
@@ -16,7 +16,7 @@
           };
 
           # automatically generate fontconfig files for each font based on the settings
-          # in `userSettings`
+          # in `usrSettings`
           configFile = builtins.mapAttrs (name: value:
             {
               enable = true;

@@ -8,7 +8,7 @@
         den.aspects.features.theme.fonts.maple-mono
       ];
 
-      userSettings.theme.fonts.list.${fontName} = {
+      usrSettings.theme.fonts.list.${fontName} = {
         size = {
           default = 12;
         };

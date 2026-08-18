@@ -1,6 +1,6 @@
 {
   den.aspects.users.meow = {
-    userSettings.theme.fonts = {
+    usrSettings.theme.fonts = {
       defaults = {
         general   = [ "Quicksand Medium" ];
         serif     = [ "Quicksand Medium" ];

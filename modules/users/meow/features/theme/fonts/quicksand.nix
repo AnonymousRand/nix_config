@@ -1,5 +1,5 @@
 { den, ... }: {
-  meow.features.theme.fonts.quicksand = { userSettings }:
+  meow.features.theme.fonts.quicksand = { usrSettings }:
     let
       fontName = "Quicksand";
     in
@@ -8,7 +8,7 @@
         den.aspects.features.theme.fonts.quicksand
       ];
 
-      userSettings.theme.fonts.list.${fontName} = {
+      usrSettings.theme.fonts.list.${fontName} = {
         size = {
           default = 12;
           gtk = 12.1;

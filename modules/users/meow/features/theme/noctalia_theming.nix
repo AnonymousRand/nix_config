@@ -3,11 +3,11 @@
     includes = [
       den.aspects.features.theme.noctalia-theming
 
-      ({ userSettings }: {
+      ({ usrSettings }: {
         homeManager = {
           features.theme.noctalia-theming =
             let
-              colors = userSettings.theme.colors;
+              colors = usrSettings.theme.colors;
             in
             {
               # set base values for `noctalia-theming`'s options
