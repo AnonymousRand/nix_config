@@ -1,6 +1,8 @@
 {
-  den.aspects.users.meow = { usrSettings }: {
-    homeManager = {
+  # >>TODO this only seems to run if usrSettings is moved to homeManager, why?
+  # easy solution ofc is to do just that, seems to not break (? needs testing with other aspects)
+  den.aspects.users.meow = { usrSettings }: builtins.trace "1" {
+    homeManager = builtins.trace "2" {
       utils.theme.noctalia-theming =
         let
           colors = usrSettings.theme.colors;

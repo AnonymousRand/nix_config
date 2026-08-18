@@ -43,7 +43,9 @@ in
             fontSettings = usrSettings.theme.fonts;
 
             defaultFont = rec {
-              name = builtins.head (fontSettings.defaults.general);
+              name = lib.optionalString (fontSettings.defaults.general != []) (
+                builtins.head (fontSettings.defaults.general)
+              );
               size =
                 if (name != "") then
                   fontSettings.list.${name}.size.gtk
@@ -53,7 +55,9 @@ in
             };
 
             monospaceFont = rec {
-              name = builtins.head (fontSettings.defaults.monospace);
+              name = lib.optionalString (fontSettings.defaults.monospace != []) (
+                builtins.head (fontSettings.defaults.monospace)
+              );
               size =
                 if (name != "") then
                   fontSettings.list.${name}.size.gtk

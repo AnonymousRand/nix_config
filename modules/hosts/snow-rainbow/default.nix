@@ -1,9 +1,10 @@
 { den, ... }:
 let
+  hostname = "snow-rainbow";
   stateVersion = "26.05";
 in
 {
-  den.hosts.x86_64-linux.snow-rainbow = {
+  den.hosts.x86_64-linux.${hostname} = {
     # this should be kept as the nixos release version of the first install of this system!
     systSettings = { inherit stateVersion; };
 
@@ -25,12 +26,12 @@ in
   den.homes.x86_64-linux = {
     # by specifying both username and hostname, we tie this automatically to the user aspect,
     # and also allows you to invoke standalone home manager with just `home-manager switch`
-    "meow@snow-rainbow" = {
+    "meow@${hostname}" = {
       systSettings = { inherit stateVersion; };
     };
   };
 
-  den.aspects.hosts.snow-rainbow = {
+  den.aspects.hosts.${hostname} = {
     # aspects to be included on this host regardless of user
     includes = [
       den.aspects.hosts.base

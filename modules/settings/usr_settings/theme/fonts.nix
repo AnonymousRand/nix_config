@@ -112,19 +112,17 @@
                       };
                       serif = lib.mkOption {
                         type = lib.types.listOf lib.types.str;
-                        # note: these defaults are not just empty lists since we may need to call
-                        # `builtins.head` on them
-                        default = [ "" ];
+                        default = [];
                         apply = val: validationTmpl val "serif";
                       };
                       sansSerif = lib.mkOption {
                         type = lib.types.listOf lib.types.str;
-                        default = [ "" ];
+                        default = [];
                         apply = val: validationTmpl val "sansSerif";
                       };
                       monospace = lib.mkOption {
                         type = lib.types.listOf lib.types.str;
-                        default = [ "" ];
+                        default = [];
                         apply = val: validationTmpl val "monospace";
                       };
                     };

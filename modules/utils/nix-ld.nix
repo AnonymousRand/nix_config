@@ -9,11 +9,13 @@ in
         type = lib.types.submodule {
           options = {
             libs = lib.mkOption {
-              type = lib.types.listOf lib.types.str;
+              type = lib.types.listOf lib.types.package;
               default = [];
             };
           };
         };
+
+        default = {};
       };
 
       config =

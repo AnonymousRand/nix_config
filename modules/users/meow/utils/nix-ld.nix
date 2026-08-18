@@ -1,7 +1,7 @@
 {
   den.aspects.users.meow = {
     nixos = { pkgs, ... }: {
-      utils.${aspectName} = {
+      utils.nix-ld = {
         libs = [
           pkgs.uv
         ];
