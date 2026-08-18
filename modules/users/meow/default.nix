@@ -26,9 +26,6 @@ in
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      meow.utils.theme.compile-scss
-      meow.utils.theme.gtk-theming
-      meow.utils.theme.noctalia-theming
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand
 
@@ -46,6 +43,10 @@ in
       meow.features.tools.ssh-client
 
       den.aspects.features.media.swayimg
+
+      meow.utils.theme.compile-scss
+      meow.utils.theme.gtk-theming
+      meow.utils.theme.noctalia-theming
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>`

@@ -8,8 +8,6 @@
       den.batteries.hostname
 
       den.aspects.syst-settings.capabilities
-      den.aspects.utils.nix-ld
-      den.aspects.utils.overlays
       den.aspects.syst-settings.state-version
 
       den.aspects.features.xdg-mime-apps
@@ -21,6 +19,9 @@
       den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.git
+
+      den.aspects.utils.nix-ld
+      den.aspects.utils.overlays
     ];
 
     nixos = {

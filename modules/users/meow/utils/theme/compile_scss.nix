@@ -6,7 +6,7 @@
 
     homeManager = {
       utils.theme.compile-scss = {
-        pathsToCompile = [ ../. ./base_scss ];
+        pathsToCompile = [ ../../features ./base_scss ];
         pathsToLoad = [ ./base_scss ];
       };
     };

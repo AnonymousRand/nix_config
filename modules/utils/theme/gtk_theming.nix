@@ -23,12 +23,14 @@ in
                   type = lib.types.str;
                   default = "";
                 };
+
                 gtk4Css = lib.mkOption {
                   type = lib.types.str;
                   default = "";
                 };
               };
             };
+
             default = {};
           };
         };
