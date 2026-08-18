@@ -1,4 +1,4 @@
-# `modules/theme/`
+# `modules/utils/theme/`
 
 reusable theming aspects (usually declaring their own options for configuration). to use one in an aspect, simply include it and set any declared options if appropriate.
 

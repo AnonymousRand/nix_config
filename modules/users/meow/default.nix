@@ -26,11 +26,11 @@ in
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
-      meow.features.theme.compile-scss
-      meow.features.theme.gtk-theming
-      meow.features.theme.noctalia-theming
-      den.aspects.features.theme.fonts.maple-mono
-      den.aspects.features.theme.fonts.quicksand
+      meow.utils.theme.compile-scss
+      meow.utils.theme.gtk-theming
+      meow.utils.theme.noctalia-theming
+      den.aspects.features.fonts.maple-mono
+      den.aspects.features.fonts.quicksand
 
       meow.features.terminal.bash
       meow.features.terminal.fish

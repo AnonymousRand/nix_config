@@ -23,7 +23,7 @@
         };
 
         # noctalia theming
-        features.theme.noctalia-theming.templates.fish = {
+        utils.theme.noctalia-theming.templates.fish = {
           input_path = builtins.toString ./dotfiles/noctalia_theme.fish;
           output_path = "$XDG_CONFIG_HOME/${noctaliaThemeCfgPath}";
         };

@@ -1,5 +1,5 @@
 {
-  den.aspects.features.theme.fonts.fontconfig = { usrSettings }:
+  den.aspects.features.fonts.fontconfig = { usrSettings }:
     let
       fontSettings = usrSettings.theme.fonts;
     in

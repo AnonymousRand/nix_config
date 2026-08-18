@@ -9,7 +9,7 @@
       # users on that host (which include this battery), without needing `provides.to-users`
       den.batteries.host-aspects
 
-      den.aspects.features.theme.fonts.fontconfig
+      den.aspects.features.fonts.fontconfig
     ];
   };
 }

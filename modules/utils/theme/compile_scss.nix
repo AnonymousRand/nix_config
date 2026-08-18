@@ -2,19 +2,19 @@ let
   aspectName = "compile-scss";
 in
 {
-  den.aspects.features.theme.${aspectName} = {
+  den.aspects.utils.theme.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }:
       let
-        cfg = config.features.theme.${aspectName};
+        cfg = config.utils.theme.${aspectName};
       in
       {
-        # declare these options in the home manager module (aspect-level doesn't seem to set properly)
+        # declare these options in the home manager module (aspect-level doesn't seem to work)
         #
         # options:
         # - `pathsToCompile` are the paths containing all the SCSS files to compile
         # - `pathsToLoad` are the SCSS paths to be loaded with `sass --load-path` (for imports in
         #   other SCSS files without needing relative paths). provide directories, not single files
-        options.features.theme.${aspectName} = lib.mkOption {
+        options.utils.theme.${aspectName} = lib.mkOption {
           type = lib.types.submodule {
             options = {
               pathsToCompile = lib.mkOption {
@@ -97,7 +97,7 @@ in
             };
           in
           {
-            features.theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+            utils.theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
           };
       };
   };

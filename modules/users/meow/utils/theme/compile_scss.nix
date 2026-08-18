@@ -1,11 +1,11 @@
 { den, meow, ... }: {
-  meow.features.theme.compile-scss = {
+  meow.utils.theme.compile-scss = {
     includes = [
-      den.aspects.features.theme.compile-scss
+      den.aspects.utils.theme.compile-scss
     ];
 
     homeManager = {
-      features.theme.compile-scss = {
+      utils.theme.compile-scss = {
         pathsToCompile = [ ../. ./base_scss ];
         pathsToLoad = [ ./base_scss ];
       };

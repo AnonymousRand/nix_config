@@ -5,7 +5,7 @@
   den.aspects.homes.base = {
     includes = [
       den.aspects.syst-settings.capabilities
-      den.aspects.syst-settings.overlays
+      den.aspects.utils.overlays
       den.aspects.syst-settings.state-version
     ];
   };
