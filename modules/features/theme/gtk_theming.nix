@@ -38,7 +38,7 @@ in
       }
 
       ({ userSettings }: {
-        homeManager = { lib, config, ... }:
+        homeManager = { config, ... }:
           let
             cfg = config.features.theme.${aspectName};
             fontSettings = userSettings.theme.fonts;
@@ -48,26 +48,28 @@ in
             defaultFont = rec {
               name = builtins.head (fontSettings.defaults.general or [ "" ]);
               size =
-                if fontSettings.list ? "${name}" then
-                  fontSettings.list.${name}.size.gtk
-                else
-                  null;
+                builtins.trace "fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings)}" 12;
+                #if fontSettings.list ? "${name}" then
+                #  fontSettings.list.${name}.size.gtk
+                #else
+                #  null;
             };
 
             monospaceFont = rec {
               name = builtins.head (fontSettings.defaults.monospace or [ "" ]);
               size =
-                if fontSettings.list ? "${name}" then
-                  fontSettings.list.${name}.size.gtk
-                else
-                  null;
+                builtins.trace "fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings.defaults)}" 12;
+                #if fontSettings.list ? "${name}" then
+                #  fontSettings.list.${name}.size.gtk
+                #else
+                #  null;
             };
           in
           {
             gtk = {
               font = rec {
                 name = defaultFont.name;
-                size = defaultFont.size;
+                size = builtins.trace "later: fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings)}" defaultFont.size;
               };
 
               gtk3.extraCss = cfg.gtk3Css;
@@ -79,9 +81,10 @@ in
               "org/gnome/desktop/interface" = rec {
                 # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
                 # to an empty string
-                font-name = "${defaultFont.name} ${defaultFont.size}";
+                font-name = "${defaultFont.name} ${builtins.toString defaultFont.size}";
                 document-font-name = font-name;
-                monospace-font-name = "${monospaceFont.name} ${monospaceFont.size}";
+                monospace-font-name =
+                  "${monospaceFont.name} ${builtins.toString monospaceFont.size}";
               };
             };
           };

@@ -1,10 +1,10 @@
 {
-  den.aspects.features.theme.fonts.fontconfig = { userSettings }: {
-    homeManager = { lib, ... }:
-      let
-        fontSettings = userSettings.theme.fonts;
-      in
-      {
+  den.aspects.features.theme.fonts.fontconfig = { userSettings }:
+    let
+      fontSettings = userSettings.theme.fonts;
+    in
+    {
+      homeManager = { lib, ... }: {
         fonts.fontconfig = {
           enable = true;
           antialiasing = true;
@@ -54,5 +54,5 @@
           ) fontSettings.list;
         };
       };
-  };
+    };
 }

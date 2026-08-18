@@ -84,7 +84,7 @@
                     default = {};
                   };
 
-                  defaults = lib.mkOption {
+                  def = lib.mkOption {
                     type = lib.types.submodule {
                       options = {
                         general = lib.mkOption {

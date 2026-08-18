@@ -5,7 +5,7 @@
     in
     {
       # make this font exist in `userSettings`
-      userSettings.theme.fonts.list.${fontName} = {};
+      #userSettings.theme.fonts.list.${fontName} = {};
 
       nixos = { pkgs, ... }: {
         fonts.packages = [

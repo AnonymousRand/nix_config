@@ -1,5 +1,13 @@
 { den, ... }: {
-  meow.features.theme.fonts.maple-mono = { userSettings }:
+  den.aspects.users.meow = {
+    userSettings.theme.fonts = {
+      list = {
+        "sd" = {};
+      };
+    };
+  };
+
+  meow.features.theme.fonts.maple-mono = { config, ... }:
     let
       fontName = "Maple Mono NF";
     in

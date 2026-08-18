@@ -4,11 +4,11 @@
   # to get settings regardless of if we are building nixos or standalone home manager,
   # instead of needing `user ? null, home ? null`
   den.policies.add-user-settings-ctx = { user ? null, home ? null, ... }:
-    # we can't use `lib.optionals` since adding `lib` to the args above makes this policy never run :/
+    # we can't use `lib.optionals` since adding `lib` to the args above makes this policy never run
     if (user != null || home != null) then [
-      # note that the fact that this context arg might not be defined means it *must* be passed as
-      # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's in
-      # a class module arg list, nix will say "unknown attribute" instead of skipping
+      # IMPORTANT: since this context arg might not always be defined, it *must* be passed as
+      # an *aspect-level* arg (or parametrically as an inline aspect in `includes`), as if it's
+      # in a class module arg list, nix will say "unknown attribute" instead of skipping
       (den.lib.policy.resolve {
         userSettings =
           if (user ? aspect && user.aspect ? userSettings) then
