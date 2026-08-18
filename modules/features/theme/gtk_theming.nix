@@ -48,28 +48,26 @@ in
             defaultFont = rec {
               name = builtins.head (fontSettings.defaults.general or [ "" ]);
               size =
-                builtins.trace "fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings)}" 12;
-                #if fontSettings.list ? "${name}" then
-                #  fontSettings.list.${name}.size.gtk
-                #else
-                #  null;
+                if fontSettings.list ? "${name}" then
+                  fontSettings.list.${name}.size.gtk
+                else
+                  null;
             };
 
             monospaceFont = rec {
               name = builtins.head (fontSettings.defaults.monospace or [ "" ]);
               size =
-                builtins.trace "fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings.defaults)}" 12;
-                #if fontSettings.list ? "${name}" then
-                #  fontSettings.list.${name}.size.gtk
-                #else
-                #  null;
+                if fontSettings.list ? "${name}" then
+                  fontSettings.list.${name}.size.gtk
+                else
+                  null;
             };
           in
           {
             gtk = {
               font = rec {
                 name = defaultFont.name;
-                size = builtins.trace "later: fontsetting has attrs: ${builtins.concatStringsSep "," (builtins.attrNames fontSettings)}" defaultFont.size;
+                size = defaultFont.size;
               };
 
               gtk3.extraCss = cfg.gtk3Css;
@@ -81,10 +79,9 @@ in
               "org/gnome/desktop/interface" = rec {
                 # note: if `defaultFont.size` is `null`, `builtins.toString` should evaluate it
                 # to an empty string
-                font-name = "${defaultFont.name} ${builtins.toString defaultFont.size}";
+                font-name = "${defaultFont.name} ${defaultFont.size}";
                 document-font-name = font-name;
-                monospace-font-name =
-                  "${monospaceFont.name} ${builtins.toString monospaceFont.size}";
+                monospace-font-name = "${monospaceFont.name} ${monospaceFont.size}";
               };
             };
           };
