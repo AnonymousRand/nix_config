@@ -8,10 +8,5 @@
         };
       }
     ];
-    userSettings.theme.colors.test = builtins.trace "hihi" 42;
-
-    nixos = {
-      programs.nh.enable = builtins.trace "hihi 2" false;
-    };
   };
 }
