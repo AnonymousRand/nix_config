@@ -2,7 +2,7 @@
   den.quirks.overlays = {};
 
   den.schema.host = { lib, ... }: {
-    options.systSettings.quirks.overlays = lib.mkOption {
+    options.systSettings.overlays = lib.mkOption {
       type = lib.types.submodule {
         options = {
           hmUseGlobalPkgs = lib.mkOption {
@@ -27,14 +27,14 @@
       nixpkgs.overlays = lib.unique overlays;
 
       # allows home manager to see `nixpkgs` overlays if this is `true`
-      home-manager.useGlobalPkgs = lib.mkForce host.systSettings.quirks.overlays.hmUseGlobalPkgs;
+      home-manager.useGlobalPkgs = lib.mkForce host.systSettings.overlays.hmUseGlobalPkgs;
     };
 
     homeManager = { overlays, lib, ... }:
       # only set `nixpkgs.overlays` in home manager class module if `useGlobalPkgs` was `false`
       # or if standalone (i.e. `home` present; note that checking `host == null` doesn't work?)!
       # otherwise, this is not allowed
-      lib.mkIf (home != null || (host != null && !host.systSettings.quirks.overlays.hmUseGlobalPkgs)) {
+      lib.mkIf (home != null || (host != null && !host.systSettings.overlays.hmUseGlobalPkgs)) {
         nixpkgs.overlays = lib.unique overlays;
       };
   };
