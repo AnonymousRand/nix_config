@@ -305,5 +305,5 @@ in
 {
   den.hosts.x86_64-linux.snow-rainbow.users.meow = { inherit usrSettings; };
 
-  den.homes.x86_64-linux."meow@snow-rainbow" = { inherit usrSettings; };
+  den.homes.x86_64-linux."meow@rainbow" = { inherit usrSettings; };
 }
