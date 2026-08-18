@@ -41,27 +41,23 @@ in
             hmCfg = config.features.theme.${aspectName};
             fontSettings = usrSettings.theme.fonts;
 
-            # TODO see if possible to enforce in font option that the names of default fonts
-            # must all exist as attrs in `usrSettings.theme.fonts`
             defaultFont = rec {
-              name = builtins.head (fontSettings.defaults.general or [ "" ]);
+              name = builtins.head (fontSettings.defaults.general);
               size =
-                if fontSettings.list ? "${name}" then
+                if (name != "") then
                   fontSettings.list.${name}.size.gtk
                 else
-                  throw ("den.aspects.features.theme.${aspectName}: default font ${name} "
-                    + "not found in `usrSettings.theme.fonts.list`!");
+                  null;
               dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
             };
 
             monospaceFont = rec {
-              name = builtins.head (fontSettings.defaults.monospace or [ "" ]);
+              name = builtins.head (fontSettings.defaults.monospace);
               size =
-                if fontSettings.list ? "${name}" then
+                if (name != "") then
                   fontSettings.list.${name}.size.gtk
                 else
-                  throw ("den.aspects.features.theme.${aspectName}: monospace font ${name} "
-                    + "not found in `usrSettings.theme.fonts.list`!");
+                  null;
               dconfSizeStr = lib.optionalString (size != null) " ${builtins.toString size}";
             };
           in

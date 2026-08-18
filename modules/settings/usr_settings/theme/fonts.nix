@@ -86,26 +86,48 @@
 
               defaults = lib.mkOption {
                 type = lib.types.submodule {
-                  options = {
-                    general = lib.mkOption {
-                      type = lib.types.listOf lib.types.str;
-                      default = aspCfg.defaults.sansSerif;
+                  options =
+                    # make sure that the default fonts are also in `usrSettings.theme.fonts.list`
+                    # (so that their config options can be referenced without worry, for example)
+                    let
+                      areFontsInFontList = fonts:
+                        builtins.foldl' (acc: elem: acc && (fontList ? ${elem})) true fonts;
+
+                      validationTmpl = val: fontType:
+                        if (areFontsInFontList val) then
+                          val
+                        else
+                          throw (
+                            "den.schema.usr: the value "
+                            + "[ \"${builtins.concatStringsSep "\" \"" val}\" ] "
+                            + "passed to `usrSettings.theme.fonts.defaults.${fontType}` "
+                            + "contains a font not listed in `usrSettings.theme.fonts.list`!"
+                          );
+                    in
+                    {
+                      general = lib.mkOption {
+                        type = lib.types.listOf lib.types.str;
+                        default = aspCfg.defaults.sansSerif;
+                        apply = val: validationTmpl val "general";
+                      };
+                      serif = lib.mkOption {
+                        type = lib.types.listOf lib.types.str;
+                        # note: these defaults are not just empty lists since we may need to call
+                        # `builtins.head` on them
+                        default = [ "" ];
+                        apply = val: validationTmpl val "serif";
+                      };
+                      sansSerif = lib.mkOption {
+                        type = lib.types.listOf lib.types.str;
+                        default = [ "" ];
+                        apply = val: validationTmpl val "sansSerif";
+                      };
+                      monospace = lib.mkOption {
+                        type = lib.types.listOf lib.types.str;
+                        default = [ "" ];
+                        apply = val: validationTmpl val "monospace";
+                      };
                     };
-                    serif = lib.mkOption {
-                      type = lib.types.listOf lib.types.str;
-                      # note: these defaults are not just empty lists since we may need to call
-                      # `builtins.head` on them
-                      default = [ "" ];
-                    };
-                    sansSerif = lib.mkOption {
-                      type = lib.types.listOf lib.types.str;
-                      default = [ "" ];
-                    };
-                    monospace = lib.mkOption {
-                      type = lib.types.listOf lib.types.str;
-                      default = [ "" ];
-                    };
-                  };
                 };
 
                 default = {};
