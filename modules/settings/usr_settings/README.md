@@ -4,5 +4,5 @@ user-wide settings that aspects may need to reference, like fonts and theme.
 
 ### notes
 
+- unfortunately, den's user entities cannot be host-agnostic, so you must declare the settings on every instance of a user entity across all its hosts (e.g. use a let-in), as well as on standalone homes. however, you do NOT need to declare them on a standalone home which is bound to a user entity, as it seems to automatically get everything from the user entity.
 - a den policy is used to "wire" everything together, by injecting `usrSettings` as a context arg whenever a user or home entity is in scope.
-- note that currently, all options on defined on the base user *aspect* instead of the user *schema* (as is the case with system settings) as user *schema*/*entities* are unfortunately per-host in den instead of per-user, and i want these settings to be host-agnostic.

@@ -303,7 +303,5 @@ let
   };
 in
 {
-  # TODO does home automatically get all stuff that its corresponding host does? if not need to add
-  # in a similar spirit, is capabilitity declaration for home in addition to host needed? (prob yes)
   den.hosts.x86_64-linux.snow-rainbow.users.meow = { inherit usrSettings; };
 }
