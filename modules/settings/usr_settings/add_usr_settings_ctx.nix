@@ -5,7 +5,7 @@
   # instead of needing `user ? null, home ? null`
   #
   # (this doesn't work if i make the context arg `usr`; idk how to make entity kinds work lol)
-  # (also, note that we can't use add `lib` to these args, as that makes this policy never run)
+  # (also, note that we can't add `lib` to these args, as that makes this policy never run)
   den.policies.add-usr-settings-ctx = { user ? null, home ? null, ... }: [
     # note that in practice, it seems impossible for both `user` and `home` to be `null`
     (den.lib.policy.resolve {
