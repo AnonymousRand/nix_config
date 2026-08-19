@@ -1,7 +1,7 @@
 {
   den.aspects.users.meow = {
     homeManager = { profileSettings, ... }: {
-      utils.theme.noctalia-theming =
+      batteries.theme.noctalia-theming =
         let
           colors = profileSettings.theme.colors;
         in

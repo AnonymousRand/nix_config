@@ -99,7 +99,7 @@ in
             };
           in
           {
-            utils.theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
+            batteries.theme.${aspectName}.cssOutput = pkgs.callPackage compileScss {};
           };
       };
   };

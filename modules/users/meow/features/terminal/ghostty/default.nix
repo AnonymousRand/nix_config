@@ -9,7 +9,7 @@
       xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
 
       # noctalia theming
-      utils.theme.noctalia-theming.templates = {
+      batteries.theme.noctalia-theming.templates = {
         ghostty = {
           input_path = builtins.toString ./dotfiles/themes/noctalia_theme;
           output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme";
