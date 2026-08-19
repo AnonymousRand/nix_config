@@ -22,7 +22,7 @@
         enable = true;
         # make these libraries/binaries work with non-standard nix store filepaths
         #libraries = user.settings.batteries.nix-ld.libs;
-        libraries = user.aspConfig.batteries.nix-ld;
+        libraries = builtins.trace user.aspConfig.batteries.nix-ld user.aspConfig.batteries.nix-ld;
       };
     };
   };

@@ -37,34 +37,30 @@ in
           nodeModule = node: builtins.trace "Sds" (
             let
               ownAspOptions =
-                if node ? "${keyName}" then {
-                  options = builtins.trace "FOUND ONE!" node.${keyName};
-                } else {
-                  options = {};
-                };
+                if node ? "${keyName}" then
+                  builtins.trace "FOUND ONE!" node.${keyName}
+                else {};
 
               childrenWithAspOptions = builtins.trace (builtins.attrNames node) lib.filterAttrs (
                 k: v: builtins.trace "detecting children on node node ${k}" (!(skipKey k) && builtins.isAttrs v && hasAspOptionsDeep v)
                 #k: v: !(skipKey k) && builtins.isAttrs v && hasAspOptionsDeep v
               ) node;
 
-              childrenAspOptions = builtins.trace "# children is ${builtins.toString (builtins.length (builtins.attrNames childrenWithAspOptions))}" lib.mapAttrs (name: child:
-                lib.mkOption {
-                  type = builtins.trace "adding option for ${name} of type submodule" lib.types.submodule (nodeModule child);
-                  default = {};
-                }
-              ) childrenWithAspOptions;
-              #childrenAspOptions = builtins.foldl' (acc2: child:
-              #  nodeModule acc2 child
-              #) acc childrenWithAspOptions;
+              #childrenAspOptions = builtins.trace "# children is ${builtins.toString (builtins.length (builtins.attrNames childrenWithAspOptions))}" lib.mapAttrs (name: child:
+              #  lib.mkOption {
+              #    type = builtins.trace "adding option for ${name} of type submodule" lib.types.submodule (nodeModule child);
+              #    default = {};
+              #  }
+              #) childrenWithAspOptions;
             in
-            builtins.trace "2" {
-              #options = builtins.trace "sd" {};
-              options = builtins.trace (ownAspOptions.options // childrenAspOptions) (ownAspOptions.options // childrenAspOptions);
-            });
+              builtins.trace "# children is ${builtins.toString (builtins.length (builtins.attrNames childrenWithAspOptions))}" (lib.foldlAttrs (acc: name: child: builtins.trace acc acc // (nodeModule child)) ownAspOptions childrenWithAspOptions)
+            );
             #lib.mkMerge ownAspOptions childrenAspOptions;
         in
-        builtins.trace (lib.types.submodule (nodeModule (den.aspects or {}))) (lib.types.submodule (nodeModule (den.aspects or {})));
+        lib.types.submodule {
+          options = nodeModule (den.aspects or {});
+        };
+        #builtins.trace (lib.types.submodule (nodeModule (den.aspects or {}))) (lib.types.submodule (nodeModule (den.aspects or {})));
     in
     {
       imports = [
