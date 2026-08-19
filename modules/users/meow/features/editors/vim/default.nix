@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.editors.vim = {
-    includes = [
-      den.aspects.features.editors.vim
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = { config, pkgs, ... }: {
       programs.vim = {
         plugins = [

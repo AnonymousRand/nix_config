@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.desktop.niri = {
-    includes = [
-      den.aspects.features.desktop.niri
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = { config, ... }:
       let
         noctaliaThemeCfgPath = "niri/noctalia_theme.kdl";

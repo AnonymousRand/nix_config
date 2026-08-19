@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.terminal.ghostty = {
-    includes = [
-      den.aspects.features.terminal.ghostty
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = { config, ... }: {
       xdg.configFile."ghostty/config.ghostty".source = ./dotfiles/config.ghostty;
       xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;

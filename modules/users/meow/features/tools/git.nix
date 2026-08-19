@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.tools.git = {
-    includes = [
-      den.aspects.features.tools.git
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       programs.git = {
         settings = {

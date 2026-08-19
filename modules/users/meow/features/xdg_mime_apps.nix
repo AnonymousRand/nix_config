@@ -1,9 +1,5 @@
-{ den, meow, ... }: {
-  meow.features.xdg-mime-apps = {
-    includes = [
-      den.aspects.features.xdg-mime-apps
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       xdg.mimeApps = {
         defaultApplications = {

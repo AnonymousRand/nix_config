@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.desktop.noctalia = {
-    includes = [
-      den.aspects.features.desktop.noctalia
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = { config, ... }: {
       xdg.configFile."noctalia" = {
         source = ./dotfiles;

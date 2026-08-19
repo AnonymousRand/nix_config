@@ -1,16 +1,8 @@
-{ den, inputs, ... }:
+{ den, ... }:
 let
   username = "meow";
-  meow = den.ful.${username};
 in
 {
-  imports = [
-    # create a namespace for this user, which allows us to define "private" aspects
-    # under `<username>.<aspect name>`
-    # (the `false` means this namespace is only consumed internally, not exposed in flake outputs)
-    (inputs.den.namespace username false)
-  ];
-
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     includes = [
@@ -24,28 +16,28 @@ in
       den.aspects.batteries.theme.noctalia-theming
 
       den.aspects.features.home-manager-standalone
-      meow.features.xdg-mime-apps
+      den.aspects.features.xdg-mime-apps
 
-      meow.features.desktop.niri
-      meow.features.desktop.noctalia
+      den.aspects.features.desktop.niri
+      den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand
 
-      meow.features.terminal.bash
-      meow.features.terminal.fish
-      meow.features.terminal.ghostty
-      meow.features.terminal.kitty
+      den.aspects.features.terminal.bash
+      den.aspects.features.terminal.fish
+      den.aspects.features.terminal.ghostty
+      den.aspects.features.terminal.kitty
 
-      meow.features.editors.vim
+      den.aspects.features.editors.vim
 
-      meow.features.tools.bottom
-      meow.features.tools.fastfetch
-      meow.features.tools.git
-      meow.features.tools.hyfetch
-      meow.features.tools.ssh-client
+      den.aspects.features.tools.bottom
+      den.aspects.features.tools.fastfetch
+      den.aspects.features.tools.git
+      den.aspects.features.tools.hyfetch
+      den.aspects.features.tools.ssh-client
 
       den.aspects.features.media.swayimg
     ];

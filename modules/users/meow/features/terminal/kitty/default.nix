@@ -1,11 +1,5 @@
-{ den, ... }: import ../../../_cfg_all_profiles_for_user.nix {
-  profileSettings.theme.fonts.defaults.general = [ "Quicksand Medium" ];
-} // {
-  meow.features.terminal.kitty = {
-    includes = [
-      den.aspects.features.terminal.kitty
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager =
       let
         noctaliaThemeKittyCfgPath = "themes/noctalia_theme.conf";

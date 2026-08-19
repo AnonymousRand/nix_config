@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.terminal.fish = {
-    includes = [
-      den.aspects.features.terminal.fish
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = { config, ... }:
       let
         noctaliaThemeCfgPath = "fish/noctalia_theme.fish";

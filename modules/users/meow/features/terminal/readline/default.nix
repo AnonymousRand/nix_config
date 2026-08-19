@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.terminal.readline = {
-    includes = [
-      den.aspects.features.terminal.readline
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       programs.readline = {
         extraConfig = builtins.readFile ./dotfiles/inputrc;

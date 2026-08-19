@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.tools.bottom = {
-    includes = [
-      den.aspects.features.tools.bottom
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       # noctalia theming
       batteries.theme.noctalia-theming = {

@@ -1,10 +1,5 @@
-{ den, meow, ... }: {
-  meow.features.terminal.bash = {
-    includes = [
-      den.aspects.features.terminal.bash
-      meow.features.terminal.readline
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       programs.bash = {
         shellAliases = {

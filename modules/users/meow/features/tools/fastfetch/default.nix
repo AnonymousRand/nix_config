@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.tools.fastfetch = {
-    includes = [
-      den.aspects.features.tools.fastfetch
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       xdg.configFile."fastfetch/config.jsonc".source = ./dotfiles/config.jsonc;
     };

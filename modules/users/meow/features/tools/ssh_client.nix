@@ -1,9 +1,5 @@
-{ den, ... }: {
-  meow.features.tools.ssh-client = {
-    includes = [
-      den.aspects.features.tools.ssh-client
-    ];
-
+{
+  den.aspects.users.meow = {
     homeManager = {
       programs.ssh = {
         enableDefaultConfig = false;
