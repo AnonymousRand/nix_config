@@ -1,5 +1,7 @@
-{ den, ... }: {
-  meow.features.terminal.kitty = {
+{ den, ... }: import ../../../_host_agnostic_user_entity.nix {
+  usrSettings.theme.fonts.defaults.general = builtins.trace "kitty 1!" [ "Quicksand Medium" ];
+} // {
+  meow.features.terminal.kitty = builtins.trace "kitty 2!" {
     includes = [
       den.aspects.features.terminal.kitty
     ];

@@ -50,12 +50,12 @@ in
       den.aspects.features.media.swayimg
     ];
 
-    # `user` class is forwarded to `nixos.users.users.<username>`
+    # `user` class is forwarded to `nixos.users.users.<username>` by den
     user = {
       description = "AnonymousRand";
     };
 
-    # `homeManager` class is forwarded to `home-manager.users.<username>` (if integrated)
+    # `homeManager` class is forwarded to `home-manager.users.<username>` by den (if integrated)
     homeManager = {
       home.sessionVariables = {
         TERMINAL = "ghostty";
