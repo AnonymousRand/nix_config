@@ -1,13 +1,6 @@
-let
+import ../../../_cfg_all_systs_for_host.nix {
   systSettings.capabilities.gpu = {
     supported = true;
     vendor = "nvidia";
-  };
-in
-{
-  den.hosts.x86_64-linux.snow-rainbow = { inherit systSettings; };
-
-  den.homes.x86_64-linux = {
-    "meow@snow-rainbow" = { inherit systSettings; };
   };
 }

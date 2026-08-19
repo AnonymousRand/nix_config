@@ -1,4 +1,4 @@
-{ den, ... }: import ../../../_user_systs.nix {
+{ den, ... }: import ../../../_cfg_all_usrs_for_user.nix {
   usrSettings.theme.fonts.defaults.general = [ "Quicksand Medium" ];
 } // {
   meow.features.terminal.kitty = {

@@ -1,7 +1,7 @@
 let
   fontName = "Quicksand Medium";
 in
-import ../../../_user_systs.nix {
+import ../../../_cfg_all_usrs_for_user.nix {
   usrSettings.theme.fonts.list.${fontName} = {
     size = {
       normal = 12;

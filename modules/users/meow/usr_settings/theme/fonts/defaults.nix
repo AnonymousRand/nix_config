@@ -1,4 +1,4 @@
-import ../../../_user_systs.nix {
+import ../../../_cfg_all_usrs_for_user.nix {
   usrSettings.theme.fonts = {
     defaults = {
       general   = [ "Quicksand Medium" ];
