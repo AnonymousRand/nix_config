@@ -1,6 +1,6 @@
-import ../_cfg_all_profiles_for_user.nix {
-  aspConfig.batteries.nix-ld = builtins.trace "sd" {
-    libs = pkgs: [
+{
+  den.aspects.users.meow = {
+    quirks-nix-ld = { pkgs, ... }: [
       pkgs.uv
     ];
   };

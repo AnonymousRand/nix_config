@@ -3,8 +3,9 @@
 
   # automatically forward/aggregate all user-provided quirk data to hosts
   den.policies.aggregate-user-overlays = { host, user, ... }:
-    let inherit (den.lib.policy) pipe; in
-    [ (pipe.from "quirks-overlays" [ pipe.expose ]) ];
+    let inherit (den.lib.policy) pipe; in [
+      (pipe.from "quirks-overlays" [ pipe.expose ])
+    ];
 
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 

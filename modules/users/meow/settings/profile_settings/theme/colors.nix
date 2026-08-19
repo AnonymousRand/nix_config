@@ -1,4 +1,4 @@
-import ../../_cfg_all_profiles_for_user.nix {
+import ../../../_cfg_all_profiles_for_user.nix {
   profileSettings.theme.colors = rec {
     ############################################################################
     # basic color variables

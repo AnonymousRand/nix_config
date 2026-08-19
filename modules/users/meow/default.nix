@@ -29,7 +29,7 @@ in
       meow.features.desktop.niri
       meow.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
-      den.aspects.features.desktop.batteries.wayland
+      den.aspects.features.desktop.utils.wayland
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand

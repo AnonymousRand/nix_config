@@ -1,30 +1,20 @@
-{ den, lib, ... }:
-let
-  aspectName = "nix-ld";
-in
-{
-  den.aspects.batteries.${aspectName} = {
-    aspOptions.batteries.${aspectName} = lib.mkOption {
-      type = lib.types.submodule {
-        options = {
-          libs = lib.mkOption {
-            type = lib.types.functionTo (lib.types.listOf lib.types.package);
-            default = _: [];
-          };
-        };
-      };
-    };
+{ den, ... }: {
+  den.quirks.quirks-nix-ld = {};
 
-    # generator takes all aspOptions inside aspects and declares them in den.schema.conf, under
-    # options.aspConfig
-    # >>then policy gathers aspConfig from all entity types, lib.mkMerge's them, puts them into
-    # context as aspConfig?
+  # automatically forward/aggregate all user-provided quirk data to hosts
+  den.policies.aggregate-user-nix-ld = { host, user, ... }:
+    let inherit (den.lib.policy) pipe; in [
+      (pipe.from "quirks-nix-ld" [ pipe.expose ])
+    ];
 
-    nixos = { aspConfig, lib, pkgs, ... }: {
+  den.schema.user.includes = [ den.policies.aggregate-user-nix-ld ];
+
+  den.aspects.batteries.nix-ld = {
+    nixos = { quirks-nix-ld, lib, ... }: {
       programs.nix-ld = {
         enable = true;
         # make these libraries/binaries work with non-standard nix store filepaths
-        libraries = builtins.trace (builtins.length (aspConfig.batteries.nix-ld.libs pkgs)) aspConfig.batteries.${aspectName}.libs pkgs;
+        libraries = quirks-nix-ld;
       };
     };
   };

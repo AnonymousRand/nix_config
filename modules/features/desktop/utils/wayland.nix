@@ -1,5 +1,5 @@
 {
-  den.aspects.features.desktop.batteries.wayland = {
+  den.aspects.features.desktop.utils.wayland = {
     homeManager = { systSettings, lib, pkgs, ... }:
       lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
         home.packages = [
