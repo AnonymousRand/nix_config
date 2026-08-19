@@ -17,7 +17,7 @@
         };
 
         ghosttyCss = {
-          input_path = "${config.utils.theme.compile-scss.cssOutput}/features/terminal/ghostty/dotfiles/custom.css";
+          input_path = "${config.batteries.theme.compile-scss.cssOutput}/features/terminal/ghostty/dotfiles/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };

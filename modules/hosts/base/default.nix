@@ -13,8 +13,8 @@
       den.aspects.host-settings.hm-use-global-pkgs
 
       # activate these utils
-      den.aspects.utils.nix-ld
-      den.aspects.utils.overlays
+      den.aspects.batteries.nix-ld
+      den.aspects.batteries.overlays
 
       den.aspects.features.xdg-mime-apps
 

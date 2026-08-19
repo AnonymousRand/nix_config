@@ -19,9 +19,9 @@ in
       den.batteries.primary-user
 
       # activate these utils
-      den.aspects.utils.theme.compile-scss
-      den.aspects.utils.theme.gtk-theming
-      den.aspects.utils.theme.noctalia-theming
+      den.aspects.batteries.theme.compile-scss
+      den.aspects.batteries.theme.gtk-theming
+      den.aspects.batteries.theme.noctalia-theming
 
       den.aspects.features.home-manager-standalone
       meow.features.xdg-mime-apps
@@ -29,7 +29,7 @@ in
       meow.features.desktop.niri
       meow.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
-      den.aspects.features.desktop.utils.wayland
+      den.aspects.features.desktop.batteries.wayland
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand

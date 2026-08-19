@@ -9,7 +9,7 @@
       den.aspects.syst-settings.state-version
 
       # activate these utils
-      den.aspects.utils.overlays
+      den.aspects.batteries.overlays
     ];
   };
 }

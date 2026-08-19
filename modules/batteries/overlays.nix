@@ -9,7 +9,7 @@
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
   # (putting `hostSettings` and `home` in class module args does break with "attribute missing")
-  den.aspects.utils.overlays = { hostSettings ? null, home ? null }: {
+  den.aspects.batteries.overlays = { hostSettings ? null, home ? null }: {
     nixos = { quirks-overlays, lib, ... }: {
       nixpkgs.overlays = lib.unique quirks-overlays;
     };

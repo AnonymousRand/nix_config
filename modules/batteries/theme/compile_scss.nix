@@ -2,10 +2,10 @@ let
   aspectName = "compile-scss";
 in
 {
-  den.aspects.utils.theme.${aspectName} = {
+  den.aspects.batteries.theme.${aspectName} = {
     homeManager = { config, lib, pkgs, ... }:
       let
-        cfg = config.utils.theme.${aspectName};
+        cfg = config.batteries.theme.${aspectName};
       in
       {
         # declare these options in the home manager module (aspect-level doesn't seem to work)
@@ -14,7 +14,7 @@ in
         # - `pathsToCompile` are the paths containing all the SCSS files to compile
         # - `pathsToLoad` are the SCSS paths to be loaded with `sass --load-path` (for imports in
         #   other SCSS files without needing relative paths). provide directories, not single files
-        options.utils.theme.${aspectName} = lib.mkOption {
+        options.batteries.theme.${aspectName} = lib.mkOption {
           type = lib.types.submodule {
             options = {
               pathsToCompile = lib.mkOption {

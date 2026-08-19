@@ -1,4 +1,4 @@
-# `modules/utils/`
+# `modules/batteries/`
 
 reusable utility or "battery" aspects that usually declare their own options/consume extra data for configuration. these options:
 - *belong* to ASPECTS,

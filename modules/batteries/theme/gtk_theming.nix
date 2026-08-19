@@ -3,7 +3,7 @@ let
   aspectName = "gtk-theming";
 in
 {
-  den.aspects.utils.theme.${aspectName} = {
+  den.aspects.batteries.theme.${aspectName} = {
     includes = [
       den.aspects.features.desktop.gtk
 
@@ -16,7 +16,7 @@ in
           # need to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.utils.theme.${aspectName} = lib.mkOption {
+          options.batteries.theme.${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 gtk3Css = lib.mkOption {
@@ -39,7 +39,7 @@ in
 
     homeManager = { profileSettings, config, lib, ... }:
       let
-        hmCfg = config.utils.theme.${aspectName};
+        hmCfg = config.batteries.theme.${aspectName};
         fontSettings = profileSettings.theme.fonts;
 
         fontParams = fontType:
