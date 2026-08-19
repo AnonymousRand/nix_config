@@ -10,7 +10,7 @@ in
 
       den.batteries.primary-user
 
-      # activate these utils
+      # activate these batteries
       den.aspects.batteries.theme.compile-scss
       den.aspects.batteries.theme.gtk-theming
       den.aspects.batteries.theme.noctalia-theming

@@ -8,7 +8,7 @@
       den.aspects.syst-settings.capabilities
       den.aspects.syst-settings.state-version
 
-      # activate these utils
+      # activate these batteries
       den.aspects.batteries.overlays
     ];
   };

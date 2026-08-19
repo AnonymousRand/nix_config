@@ -1,4 +1,4 @@
 { den, ... }: {
-  # for debugging with `nix repl`
+  # exposes `den` for debugging with `nix repl`
   flake.den = den;
 }

@@ -12,7 +12,7 @@
       den.aspects.syst-settings.state-version
       den.aspects.host-settings.hm-use-global-pkgs
 
-      # activate these utils
+      # activate these batteries
       den.aspects.batteries.nix-ld
       den.aspects.batteries.overlays
 
