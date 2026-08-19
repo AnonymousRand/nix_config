@@ -1,16 +1,7 @@
-{
-#{
-  den.hosts.x86_64-linux.snow-rainbow.users.meow = builtins.trace "setting" {
-    imports = [
-      ({ pkgs, ... }: {
-        aspConfig.batteries.nix-ld = builtins.trace "setting 2" [
-          pkgs.uv
-        ];
-      })
+import ../_cfg_all_profiles_for_user.nix {
+  aspConfig.batteries.nix-ld = {
+    libs = pkgs: [
+      pkgs.uv
     ];
-
-    #settings.batteries.nix-ld.libs = builtins.trace "setting 3" [
-    #  #pkgs.uv
-    #];
   };
 }
