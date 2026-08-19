@@ -1,6 +1,7 @@
 let
   fontName = "Maple Mono NF";
-
+in
+import ../../../_user_systs.nix {
   usrSettings.theme.fonts.list.${fontName} = {
     size = {
       normal = 12;
@@ -14,9 +15,4 @@ let
       "calt"
     ];
   };
-in
-{
-  den.hosts.x86_64-linux.snow-rainbow.users.meow = { inherit usrSettings; };
-
-  den.homes.x86_64-linux."meow@snow-rainbow" = { inherit usrSettings; };
 }

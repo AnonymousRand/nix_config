@@ -1,4 +1,4 @@
-let
+import ../../../_user_systs.nix {
   usrSettings.theme.fonts = {
     defaults = {
       general   = [ "Quicksand Medium" ];
@@ -7,9 +7,4 @@ let
       monospace = [ "Maple Mono NF" ];
     };
   };
-in
-{
-  den.hosts.x86_64-linux.snow-rainbow.users.meow = { inherit usrSettings; };
-
-  den.homes.x86_64-linux."meow@snow-rainbow" = { inherit usrSettings; };
 }
