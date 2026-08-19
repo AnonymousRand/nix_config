@@ -1,5 +1,5 @@
-import ../../../_cfg_all_usrs_for_user.nix {
-  usrSettings.theme.fonts = {
+import ../../../_cfg_all_profiles_for_user.nix {
+  profileSettings.theme.fonts = {
     defaults = {
       general   = [ "Quicksand Medium" ];
       serif     = [ "Quicksand Medium" ];

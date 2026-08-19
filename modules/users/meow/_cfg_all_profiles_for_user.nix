@@ -1,7 +1,7 @@
 # KEEP TRACK OF ALL HOSTS AND HOMES THAT THIS USER IS ON HERE!!
 
-# use this to apply `usr` entity config (e.g. `usrSettings`) to all instances of this user's
-# `usr` entities, i.e. all instances of this user on ALL hosts and homes!
+# use this to apply `profile` entity config (e.g. `profileSettings`) to all instances of this user's
+# `profile` entities, i.e. all instances of this user on ALL hosts and homes!
 
 # yes, i know this is incredibly stupid, but since this has to be imported at the very top level
 # of a file, we can't access `den` here without infinite recursion. this means we can't dynamically

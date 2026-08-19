@@ -1,5 +1,5 @@
-import ../../_cfg_all_usrs_for_user.nix {
-  usrSettings.theme.colors = rec {
+import ../../_cfg_all_profiles_for_user.nix {
+  profileSettings.theme.colors = rec {
     ############################################################################
     # basic color variables
     # (avoid using these directly in templates as much as possible)

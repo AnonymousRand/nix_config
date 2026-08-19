@@ -1,11 +1,11 @@
 {
-  den.schema.usr = { config, lib, ... }:
+  den.schema.profile = { config, lib, ... }:
     let
-      aspCfg = config.usrSettings.theme.fonts;
+      aspCfg = config.profileSettings.theme.fonts;
       fontList = aspCfg.list;
     in
     {
-      options.usrSettings.theme.fonts =
+      options.profileSettings.theme.fonts =
         let
           font = lib.types.submodule ({ name, ... }: {
             options = {
@@ -87,7 +87,7 @@
               defaults = lib.mkOption {
                 type = lib.types.submodule {
                   options =
-                    # make sure that the default fonts are also in `usrSettings.theme.fonts.list`
+                    # make sure that the default fonts are also in `profileSettings.theme.fonts.list`
                     # (so that their config options can be referenced without worry, for example)
                     let
                       areFontsInFontList = fonts:
@@ -98,10 +98,10 @@
                           val
                         else
                           throw (
-                            "den.schema.usr.usrSettings.theme.fonts: the value "
+                            "den.schema.profile.profileSettings.theme.fonts: the value "
                             + "[ \"${builtins.concatStringsSep "\" \"" val}\" ] "
-                            + "passed to `usrSettings.theme.fonts.defaults.${fontType}` "
-                            + "contains a font not listed in `usrSettings.theme.fonts.list`!"
+                            + "passed to `profileSettings.theme.fonts.defaults.${fontType}` "
+                            + "contains a font not listed in `profileSettings.theme.fonts.list`!"
                           );
                     in
                     {
