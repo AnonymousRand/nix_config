@@ -44,7 +44,7 @@ in
 
         fontParams = fontType:
           if (fontSettings.defaults.${fontType} != []) then rec {
-            name = builtins.head (fontSettings.defaults.${fontType});
+            name = builtins.head fontSettings.defaults.${fontType};
             size = fontSettings.list.${name}.size.gtk;
             dconfSizeStr = " ${builtins.toString size}";
           } else {
