@@ -37,6 +37,7 @@ function fish_right_prompt
                 and not string match -qi "linux" "$TERM"
                 and not string match -qi "dumb" "$TERM"
             # if nerd font icons are (probably) suppported
+            # (note: space after to make the icon display larger/with 2 cells of width)
             set prompt_decoration " "
         else
             set prompt_decoration ":3"
