@@ -18,7 +18,8 @@ function fish_prompt
     set -l prompt_suffix (set_color magenta --bold)"₊"\
                          (set_color bryellow --bold)"˚"\
                          (set_color green --bold)"₊"\
-                         (set_color cyan --bold)"⊹ "(set_color --reset)
+                         (set_color cyan --bold)"⊹ "\
+                         (set_color brmagenta)" "(set_color --reset)
 
     # bracket colors
     set -l color_start_bracket $fish_color_user
