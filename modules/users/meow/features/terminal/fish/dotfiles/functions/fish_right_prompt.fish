@@ -1,4 +1,7 @@
 function fish_right_prompt
+    ############################################################################
+    # environments indicator
+
     # add indication if we are in a `nix-shell`/`nix develop`
     set -l prompt_nix
     if set -q IN_NIX_SHELL
@@ -12,7 +15,10 @@ function fish_right_prompt
         set prompt_venv "($VIRTUAL_ENV_PROMPT) "
     end
 
-    # pipestatus
+    ############################################################################
+    # status
+
+    # fetch pipestatus
     set -l last_pipestatus $pipestatus
     set -lx __fish_last_status $status # export for `__fish_print_pipestatus`
 
@@ -28,25 +34,25 @@ function fish_right_prompt
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
     # if there is a nonzero status, print it in right prompt; otherwise print cute stuff :3
-    if test -n "$prompt_status"
-        echo -n -s $prompt_status
-    else
-        set -l prompt_decoration
+    if ! test -n "$prompt_status"
         if string match -qi "*UTF-8*" "$LANG"
                 and set -q TERM
                 and not string match -qi "linux" "$TERM"
                 and not string match -qi "dumb" "$TERM"
             # if nerd font icons are (probably) suppported
             # (note: space after to make the icon display larger/with 2 cells of width)
-            set prompt_decoration " "
+            set prompt_status " "
         else
-            set prompt_decoration ":3"
+            set prompt_status ":3"
         end
-
-        echo -n -s (set_color $fish_right_prompt_color) \
-                   $prompt_venv \
-                   $prompt_nix \
-                   $prompt_decoration \
-                   (set_color --reset)
     end
+
+    ############################################################################
+    # final print
+
+    echo -n -s (set_color $fish_right_prompt_color) " " \
+               $prompt_venv \
+               $prompt_nix \
+               $prompt_status \
+               (set_color --reset)
 end
