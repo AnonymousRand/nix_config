@@ -1,6 +1,8 @@
 set -g fish_color_normal                                 "{{colors.default_fg_source.default.hex}}" \
     --background                                         "{{colors.default_bg_source.default.hex}}"
 
+set -g _fish_right_prompt_color                          brmagenta --bold
+
 set -g fish_color_autosuggestion                         "{{colors.lighter_fg_source.default.hex}}"
 set -g fish_color_command                                $fish_color_normal
 set -g fish_color_comment                                "{{colors.comment_source.default.hex}}"
@@ -17,7 +19,7 @@ set -g fish_color_redirection                            $fish_color_end
 set -g fish_color_search_match                           magenta --bold
 set -g fish_color_selection                              "{{colors.selection_fg_source.default.hex}}" \
     --background                                         "{{colors.selection_bg_source.default.hex}}"
-set -g fish_color_status                                 green
+set -g fish_color_status                                 $_fish_right_prompt_color
 set -g fish_color_user                                   brmagenta --bold
 set -g fish_color_valid_path                             --underline
 
@@ -31,5 +33,3 @@ set -g fish_pager_color_selected_description             "{{colors.pink_light_so
 set -g fish_pager_color_selected_prefix                  "{{colors.pink_light_source.default.hex}}" --bold
 
 set -g __fish_git_prompt_color                           brcyan --bold
-
-set -g fish_right_prompt_color                           brmagenta --bold
