@@ -18,9 +18,12 @@
               font-family  = monospaceFont;
               font-size    = fontSettings.list.${monospaceFont}.size.normal;
               font-feature =
-                fontSettings.list.${monospaceFont}.enabledFontFeatures
-                ++ (
-                  lib.map (name: "-${name}") fontSettings.list.${monospaceFont}.disabledFontFeatures
+                builtins.concatStringsSep ", " (
+                  fontSettings.list.${monospaceFont}.enabledFontFeatures
+                  ++ (
+                    lib.map (name: "-${name}")
+                      fontSettings.list.${monospaceFont}.disabledFontFeatures
+                  )
                 );
             };
         };

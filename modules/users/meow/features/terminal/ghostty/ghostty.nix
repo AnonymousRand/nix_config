@@ -37,11 +37,11 @@
           # shell
           command                    = "fish --login --interactive";
           # (note that shell integration should work automatically)
-          shell-integration-features = [ "no-cursor" "path" "ssh-env" "ssh-terminfo" "sudo" "title" ];
+          shell-integration-features = "no-cursor, path, ssh-env, ssh-terminfo, sudo, title";
 
           # system
-          app-notifications       = [ "no-clipboard-copy" "no-config-reload" ];
-          bell-features           = [ "attention" "no-audio" "no-border" "no-system" "title" ];
+          app-notifications       = "no-clipboard-copy, no-config-reload";
+          bell-features           = "attention, no-audio, no-border, no-system, title";
           # improve performance by using the same process to spawn multiple instances of ghostty
           gtk-single-instance     = true;
           clipboard-read          = "allow";
@@ -154,60 +154,10 @@
             "ctrl+shift+alt+l=resize_split:right,10"
 
             "ctrl+shift+enter=toggle_split_zoom"
-
-            # unbind extra defaults
-            "super+ctrl+shift+arrow_left=unbind"
-            "super+ctrl+shift+arrow_down=unbind"
-            "super+ctrl+shift+arrow_up=unbind"
-            "super+ctrl+shift+arrow_right=unbind"
-
-            "super+ctrl+shift+j=unbind"
-
-            "ctrl+alt+arrow_left=unbind"
-            "ctrl+alt+arrow_down=unbind"
-            "ctrl+alt+arrow_up=unbind"
-            "ctrl+alt+arrow_right=unbind"
-
-            "super+ctrl+[=unbind"
-            "super+ctrl+]=unbind"
-
-            "ctrl+shift+arrow_left=unbind"
-            "ctrl+shift+arrow_right=unbind"
-            "ctrl+shift+page_down=unbind"
-            "ctrl+shift+page_up=unbind"
-
-            "ctrl+shift+o=unbind"
-            "ctrl+shift+p=unbind"
-
-            "alt+1=unbind"
-            "alt+2=unbind"
-            "alt+3=unbind"
-            "alt+4=unbind"
-            "alt+5=unbind"
-            "alt+6=unbind"
-            "alt+7=unbind"
-            "alt+8=unbind"
-            "alt+9=unbind"
-
-            "alt+f4=unbind"
-
-            "ctrl+minus=unbind"
-            "ctrl+equal=unbind"
-            "ctrl+0=unbind"
-            "ctrl+enter=unbind"
-            "ctrl+page_down=unbind"
-            "ctrl+page_up=unbind"
-
-            "shift+home=unbind"
-            "shift+end=unbind"
-            "shift+insert=unbind"
-
-            "shift+arrow_left=unbind"
-            "shift+arrow_down=unbind"
-            "shift+arrow_up=unbind"
-            "shift+arrow_right=unbind"
           ];
         };
+
+        clearDefaultKeybinds = true;
       };
     };
   };
