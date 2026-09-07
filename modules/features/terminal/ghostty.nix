@@ -16,7 +16,7 @@
               # load in font profile settings (note that ghostty's defaults seem to
               # override fontconfig's, so setting this explicitly here is needed)
               font-family  = monospaceFont;
-              font-size    = fontSettings.list.${monospaceFont}.size;
+              font-size    = fontSettings.list.${monospaceFont}.size.normal;
               font-feature =
                 fontSettings.list.${monospaceFont}.enabledFontFeatures
                 ++ (
