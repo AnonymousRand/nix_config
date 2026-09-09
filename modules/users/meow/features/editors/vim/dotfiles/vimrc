@@ -114,6 +114,7 @@ set tabstop=4          " actual tab chars are 4 spaces wide as well
 
 " make `:%s`-based substitute commands not change the current search term
 cnoreabbrev %s keeppatterns %s
+cnoreabbrev s keeppatterns s
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins
