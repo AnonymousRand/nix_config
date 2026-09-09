@@ -112,6 +112,9 @@ set shiftwidth=4       " `tab` is 4 spaces wide
 set smarttab expandtab " pressing `tab` gives `shiftwidth` spaces
 set tabstop=4          " actual tab chars are 4 spaces wide as well
 
+" make `:%s`-based substitute commands not change the current search term
+cnoreabbrev %s keeppatterns %s
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
