@@ -8,6 +8,7 @@
         pkgs.inotify-tools
         pkgs.rename
         pkgs.tree
+        pkgs.unzip
         pkgs.util-linux
         pkgs.wget
       ];
