@@ -42,14 +42,6 @@ in
       den.aspects.features.tools.tokei
 
       den.aspects.features.apps.firefox
-
-      {
-
-
-    aspOptions = {
-      hi = "sd";
-    };
-      }
     ];
   };
 }

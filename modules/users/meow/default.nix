@@ -39,6 +39,7 @@ in
       den.aspects.features.tools.hyfetch
       den.aspects.features.tools.ssh-client
 
+      den.aspects.features.media.ffmpeg
       den.aspects.features.media.swayimg
     ];
 
