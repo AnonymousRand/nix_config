@@ -12,7 +12,7 @@ syn match PyDecorator     '@'                  display contained
 syn match PyDecoratorName '@\s*\h\%(\w\|\.\)*' display contains=PyDecorator
 
 " base color settings
-" without `exe`, we can't pass variables
+" (without `exe`, we can't pass variables)
 exe 'hi ColorColumn'
                              \ 'guibg={{colors.variant_bg_source.default.hex}}'
 exe 'hi Comment'               'guifg={{colors.comment_source.default.hex}}'

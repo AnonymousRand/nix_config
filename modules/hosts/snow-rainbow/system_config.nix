@@ -1,6 +1,11 @@
 {
   den.aspects.hosts.snow-rainbow = {
     nixos = {
+      boot.kernel.sysctl = {
+        # delay using swap memory until RAM is fairly full
+        "vm.swappiness" = 10;
+      };
+
       # set time zone
       time.timeZone = "America/Los_Angeles";
     
