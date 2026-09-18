@@ -5,7 +5,6 @@
         pkgs.curl
         pkgs.file
         pkgs.findutils
-        pkgs.gnupg
         pkgs.inotify-tools
         pkgs.rename
         pkgs.tree
