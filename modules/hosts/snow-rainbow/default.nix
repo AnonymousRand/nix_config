@@ -36,13 +36,10 @@ in
       # (note that greeter can manage different WMs/DEs per user)
       den.aspects.features.desktop.noctalia-greeter
 
-      den.aspects.features.tools.gpg
       den.aspects.features.tools.nvtop     # `top` for GPUs
       den.aspects.features.tools.playerctl # control media players that use MPRIS
       den.aspects.features.tools.solaar    # logitech mouse config
       den.aspects.features.tools.tokei
-
-      den.aspects.features.apps.firefox
     ];
   };
 }

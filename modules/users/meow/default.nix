@@ -31,6 +31,8 @@ in
       den.aspects.features.terminal.ghostty
       den.aspects.features.terminal.kitty
 
+      den.aspects.features.tools.gpg
+
       den.aspects.features.editors.vim
 
       den.aspects.features.tools.bottom
@@ -39,7 +41,11 @@ in
       den.aspects.features.tools.hyfetch
       den.aspects.features.tools.ssh-client
 
+      den.aspects.features.apps.firefox
+      den.aspects.features.apps.nautilus
+
       den.aspects.features.media.ffmpeg
+      den.aspects.features.media.inkscape
       den.aspects.features.media.swayimg
     ];
 
