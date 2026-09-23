@@ -1,4 +1,3 @@
-set background=dark
 hi clear
 if exists('syntax_on')
     syntax reset
@@ -39,6 +38,7 @@ exe 'hi MatchParen'            'guifg={{colors.matching_paren_fg_source.default.
                              \ 'guibg={{colors.matching_paren_bg_source.default.hex}}'
 exe 'hi NonText'               'guifg={{colors.default_fg_source.default.hex}}'
 exe 'hi Normal'                'guifg={{colors.default_fg_source.default.hex}}'
+                             \ 'guibg={{colors.default_bg_source.default.hex}}'
 exe 'hi Operator'              'guifg={{colors.default_fg_source.default.hex}}'
 exe 'hi Pmenu'
                              \ 'guibg={{colors.variant_bg_source.default.hex}}'
