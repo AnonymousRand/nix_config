@@ -61,9 +61,22 @@
       };
 
       # noctalia theming
-      batteries.theme.noctalia-theming.templates.fcitx5 = {
-        input_path = builtins.toString ./dotfiles/themes/noctalia_theme.conf;
-        output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia_theme/theme.conf";
+      batteries.theme.noctalia-theming.templates = {
+        fcitx5 = {
+          input_path = builtins.toString ./dotfiles/themes/noctalia_theme/theme.conf;
+          output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia_theme/theme.conf";
+        };
+
+        # injecting colors into SVGs :sunglasses: this is so fucking cursed
+        fcitx5InputPanelBg = {
+          input_path = builtins.toString ./dotfiles/themes/noctalia_theme/input_panel_bg.svg;
+          output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia_theme/input_panel_bg.svg";
+        };
+
+        fcitx5HighlightBg = {
+          input_path = builtins.toString ./dotfiles/themes/noctalia_theme/highlight_bg.svg;
+          output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia_theme/highlight_bg.svg";
+        };
       };
     };
   };
