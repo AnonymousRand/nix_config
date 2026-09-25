@@ -1,5 +1,7 @@
 // spawn Noctalia on startup
 spawn-at-startup "noctalia"
+// spawn fcitx5 daemon on startup
+spawn-at-startup "fcitx5" "-d"
 
 hotkey-overlay {
     // disable "important hotkeys" popup at startup

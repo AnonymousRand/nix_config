@@ -1,7 +1,12 @@
 window-rule {
-    exclude app-id="firefox"
-    exclude app-id="swayimg"
+    match app-id="com.mitchellh.ghostty"
     opacity 0.96
+}
+
+// make fcitx5 input candidate popup not be a tiled window
+window-rule {
+    match app-id="fcitx" title="^Fcitx5 Input Window$"
+    open-floating true
 }
 
 // make these noctalia surfaces also translucent
