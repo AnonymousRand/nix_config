@@ -8,7 +8,8 @@
 
       programs.noctalia = {
         settings = {
-          # (note that `directory` only seems to be for automation/randomizer, else set `default.path`)
+          # (note that `directory` only seems to be for automation/randomizer;
+          # otherwise, set `default.path`)
           wallpaper.directory = "${config.xdg.configHome}/wallpapers/";
         };
       };

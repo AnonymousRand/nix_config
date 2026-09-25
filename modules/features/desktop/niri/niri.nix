@@ -17,7 +17,7 @@
         wayland.windowManager.niri = {
           enable = true;
 
-          # dynamically generate display output settings based on `host.displayOutputs` custom option
+          # dynamically generate display output settings based on `displayOutputs` syst setting
           settings = lib.mapAttrs' (name: value:
             lib.nameValuePair ("output \"${name}\"") {
               mode = "${builtins.toString value.resolution.width}" +

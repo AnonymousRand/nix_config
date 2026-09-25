@@ -87,7 +87,7 @@
               defaults = lib.mkOption {
                 type = lib.types.submodule {
                   options =
-                    # make sure that the default fonts are also in `profileSettings.theme.fonts.list`
+                    # makes sure the default fonts are also in `profileSettings.theme.fonts.list`
                     # (so that their config options can be referenced without worry, for example)
                     let
                       areFontsInFontList = fonts:

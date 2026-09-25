@@ -1,7 +1,8 @@
 {
   den.aspects.users.meow = {
     homeManager = { config, ... }: {
-      xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source = ./dotfiles/shaders/nyan_cursor.glsl;
+      xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source =
+        ./dotfiles/shaders/nyan_cursor.glsl;
 
       # noctalia theming
       batteries.theme.noctalia-theming.templates = {
@@ -12,7 +13,8 @@
         };
 
         ghosttyCss = {
-          input_path = "${config.batteries.theme.compile-scss.cssOutput}/features/terminal/ghostty/dotfiles/custom.css";
+          input_path = "${config.batteries.theme.compile-scss.cssOutput}/features/terminal/"
+            + "ghostty/dotfiles/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };
@@ -22,7 +24,8 @@
         settings = {
           # styling
           theme                   = "noctalia_theme";
-          # force ghostty to use ghostty config (instead of system GTK, for example) to style windows
+          # force ghostty to use ghostty config (instead of system GTK, for example)
+          # to style windows
           window-theme            = "ghostty";
           custom-shader           = "./shaders/nyan_cursor.glsl";
           custom-shader-animation = true;
@@ -65,14 +68,15 @@
           # layout
           unfocused-split-opacity = 0.6;
 
-          # scrollback buffer max size in bytes (50 MB ~= 40k lines at 100 cells/line, ~12.5 bytes/cell)
-          # (see https://github.com/ghostty-org/ghostty/discussions/10175)
+          # scrollback buffer max size in bytes (50 MB ~= 40k lines at 100 cells/line,
+          # ~12.5 bytes/cell) (see https://github.com/ghostty-org/ghostty/discussions/10175)
           scrollback-limit = 50 * 1000 * 1000;
 
           keybind = [
             "ctrl+shift+a=select_all"
-            # `performable:` is because `copy_to_clipboard` never works anyway in fish's vi visual mode,
-            # so `performable:` passes it down to fish to handle with its own keybind in that case
+            # `performable:` is because `copy_to_clipboard` never works anyway in fish's
+            # vi visual mode, so `performable:` passes it down to fish to handle with
+            # its own keybind in that case
             "performable:ctrl+shift+c=copy_to_clipboard"
             "ctrl+shift+v=paste_from_clipboard"
             "ctrl+shift+e=copy_url_to_clipboard"

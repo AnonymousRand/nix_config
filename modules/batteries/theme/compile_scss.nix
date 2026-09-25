@@ -53,7 +53,7 @@ in
                 dart-sass
               ];
 
-              # wrap noctalia template syntax in the SCSS files in quotes so sass compiles without error
+              # wrap noctalia template syntax in the SCSS files in quotes so sass compiles
               # (i could render the templates before running sass with `noctalia theme`, but then
               # the resulting CSS won't see and be tracked by noctalia's light/dark mode changes)
               # (i apologize for the jank :p)
@@ -82,7 +82,7 @@ in
                   ${sassCommands}
                 '';
 
-              # copy `build/*` to the designated output directory for this derivation in the nix store
+              # copy `build/*` to the designated output dir for this derivation in the nix store
               # (`$out`), which is accessible via `"${<this package>}/<desired file path>"`
               installPhase = ''
                 mkdir -p $out
@@ -94,7 +94,8 @@ in
               # take all noctalia template syntax in the generated CSS files back out of quotes lmao
               # (since CSS doesn't recognize hex codes inside quotes/strings)
               postInstall = ''
-                find $out -name '*.css' -type f -exec sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
+                find $out -name '*.css' -type f -exec \
+                  sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
               '';
             };
           in
