@@ -15,14 +15,14 @@ in
       den.aspects.batteries.theme.gtk-theming
       den.aspects.batteries.theme.noctalia-theming
 
-      den.aspects.features.chinese-input
       den.aspects.features.home-manager-standalone
-      den.aspects.features.xdg-mime-apps
 
+      den.aspects.features.desktop.fcitx5
       den.aspects.features.desktop.niri
       den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.utils.wayland
+      den.aspects.features.desktop.xdg-mime-apps
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand
