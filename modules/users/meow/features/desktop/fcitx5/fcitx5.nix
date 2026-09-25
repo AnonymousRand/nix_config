@@ -8,8 +8,6 @@
 
     homeManager = { pkgs, ... }: {
       i18n.inputMethod.fcitx5 = {
-        waylandFrontend = true;
-
         addons = [
           # `fcitx5-gtk` and `fcitx5-qt` allow GTK and QT apps respectively to use it for input
           pkgs.fcitx5-gtk

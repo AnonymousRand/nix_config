@@ -21,7 +21,6 @@ in
       den.aspects.features.desktop.niri
       den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
-      den.aspects.features.desktop.utils.wayland
       den.aspects.features.desktop.xdg-mime-apps
 
       den.aspects.features.fonts.maple-mono

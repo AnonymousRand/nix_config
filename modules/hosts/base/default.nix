@@ -16,6 +16,7 @@
       den.aspects.batteries.nix-ld
       den.aspects.batteries.overlays
 
+      den.aspects.features.desktop.utils
       den.aspects.features.desktop.xdg-mime-apps
 
       den.aspects.features.terminal.bash
