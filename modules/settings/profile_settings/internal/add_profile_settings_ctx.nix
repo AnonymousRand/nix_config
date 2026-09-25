@@ -6,15 +6,15 @@
   #
   # (this doesn't work if i make the context arg `profile`; idk how to make entity kinds work lol)
   # (also, note that we can't add `lib` to these args, as that makes this policy never run)
-  den.policies.add-profile-settings-ctx = { user ? null, home ? null, ... }: [
+  den.policies.add-profile-settings-ctx = { home ? null, user ? null, ... }: [
     # note that in practice, it seems impossible for both `user` and `home` to be `null`
     (den.lib.policy.resolve {
       profileSettings =
-        if (user ? profileSettings) then
-          user.profileSettings
+        if (home ? profileSettings) then
+          home.profileSettings
         else (
-          if (home ? profileSettings) then
-            home.profileSettings
+          if (user ? profileSettings) then
+            user.profileSettings
           else
             throw "den.policies.add-profile-settings-ctx: this shouldn't be possible!"
         );
@@ -22,6 +22,6 @@
   ];
 
   # (for some reason putting this into `den.schema.profile.includes` breaks)
-  den.schema.user.includes = [ den.policies.add-profile-settings-ctx ];
   den.schema.home.includes = [ den.policies.add-profile-settings-ctx ];
+  den.schema.user.includes = [ den.policies.add-profile-settings-ctx ];
 }

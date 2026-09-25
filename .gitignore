@@ -4,3 +4,6 @@
 
 # standalone home manager
 result
+
+# other temp files
+*.tmp

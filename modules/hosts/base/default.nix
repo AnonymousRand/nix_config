@@ -28,7 +28,8 @@
       den.aspects.features.tools.git
     ];
 
-    # these are for aspects that require `profileSettings` (see README about user settings)
+    # these are for aspects that require `profileSettings` (see README in
+    # `settings/profile_settings/`)
     provides.to-users.includes = [
       den.aspects.features.fonts.fontconfig
     ];

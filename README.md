@@ -54,11 +54,7 @@ more documentation to come :3
 - in each `modules/users/<username>/default.nix`, both a `flake.modules.homeManager.<name>` home manager module and a `flake.homeConfigurations.<name>` home manager configuration are defined. the home manager module is where all the config should go; the configuration simply imports the module. the configuration is the standalone version, while the module is also integrated into the nixos config of each host in `modules/hosts/<host name>/default.nix`.
 - feature-specific config per user is generally "private" to that user, and hence written as a lower-level regular nix module in `modules/users/<username>/_features/` (the underscore prefix tells `import-tree` in `flake.nix` to not import it, as only flake-parts (top-level) modules should be imported there).
 
-## important notes
+## dev notes/conventions
 
 - my current convention is to put den context args on class modules ("flat form") instead of on aspects as much as possible. this seems more common and gives more granular control over when class modules activate. do note that for custom context args, this seems to require the context arg always exists, as otherwise it tries to evaluate as a nix module arg and then throws "unknown attribute" instead of skipping.
 - in den, an aspect cannot take both den context args (e.g. `host`, `user`) and nixos module args (e.g. `config`, `lib`, `pkgs`)! class modules within aspects can do this (using "flat form"), but sometimes `pkgs` seems to break it especially if asking for multiple "scopes" (e.g. both `systSettings` and `profileSettings` along with `pkgs`).
-
-## unimportant notes
-
-- hai :3

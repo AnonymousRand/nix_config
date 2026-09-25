@@ -8,3 +8,10 @@ everything except very fundamental flake-related stuff should be in here :3
     - the activating aspects are generally within the top-level subdirectories of `modules/` here (e.g. [./features/](./features/) and [./batteries/](./batteries/)), whereas entity-specific config for them should go under that entity's subdirectory (e.g. in `./hosts/<hostname>/` or `./users/<username/`).
     - my current convention is also to generally mirror the directory layout of `modules/` here inside those entity subdirectories for entity-specific config (e.g. see [./hosts/snow-rainbow/](./hosts/snow-rainbow/) or [./users/meow/](./users/meow)).
 - when naming aspects, you should generally follow the filepaths starting from here; e.g. `den.aspects.batteries.<name>` for an aspect in `./utils/<name>.nix` or `den.aspects.features.desktop.<name>` for an aspect in `./features/desktop/<name>.nix`. the same goes with declared options.
+- as of den 0.19.0, there are the following kinds of "entity aspects" that my config supports:
+    - `den.aspects.hosts.<hostname>`: config for a host.
+    - `den.aspects.users.<username>`: config for a user (regardless of host).
+    - `den.aspects.users."<username>@<hostname>"`: host-specific config for a user (conceptually on the same level as a user).
+    - `den.aspects.homes."<username>@<hostname>"`: config for a standalone home manager (conceptually on the same level as a host, since the *user*-level config in this case is still handled by `den.aspects.users.<username>`).
+
+    don't get confused between the last two!
