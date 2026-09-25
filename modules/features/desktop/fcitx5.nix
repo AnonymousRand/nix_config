@@ -13,7 +13,7 @@
       i18n.inputMethod = {
         enable = true;
         type = "fcitx5";
-        fcitx.waylandFrontend = (profileSettings.desktop.displayProtocol == "wayland");
+        fcitx5.waylandFrontend = (profileSettings.desktop.displayProtocol == "wayland");
       };
     };
   };

@@ -57,4 +57,4 @@ more documentation to come :3
 ## dev notes/conventions
 
 - my current convention is to put den context args on class modules ("flat form") instead of on aspects as much as possible. this seems more common and gives more granular control over when class modules activate. do note that for custom context args, this seems to require the context arg always exists, as otherwise it tries to evaluate as a nix module arg and then throws "unknown attribute" instead of skipping.
-- in den, an aspect cannot take both den context args (e.g. `host`, `user`) and nixos module args (e.g. `config`, `lib`, `pkgs`)! class modules within aspects can do this (using "flat form"), but sometimes `pkgs` seems to break it especially if asking for multiple "scopes" (e.g. both `systSettings` and `profileSettings` along with `pkgs`).
+- in den, an aspect cannot take both den context args (e.g. `host`, `user`) and nixos module args (e.g. `config`, `lib`, `pkgs`)! only class modules within aspects can do this (using "flat form").

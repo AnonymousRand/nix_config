@@ -16,7 +16,6 @@
       den.aspects.batteries.nix-ld
       den.aspects.batteries.overlays
 
-      den.aspects.features.desktop.utils
       den.aspects.features.desktop.xdg-mime-apps
 
       den.aspects.features.terminal.bash
@@ -31,6 +30,8 @@
     # these are for aspects that require `profileSettings` (see README in
     # `settings/profile_settings/`)
     provides.to-users.includes = [
+      den.aspects.features.desktop.utils
+
       den.aspects.features.fonts.fontconfig
     ];
 
