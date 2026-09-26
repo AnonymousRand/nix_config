@@ -1,5 +1,5 @@
 import ../../../_cfg_all_systs_for_host.nix {
-  systSettings.capabilities.bluetooth = {
+  settings.capabilities.bluetooth = {
     supported = true;
   };
 }

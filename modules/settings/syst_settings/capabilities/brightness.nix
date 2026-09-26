@@ -3,7 +3,7 @@ let
 in
 {
   den.schema.syst = { lib, ... }: {
-    options.systSettings.capabilities.${capabilityName} = lib.mkOption {
+    options.settings.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {

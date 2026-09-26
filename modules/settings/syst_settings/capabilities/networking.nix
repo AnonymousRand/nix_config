@@ -3,7 +3,7 @@ let
 in
 {
   den.schema.syst = { lib, ... }: {
-    options.systSettings.capabilities.${capabilityName} = lib.mkOption {
+    options.settings.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {
           supported = lib.mkOption {
@@ -17,7 +17,7 @@ in
 
   den.aspects.syst-settings.capabilities = {
     nixos = { systSettings, lib, ... }:
-      lib.mkIf (systSettings.capabilities.has [ capabilityName ]) {
+      lib.mkIf (systSettings.settings.capabilities.has [ capabilityName ]) {
         # enable network manager
         networking.networkmanager.enable = true;
 

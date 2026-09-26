@@ -1,7 +1,7 @@
 {
   den.aspects.features.terminal.ghostty = {
     homeManager = { systSettings, profileSettings, lib, ... }:
-      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
+      lib.mkIf (systSettings.settings.capabilities.has [ "graphics" ]) {
         programs.ghostty = {
           enable = true;
           # install vim plugin that provides syntax highlighting for ghostty config files

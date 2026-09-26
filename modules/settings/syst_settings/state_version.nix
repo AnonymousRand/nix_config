@@ -1,6 +1,6 @@
 {
   den.schema.syst = { lib, ... }: {
-    options.systSettings = {
+    options.settings= {
       stateVersion = lib.mkOption {
         type = lib.types.str;
       };
@@ -9,11 +9,11 @@
 
   den.aspects.syst-settings.state-version = {
     nixos = { systSettings, ... }: {
-      system.stateVersion = systSettings.stateVersion;
+      system.stateVersion = systSettings.settings.stateVersion;
     };
 
     homeManager = { systSettings, ... }: {
-      home.stateVersion = systSettings.stateVersion;
+      home.stateVersion = systSettings.settings.stateVersion;
     };
   };
 }

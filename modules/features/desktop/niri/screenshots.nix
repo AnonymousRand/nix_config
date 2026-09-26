@@ -7,7 +7,7 @@
     ];
 
     homeManager = { systSettings, lib, pkgs, ... }:
-      lib.mkIf (systSettings.capabilities.has [ "graphics" ]) {
+      lib.mkIf (systSettings.settings.capabilities.has [ "graphics" ]) {
         home.packages = [
           pkgs.tesseract # OCR
         ];
