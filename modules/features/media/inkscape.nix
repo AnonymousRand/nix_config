@@ -1,7 +1,7 @@
 {
   den.aspects.features.media.inkscape = {
-    homeManager = { systSettings, lib, pkgs, ... }:
-      lib.mkIf (systSettings.settings.capabilities.has [ "graphics" "media" ]) {
+    homeManager = { syst, lib, pkgs, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ "graphics" "media" ]) {
         home.packages = [
           pkgs.inkscape
         ];

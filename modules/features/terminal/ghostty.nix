@@ -1,7 +1,7 @@
 {
   den.aspects.features.terminal.ghostty = {
-    homeManager = { systSettings, profileSettings, lib, ... }:
-      lib.mkIf (systSettings.settings.capabilities.has [ "graphics" ]) {
+    homeManager = { syst, profile, lib, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ "graphics" ]) {
         programs.ghostty = {
           enable = true;
           # install vim plugin that provides syntax highlighting for ghostty config files
@@ -9,7 +9,7 @@
 
           settings =
             let
-              fontSettings = profileSettings.theme.fonts;
+              fontSettings = profile.settings.theme.fonts;
               monospaceFont = builtins.head fontSettings.defaults.monospace;
             in
             lib.optionalAttrs (monospaceFont != []) {

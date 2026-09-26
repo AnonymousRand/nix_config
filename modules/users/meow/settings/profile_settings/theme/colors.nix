@@ -1,5 +1,5 @@
 import ../../../_cfg_all_profiles_for_user.nix {
-  profileSettings.theme.colors = rec {
+  settings.theme.colors = rec {
     ############################################################################
     # basic color variables
     # (avoid using these directly in templates as much as possible)

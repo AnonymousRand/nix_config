@@ -8,14 +8,13 @@
 
   den.aspects.features.desktop.noctalia-greeter = {
     includes = [
-      # put here so that this is imported regardless of if `systSettings` is in context
-      # (otherwise, other aspects wishing to set options defined in these imports must all
-      # require `systSettings` arg as well)
+      # put here so that this is imported regardless of if `syst` is in context (otherwise, other
+      # aspects wishing to set options defined in these imports must all require `syst` arg as well)
       { nixos.imports = [ inputs.noctalia-greeter.nixosModules.default ]; }
     ];
 
-    nixos = { systSettings, lib, ... }:
-      lib.mkIf (systSettings.settings.capabilities.has [ "graphics" ]) {
+    nixos = { syst, lib, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ "graphics" ]) {
         programs.noctalia-greeter = {
           enable = true;
           settings = {

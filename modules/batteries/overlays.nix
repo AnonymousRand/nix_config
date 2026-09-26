@@ -9,8 +9,8 @@
 
   den.schema.user.includes = [ den.policies.aggregate-user-overlays ];
 
-  # (putting `hostSettings` and `home` in class module args does break with "attribute missing")
-  den.aspects.batteries.overlays = { hostSettings ? null, home ? null }: {
+  # (putting `host` and `home` in class module args does break with "attribute missing")
+  den.aspects.batteries.overlays = { host ? null, home ? null }: {
     nixos = { quirks-overlays, lib, ... }: {
       nixpkgs.overlays = lib.unique quirks-overlays;
     };
@@ -18,7 +18,7 @@
     homeManager = { quirks-overlays, lib, ... }:
       # only set `nixpkgs.overlays` in home manager class module if `useGlobalPkgs` was `false`
       # or if standalone (i.e. `home` present)! otherwise, this is not allowed
-      lib.mkIf (home != null || !hostSettings.hmUseGlobalPkgs) {
+      lib.mkIf (home != null || !host.settings.hmUseGlobalPkgs) {
         nixpkgs.overlays = lib.unique quirks-overlays;
       };
   };

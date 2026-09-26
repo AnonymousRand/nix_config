@@ -1,5 +1,5 @@
 {
-  den.hosts.x86_64-linux.snow-rainbow = {
-    hostSettings.hmUseGlobalPkgs = true;
+  den.hosts.snow-rainbow = {
+    settings.hmUseGlobalPkgs = true;
   };
 }
