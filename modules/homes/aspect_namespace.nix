@@ -3,6 +3,7 @@
     # change default aspect names associated with home entities to fit our naming scheme
     # (note that this requires the target aspects to exist *first*)
     # also note that as of den 0.19.0, this is basically how the home entity's aspect is defined
+    # and this should preserve the behavior of unbound homes only being linked to the user aspect
     aspect = {
       includes =
         [ den.aspects.user-host.base ]
