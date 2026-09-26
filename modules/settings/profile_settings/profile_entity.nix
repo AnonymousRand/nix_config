@@ -18,13 +18,13 @@
 
     den.policies.user-to-profile = { user, ... }: [
       (den.lib.policy.resolve.shared.to "profile" {
-        profile = lib.mkMerge user (den.profiles.${user.name} or {});
+        profile = lib.mkMerge [ user (den.profiles.${user.name} or {}) ];
       })
     ];
 
     den.policies.home-to-profile = { home, ... }: [
       (den.lib.policy.resolve.shared.to "profile" {
-        profile = lib.mkMerge home (den.profiles.${home.userName} or {});
+        profile = lib.mkMerge [ home (den.profiles.${home.userName} or {}) ];
       })
     ];
 

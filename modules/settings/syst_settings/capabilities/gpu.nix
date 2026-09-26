@@ -21,7 +21,7 @@ in
 
   den.aspects.syst-settings.capabilities = {
     nixos = { syst, lib, ... }:
-      lib.mkIf (syst.settings.capabilities.has [ capabilityName ]) (
+      lib.mkIf (syst.settings.capabilities.has [ capabilityName ]) (builtins.trace "has? ${(builtins.toString syst.settings.capacbilities.has [capabilityName])}" (
         let
           vendorSpecificConfig = {
             amd = {};
@@ -46,6 +46,6 @@ in
 
           vendorSpecificConfig.${syst.settings.capabilities.${capabilityName}.vendor}
         ]
-      );
+      ));
   };
 }

@@ -16,16 +16,16 @@
   config = {
     den.schema.syst.isEntity = true;
 
-    den.policies.host-to-syst = { host, ... }: [
+    den.policies.host-to-syst = { host, ... }: builtins.trace "host-to-syst 1" [
       (den.lib.policy.resolve.shared.to "syst" {
-        syst = lib.mkMerge host (den.systs.${host.name} or {});
+        syst = builtins.trace "host-to-syst 2" lib.mkMerge [ host (den.systs.${host.name} or {}) ];
       })
     ];
 
     # IMPORTANT: for this to work, all homes MUST be bound to a host!
     den.policies.home-to-syst = { home, ... }: [
       (den.lib.policy.resolve.shared.to "syst" {
-        syst = lib.mkMerge home (den.systs.${home.hostName} or {});
+        syst = lib.mkMerge [ home (den.systs.${home.hostName} or {}) ];
       })
     ];
 
