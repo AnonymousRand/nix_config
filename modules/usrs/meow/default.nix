@@ -39,7 +39,10 @@ in
       den.aspects.features.tools.fastfetch
       den.aspects.features.tools.git
       den.aspects.features.tools.hyfetch
+      den.aspects.features.tools.nvtop
+      den.aspects.features.tools.playerctl
       den.aspects.features.tools.ssh-client
+      den.aspects.features.tools.tokei
 
       den.aspects.features.apps.firefox
       den.aspects.features.apps.nautilus

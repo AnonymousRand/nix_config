@@ -1,4 +1,6 @@
-import ../../_cfg_all_systs_for_host.nix {
-  # this should be kept as the nixos release version of the first install of this system!
-  settings.stateVersion = "26.05";
+{
+  den.systs.snow-rainbow = {
+    # this should be kept as the nixos release version of the first install of this system!
+    settings.stateVersion = "26.05";
+  };
 }
