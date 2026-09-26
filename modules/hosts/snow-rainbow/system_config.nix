@@ -1,6 +1,7 @@
 {
   den.aspects.hosts.snow-rainbow = {
     nixos = {
+      boot.loader.systemd-boot.enable = true;
       boot.kernel.sysctl = {
         # delay using swap memory until RAM is fairly full
         "vm.swappiness" = 10;
