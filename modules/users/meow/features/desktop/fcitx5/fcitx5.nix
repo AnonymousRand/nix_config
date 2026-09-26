@@ -8,6 +8,8 @@
 
     homeManager = { pkgs, ... }: {
       i18n.inputMethod.fcitx5 = {
+        # put addons here instead of in `nixos` module so that home manager has full control
+        # over config files!
         addons = [
           # `fcitx5-gtk` and `fcitx5-qt` allow GTK and QT apps respectively to use it for input
           pkgs.fcitx5-gtk
@@ -47,6 +49,12 @@
           };
 
           addons = {
+            chttrans.sections = {
+              Hotkey = {
+                "0" = "Control+Shift+F";
+              };
+            };
+
             classicui.globalSection = {
               Theme = "noctalia_theme";
             };

@@ -1,9 +1,7 @@
 {
   den.schema.syst = { lib, ... }: {
-    options.settings = {
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-      };
+    options.settings.stateVersion = lib.mkOption {
+      type = lib.types.str;
     };
   };
 

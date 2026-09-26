@@ -1,10 +1,8 @@
 {
   den.schema.host = { lib, ... }: {
-    options.settings = {
-      hmUseGlobalPkgs = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
+    options.settings.hmUseGlobalPkgs = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
     };
   };
 

@@ -8,10 +8,6 @@ in
     includes = [
       den.aspects.users.base
 
-      # TODO make this host-specific! (try maybe doing aspect.includes in user entity, seeing
-      # if it merges like we want or if it overrides?)
-      den.batteries.primary-user
-
       # activate these batteries
       den.aspects.batteries.theme.compile-scss
       den.aspects.batteries.theme.gtk-theming

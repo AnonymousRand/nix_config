@@ -14,6 +14,7 @@
       # activate the "batteries" associated with these settings
       den.aspects.syst-settings.capabilities
       den.aspects.syst-settings.state-version
+      den.aspects.host-settings.admin-users
       den.aspects.host-settings.hm-use-global-pkgs
 
       # activate these batteries
