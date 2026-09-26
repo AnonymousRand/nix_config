@@ -1,6 +1,6 @@
 {
   den.schema.profile = { lib, ... }: {
-    options.profileSettings.desktop = lib.mkOption {
+    options.settings.desktop = lib.mkOption {
       type = lib.types.submodule {
         options = {
           displayProtocol = lib.mkOption {

@@ -16,8 +16,8 @@ in
   };
 
   den.aspects.syst-settings.capabilities = {
-    nixos = { systSettings, lib, ... }:
-      lib.mkIf (systSettings.settings.capabilities.has [ capabilityName ]) {
+    nixos = { syst, lib, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ capabilityName ]) {
         # grant real-time audio priority to prevent crackling
         security.rtkit.enable = true;
 

@@ -17,8 +17,8 @@ in
 
   # (for some reason putting `syst` as an arg to `nixos` here causes infinite recursion)
   den.aspects.syst-settings.capabilities = {
-    nixos = { systSettings, lib, ... }:
-      lib.mkIf (systSettings.settings.capabilities.has [ capabilityName ]) {
+    nixos = { syst, lib, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ capabilityName ]) {
         # enable battery status feature
         services.upower.enable = true; 
       };
