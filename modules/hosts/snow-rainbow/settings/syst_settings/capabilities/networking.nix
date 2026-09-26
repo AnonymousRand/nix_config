@@ -1,5 +1,7 @@
-import ../../../_cfg_all_systs_for_host.nix {
-  settings.capabilities.networking = {
-    supported = true;
+{
+  den.systs.snow-rainbow = {
+    settings.capabilities.networking = {
+      supported = true;
+    };
   };
 }
