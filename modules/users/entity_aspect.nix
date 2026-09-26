@@ -6,8 +6,7 @@
     # between host entities' `name` and `hostName`, so they MUST always be the same!!
     aspect = {
       includes =
-        [ den.aspects.users.base ]
-        ++ (
+        (
           lib.optional (lib.hasAttrByPath [ "users" user.name ] den.aspects)
             den.aspects.users.${user.name}
         )

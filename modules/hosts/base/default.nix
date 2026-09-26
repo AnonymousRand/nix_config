@@ -1,4 +1,10 @@
 { den, ... }: {
+  # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
+  # (importing in schema means i have to add `provides.to-user` to all the `homeManager` modules,
+  # auto-adding to every non-base aspect in `den.aspects.hosts` causes infinite recursion,
+  # auto-adding in `den.schema.hosts.aspect.includes` stops tying the base aspect to the host
+  # aspects via including/composition and makes the *user* base aspect case weird since then
+  # home entities' aspects must also include `den.aspects.users.base`)
   den.aspects.hosts.base = {
     # aspects to be included in every host
     includes = [
@@ -12,7 +18,7 @@
 
       # activate these batteries
       den.aspects.batteries.nix-ld
-      den.aspects.batteries.overlays
+      den.aspects.batteries.nixpkgs
     ];
 
     nixos = {

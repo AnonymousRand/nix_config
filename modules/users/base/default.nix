@@ -1,4 +1,5 @@
 { den, ... }: {
+  # note: this aspect must be manually imported in each user *aspect*, i haven't found another way
   den.aspects.users.base = {
     # aspects to be included in every user entity
     includes = [
@@ -15,6 +16,7 @@
       den.aspects.features.tools.brightnessctl
       den.aspects.features.tools.cli-utils
       den.aspects.features.tools.desktop-utils
+      den.aspects.features.tools.git
     ];
   };
 }

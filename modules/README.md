@@ -11,7 +11,4 @@ everything except very fundamental flake-related stuff should be in here :3
 - as of den 0.19.0, there are the following kinds of "entity aspects" that my config supports:
     - `den.aspects.hosts.<hostname>`: config for a host.
     - `den.aspects.users.<username>`: config for a user (regardless of host).
-    - `den.aspects.users."<username>@<hostname>"`: host-specific config for a user (conceptually on the same level as a user).
-    - `den.aspects.homes."<username>@<hostname>"`: config for a standalone home manager (conceptually on the same level as a host, since the *user*-level config in this case is still handled by `den.aspects.users.<username>`).
-
-    don't get confused between the last two!
+    - `den.aspects.user-host."<username>@<hostname>"`: host-specific config for a user AND config for a standalone home manager, like in original den. (the former should be avoided as much as possible though since it's a bit awkward where to place it (currently: under `hosts/`), and ideally there shouldn't need to be very much such specifics.)

@@ -6,6 +6,8 @@ in
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     includes = [
+      den.aspects.users.base
+
       # TODO make this host-specific! (try maybe doing aspect.includes in user entity, seeing
       # if it merges like we want or if it overrides?)
       den.batteries.primary-user
