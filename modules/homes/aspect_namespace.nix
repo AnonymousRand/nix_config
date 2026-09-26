@@ -5,7 +5,8 @@
     # also note that as of den 0.19.0, this is basically how the home entity's aspect is defined
     aspect = {
       includes =
-        (
+        [ den.aspects.user-host.base ]
+        ++ (
           lib.optional (lib.hasAttrByPath [ "user-host" home.name ] den.aspects)
             den.aspects.user-host.${home.name}
         )

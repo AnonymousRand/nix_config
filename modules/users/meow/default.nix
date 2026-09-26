@@ -6,8 +6,8 @@ in
   den.aspects.users.${username} = {
     # aspects to be included for this user regardless of host
     includes = [
-      den.aspects.users.base
-
+      # TODO make this host-specific! (try maybe doing aspect.includes in user entity, seeing
+      # if it merges like we want or if it overrides?)
       den.batteries.primary-user
 
       # activate these batteries
@@ -21,7 +21,6 @@ in
       den.aspects.features.desktop.niri
       den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
-      den.aspects.features.desktop.xdg-mime-apps
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand
@@ -31,15 +30,17 @@ in
       den.aspects.features.terminal.ghostty
       den.aspects.features.terminal.kitty
 
-      den.aspects.features.tools.gpg
-
       den.aspects.features.editors.vim
 
       den.aspects.features.tools.bottom
       den.aspects.features.tools.fastfetch
       den.aspects.features.tools.git
+      den.aspects.features.tools.gpg
       den.aspects.features.tools.hyfetch
+      den.aspects.features.tools.nvtop
+      den.aspects.features.tools.playerctl
       den.aspects.features.tools.ssh-client
+      den.aspects.features.tools.tokei
 
       den.aspects.features.apps.firefox
       den.aspects.features.apps.nautilus

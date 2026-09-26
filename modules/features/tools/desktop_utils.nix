@@ -1,5 +1,5 @@
 {
-  den.aspects.features.desktop.utils = {
+  den.aspects.features.tools.desktop-utils = {
     homeManager = { systSettings, profileSettings, lib, pkgs, ... }:
       lib.mkIf (systSettings.settings.capabilities.has [ "graphics" ]) (lib.mkMerge [
         # for all display protocols

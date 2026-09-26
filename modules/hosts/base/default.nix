@@ -1,6 +1,4 @@
 { den, ... }: {
-  # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
-  # (importing in schema means i have to add `provides.to-user` to all the `homeManager` modules)
   den.aspects.hosts.base = {
     # aspects to be included in every host
     includes = [
@@ -15,24 +13,6 @@
       # activate these batteries
       den.aspects.batteries.nix-ld
       den.aspects.batteries.overlays
-
-      den.aspects.features.desktop.xdg-mime-apps
-
-      den.aspects.features.terminal.bash
-
-      den.aspects.features.editors.vim
-
-      den.aspects.features.tools.brightnessctl
-      den.aspects.features.tools.cli-utils
-      den.aspects.features.tools.git
-    ];
-
-    # these are for aspects that require `profileSettings` (see README in
-    # `settings/profile_settings/`)
-    provides.to-users.includes = [
-      den.aspects.features.desktop.utils
-
-      den.aspects.features.fonts.fontconfig
     ];
 
     nixos = {
