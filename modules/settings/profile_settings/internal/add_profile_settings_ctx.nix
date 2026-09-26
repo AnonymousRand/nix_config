@@ -4,17 +4,18 @@
   # to get settings regardless of if we are building nixos or standalone home manager,
   # instead of needing `user ? null, home ? null`
   #
-  # (this doesn't work if i make the context arg `profile`; idk how to make entity kinds work lol)
   # (also, note that we can't add `lib` to these args, as that makes this policy never run)
-  den.policies.add-profile-settings-ctx = { home ? null, user ? null, ... }: [
+  den.policies.add-profile-settings-ctx = { user ? null, home ? null, ... }: [
     # note that in practice, it seems impossible for both `user` and `home` to be `null`
     (den.lib.policy.resolve {
+      # note: we can't name this `profile` as that conflicts with the entity kind; that's also why
+      # we currently don't just set it to `user` or `home` instead of their `.profileSettings`
       profileSettings =
-        if (home ? profileSettings) then
-          home.profileSettings
+        if (user ? profileSettings) then
+          user.profileSettings
         else (
-          if (user ? profileSettings) then
-            user.profileSettings
+          if (home ? profileSettings) then
+            home.profileSettings
           else
             throw "den.policies.add-profile-settings-ctx: this shouldn't be possible!"
         );
@@ -22,6 +23,6 @@
   ];
 
   # (for some reason putting this into `den.schema.profile.includes` breaks)
-  den.schema.home.includes = [ den.policies.add-profile-settings-ctx ];
   den.schema.user.includes = [ den.policies.add-profile-settings-ctx ];
+  den.schema.home.includes = [ den.policies.add-profile-settings-ctx ];
 }
