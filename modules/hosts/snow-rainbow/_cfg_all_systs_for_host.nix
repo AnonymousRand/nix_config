@@ -5,9 +5,10 @@
 # (although currently somewhat limited in functionality, e.g. when it comes to parametric stuff)
 
 cfg: {
-  den.hosts.x86_64-linux.snow-rainbow = cfg;
+  #den.hosts.x86_64-linux.snow-rainbow = cfg;
 
-  den.homes.x86_64-linux = {
-    "meow@snow-rainbow" = cfg;
-  };
+  #den.homes.x86_64-linux = {
+  #  "meow@snow-rainbow" = cfg;
+  #};
+  den.systs.snow-rainbow = cfg;
 }

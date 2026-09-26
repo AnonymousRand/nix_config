@@ -23,6 +23,7 @@
   ];
 
   # (for some reason putting this into `den.schema.syst.includes` breaks)
-  den.schema.host.includes = [ den.policies.add-syst-settings-ctx ];
-  den.schema.home.includes = [ den.policies.add-syst-settings-ctx ];
+  #den.schema.syst.includes = [ den.policies.add-syst-settings-ctx ];
+  #den.schema.host.includes = [ den.policies.add-syst-settings-ctx ];
+  #den.schema.home.includes = [ den.policies.add-syst-settings-ctx ];
 }
