@@ -2,7 +2,7 @@ let
   capabilityName = "networking";
 in
 {
-  den.schema.syst = { lib, ... }: {
+  den.schema.systm = { lib, ... }: {
     options.settings.capabilities.${capabilityName} = lib.mkOption {
       type = lib.types.submodule {
         options = {

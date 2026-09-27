@@ -1,6 +1,6 @@
 {
   den.hosts.snow-rainbow = {
-    hostSettings.adminUsers = [
+    settings.adminUsers = [
       "meow"
     ];
   };

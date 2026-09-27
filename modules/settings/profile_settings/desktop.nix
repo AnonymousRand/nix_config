@@ -1,10 +1,11 @@
 {
-  den.schema.profile = { lib, ... }: {
+  den.schema.profil = { lib, ... }: {
     options.settings.desktop = lib.mkOption {
       type = lib.types.submodule {
         options = {
           displayProtocol = lib.mkOption {
-            type = lib.types.enum [ "wayland" "x11" ];
+            type = lib.types.nullOr (lib.types.enum [ "wayland" "x11" ]);
+            default = null;
           };
         };
       };

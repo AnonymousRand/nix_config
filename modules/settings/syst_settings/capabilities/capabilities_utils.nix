@@ -1,5 +1,5 @@
 {
-  den.schema.syst = { config, lib, ... }: {
+  den.schema.systm = { config, lib, ... }: {
     options.settings.capabilities = {
       # helper function for aspects to easily determine if a host has the required capabilities
       has = lib.mkOption {

@@ -5,8 +5,8 @@
     type = lib.types.attrsOf (lib.types.submodule (
       { name, config, ... }: {
         freeformType = lib.types.attrsOf lib.types.anything;
-        imports = [ den.schema.profile ];
-        config._module.args.profile = config;
+        imports = [ den.schema.profil ];
+        config._module.args.profil = config;
       }
     ));
 
@@ -14,17 +14,19 @@
   };
 
   config = {
-    den.schema.profile.isEntity = true;
+    # need this to "register" the entity kind
+    den.schema.profil = {};
 
     den.policies.user-to-profile = { user, ... }: [
-      (den.lib.policy.resolve.shared.to "profile" {
-        profile = lib.mkMerge [ user (den.profiles.${user.name} or {}) ];
+      (den.lib.policy.resolve {
+        # (`lib.mkMerge`ing the profile and the user/home doesn't seem to work, hence profile only)
+        profile = den.profiles.${user.name} or {};
       })
     ];
 
     den.policies.home-to-profile = { home, ... }: [
-      (den.lib.policy.resolve.shared.to "profile" {
-        profile = lib.mkMerge [ home (den.profiles.${home.userName} or {}) ];
+      (den.lib.policy.resolve {
+        profile = den.profiles.${home.userName} or {};
       })
     ];
 
