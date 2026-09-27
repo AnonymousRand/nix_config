@@ -3,11 +3,10 @@
     # change default aspect name(s) associated with host entities to fit our naming scheme
     # (note that this requires the target aspect(s) to exist *first*), and also include base aspect
     aspect = {
-      includes =
-        (
-          lib.optional (lib.hasAttrByPath [ "hosts" host.name ] den.aspects)
-            den.aspects.hosts.${host.name}
-        );
+      includes = (
+        lib.optional (lib.hasAttrByPath [ "hosts" host.name ] den.aspects)
+          den.aspects.hosts.${host.name}
+      );
     };
   };
 }

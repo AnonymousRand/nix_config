@@ -10,8 +10,11 @@
       system.stateVersion = syst.settings.stateVersion;
     };
 
-    homeManager = { syst, ... }: {
-      home.stateVersion = syst.settings.stateVersion;
+    # `provides.to-users` seems to be needed here
+    provides.to-users = {
+      homeManager = { syst, ... }: {
+        home.stateVersion = syst.settings.stateVersion;
+      };
     };
   };
 }
