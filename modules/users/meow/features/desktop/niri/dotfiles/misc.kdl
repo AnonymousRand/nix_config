@@ -10,3 +10,8 @@ hotkey-overlay {
 
 // path is formatted with `strftime`
 screenshot-path "~/pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
+
+// turn off middle click clipboard
+clipboard {
+    disable-primary
+}

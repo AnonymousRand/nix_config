@@ -18,7 +18,7 @@
             + "\ninclude optional=true \"${config.xdg.configHome}/${noctaliaThemeCfgPath}\"";
         };
 
-        # we need to do this insitead of a recursive `xdg.configFile` to specifically exclude
+        # we need to do this instead of a recursive `xdg.configFile` to specifically exclude
         # the unrendered noctalia theme template file :(
         xdg.configFile = builtins.listToAttrs (builtins.map (
           filename: {
