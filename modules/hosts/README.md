@@ -5,4 +5,4 @@ host entities and aspects (`den.aspects.hosts.<hostname>`) for each host, as wel
 ### notes
 
 - all hosts should include `den.aspects.hosts.base`, which contains common configurations.
-- all hosts should use a `_cfg_all_systs_for_hosts.nix` similar to [./snow-rainbow/_cfg_all_systs_for_hosts.nix](./snow-rainbow/_cfg_all_systs_for_hosts.nix) to apply settings to ALL `syst` entities corresponding to that host (e.g. all the standalone homes bound to it in addition to the host entity); see the file for more details.
+- all hosts should set syst and host settings; see [modules/settings/README.md](../settings/README.md) for where to set them.
