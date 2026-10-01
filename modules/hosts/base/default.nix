@@ -16,6 +16,7 @@
       den.aspects.syst-settings.state-version
       den.aspects.host-settings.admin-users
       den.aspects.host-settings.hm-use-global-pkgs
+      den.aspects.host-settings.printing
 
       # activate these batteries
       den.aspects.batteries.nix-ld
