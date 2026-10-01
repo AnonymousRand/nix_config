@@ -39,6 +39,7 @@ in
       # (note that greeter can manage different WMs/DEs per user)
       den.aspects.features.desktop.noctalia-greeter
 
+      den.aspects.features.tools.latex
       den.aspects.features.tools.solaar
     ];
   };

@@ -35,6 +35,7 @@ in
       den.aspects.features.tools.git
       den.aspects.features.tools.gpg
       den.aspects.features.tools.hyfetch
+      den.aspects.features.tools.latex.quickrender
       den.aspects.features.tools.nvtop
       den.aspects.features.tools.playerctl
       den.aspects.features.tools.ssh-client
