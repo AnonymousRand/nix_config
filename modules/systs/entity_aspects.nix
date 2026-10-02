@@ -1,5 +1,4 @@
 { den, ... }: {
-  # TODO try doing in one with den.schema.systm and taking syst ctx?
   den.schema.host = { host, lib, ... }: {
     # change default aspect name(s) associated with host entities to fit our naming scheme
     # (note that this requires the target aspect(s) to exist *first*)
