@@ -3,7 +3,7 @@ let
   aspectName = "noctalia-theming";
 in
 {
-  den.aspects.batteries.theme.${aspectName} = {
+  den.aspects.features.desktop.${aspectName} = {
     includes = [
       den.aspects.features.desktop.noctalia
 

@@ -6,12 +6,12 @@
 
       # activate these batteries
       den.aspects.batteries.theme.compile-scss
-      den.aspects.batteries.theme.gtk-theming
       den.aspects.batteries.theme.noctalia-theming
 
       den.aspects.features.home-manager-standalone
 
       den.aspects.features.desktop.fcitx5
+      den.aspects.features.desktop.gtk
       den.aspects.features.desktop.niri
       den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots

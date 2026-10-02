@@ -9,7 +9,7 @@
 
   den.schema.user.includes = [ den.policies.aggregate-user-nix-ld ];
 
-  den.aspects.batteries.nix-ld = {
+  den.aspects.quirks.nix-ld = {
     nixos = { quirks-nix-ld, lib, ... }: {
       programs.nix-ld = {
         enable = true;
