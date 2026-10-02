@@ -1,5 +1,5 @@
 {
-  den.schema.profil = { lib, ... }: {
+  den.schema.user = { lib, ... }: {
     options.settings.desktop = lib.mkOption {
       type = lib.types.submodule {
         options = {

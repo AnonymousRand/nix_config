@@ -1,5 +1,5 @@
 {
-  den.profiles.meow = {
+  den.users.meow = {
     settings.theme.fonts = {
       defaults = {
         general   = [ "Quicksand Medium" ];

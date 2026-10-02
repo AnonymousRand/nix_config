@@ -2,7 +2,7 @@ let
   fontName = "Quicksand Medium";
 in
 {
-  den.profiles.meow = {
+  den.users.meow = {
     settings.theme.fonts.list.${fontName} = {
       size = {
         normal = 12;

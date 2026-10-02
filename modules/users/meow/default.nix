@@ -1,9 +1,5 @@
-{ den, ... }:
-let
-  username = "meow";
-in
-{
-  den.aspects.users.${username} = {
+{ den, ... }: {
+  den.aspects.users.meow = {
     # aspects to be included for this user regardless of host
     includes = [
       den.aspects.users.base

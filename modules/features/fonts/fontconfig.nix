@@ -1,8 +1,8 @@
 {
   den.aspects.features.fonts.fontconfig = {
-    homeManager = { profile, lib, ... }:
+    homeManager = { user, lib, ... }:
       let
-        fontSettings = profile.settings.theme.fonts;
+        fontSettings = user.settings.theme.fonts;
       in
       {
         fonts.fontconfig = {
@@ -15,7 +15,7 @@
             monospace = fontSettings.defaults.monospace;
           };
 
-          # automatically generate fontconfig files for each font based on `profile.settings`
+          # automatically generate fontconfig files for each font based on `user.settings`
           configFile = builtins.mapAttrs (name: value:
             {
               enable = true;

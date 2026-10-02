@@ -1,6 +1,6 @@
 {
   den.aspects.features.terminal.ghostty = {
-    homeManager = { syst, profile, lib, ... }:
+    homeManager = { syst, user, lib, ... }:
       lib.mkIf (syst.settings.capabilities.has [ "graphics" ]) {
         programs.ghostty = {
           enable = true;
@@ -9,11 +9,11 @@
 
           settings =
             let
-              fontSettings = profile.settings.theme.fonts;
+              fontSettings = user.settings.theme.fonts;
               monospaceFont = builtins.head fontSettings.defaults.monospace;
             in
             lib.optionalAttrs (monospaceFont != []) {
-              # load in font profile settings (note that ghostty's defaults seem to
+              # load in font user settings (note that ghostty's defaults seem to
               # override fontconfig's, so setting this explicitly here is needed)
               font-family  = monospaceFont;
               font-size    = fontSettings.list.${monospaceFont}.size.normal;

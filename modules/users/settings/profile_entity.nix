@@ -1,14 +1,39 @@
 # use `profile` entity type to encompass both users and homes (currently for `settings` options)
 
-# TODO instead promote users to top level entities, exclude built-in host to users policy,
-# and write own like in fleet template?
 { den, lib, ... }: {
-  options.den.profiles = lib.mkOption {
+  options.den.users = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule (
       { name, config, ... }: {
         freeformType = lib.types.attrsOf lib.types.anything;
-        imports = [ den.schema.profil ];
-        config._module.args.profil = config;
+        imports = [ den.schema.user ];
+        config._module.args.user = config;
+
+        options = {
+          name = lib.mkOption {
+            type = lib.types.str;
+            default = name;
+            description = "User name (from attrset key)";
+          };
+
+          userName = lib.mkOption {
+            type = lib.types.str;
+            default = name;
+            description = "User account name";
+          };
+
+          classes = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [ "user" ];
+            description = "Home management nix classes";
+          };
+
+          aspect = lib.mkOption {
+            type = lib.types.raw;
+            default = if den.aspects ? ${name} then den.aspects.${name} else { };
+            defaultText = "den.aspects.<name>";
+            description = "Aspect that configures this user";
+          };
+        };
       }
     ));
 
@@ -16,23 +41,26 @@
   };
 
   config = {
-    # need this to "register" the entity kind
-    den.schema.profil = {};
+    # promote users to real entities
+    den.schema.user.isEntity = true;
 
-    den.policies.user-to-profile = { user, ... }: [
-      (den.lib.policy.resolve {
-        # (`lib.mkMerge`ing the profile and the user/home doesn't seem to work, hence profile only)
-        profile = den.profiles.${user.name} or {};
-      })
+    den.policies.host-to-tl-users = { host, ... }:
+      map (user: den.lib.policy.resolve.to "user" {
+        inherit host;
+        user = builtins.trace "host ${host.name} user ${user.name}" den.users.${user.name};
+      }) (lib.attrValues host.users);
+
+    den.policies.home-to-tl-users = { home, ... }: [
+      (
+        den.lib.policy.resolve.to "user" {
+          inherit home;
+          user = den.users.${home.userName};
+        }
+      )
     ];
 
-    den.policies.home-to-profile = { home, ... }: [
-      (den.lib.policy.resolve {
-        profile = den.profiles.${home.userName} or {};
-      })
-    ];
-
-    den.schema.user.includes = [ den.policies.user-to-profile ];
-    den.schema.home.includes = [ den.policies.home-to-profile ];
+    den.schema.host.includes = [ den.policies.host-to-tl-users ];
+    den.schema.host.excludes = [ den.policies.host-to-users ];
+    den.schema.home.includes = [ den.policies.home-to-tl-users ];
   };
 }

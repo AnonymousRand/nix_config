@@ -25,6 +25,10 @@
             den.aspects.user-host.${home.name}
         )
         ++ (
+          lib.optional (lib.hasAttrByPath [ "systs" home.hostName ] den.aspects)
+            den.aspects.systs.${home.hostName}
+        )
+        ++ (
           lib.optional (lib.hasAttrByPath [ "users" home.userName ] den.aspects)
             den.aspects.users.${home.userName}
         );

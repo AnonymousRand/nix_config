@@ -1,5 +1,5 @@
 {
-  den.schema.profil = { config, lib, ... }:
+  den.schema.user = { config, lib, ... }:
     let
       aspCfg = config.settings.theme.fonts;
       fontList = aspCfg.list;
@@ -98,7 +98,7 @@
                           val
                         else
                           throw (
-                            "den.schema.profil.settings.theme.fonts: the value "
+                            "den.schema.user.settings.theme.fonts: the value "
                             + "[ \"${builtins.concatStringsSep "\" \"" val}\" ] "
                             + "passed to `settings.theme.fonts.defaults.${fontType}` "
                             + "contains a font not listed in `settings.theme.fonts.list`!"

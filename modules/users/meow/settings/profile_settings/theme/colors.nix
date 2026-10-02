@@ -1,5 +1,5 @@
 {
-  den.profiles.meow = {
+  den.users.meow = {
     settings.theme.colors = rec {
       ############################################################################
       # basic color variables
