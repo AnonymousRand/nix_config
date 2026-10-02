@@ -31,6 +31,7 @@ in
     # aspects to be included on this host regardless of user
     includes = [
       den.aspects.systs.base
+      den.aspects.hosts.base
 
       den.aspects.features.system.dual-boot
       den.aspects.features.system.firmware

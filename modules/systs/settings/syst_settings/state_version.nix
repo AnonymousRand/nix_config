@@ -1,5 +1,6 @@
 {
   den.schema.systm = { lib, ... }: {
+    # this should be kept as the nixos release version of the first install of this system!
     options.settings.stateVersion = lib.mkOption {
       type = lib.types.str;
     };

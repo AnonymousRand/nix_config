@@ -8,15 +8,9 @@
   den.aspects.systs.base = {
     # aspects to be included in every host
     includes = [
-      # sets `nixos.networking.hostName` from `host.hostName` in host entity
-      den.batteries.hostname
-
       # activate the "batteries" associated with these settings
       den.aspects.syst-settings.capabilities
       den.aspects.syst-settings.state-version
-      den.aspects.host-settings.admin-users
-      den.aspects.host-settings.hm-use-global-pkgs
-      den.aspects.host-settings.printing
 
       # activate these batteries
       den.aspects.batteries.nix-ld
@@ -31,5 +25,16 @@
       #  in our inputs, and we import its `flakeModules`)
       home-manager.useUserPackages = true;
     };
+  };
+
+  den.aspects.hosts.base = {
+    includes = [
+      # sets `nixos.networking.hostName` from `host.hostName` in host entity
+      den.batteries.hostname
+
+      den.aspects.host-settings.admin-users
+      den.aspects.host-settings.hm-use-global-pkgs
+      den.aspects.host-settings.printing
+    ];
   };
 }
