@@ -1,6 +1,6 @@
 # `modules/host/`
 
-host entities and aspects (`den.aspects.systs.<hostname>`) for each host, as well as any host-specific user configs per host (`den.aspects.user-host.<username>@<hostname>`).
+host entities and aspects (`den.aspects.systs.<hostname>`) for each host, as well as any host-specific user configs per host (`den.aspects.user-systs.<username>@<hostname>`).
 
 ### notes
 

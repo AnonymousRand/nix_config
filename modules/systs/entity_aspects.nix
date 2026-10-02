@@ -17,11 +17,11 @@
     # and this should preserve the behavior of unbound homes only being linked to the user aspect
     aspect = {
       includes =
-        # use `user-host` instead of something like `homes` so that these aspects continue to
+        # use `user-systs` instead of something like `homes` so that these aspects continue to
         # provide for both homes and host-specific user config like they do in den originally
         (
-          lib.optional (lib.hasAttrByPath [ "user-host" home.name ] den.aspects)
-            den.aspects.user-host.${home.name}
+          lib.optional (lib.hasAttrByPath [ "user-systs" home.name ] den.aspects)
+            den.aspects.user-systs.${home.name}
         )
         ++ (
           lib.optional (lib.hasAttrByPath [ "systs" home.hostName ] den.aspects)

@@ -12,8 +12,8 @@
         )
         ++ (
           lib.optional
-            (lib.hasAttrByPath [ "user-host" "${user.name}@${user.host.name}" ] den.aspects)
-            den.aspects.user-host."${user.name}@${user.host.name}"
+            (lib.hasAttrByPath [ "user-systs" "${user.name}@${user.host.name}" ] den.aspects)
+            den.aspects.user-systs."${user.name}@${user.host.name}"
         );
     };
   };
