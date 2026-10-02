@@ -1,7 +1,5 @@
 # use `profile` entity type to encompass both users and homes (currently for `settings` options)
 
-# TODO instead promote users to top level entities, exclude built-in host to users policy,
-# and write own like in fleet template?
 { den, lib, ... }: {
   options.den.profiles = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule (
