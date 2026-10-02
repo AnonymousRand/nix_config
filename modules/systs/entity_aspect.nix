@@ -1,4 +1,16 @@
 { den, ... }: {
+  # TODO try doing in one with den.schema.systm and taking syst ctx?
+  den.schema.host = { host, lib, ... }: {
+    # change default aspect name(s) associated with host entities to fit our naming scheme
+    # (note that this requires the target aspect(s) to exist *first*)
+    aspect = {
+      includes = (
+        lib.optional (lib.hasAttrByPath [ "systs" host.name ] den.aspects)
+          den.aspects.systs.${host.name}
+      );
+    };
+  };
+
   den.schema.home = { home, lib, ... }: {
     # change default aspect names associated with home entities to fit our naming scheme
     # (note that this requires the target aspects to exist *first*)

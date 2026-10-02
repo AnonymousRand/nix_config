@@ -1,11 +1,11 @@
 { den, ... }: {
   # note: this aspect must be manually imported in each host *aspect*, i haven't found another way
   # (importing in schema means i have to add `provides.to-user` to all the `homeManager` modules,
-  # auto-adding to every non-base aspect in `den.aspects.hosts` causes infinite recursion,
+  # auto-adding to every non-base aspect in `den.aspects.systs` causes infinite recursion,
   # auto-adding in `den.schema.hosts.aspect.includes` stops tying the base aspect to the host
   # aspects via including/composition and makes the *user* base aspect case weird since then
   # home entities' aspects must also include `den.aspects.users.base`)
-  den.aspects.hosts.base = {
+  den.aspects.systs.base = {
     # aspects to be included in every host
     includes = [
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
