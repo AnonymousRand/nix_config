@@ -5,7 +5,7 @@
         ./dotfiles/shaders/nyan_cursor.glsl;
 
       # noctalia theming
-      aspects.features.desktop.noctalia-theming.templates = {
+      aspects.batteries.noctalia-theming.templates = {
         ghostty = {
           input_path = builtins.toString ./dotfiles/themes/noctalia_theme;
           output_path = "$XDG_CONFIG_HOME/ghostty/themes/noctalia_theme";
@@ -13,7 +13,7 @@
         };
 
         ghosttyCss = {
-          input_path = "${config.aspects.quirks.compile-scss.cssOutput}/features/terminal/"
+          input_path = "${config.aspects.batteries.compile-scss.cssOutput}/features/terminal/"
             + "ghostty/dotfiles/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";

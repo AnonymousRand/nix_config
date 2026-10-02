@@ -3,7 +3,7 @@ let
   aspectName = "noctalia-theming";
 in
 {
-  den.aspects.features.desktop.${aspectName} = {
+  den.aspects.batteries..${aspectName} = {
     includes = [
       den.aspects.features.desktop.noctalia
 
@@ -16,7 +16,7 @@ in
           # to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.batteries.theme.${aspectName} = lib.mkOption {
+          options.batteries..${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 palette = lib.mkOption {
@@ -44,7 +44,7 @@ in
 
     homeManager = { profile, config, lib, ... }:
       let
-        cfg = config.batteries.theme.${aspectName};
+        cfg = config.batteries..${aspectName};
         paletteName = profile.settings.username;
       in
       lib.mkMerge [

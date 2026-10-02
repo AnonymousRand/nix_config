@@ -10,12 +10,11 @@
     includes = [
       # activate the "batteries" associated with these settings
       den.aspects.syst-settings.capabilities
-      den.aspects.syst-settings.nixpkgs
       den.aspects.syst-settings.state-version
 
       # activate these batteries
-      den.aspects.quirks.nix-ld
-      den.aspects.quirks.overlays
+      den.aspects.batteries.nix-ld
+      den.aspects.batteries.nixpkgs
     ];
 
     nixos = {

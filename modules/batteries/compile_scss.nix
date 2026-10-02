@@ -5,7 +5,7 @@
   den.quirks.quirks-compile-scss-paths-to-compile = {};
   den.quirks.quirks-compile-scss-paths-to-load = {};
 
-  den.aspects.quirks.compile-scss = {
+  den.aspects.batteries.compile-scss = {
     homeManager =
       { quirks-compile-scss-paths-to-compile, quirks-compile-scss-paths-to-load, lib, pkgs, ... }:
         let
@@ -70,7 +70,7 @@
           };
         in
         {
-          options.aspects.quirks.compile-scss.cssOutput = lib.mkOption {
+          options.aspects.batteries.compile-scss.cssOutput = lib.mkOption {
             type = lib.types.package;
             readOnly = true;
             default = pkgs.callPackage compileScss {};

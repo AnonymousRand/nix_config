@@ -5,8 +5,8 @@
       den.aspects.users.base
 
       # activate these batteries
-      den.aspects.batteries.theme.compile-scss
-      den.aspects.batteries.theme.noctalia-theming
+      den.aspects.batteries..compile-scss
+      den.aspects.batteries.noctalia-theming
 
       den.aspects.features.home-manager-standalone
 

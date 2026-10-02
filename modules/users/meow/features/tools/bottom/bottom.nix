@@ -2,7 +2,7 @@
   den.aspects.users.meow = {
     homeManager = {
       # noctalia theming
-      batteries.theme.noctalia-theming = {
+      batteries.noctalia-theming = {
         customColors = import ./_colors.nix;
         templates.bottom = {
           input_path = builtins.toString ./dotfiles/bottom.toml;
