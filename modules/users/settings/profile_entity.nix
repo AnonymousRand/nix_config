@@ -29,8 +29,6 @@
 
           aspect = lib.mkOption {
             type = lib.types.raw;
-            default = if den.aspects ? ${name} then den.aspects.${name} else { };
-            defaultText = "den.aspects.<name>";
             description = "Aspect that configures this user";
           };
         };
@@ -45,22 +43,21 @@
     den.schema.user.isEntity = true;
 
     den.policies.host-to-tl-users = { host, ... }:
-      map (user: den.lib.policy.resolve.to "user" {
-        inherit host;
-        user = builtins.trace "host ${host.name} user ${user.name}" den.users.${user.name};
+      map (user: den.lib.policy.resolve.shared {
+        #user = builtins.trace "host ${host.name}, user ${user.name}, username ${den.users.${user.name}.settings.username}" den.users.${user.name};
+        inherit user;
       }) (lib.attrValues host.users);
 
     den.policies.home-to-tl-users = { home, ... }: [
       (
-        den.lib.policy.resolve.to "user" {
-          inherit home;
-          user = den.users.${home.userName};
+        den.lib.policy.resolve.shared {
+          user = builtins.trace "home ${home.name}, user ${home.userName}, username ${den.users.${home.userName}.settings.username}" den.users.${home.userName};
         }
       )
     ];
 
-    den.schema.host.includes = [ den.policies.host-to-tl-users ];
-    den.schema.host.excludes = [ den.policies.host-to-users ];
-    den.schema.home.includes = [ den.policies.home-to-tl-users ];
+    #den.schema.host.includes = [ den.policies.host-to-tl-users ];
+    #den.schema.host.excludes = [ den.policies.host-to-users ];
+    #den.schema.home.includes = [ den.policies.home-to-tl-users ];
   };
 }
