@@ -91,7 +91,7 @@
                     # (so that their config options can be referenced without worry, for example)
                     let
                       areFontsInFontList = fonts:
-                        builtins.foldl' (acc: elem: acc && (fontList ? ${elem})) true fonts;
+                        builtins.foldl' (acc: new: acc && (fontList ? ${new})) true fonts;
 
                       validationTmpl = val: fontType:
                         if (areFontsInFontList val) then

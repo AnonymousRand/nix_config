@@ -4,9 +4,7 @@
       lib.mkIf (syst.settings.capabilities.has [ "graphics" ]) {
         gtk =
           let
-            hmCfg = config.aspects.features.desktop.gtk;
             fontSettings = profile.settings.theme.fonts;
-
             fontParams = fontType:
               if (fontSettings.defaults.${fontType} != []) then rec {
                 name = builtins.head fontSettings.defaults.${fontType};
@@ -19,6 +17,8 @@
               };
             defaultFont = fontParams "general";
             monospaceFont = fontParams "monospace";
+
+            iconSettings = profile.settings.theme.icons;
           in
           {
             enable = true;
@@ -28,6 +28,13 @@
             font = rec {
               name = defaultFont.name;
               size = defaultFont.size;
+            };
+
+            iconTheme =
+              if (iconSettings.default != null)
+              {
+              name = iconSettings.default;
+              package = iconSettings.default.package;
             };
           };
       };

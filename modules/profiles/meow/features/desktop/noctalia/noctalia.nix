@@ -1,5 +1,10 @@
-{
+{ den, ... }: {
   den.aspects.profiles.meow = {
+    # plugins
+    includes = [
+      den.aspects.features.desktop.noctalia.plugins.bongocat
+    ];
+
     homeManager = { config, ... }: {
       xdg.configFile."noctalia" = {
         source = ./dotfiles;

@@ -1,4 +1,24 @@
-[widget]
+[bar.default]
+start = [
+    "launcher",
+    "workspaces"
+]
+center = [
+    "cat",
+    "clock"
+]
+end = [
+    "tray",
+    "network",
+    "bluetooth",
+    "volume",
+    "battery",
+    "notifications",
+    "settings",
+    "control-center",
+    "session"
+]
+
 
 [widget.clock]
 format = "{:%Y/%m/%d}     ₊˚⊹ ᓚ₍⑅^..^₎♡      {:%H:%M}      ♡ ⊹˚₊ ₍^. .^₎⟆      {:%A} :3"
@@ -7,3 +27,8 @@ format = "{:%Y/%m/%d}     ₊˚⊹ ᓚ₍⑅^..^₎♡      {:%H:%M}      ♡ �
 # bound to a key in niri?) that when clipboard panel is active, performs the action tab>tab>enter
 # which should click the copy button when focus is on the clipboard history list/typing in the
 # search bar)
+
+
+[widget.tray]
+drawer = true
+pinned = ["fcitx5"]
