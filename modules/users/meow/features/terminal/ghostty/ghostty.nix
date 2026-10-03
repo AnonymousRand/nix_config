@@ -1,6 +1,6 @@
 {
   den.aspects.users.meow = {
-    quirks-compile-scss-paths-to-compile = [ ./scss ];
+    quirks-compile-scss-paths-to-compile = [ ./scss/ghostty ];
 
     homeManager = { config, ... }: {
       xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source =
@@ -15,8 +15,7 @@
         };
 
         ghosttyCss = {
-          input_path = "${config.aspects.batteries.compile-scss.cssOutput}/features/terminal/"
-            + "ghostty/dotfiles/custom.css";
+          input_path = "${config.aspects.batteries.compile-scss.cssOutput}/ghostty/custom.css";
           output_path = "$XDG_CONFIG_HOME/ghostty/custom.css";
           post_hook = "pgrep -f ghostty > /dev/null && pkill -SIGUSR2 ghostty || true";
         };

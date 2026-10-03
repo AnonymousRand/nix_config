@@ -46,6 +46,7 @@
                   "" quirks-compile-scss-paths-to-compile;
               in
               ''
+                set -x # print out all commands for debugging; view with `-L` on `nixos-rebuild`
                 runHook preBuild
 
                 mkdir build/
