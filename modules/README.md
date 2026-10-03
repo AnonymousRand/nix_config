@@ -2,6 +2,11 @@
 
 everything except very fundamental flake-related stuff should be in here :3
 
+### general den design
+
+- in essence, den is governed by *aspects* which produce (usually reusable) behavior and *entities* which stores data (e.g. for aspects to read in order to be more reusable, almost like providing function args). entities also are usually associated to aspect(s) (henceforth called "entity aspects") that are responsible for configuring the overarching behavior of that entity (e.g. which feature aspects to include). in my design, there are currently the following entity types:
+    - **hosts**: declared under `den.hosts`, instances of `den.schema.host`.
+
 ### notes
 
 - generally, feature/functionality aspects should be written so that including them *activates* them, while entities like hosts and users may set extra config or options in their own aspects (but ideally in separate files still) to *configure* them. the activation and configuration are completely separate—avoid coupling them (e.g. by extending/including the activating aspect with user-specific config). one should be able to exist without the other.
@@ -18,7 +23,7 @@ everything except very fundamental flake-related stuff should be in here :3
 - as of den 0.19.0, there are the following kinds of "entity aspects" that my config supports:
     - `den.aspects.systs.<hostname>`: config for a host.
     - `den.aspects.users.<username>`: config for a user (regardless of host).
-    - `den.aspects.user-systs."<username>@<hostname>"`: host-specific config for a user AND config for a standalone home manager, like in original den. (the former should be avoided as much as possible though since it's a bit awkward where to place it (currently: under `hosts/`), and ideally there shouldn't need to be very much such specifics.)
+    - `den.aspects.user-hosts."<username>@<hostname>"`: host-specific config for a user AND config for a standalone home manager, like in original den. (the former should be avoided as much as possible though since it's a bit awkward where to place it (currently: under `hosts/`), and ideally there shouldn't need to be very much such specifics.)
 - use *settings* (e.g. [./systs/settings/](./systs/settings/)), which are associated with each of the entity types, for config/data that:
     - *belongs* to and is only *produced* by an ENTITY (i.e., hosts/users/standalone homes etc.),
     - can be *consumed* by MULTIPLE ASPECTS.

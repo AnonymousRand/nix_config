@@ -27,7 +27,7 @@ in
     "meow@${hostname}" = { inherit system; };
   };
 
-  den.aspects.systs.${hostname} = {
+  den.aspects.hosts.${hostname} = {
     # aspects to be included on this host regardless of user
     includes = [
       den.aspects.systs.base

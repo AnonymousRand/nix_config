@@ -1,6 +1,6 @@
 # `modules/features/`
 
-reusable "feature" aspects like apps, programs, and services. each one here should enable the relevant feature(s) for all relevant class modules and provide basic, relatively unopinionated config.
+reusable "feature" aspects like apps, programs, and services. each one here should enable the relevant feature(s) for all relevant class modules and provide minimal, relatively unopinionated config.
 
 ### notes
 

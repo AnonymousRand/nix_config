@@ -8,7 +8,7 @@ in
     "meow@${hostname}" = { inherit system; };
   };
 
-  den.aspects.systs.${hostname} = {
+  den.aspects.homes.${hostname} = {
     includes = [
       den.aspects.systs.base
     ];

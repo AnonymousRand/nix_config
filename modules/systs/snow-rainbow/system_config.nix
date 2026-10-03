@@ -1,5 +1,5 @@
 {
-  den.aspects.systs.snow-rainbow = {
+  den.aspects.hosts.snow-rainbow = {
     nixos = {
       boot.loader.systemd-boot.enable = true;
       boot.kernel.sysctl = {
