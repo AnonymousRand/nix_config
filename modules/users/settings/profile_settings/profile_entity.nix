@@ -17,15 +17,14 @@
     # need this to "register" the entity kind
     den.schema.profil = {};
 
-    # allow user and home entities to override profile-schema options with higher priority
-    # (see the policies later)
+    # allow user and home entities to override profile-schema options (see policies)
     #
     # currently commented out since it does cause issues where if some options are not set in the
     # user/home entity, then the merged `profile` context arg will not have it set either instead of
     # defaulting to the profile entity's version. this is probably because we're using
     # `lib.recursiveUpdate` instead of `lib.mkMerge` in the policies; `lib.mkMerge` has problems of
-    # its own, whereas schemas are freeform, meaning we don't technically need to declare
-    # the options that we set. tl;dr we can still override settings without these schema imports
+    # its own, whereas schemas are freeform so we don't technically need to declare the options
+    # that we set. tl;dr we can still override settings without these schema imports
     #den.schema.user.imports = [ den.schema.profil ];
     #den.schema.home.imports = [ den.schema.profil ];
 
