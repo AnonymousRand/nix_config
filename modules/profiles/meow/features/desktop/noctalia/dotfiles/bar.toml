@@ -9,13 +9,13 @@ center = [
 ]
 end = [
     "tray",
-    "network",
     "bluetooth",
+    "network",
     "volume",
     "battery",
-    "notifications",
     "settings",
     "control-center",
+    "notifications",
     "session"
 ]
 
