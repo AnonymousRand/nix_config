@@ -16,12 +16,15 @@
       nixpkgs.overlays = lib.unique quirks-overlays;
     };
 
-    homeManager = { quirks-overlays, lib, ... }:
+    homeManager = { quirks-overlays, lib, pkgs, ... }:
       # only set `nixpkgs.config` and `nixpkgs.overlays` in home manager class module
       # if `useGlobalPkgs` was `false` or if standalone (i.e. `home` present)! otherwise not allowed
       lib.mkIf (home != null || !host.settings.hmUseGlobalPkgs) {
         nixpkgs.config.allowUnfree = syst.settings.nixpkgs.allowUnfree;
         nixpkgs.overlays = lib.unique quirks-overlays;
+
+        # `nix.package` needs to be explicitly set for home manager to set `nix.settings` etc.
+        nix.package = pkgs.nix;
       };
   };
 }

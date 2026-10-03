@@ -27,11 +27,9 @@ in
     "meow@${hostname}" = { inherit system; };
   };
 
-  den.aspects.hosts.${hostname} = {
+  den.aspects.systs.${hostname} = {
     # aspects to be included on this host regardless of user
     includes = [
-      den.aspects.systs.base
-
       den.aspects.features.system.dual-boot
       den.aspects.features.system.firmware
       den.aspects.features.system.nixowos

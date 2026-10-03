@@ -11,7 +11,7 @@
       system.stateVersion = syst.settings.stateVersion;
     };
 
-    # `provides.to-users` seems to be needed here
+    # `provides.to-users` seems to be needed here; TODO check
     provides.to-users = {
       homeManager = { syst, ... }: {
         home.stateVersion = syst.settings.stateVersion;
