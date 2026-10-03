@@ -14,7 +14,7 @@
             version = "0.0.0";
 
             # input scss files to be copied into build environment
-            srcs = builtins.trace quirks-compile-scss-paths-to-compile quirks-compile-scss-paths-to-load ++ quirks-compile-scss-paths-to-compile;
+            srcs = quirks-compile-scss-paths-to-load ++ quirks-compile-scss-paths-to-compile;
             # don't try to unpack single files in `srcs` as archives
             dontUnpack = true;
 
