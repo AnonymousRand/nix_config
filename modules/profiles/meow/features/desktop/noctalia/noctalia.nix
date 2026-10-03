@@ -10,7 +10,7 @@
         settings = {
           # (note that `directory` only seems to be for automation/randomizer;
           # otherwise, set `default.path`)
-          wallpaper.directory = "${config.xdg.configHome}/wallpapers/";
+          wallpaper.directory = "${config.xdg.configHome}/noctalia/wallpapers/";
         };
       };
     };
