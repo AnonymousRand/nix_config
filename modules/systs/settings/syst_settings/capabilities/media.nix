@@ -21,7 +21,7 @@ in
         # grant real-time audio priority to prevent crackling
         security.rtkit.enable = true;
 
-        # enable pipewire
+        # enable pipewire; this should also enable wireplumber by default
         services.pipewire = {
           enable = true;
           alsa.enable = true;

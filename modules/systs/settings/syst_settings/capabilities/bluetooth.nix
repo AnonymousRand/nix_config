@@ -19,7 +19,15 @@ in
     nixos = { syst, lib, ... }:
       lib.mkIf (syst.settings.capabilities.has [ capabilityName ]) {
         # enable bluetooth
-        hardware.bluetooth.enable = true;
+        hardware.bluetooth = {
+          enable = true;
+          powerOnBoot = true;
+          #settings = {
+          #  General = {
+          #    Disable = "avrcp";
+          #  };
+          #};
+        };
       };
   };
 }
