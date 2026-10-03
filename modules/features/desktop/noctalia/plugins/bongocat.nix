@@ -14,7 +14,9 @@
         ];
 
         # needed for bongocat to detect keyboards
-        input_devices = syst.settings.capabilities.inputs.keyboard_devices;
+        widget."noctalia/bongocat:cat" = {
+          input_devices = syst.settings.capabilities.inputs.keyboard_devices;
+        };
       };
     };
   };
