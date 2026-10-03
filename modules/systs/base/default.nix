@@ -29,6 +29,8 @@
 
   den.aspects.hosts.base = {
     includes = [
+      den.aspects.systs.base
+
       # sets `nixos.networking.hostName` from `host.hostName` in host entity
       den.batteries.hostname
 

@@ -26,7 +26,7 @@
         ++ (
           lib.optional (lib.hasAttrByPath [ "hosts" home.hostName ] den.aspects)
             den.aspects.hosts.${home.hostName}
-        )
+        );
         ++ (
           lib.optional (lib.hasAttrByPath [ "users" home.userName ] den.aspects)
             den.aspects.users.${home.userName}
