@@ -1,5 +1,7 @@
 {
   den.aspects.users.meow = {
+    quirks-compile-scss-paths-to-compile = [ ./scss ];
+
     homeManager = { config, ... }: {
       xdg.configFile."ghostty/shaders/nyan_cursor.glsl".source =
         ./dotfiles/shaders/nyan_cursor.glsl;

@@ -1,6 +1,6 @@
-@use "../utils";
-@use "../base";
-@use "btn";
+@use "utils";
+@use "base";
+@use "./btn";
 
 button {
   @extend %btn-base;

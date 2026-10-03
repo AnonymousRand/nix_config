@@ -1,6 +1,7 @@
 {
   den.aspects.users.meow = {
     quirks-compile-scss-paths-to-compile = [ ./scss ];
+    quirks-compile-scss-paths-to-load = [ ./scss ];
 
     homeManager = { config, ... }: {
       # noctalia theming (not using `gtk-theming` aspect's options to accommodate noctalia theming)
