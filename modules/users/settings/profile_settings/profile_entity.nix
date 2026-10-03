@@ -17,16 +17,26 @@
     # need this to "register" the entity kind
     den.schema.profil = {};
 
+    # allow user and home entities to override profile-schema options with higher priority
+    # (see the policies later)
+    # currently commented out since it does cause issues, probably because we're using
+    # `lib.recursiveUpdate` instead of `lib.mkMerge` in the policies, as `lib.mkMerge` has
+    # problems of its own. on the other hand, schemas are freeform, meaning we don't technically
+    # need to declare the options that we set, and so we can still override settings here
+    #den.schema.user.imports = [ den.schema.profil ];
+    #den.schema.home.imports = [ den.schema.profil ];
+
     den.policies.user-to-profile = { user, ... }: [
       (den.lib.policy.resolve {
-        # (`lib.mkMerge`ing the profile and the user/home doesn't seem to work, hence profile only)
-        profile = den.profiles.${user.name} or {};
+        # `lib.mkMerge` doesn't seem to work, hence `recursiveUpdate`; with the more specific
+        # entity taking precedence over the general profile entity
+        profile = lib.recursiveUpdate (den.profiles.${user.name} or {}) user;
       })
     ];
 
     den.policies.home-to-profile = { home, ... }: [
       (den.lib.policy.resolve {
-        profile = den.profiles.${home.userName} or {};
+        profile = lib.recursiveUpdate (den.profiles.${home.userName} or {}) home;
       })
     ];
 
