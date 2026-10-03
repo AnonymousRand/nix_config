@@ -11,6 +11,7 @@
             den.aspects.profiles.${user.name}
         )
         ++ [ den.aspects.profiles.base or {} ]
+
         ++ (
           lib.optional
             (lib.hasAttrByPath [ "user-hosts" "${user.name}@${user.host.name}" ] den.aspects)
