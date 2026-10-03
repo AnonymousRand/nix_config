@@ -2,13 +2,13 @@
   den.profiles.meow = {
     settings.theme.icons = {
       list = {
-        papirus = {
-          iconThemeName = "Papirus";
-          package = pkgs: pkgs.papirus-icon-theme;
+        adwaita = {
+          iconThemeName = "Adwaita";
+          package = pkgs: pkgs.adwaita-icon-theme;
         };
       };
 
-      default = "papirus";
+      default = "adwaita";
     };
   };
 }
