@@ -1,6 +1,6 @@
 {
   den.aspects.features.desktop.gtk = {
-    homeManager = { syst, profile, config, lib, ... }:
+    homeManager = { syst, profile, config, lib, pkgs, ... }:
       lib.mkIf (syst.settings.capabilities.has [ "graphics" ]) {
         gtk =
           let
@@ -31,11 +31,16 @@
             };
 
             iconTheme =
-              if (iconSettings.default != null)
-              {
-              name = iconSettings.default;
-              package = iconSettings.default.package;
-            };
+              if (iconSettings.default != null) then
+                let
+                  defaultIcon = iconSettings.list.${iconSettings.default};
+                in
+                {
+                  name = defaultIcon.iconThemeName;
+                  package = defaultIcon.package pkgs;
+                }
+              else
+                {};
           };
       };
   };

@@ -97,11 +97,15 @@
                         if (areFontsInFontList val) then
                           val
                         else
+                          let
+                            fontListAttrNames = builtins.attrNames fontList;
+                          in
                           throw (
                             "den.schema.profil.settings.theme.fonts: the value "
                             + "[ \"${builtins.concatStringsSep "\" \"" val}\" ] "
-                            + "passed to `settings.theme.fonts.defaults.${fontType}` "
-                            + "contains a font not listed in `settings.theme.fonts.list`!"
+                            + "passed to `settings.theme.fonts.defaults.${fontType}` contains"
+                            + "a font not listed in `settings.theme.fonts.list`, which contains "
+                            + "[ \"${builtins.concatStringsSep "\" \"" fontListAttrNames}\" ]"
                           );
                     in
                     {
