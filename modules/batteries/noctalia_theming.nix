@@ -16,7 +16,7 @@ in
           # to require these context args in their home manager class module, which since it's
           # no longer aspect-level will throw an `attribute not found` error instead of skipping
           # when these context args are not in scope)
-          options.batteries.${aspectName} = lib.mkOption {
+          options.aspects.batteries.${aspectName} = lib.mkOption {
             type = lib.types.submodule {
               options = {
                 palette = lib.mkOption {
@@ -44,7 +44,7 @@ in
 
     homeManager = { profile, config, lib, ... }:
       let
-        cfg = config.batteries.${aspectName};
+        cfg = config.aspects.batteries.${aspectName};
         paletteName = profile.settings.username;
       in
       lib.mkMerge [

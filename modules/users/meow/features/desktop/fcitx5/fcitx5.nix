@@ -67,7 +67,7 @@
       };
 
       # noctalia theming
-      batteries.noctalia-theming.templates = {
+      aspects.batteries.noctalia-theming.templates = {
         fcitx5 = {
           input_path = builtins.toString ./dotfiles/themes/noctalia_theme/theme.conf;
           output_path = "$XDG_DATA_HOME/fcitx5/themes/noctalia_theme/theme.conf";

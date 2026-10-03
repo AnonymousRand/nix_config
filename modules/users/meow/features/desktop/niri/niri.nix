@@ -28,7 +28,7 @@
         ) cfgFiles);
 
         # noctalia theming
-        batteries.noctalia-theming = {
+        aspects.batteries.noctalia-theming = {
           customColors = import ./_colors.nix;
           templates.niri = {
             input_path = builtins.toString ./dotfiles/noctalia_theme.kdl;

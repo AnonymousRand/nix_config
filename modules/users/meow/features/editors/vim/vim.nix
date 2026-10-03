@@ -12,7 +12,7 @@
       };
 
       # noctalia theming
-      batteries.noctalia-theming.templates.vim = {
+      aspects.batteries.noctalia-theming.templates.vim = {
         input_path = builtins.toString ./dotfiles/colors/noctalia_theme.vim;
         output_path = "${config.home.homeDirectory}/.vim/colors/noctalia_theme.vim";
       };
