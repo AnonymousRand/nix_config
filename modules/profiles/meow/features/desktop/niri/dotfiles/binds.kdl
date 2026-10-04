@@ -26,10 +26,10 @@ binds {
     // note: ctrl+c within this interactive screenshot UI copies to clipboard without saving to disk
     // hide mouse pointer by default in interactive screenshot UI
     Mod+Shift+Print hotkey-overlay-title="screenshot (interactive)" { screenshot show-pointer=false; }
-    Mod+Shift+S     hotkey-overlay-title="screenshot (annotated)"   { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/annotated_screenshot.sh\" --show-pointer=false"; }
-    Mod+Shift+T     hotkey-overlay-title="screenshot (OCR)"         { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/ocr.sh\" --show-pointer=false"; }
     // show mouse pointer in window screenshot only if pointer is on top of window
     Mod+Ctrl+Print  hotkey-overlay-title="screenshot window"        { screenshot-window show-pointer=true; }
+    Mod+Shift+S     hotkey-overlay-title="screenshot (annotated)"   { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/annotated_screenshot.sh\" --show-pointer=false"; }
+    Mod+Shift+T     hotkey-overlay-title="screenshot (OCR)"         { spawn-sh "bash \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/scripts/ocr.sh\" --show-pointer=false"; }
 
     //--------------------------------------------------------------------------
     // layout
@@ -179,8 +179,8 @@ binds {
     XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
     Mod+F12       allow-when-locked=true { spawn-sh "playerctl stop"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 10%-"; }
 
     //--------------------------------------------------------------------------
     // other

@@ -6,7 +6,7 @@ layer-rule {
   place-within-backdrop true
 }
 
-// set transparent workspace background color so the backdrop is visible at all times.
+// set transparent workspace background color so the backdrop is visible at all times
 layout {
   background-color "transparent"
 }

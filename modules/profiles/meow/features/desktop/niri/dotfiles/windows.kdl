@@ -33,11 +33,11 @@ window-rule {
 }
 
 // open these windows as floating by default:
-// - firefox picture-in-picture video player
+//     - firefox picture-in-picture video player
 window-rule {
     // this `app-id` regex should work for both:
-    // - host Firefox (`app-id` is "firefox")
-    // - Flatpak Firefox (`app-id` is "org.mozilla.firefox")
+    //     - host firefox (`app-id` is "firefox")
+    //     - flatpak firefox (`app-id` is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
