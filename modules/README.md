@@ -12,7 +12,8 @@ everything except very fundamental flake-related stuff should be in here :3
 - i also have my own "settings" system ([./systs/settings/](./systs/settings), [./profiles/settings/](./profiles/settings)). settings are static data that can be set by each entity type and which:
     - *belongs* to and is only *produced* by an ENTITY,
     - can be *consumed* by MULTIPLE ASPECTS.
-- on the other hand, use *battery aspects* ([./batteries/](./batteries/)) for config/data that:
+
+    on the other hand, use *battery aspects* ([./batteries/](./batteries/)) for config/data that:
     - *belongs* to and is only *consumed* by an ASPECT,
     - can be *produced* by MULTIPLE ASPECTS.
 
@@ -33,12 +34,12 @@ everything except very fundamental flake-related stuff should be in here :3
     ![a diagram showing the following: the `host` context arg pulls data from `host` entities; the `syst` context arg pulls data from `host`, `syst`, and `home` entities; the `home` context arg pulls data from `home` entities; the `profile` context arg pulls data from `home`, `profile`, and `user` entities; and the `user` context arg pulls data from `profile` and `user` entities. then, `host` entities pull behavior from `host` and `syst` aspects; `syst` entities pull behavior from `syst` aspects; `home` entities pull behavior from `syst`, `user-host`, and `profile` aspects; `profile` entities pull behavior from `profile` aspects; and `user` entities pull behavior from `user-host` and `user` aspects.](./_git_assets/nix_config_graph.png)
 
     notes:
-        - the context args–entities edge is automatically built by den for built-in entity types and manually done by me for custom entity types at [./systs/internal/ctx_from_entities.nix](./systs/internal/ctx_from_entities.nix) and [./profiles/internal/ctx_from_entities.nix](./profiles/internal/ctx_from_entities.nix). the entities–entity aspects edge is all manually done by me at [./systs/internal/entities_from_aspects.nix](./systs/internal/entities_from_aspects.nix) and [./profiles/internal/entities_from_aspects.nix](./profiles/internal/entities_from_aspects.nix).
-        - in den, `host` and `user` entities/context args are active when running `nixos-rebuild` with integrated home manager, while `home` is active when running standalone home manager. this means `syst` and `profile` never have to pull from two built-in entity types at the same time.
-        - when merging data to create context args, a more specific entity should always override a less specific one (e.g. host-specific user data in a `user` entity should override the same data in that user's `profile` entity if the host in question is in scope/currently being evaluated). this is useful, for example, if we want to set a default display protocol on the `profile` entity but allow overrides on standalone home managers where the user no longer has control over the desktop environment.
-        - (`user-host` aspects break the symmetry since that is preserving a built-in den behavior as of den 0.19.0.)
-        - (the `syst` and `profile` entities do not pull from the `syst` and `profile` entity aspects as those entities don't really need it—those aspects will always make it into the `syst` or `profile` context arg (which is where they actually mean something) via `host`/`home`/`user` entities, and it would also cause a lot of headache trying to add that.)
-        - (user aspects shouldn't really ever be needed as there isn't much a user entity needs that isn't covered by its host-agnostic `profile` aspect or its host-specific `user-host` aspect.)
+    - the context args–entities edge is automatically built by den for built-in entity types and manually done by me for custom entity types at [./systs/internal/ctx_from_entities.nix](./systs/internal/ctx_from_entities.nix) and [./profiles/internal/ctx_from_entities.nix](./profiles/internal/ctx_from_entities.nix). the entities–entity aspects edge is all manually done by me at [./systs/internal/entities_from_aspects.nix](./systs/internal/entities_from_aspects.nix) and [./profiles/internal/entities_from_aspects.nix](./profiles/internal/entities_from_aspects.nix).
+    - in den, `host` and `user` entities/context args are active when running `nixos-rebuild` with integrated home manager, while `home` is active when running standalone home manager. this means `syst` and `profile` never have to pull from two built-in entity types at the same time.
+    - when merging data to create context args, a more specific entity should always override a less specific one (e.g. host-specific user data in a `user` entity should override the same data in that user's `profile` entity if the host in question is in scope/currently being evaluated). this is useful, for example, if we want to set a default display protocol on the `profile` entity but allow overrides on standalone home managers where the user no longer has control over the desktop environment.
+    - (`user-host` aspects break the symmetry since that is preserving a built-in den behavior as of den 0.19.0.)
+    - (the `syst` and `profile` entities do not pull from the `syst` and `profile` entity aspects as those entities don't really need it—those aspects will always make it into the `syst` or `profile` context arg (which is where they actually mean something) via `host`/`home`/`user` entities, and it would also cause a lot of headache trying to add that.)
+    - (user aspects shouldn't really ever be needed as there isn't much a user entity needs that isn't covered by its host-agnostic `profile` aspect or its host-specific `user-host` aspect.)
 
 ## notes
 
