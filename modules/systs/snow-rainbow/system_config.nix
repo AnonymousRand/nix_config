@@ -37,7 +37,7 @@
 
         # extend sudo password validity duration
         extraConfig = ''
-          Defaults timestamp_timeout=30
+          Defaults timestamp_timeout=60
         '';
       };
       # extend sudo password validity duration remove incorrect password timer
