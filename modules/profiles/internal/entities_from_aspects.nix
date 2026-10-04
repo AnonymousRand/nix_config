@@ -1,7 +1,5 @@
 { den, ... }: {
   den.schema.user = { user, lib, ... }: {
-    # change default aspect name(s) associated with user entities to fit our naming scheme
-    # (note that this requires the target aspect(s) to exist *first*)
     # IMPORTANT: our current code (and it seems, den 0.19.0's) does not make any differences
     # between user entities' `name` and `userName`, so they MUST always be the same!!
     aspect = {

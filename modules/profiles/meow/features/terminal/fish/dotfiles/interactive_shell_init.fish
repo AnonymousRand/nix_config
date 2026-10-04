@@ -1,8 +1,10 @@
 # apparently it's good practice to put functions in `./functions/`, so. do that!!
 
+
 ################################################################################
 # vim keybinds
 ################################################################################
+
 
 set -g fish_key_bindings       fish_vi_key_bindings
 
@@ -13,9 +15,11 @@ set -g fish_cursor_replace     underscore
 set -g fish_cursor_visual      block
 set -g fish_cursor_external    block
 
+
 ################################################################################
 # aliases/abbreviations
 ################################################################################
+
 
 # (note: use abbreviations with `--position anywhere` instead of aliases to make them
 # work with `sudo` as well; no `'sudo '` trick in fish!)
@@ -41,9 +45,11 @@ function nix
     end
 end
 
+
 ################################################################################
 # misc
 ################################################################################
+
 
 # i think unicode specification is generally 2 cells for ambiguous characters, but our
 # custom prompt suffix is glitchy when switching between insert/normal modes in that case
