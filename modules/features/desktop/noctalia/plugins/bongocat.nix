@@ -7,17 +7,18 @@
         ];
       };
 
-    homeManager = { syst, ... }: {
-      programs.noctalia.settings = {
-        plugins.enabled = [
-          "noctalia/bongocat"
-        ];
+    homeManager = { syst, lib, ... }:
+      lib.mkIf (syst.settings.capabilities.has [ "graphics" "inputs" ]) {
+        programs.noctalia.settings = {
+          plugins.enabled = [
+            "noctalia/bongocat"
+          ];
 
-        # needed for bongocat to detect keyboards
-        widget."noctalia/bongocat:cat" = {
-          input_devices = syst.settings.capabilities.inputs.keyboard_devices;
+          # needed for bongocat to detect keyboards
+          widget."noctalia/bongocat:cat" = {
+            input_devices = syst.settings.capabilities.inputs.keyboard_devices;
+          };
         };
       };
-    };
   };
 }

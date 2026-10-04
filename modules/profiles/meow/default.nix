@@ -24,6 +24,7 @@
 
       den.aspects.features.editors.vim
 
+      den.aspects.features.tools.bitwarden-cli
       den.aspects.features.tools.bottom
       den.aspects.features.tools.fastfetch
       den.aspects.features.tools.git
