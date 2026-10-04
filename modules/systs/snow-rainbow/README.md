@@ -1,3 +1,3 @@
-# host `snow-rainbow`
+# syst `snow-rainbow`
 
-desktop :3
+anonymousrand's desktop computer :3

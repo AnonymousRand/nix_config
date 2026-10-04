@@ -1,5 +1,8 @@
 # note: use `--basic` for htop-like interface!
 
+# kept as a dotfile to allow noctalia theming between light/dark modes,
+# which nix color variables alone cannot do
+
 ################################################################################
 # general settings
 
