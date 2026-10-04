@@ -1,12 +1,8 @@
 { den, ... }: {
   den.aspects.profiles.base = {
-    # aspects to be included in every user entity
     includes = [
-      # set basic user info
+      # set basic user info like `home.username` and `home.homeDirectory` from entity's username
       den.batteries.define-user
-      # allows `homeManager` etc. class modules from hosts to be automatically forwarded to all
-      # users on that host (which include this battery), without needing `provides.to-users`
-      den.batteries.host-aspects
 
       den.aspects.features.desktop.xdg
 
