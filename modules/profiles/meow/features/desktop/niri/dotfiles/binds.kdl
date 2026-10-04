@@ -15,6 +15,7 @@ binds {
     Super+Alt+Ctrl+Shift+R     hotkey-overlay-title="reboot"       { spawn-sh "noctalia msg session reboot"; }
 
     Super+Alt+D hotkey-overlay-title="launcher"           { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Super+Alt+I hotkey-overlay-title="settings"           { spawn-sh "noctalia msg settings-toggle"; }
     Super+Alt+T hotkey-overlay-title="terminal (ghostty)" { spawn "ghostty"; }
     Super+Alt+E hotkey-overlay-title="files (nautilus)"   { spawn "nautilus"; }
     Super+Alt+C hotkey-overlay-title="color picker"       { spawn-sh "hyprpicker --autocopy"; }
@@ -46,8 +47,8 @@ binds {
 
     Mod+Ctrl+I         hotkey-overlay-title=null { move-column-to-workspace-down; }
     Mod+Ctrl+O         hotkey-overlay-title=null { move-column-to-workspace-up; }
-    Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-window-to-workspace-up; }
+    Mod+Ctrl+Page_Down                           { move-window-to-workspace-down; }
+    Mod+Ctrl+Page_Up                             { move-window-to-workspace-up; }
 
     Mod+Ctrl+Shift+H     { move-column-to-monitor-left; }
     Mod+Ctrl+Shift+J     { move-column-to-monitor-down; }
@@ -75,8 +76,8 @@ binds {
     Mod+Ctrl+Shift+P { move-workspace-to-monitor-right; }
 
     Mod+Shift+H hotkey-overlay-title=null { focus-monitor-left; }
-    Mod+Shift+J { focus-monitor-down; }
-    Mod+Shift+K { focus-monitor-up; }
+    Mod+Shift+J                           { focus-monitor-down; }
+    Mod+Shift+K                           { focus-monitor-up; }
     Mod+Shift+L hotkey-overlay-title=null { focus-monitor-right; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
@@ -128,18 +129,19 @@ binds {
 
     Mod+BracketLeft  hotkey-overlay-title=null { consume-or-expel-window-left; }
     Mod+BracketRight hotkey-overlay-title=null { consume-or-expel-window-right; }
-    Mod+Comma        { consume-window-into-column; }
-    Mod+Period       { expel-window-from-column; }
+    Mod+Comma                                  { consume-window-into-column; }
+    Mod+Period                                 { expel-window-from-column; }
 
     Mod+R            hotkey-overlay-title=null { switch-preset-column-width; }
-    Mod+Shift+R      { switch-preset-column-width-back; }
-    Mod+Ctrl+R       { switch-preset-window-height; }
-    Mod+Ctrl+Shift+R { switch-preset-window-height-back; }
+    Mod+Shift+R                                { switch-preset-column-width-back; }
+    Mod+Ctrl+R                                 { switch-preset-window-height; }
+    Mod+Ctrl+Shift+R                           { switch-preset-window-height-back; }
 
     Mod+M      hotkey-overlay-title=null { maximize-column; }
-    Mod+F      { expand-column-to-available-width; }
-    Mod+Ctrl+M { maximize-window-to-edges; } // still has bar etc., unlike fullscreen
-    Mod+Ctrl+F { fullscreen-window; }
+    Mod+F                                { expand-column-to-available-width; }
+    // still has bar etc., unlike fullscreen
+    Mod+Ctrl+M                           { maximize-window-to-edges; }
+    Mod+Ctrl+F                           { fullscreen-window; }
 
     Mod+C      { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
