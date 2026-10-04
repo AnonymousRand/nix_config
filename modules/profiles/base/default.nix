@@ -8,7 +8,7 @@
       # users on that host (which include this battery), without needing `provides.to-users`
       den.batteries.host-aspects
 
-      den.aspects.features.desktop.xdg-mime-apps
+      den.aspects.features.desktop.xdg
 
       den.aspects.features.fonts.fontconfig
 

@@ -15,6 +15,7 @@ binds {
     Super+Alt+Ctrl+Shift+R     hotkey-overlay-title="reboot"       { spawn-sh "noctalia msg session reboot"; }
 
     Super+Alt+D hotkey-overlay-title="launcher"           { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Super+Alt+F hotkey-overlay-title="file search"        { spawn-sh "noctalia msg panel-toggle nightwatch75/file-search:panel"; }
     Super+Alt+I hotkey-overlay-title="settings"           { spawn-sh "noctalia msg settings-toggle"; }
     Super+Alt+T hotkey-overlay-title="terminal (ghostty)" { spawn "ghostty"; }
     Super+Alt+E hotkey-overlay-title="files (nautilus)"   { spawn "nautilus"; }
