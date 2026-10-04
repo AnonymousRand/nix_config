@@ -10,7 +10,7 @@ everything except very fundamental flake-related stuff should be in here :3
     - each entity type also creates a den "context arg" that can be accessed in the arguments of aspects/class modules within aspects, much like `_module.args`, allowing aspects to read the data stored on those entities.
 
 - i also have my own "settings" system ([./systs/settings/](./systs/settings), [./profiles/settings/](./profiles/settings)). settings are static data that can be set by each entity type and which:
-    - *belongs* to and is only *produced* by an ENTITY (i.e., hosts/users/standalone homes etc.),
+    - *belongs* to and is only *produced* by an ENTITY,
     - can be *consumed* by MULTIPLE ASPECTS.
 - on the other hand, use *battery aspects* ([./batteries/](./batteries/)) for config/data that:
     - *belongs* to and is only *consumed* by an ASPECT,
@@ -42,8 +42,8 @@ everything except very fundamental flake-related stuff should be in here :3
 ## notes
 
 - generally, feature/functionality aspects should be written so that including them *activates* them, while entities like hosts and users may set extra config or options in their own aspects (but ideally in separate files still) to *configure* them. the activation and configuration are completely separate—avoid coupling them (e.g. by extending/including the activating aspect with user-specific config). one should be able to exist without the other.
-    - the activating aspects are generally within the top-level subdirectories of `modules/` here (e.g. [./features/](./features/) and [./batteries/](./batteries/)), whereas entity-specific config for them should go under that entity's subdirectory (e.g. in `./hosts/<hostname>/` or `./users/<username/`).
-    - my current convention is also to generally mirror the directory layout of `modules/` here inside those entity subdirectories for entity-specific config (e.g. see [./systs.snow-rainbow/](./systs.snow-rainbow/) or [./users/meow/](./users/meow)).
+    - the activating aspects are generally within the top-level subdirectories of `modules/` here (e.g. [./features/](./features/) and [./batteries/](./batteries/)), whereas entity-specific config for them should go under that entity's subdirectory (e.g. in `./systs/<hostname>/` or `./profiles/<username/`).
+    - my current convention is also to generally mirror the directory layout of `modules/` here inside those entity subdirectories for entity-specific config (e.g. see [./systs.snow-rainbow/](./systs.snow-rainbow/) or [./profiles/meow/](./profiles/meow)).
 
 - when naming aspects, you should generally follow the filepaths starting from here; e.g. `den.aspects.batteries.<name>` for an aspect in `./batteries/<name>.nix` or `den.aspects.features.desktop.<name>` for an aspect in `./features/desktop/<name>.nix`.
-- settings should declare custom options under `den.systs.<hostname>.settings`/`den.profiles.<username>.settings`/`den.hosts.<hostname>.settings` (which mimic den's native entity types), whereas battery aspects should declare class module custom options under `aspects.<aspect path>`.
+- settings should declare custom options under `settings` on entity schemas, whereas battery aspects should declare *class module* custom options under `aspects.<aspect path>`.

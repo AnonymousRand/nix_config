@@ -27,4 +27,4 @@
 
   den.schema.host.includes = [ den.policies.host-to-syst ];
   den.schema.home.includes = [ den.policies.home-to-syst ];
-};
+}
