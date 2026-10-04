@@ -1,3 +1,5 @@
+# IMPORTANT: keep the output names updated if you ever change the HDMI/DP ports that they plug into
+
 let
   capabilityName = "graphics";
 in
@@ -12,6 +14,7 @@ in
           };
 
           displayOutputs = lib.mkOption {
+            # the attrset keys should be the output names (e.g. "HDMI-A-1" or "DP-4")
             type = lib.types.attrsOf (lib.types.submodule {
               options = {
                 resolution = lib.mkOption {
@@ -20,8 +23,15 @@ in
                     options.height = lib.mkOption { type = lib.types.int; };
                   };
                 };
-                refreshRate = lib.mkOption { type = lib.types.float; };
-                scale       = lib.mkOption { type = lib.types.float; };
+
+                refreshRate = lib.mkOption {
+                  type = lib.types.float;
+                };
+
+                scale = lib.mkOption {
+                  type = lib.types.float;
+                };
+
                 position = lib.mkOption {
                   type = lib.types.submodule {
                     options.x = lib.mkOption { type = lib.types.int; };

@@ -4,7 +4,7 @@
       supported = true;
 
       displayOutputs = {
-        "ASUSTek COMPUTER INC VG27A N7LMQS014382" = {
+        "DP-4" = {
           resolution = {
             width = 2560;
             height = 1440;
@@ -17,7 +17,7 @@
           };
         };
 
-        "HP Inc. HP VH240a 6CM0211LWH" = {
+        "HDMI-A-5" = {
           resolution = {
             width = 1920;
             height = 1080;
