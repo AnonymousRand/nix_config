@@ -11,8 +11,8 @@
       den.aspects.features.desktop.fcitx5
       den.aspects.features.desktop.gtk
       den.aspects.features.desktop.niri
-      den.aspects.features.desktop.noctalia
       den.aspects.features.desktop.niri.screenshots
+      den.aspects.features.desktop.noctalia
 
       den.aspects.features.fonts.maple-mono
       den.aspects.features.fonts.quicksand
