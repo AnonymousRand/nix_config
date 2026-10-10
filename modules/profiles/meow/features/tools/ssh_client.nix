@@ -6,7 +6,7 @@
         settings = {
           "Host *" = {
             # send null packets periodically to keep sessions alive
-            ServerAliveInterval = 60;
+            ServerAliveInterval = 30;
           };
         };
       };
