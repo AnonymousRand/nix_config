@@ -12,7 +12,7 @@ more documentation to come :3
 
 ### so like what the heck is a dendritic pattern
 
-- don't quote me on this but [dendritic pattern](https://github.com/mightyiam/dendritic) is basically a way to organize Nix configs by *feature* or *aspect,* such as packages, users, and hosts. each feature gets a single top-level module, and hosts' nixos configurations/users' home manager configurations simply pick out the features they want by importing their top-level modules (such as under `self.modules`, instead of their relative filepaths).
+- don't quote me on this but [dendritic pattern](https://github.com/mightyiam/dendritic) is basically a way to organize nix configs by *feature* or *aspect,* such as packages, users, and hosts. each feature gets a single top-level module, and hosts' nixos configurations/users' home manager configurations simply pick out the features they want by importing their top-level modules (such as under `self.modules`, instead of their relative filepaths).
 - thus, instead of starting with hosts and defining the features they have as is the traditional approach, dendritic defines features first and hosts simply select them.
 
 - this has a few advantages:
