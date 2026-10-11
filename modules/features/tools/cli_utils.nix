@@ -1,7 +1,8 @@
 {
-  den.aspects.features.tools.cli-utils = { pkgs, ... }:
+  # passing `pkgs` at aspect level doesn't seem to work
+  den.aspects.features.tools.cli-utils =
     let
-      packages = [
+      packages = pkgs: [
         pkgs.curl
         pkgs.file
         pkgs.findutils
@@ -14,13 +15,13 @@
       ];
     in
     {
-      nixos = {
-        environment.systemPackages = packages;
+      nixos = { pkgs, ... }: {
+        environment.systemPackages = packages pkgs;
       };
 
       # this ensures that they are also installed with standalone home manager
-      homeManager = {
-        home.packages = packages;
+      homeManager = { pkgs, ... }: {
+        home.packages = packages pkgs;
       };
     };
 }
