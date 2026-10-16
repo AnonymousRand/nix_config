@@ -43,4 +43,4 @@ more documentation to come :3
 
 ## okie i'll stop yapping :3
 
-see [modules/README.md](modules/README.md) for more specific details about how this config works :3
+see [./modules/README.md](./modules/README.md) for more specific details about how this config works :3
