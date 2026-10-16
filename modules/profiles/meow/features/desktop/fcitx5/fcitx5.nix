@@ -40,11 +40,25 @@
             "Hotkey/TriggerKeys" = {
               "0" = "Super+space";
             };
+            # vim hotkeys (don't seem to work currently)
+            "Hotkey/PrevCandidate" = {
+              "0" = "Control+Shift+H";
+            };
+            "Hotkey/NextPage" = {
+              "0" = "Control+Shift+J";
+            };
+            "Hotkey/PrevPage" = {
+              "0" = "Control+Shift+K";
+            };
+            "Hotkey/NextCandidate" = {
+              "0" = "Control+Shift+L";
+            };
+            # these are only set since the `TriggerKeys` modification conflicts
             "Hotkey/EnumerateGroupForwardKeys" = {
               "0" = "Control+space";
             };
             "Hotkey/EnumerateGroupBackwardKeys" = {
-              "0" = "Shift+control+space";
+              "0" = "Control+Shift+space";
             };
           };
 
