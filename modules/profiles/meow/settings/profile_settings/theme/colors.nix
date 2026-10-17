@@ -48,15 +48,16 @@
         pink_xxxxxlight  = "#ffdbed"; # 330, 14 , 100
         pink_xxxxxxlight = "#ffe3f1"; # 330, 11 , 100
 
-        black        = "#000000";
-        gray_xxdark  = "#242424";
-        gray_xdark   = "#505050";
-        gray_dark    = "#707070";
-        gray         = "#808080";
-        gray_light   = "#909090";
-        gray_xlight  = "#a8a8a8";
-        gray_xxlight = "#cccccc";
-        white        = "#ffffff";
+        black         = "#000000";
+        gray_xxdark   = "#242424";
+        gray_xdark    = "#505050";
+        gray_dark     = "#707070";
+        gray          = "#808080";
+        gray_light    = "#909090";
+        gray_xlight   = "#a8a8a8";
+        gray_xxlight  = "#cccccc";
+        gray_xxxlight = "#f0f0f0";
+        white         = "#ffffff";
 
         red    = "#ff0000";
         purple = "#ff00ea"; # 305, 100, 100

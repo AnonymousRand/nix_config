@@ -1,4 +1,5 @@
 @use "impt" with (
+  // since gtk css doesn't recognize `!important`
   $use-impt: false
 );
 @use "base";

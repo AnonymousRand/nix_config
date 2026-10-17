@@ -11,9 +11,9 @@
           }
         '';
 
-      baseVarsFile = { lib, pkgs }:
-        generateFile "base_vars.scss" baseVarsFileLines { inherit lib pkgs; };
-      baseVarsFileLines = lib: lib.mapAttrsToList (name: value:
+      colorsFile = { lib, pkgs }:
+        generateFile "colors.scss" colorsFileLines { inherit lib pkgs; };
+      colorsFileLines = lib: lib.mapAttrsToList (name: value:
         builtins.replaceStrings cssVarNameSubstsFrom cssVarNameSubstsTo (
           "---${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
           + "{{colors.${name}_source.default.hex}};"
@@ -50,7 +50,7 @@
       rootSrcDir = { lib, pkgs }: pkgs.symlinkJoin {
         name = "generated_scss";
         paths = [
-          (baseVarsFile { inherit lib pkgs; })
+          (colorsFile { inherit lib pkgs; })
           (autoThemeFile { inherit lib pkgs; })
           (lightThemeFile { inherit lib pkgs; })
           (darkThemeFile { inherit lib pkgs; })
@@ -128,10 +128,10 @@
         # copy rendered css output needed for external users from nix store to `$XDG_DATA_HOME`
         # for easier access (currently still needs manual copying to the external places though)
         aspects.batteries.noctalia-theming.templates = {
-          externBaseVars = {
+          externColors = {
             input_path =
-              "${config.aspects.batteries.compile-scss.cssOutput}/${outputDir}/base_vars.css";
-            output_path = "$XDG_DATA_HOME/external_css/base_vars.css";
+              "${config.aspects.batteries.compile-scss.cssOutput}/${outputDir}/colors.css";
+            output_path = "$XDG_DATA_HOME/external_css/colors.css";
           };
 
           # currently not copying over auto theme since it's not needed
