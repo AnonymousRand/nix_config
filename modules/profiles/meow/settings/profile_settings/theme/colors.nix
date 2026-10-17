@@ -9,7 +9,10 @@
         # hsv of each color is indicated in comments, mostly using google color picker rounding
         blue              = "#00eaff"; # 185, 100, 100
         blue_light        = "#66f2ff"; # 185, 60 , 100
+        blue_xlight       = "#80f4ff"; # 185, 50 , 100
+        blue_xxlight      = "#bffaff"; # 185, 25 , 100
         blue_deep         = "#00d0ff"; # 191, 100, 100
+        blue_deep_dark    = "#00c8f5"; # 191, 100, 96
         blue_xdeep        = "#00bbff"; # 196, 100, 100
         blue_xdeep_light  = "#33c9ff"; # 196, 80 , 100
         blue_xdeep_xlight = "#59d3ff"; # 196, 65 , 100
@@ -24,20 +27,23 @@
         green_deep_dark   = "#78da00"; # 87 , 100, 85
         green_deep_xdark  = "#70cc00"; # 87 , 100, 80
 
+        # TODO auto gen base vars and theme files as .css files directly into external_css/ via nix
         orange               = "#ffd500"; # 50 , 100, 100
         orange_light         = "#ffdb26"; # 50 , 85 , 100
         orange_xlight        = "#ffdf40"; # 50 , 75 , 100
+        orange_xxlight       = "#ffec8c"; # 50 , 45 , 100
         orange_shallow       = "#ffea00"; # 55 , 100, 100
         orange_shallow_light = "#fff04d"; # 55 , 70 , 100
         orange_deep          = "#ffbb00"; # 44 , 100, 100
         orange_deep_light    = "#ffc526"; # 44 , 85 , 100
         orange_xdeep         = "#ffaa00"; # 40 , 100, 100
         orange_xxdeep        = "#ff9500"; # 35 , 100, 100
+        orange_xxxdeep       = "#ff9500"; # 33 , 100, 100
 
         pink             = "#ff0080"; # 330, 100, 100
         pink_light       = "#ff409f"; # 330, 75 , 100
         pink_xlight      = "#ff73b9"; # 330, 55 , 100
-        pink_xxlight     = "#ff8fc7"; # 330, 44 , 100
+        pink_xxlight     = "#ff91c8"; # 330, 43 , 100
         pink_xxxlight    = "#ffabd5"; # 330, 33 , 100
         pink_xxxxlight   = "#ffc7e4"; # 329, 22 , 100
         pink_xxxxxlight  = "#ffdbed"; # 330, 14 , 100
@@ -274,14 +280,18 @@
 
         # links
         link = {
-          color_light = blue_xdeep;
-          color_dark  = blue;
+          color_light = pink_xlight;
+          color_dark  = green_light;
         };
-        link_hovered = {
-          color_light = blue_xxdeep;
-          color_dark  = blue_light;
+        link_hover = {
+          color_light = pink_light;
+          color_dark  = green_xlight;
         };
-        link_visited = link_hovered;
+        link_disabled = {
+          color_light = pink_xxxlight;
+          color_dark  = green_deep_xdark;
+        };
+        link_visited = link_hover;
 
         # code syntax
         code_class = {
@@ -318,16 +328,16 @@
         # markdown syntax
         md_bold = {
           color_light = pink_xxlight;
-          color_dark  = pink_xxlight;
+          color_dark  = pink_xxxlight;
         };
         md_italic = md_bold;
         md_title = {
           color_light = pink_light;
-          color_dark  = pink_light;
+          color_dark  = pink_xxlight;
         };
         md_code = {
           color_light = pink_light;
-          color_dark  = pink_light;
+          color_dark  = pink_xxlight;
         };
 
         # button-like elements

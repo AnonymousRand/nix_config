@@ -65,9 +65,10 @@
   ---search-curr-bg: {{colors.search_curr_bg_source.dark.hex}};
   ---search-curr-fg: {{colors.search_curr_fg_source.dark.hex}};
 
-  ---link-fg:         {{colors.link_source.dark.hex}};
-  ---link-hovered-fg: {{colors.link_hovered_source.dark.hex}};
-  ---link-visited-fg: {{colors.link_visited_source.dark.hex}};
+  ---link-fg:          {{colors.link_source.dark.hex}};
+  ---link-hover-fg:    {{colors.link_hover_source.dark.hex}};
+  ---link-disabled-fg: {{colors.link_disabled_source.dark.hex}};
+  ---link-visited-fg:  {{colors.link_visited_source.dark.hex}};
 
   ---code-class-fg:    {{colors.code_class_source.dark.hex}};
   ---code-comment-fg:  {{colors.code_comment_source.dark.hex}};

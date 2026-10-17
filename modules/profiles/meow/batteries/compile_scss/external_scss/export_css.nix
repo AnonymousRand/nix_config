@@ -4,12 +4,6 @@
     # easier access (currently still needs manual copying from there to the external places though)
     homeManager = { config, ... }: {
       aspects.batteries.noctalia-theming.templates = {
-        externBaseVars = {
-          input_path =
-            "${config.aspects.batteries.compile-scss.cssOutput}/base_scss/base_vars.css";
-          output_path = "$XDG_DATA_HOME/external_css/base_vars.css";
-        };
-
         # currently not copying over auto theme since it's not needed
         externLightThemeCss = {
           input_path =

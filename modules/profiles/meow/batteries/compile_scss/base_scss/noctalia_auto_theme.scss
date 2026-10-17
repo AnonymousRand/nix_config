@@ -65,9 +65,10 @@
   ---search-curr-bg: {{colors.search_curr_bg_source.default.hex}};
   ---search-curr-fg: {{colors.search_curr_fg_source.default.hex}};
 
-  ---link-fg:         {{colors.link_source.default.hex}};
-  ---link-hovered-fg: {{colors.link_hovered_source.default.hex}};
-  ---link-visited-fg: {{colors.link_visited_source.default.hex}};
+  ---link-fg:          {{colors.link_source.default.hex}};
+  ---link-hover-fg:    {{colors.link_hover_source.default.hex}};
+  ---link-disabled-fg: {{colors.link_disabled_source.default.hex}};
+  ---link-visited-fg:  {{colors.link_visited_source.default.hex}};
 
   ---code-class-fg:    {{colors.code_class_source.default.hex}};
   ---code-comment-fg:  {{colors.code_comment_source.default.hex}};
