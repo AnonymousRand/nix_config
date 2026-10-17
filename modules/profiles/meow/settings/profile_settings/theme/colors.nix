@@ -357,10 +357,10 @@
         btn_flat_border_vrnt      = border_4;
         btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
         btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
-        btn_raised_border_vrnt    = border_3;
+        btn_raised_border_vrnt    = border_4;
         btn_raised_base_bg_vrnt   = accent_4_bg;
         btn_raised_base_fg_vrnt   = accent_4_fg;
-        btn_xraised_border_vrnt   = border_2;
+        btn_xraised_border_vrnt   = border_3;
         btn_xraised_base_bg_vrnt  = accent_3_bg;
         btn_xraised_base_fg_vrnt  = accent_3_fg;
         btn_selected_border_vrnt  = btn_xraised_border_vrnt;

@@ -1,0 +1,5 @@
+$use-impt: false !default;
+
+@mixin style($prop, $value, $important: $use-impt) {
+  #{$prop}: #{$value} if($important, !important, null);
+}

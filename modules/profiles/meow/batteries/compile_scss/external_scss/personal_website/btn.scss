@@ -1,3 +1,6 @@
+@use "impt" with (
+  $use-impt: true
+);
 @use "base";
 @use "./surfs";
 

@@ -1,4 +1,5 @@
 @use "utils";
+@use "impt";
 
 @use "sass:list";
 
@@ -31,19 +32,19 @@
 
   @if list.length($variant-surfs) > 0 {
     #{$variant-surfs} {
-      --btn-flat-border-color: var(---btn-flat-border-color-vrnt);
+      --btn-flat-border-color: var(---btn-flat-border-vrnt-color);
       --btn-flat-hover-bg:     var(---btn-flat-hover-bg-vrnt);
       --btn-flat-hover-fg:     var(---btn-flat-hover-fg-vrnt);
 
-      --btn-raised-border-color: var(---btn-raised-border-color-vrnt);
+      --btn-raised-border-color: var(---btn-raised-border-vrnt-color);
       --btn-raised-base-bg:      var(---btn-raised-base-bg-vrnt);
       --btn-raised-base-fg:      var(---btn-raised-base-fg-vrnt);
 
-      --btn-xraised-border-color: var(---btn-xraised-border-color-vrnt);
+      --btn-xraised-border-color: var(---btn-xraised-border-vrnt-color);
       --btn-xraised-base-bg:      var(---btn-xraised-base-bg-vrnt);
       --btn-xraised-base-fg:      var(---btn-xraised-base-fg-vrnt);
 
-      --btn-selected-border-color: var(---btn-selected-border-color-vrnt);
+      --btn-selected-border-color: var(---btn-selected-border-vrnt-color);
       --btn-selected-base-bg:      var(---btn-selected-base-bg-vrnt);
       --btn-selected-base-fg:      var(---btn-selected-base-fg-vrnt);
     }
@@ -51,8 +52,8 @@
 
   @if list.length($selected-surfs) > 0 {
     #{$selected-surfs} {
-      --btn-flat-border-color:   var(---btn-flat-border-color-slct);
-      --btn-raised-border-color: var(---btn-raised-border-color-slct);
+      --btn-flat-border-color:   var(---btn-flat-border-slct-color);
+      --btn-raised-border-color: var(---btn-raised-border-slct-color);
       --btn-raised-base-bg:      var(---btn-raised-base-bg-slct);
       --btn-raised-base-fg:      var(---btn-raised-base-fg-slct)
     }
@@ -79,9 +80,9 @@
   ----curr-bg: var(----base-bg, transparent);
   ----curr-fg: var(----base-fg, inherit);
 
-  background-color: var(----curr-bg);
-  text-decoration-color: var(----curr-fg);
-  color: var(----curr-fg);
+  @include impt.style(background-color, var(----curr-bg));
+  @include impt.style(text-background-color, var(----curr-fg));
+  @include impt.style(color, var(----curr-fg));
 
   &:hover,
   &:focus {
@@ -117,9 +118,9 @@
 
   %btn-selected & {
     // on a selected `btn`-type element, we can just exactly mimic its colors at every state
-    background-color: transparent;
-    text-decoration-color: inherit;
-    color: inherit;
+    @include impt.style(background-color, transparent);
+    @include impt.style(text-decoration-color, inherit);
+    @include impt.style(color, inherit);
   }
 }
 
@@ -154,7 +155,7 @@
   $border-color: var(--btn-border-color),
   $border-width: 2px
 ) {
-  border: #{$border-width} solid #{$border-color};
+  @include impt.style(border, #{$border-width} solid #{$border-color});
 }
 
 @mixin btn-hover-border(
@@ -165,21 +166,26 @@
   ----hover-border-color: #{$border-color};
   ----curr-border-color:  var(----base-border-color);
 
-  border: #{$border-width} solid;
-  border-color: var(----curr-border-color);
-  outline-color: var(----curr-border-color);
+  @include impt.style(border, #{$border-width} solid);
+  @include impt.style(border-color, var(----curr-border-color));
+  @include impt.style(outline-color, var(----curr-border-color));
   // match button's `background` transition
   // unfortunately CSS' `transition` property is maybe the most stupid thing in CSS (well, right
   // after specificity, `position`, cascading, style, sheets, variables not being able to be
   // `inherit`, the need for scss, what the hell all the different whitespace options are, why every
   // fucking type of `display` has different words for centering things, the 2008 housing crash, and
   // specificity), so i have to copy over all the built-in transitions from libadwaita too
-  transition: border 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              outline-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              outline-width 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              outline-offset 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  @include impt.style(
+    transition,
+    (
+      border 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      outline-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      outline-width 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      outline-offset 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    )
+  );
 
   &:hover,
   &:focus {

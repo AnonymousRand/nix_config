@@ -1,9 +1,9 @@
+# standalone home manager
+result
+
 # vim
 .*.swp
 .*.swo
-
-# standalone home manager
-result
 
 # other temp files
 *.tmp
