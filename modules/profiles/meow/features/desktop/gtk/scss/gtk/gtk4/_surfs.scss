@@ -1,15 +1,9 @@
 @use "utils";
 
-//------------------------------------------------------------------------------
-// surface registries
-
 $default-surfs: [];
 $variant-surfs: [];
 $selected-surfs:
   "tabbox:not(.single-tab) tab:selected";
-
-//------------------------------------------------------------------------------
-// registration
 
 $variant-surfs: utils.register-sels($variant-surfs, [
   ".boxed-list",
@@ -17,22 +11,23 @@ $variant-surfs: utils.register-sels($variant-surfs, [
   ".card"
 ]);
 :root {
-  --card-fg-color: var(--variant-fg);
-  --card-bg-color: var(--variant-bg);
+  --card-bg-color: var(---variant-bg);
+  --card-fg-color: var(---variant-fg);
 }
 
 :root {
-  --dialog-fg-color: var(--variant-fg);
-  --dialog-bg-color: var(--variant-bg);
+  --dialog-bg-color: var(---variant-bg);
+  --dialog-fg-color: var(---variant-fg);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
   "dialog"
 ]);
 
 :root {
-  --headerbar-fg-color:       var(--variant-fg);
-  --headerbar-bg-color:       var(--variant-bg);
-  --headerbar-backdrop-color: var(--headerbar-bg-color); /* overlay that is blended onto unfocused headerbars */
+  --headerbar-bg-color:       var(---variant-bg);
+  --headerbar-fg-color:       var(---variant-fg);
+  /* overlay that is blended onto unfocused headerbars */
+  --headerbar-backdrop-color: var(--headerbar-bg-color);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
   "actionbar",
@@ -46,16 +41,16 @@ $variant-surfs: utils.register-sels($variant-surfs, [
 ]);
 
 :root {
-  --overview-fg-color: var(--variant-fg);
-  --overview-bg-color: var(--variant-bg);
+  --overview-bg-color: var(---variant-bg);
+  --overview-fg-color: var(---variant-fg);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
   "taboverview"
 ]);
 
 :root {
-  --popover-fg-color: var(--variant-fg);
-  --popover-bg-color: var(--variant-bg);
+  --popover-bg-color: var(---variant-bg);
+  --popover-fg-color: var(---variant-fg);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
   "popover > arrow",
@@ -64,17 +59,17 @@ $variant-surfs: utils.register-sels($variant-surfs, [
 
 // why the heck do you exist ;-;
 :root {
-  --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
   --secondary-sidebar-bg-color:       base.change-lightness(var(--sidebar-bg-color), 1.25%);
-  --secondary-sidebar-backdrop-color: var(--sidebar-bg-color);
+  --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
+  --secondary-sidebar-backdrop-color: var(--sidebar-backdrop-color);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
 
 ]);
 
 :root {
-  --sidebar-fg-color:       var(--variant-fg);
-  --sidebar-bg-color:       var(--variant-bg);
+  --sidebar-bg-color:       var(---variant-bg);
+  --sidebar-fg-color:       var(---variant-fg);
   --sidebar-backdrop-color: var(--sidebar-bg-color);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
@@ -84,16 +79,16 @@ $variant-surfs: utils.register-sels($variant-surfs, [
 ]);
 
 :root {
-  --view-fg-color: var(--variant-fg);
-  --view-bg-color: var(--variant-bg);
+  --view-bg-color: var(---variant-bg);
+  --view-fg-color: var(---variant-fg);
 }
 $variant-surfs: utils.register-sels($variant-surfs, [
   "textview.view"
 ]);
 
 :root {
-  --window-fg-color: var(--default-fg);
-  --window-bg-color: var(--default-bg);
+  --window-bg-color: var(---default-bg);
+  --window-fg-color: var(---default-fg);
 }
 $default-surfs: utils.register-sels($default-surfs, [
   "window.background"

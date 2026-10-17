@@ -6,6 +6,43 @@
       # (avoid using these directly in templates as much as possible)
 
       vars = {
+        # hsv of each color is indicated in comments, mostly using google color picker rounding
+        blue              = "#00eaff"; # 185, 100, 100
+        blue_light        = "#66f2ff"; # 185, 60 , 100
+        blue_deep         = "#00d0ff"; # 191, 100, 100
+        blue_xdeep        = "#00bbff"; # 196, 100, 100
+        blue_xdeep_light  = "#33c9ff"; # 196, 80 , 100
+        blue_xdeep_xlight = "#59d3ff"; # 196, 65 , 100
+        blue_xxdeep       = "#00a6ff"; # 201, 100, 100
+
+        green             = "#b7ff00"; # 77 , 100, 100
+        green_light       = "#c9ff40"; # 77 , 75 , 100
+        green_xlight      = "#deff8c"; # 77 , 45 , 100
+        green_deep        = "#8cff00"; # 87 , 100, 100
+        green_deep_light  = "#a3ff33"; # 87 , 80 , 100
+        green_deep_xlight = "#baff66"; # 87 , 60 , 100
+        green_deep_dark   = "#78da00"; # 87 , 100, 85
+        green_deep_xdark  = "#70cc00"; # 87 , 100, 80
+
+        orange               = "#ffd500"; # 50 , 100, 100
+        orange_light         = "#ffdb26"; # 50 , 85 , 100
+        orange_xlight        = "#ffdf40"; # 50 , 75 , 100
+        orange_shallow       = "#ffea00"; # 55 , 100, 100
+        orange_shallow_light = "#fff04d"; # 55 , 70 , 100
+        orange_deep          = "#ffbb00"; # 44 , 100, 100
+        orange_deep_light    = "#ffc526"; # 44 , 85 , 100
+        orange_xdeep         = "#ffaa00"; # 40 , 100, 100
+        orange_xxdeep        = "#ff9500"; # 35 , 100, 100
+
+        pink             = "#ff0080"; # 330, 100, 100
+        pink_light       = "#ff409f"; # 330, 75 , 100
+        pink_xlight      = "#ff73b9"; # 330, 55 , 100
+        pink_xxlight     = "#ff8fc7"; # 330, 44 , 100
+        pink_xxxlight    = "#ffabd5"; # 330, 33 , 100
+        pink_xxxxlight   = "#ffc7e4"; # 329, 22 , 100
+        pink_xxxxxlight  = "#ffdbed"; # 330, 14 , 100
+        pink_xxxxxxlight = "#ffe3f1"; # 330, 11 , 100
+
         black        = "#000000";
         gray_xxdark  = "#242424";
         gray_xdark   = "#505050";
@@ -16,38 +53,8 @@
         gray_xxlight = "#cccccc";
         white        = "#ffffff";
 
-        blue              = "#00eaff";
-        blue_light        = "#66f2ff";
-        blue_deep         = "#00d0ff";
-        blue_xdeep        = "#00bbff";
-        blue_xdeep_light  = "#33c9ff";
-        blue_xdeep_xlight = "#59d3ff";
-        blue_xxdeep       = "#00a6ff";
-
-        green            = "#8cff00";
-        green_light      = "#a3ff33";
-        green_xlight     = "#baff66";
-        green_deep       = "#8cff00";
-        green_deep_dark  = "#78da00";
-        green_deep_xdark = "#70cc00";
-
-        orange        = "#ffd500";
-        orange_light  = "#ffdb26";
-        orange_xlight = "#ffdf40";
-        orange_deep   = "#ffbb00";
-        orange_xdeep  = "#ffaa00";
-        orange_xxdeep = "#ff9500";
-
-        pink             = "#ff0080";
-        pink_light       = "#ff409f";
-        pink_xlight      = "#ff73b9";
-        pink_xxlight     = "#ff8fc7";
-        pink_xxxlight    = "#ffabd5";
-        pink_xxxxlight   = "#ffc7e4";
-        pink_xxxxxlight  = "#ffdbed";
-        pink_xxxxxxlight = "#ffe3f1";
-
-        red = "#ff0000";
+        red    = "#ff0000";
+        purple = "#ff00ea"; # 305, 100, 100
       };
 
       ############################################################################
@@ -55,191 +62,214 @@
       # (use these on things which have any of the following roles)
 
       roles = with vars; rec {
-        # default fg/bg
-        default_fg = {
-          color_light = gray_dark;
-          color_dark  = gray_xxlight;
-        };
+        # default bg/fg
         default_bg = {
           color_light = "#feedf3";
           color_dark  = black;
+        };
+        default_fg = {
+          color_light = gray_dark;
+          color_dark  = gray_xxlight;
         };
         lighter_fg = {
           color_light = gray_xlight;
           color_dark  = gray_light;
         };
 
-        # variant fg/bg
-        variant_fg = {
-          color_light = pink_xxlight;
-          color_dark  = pink_xxlight;
-        };
+        # variant bg/fg
         variant_bg = {
           color_light = "#fff7fa";
           color_dark  = gray_xxdark;
         };
+        variant_fg = {
+          color_light = pink_xxlight;
+          color_dark  = pink_xxlight;
+        };
 
         # accents
-        accent_1_fg = {
-          color_light = pink;
-          color_dark  = black;
-        };
         accent_1_bg = {
           color_light = pink_xxxlight;
           color_dark  = pink_xlight;
         };
-        accent_2_fg = {
-          color_light = pink_light;
-          color_dark  = gray_xxdark;
+        accent_1_fg = {
+          color_light = pink;
+          color_dark  = black;
         };
         accent_2_bg = {
           color_light = pink_xxxxlight;
           color_dark  = pink_xxlight;
         };
-        accent_3_fg = {
-          color_light = pink_xlight;
-          color_dark  = pink;
+        accent_2_fg = {
+          color_light = pink_light;
+          color_dark  = gray_xxdark;
         };
         accent_3_bg = {
           color_light = pink_xxxxxlight;
           color_dark  = pink_xxxlight;
         };
-        accent_4_fg = {
-          color_light = pink_xxlight;
-          color_dark  = pink_light;
+        accent_3_fg = {
+          color_light = pink_xlight;
+          color_dark  = pink;
         };
         accent_4_bg = {
           color_light = pink_xxxxxxlight;
           color_dark  = pink_xxxxlight;
         };
+        accent_4_fg = {
+          color_light = pink_xxlight;
+          color_dark  = pink_light;
+        };
+        accent_default_bg = accent_3_bg;
+        accent_default_fg = accent_3_fg;
 
-        # outlines
-        outline_1 = {
+        accent_red_fg = {
+          color_light = red;
+          color_dark  = red;
+        };
+        accent_orange_fg = {
+          color_light = orange_xdeep;
+          color_dark  = orange_deep_light;
+        };
+        accent_yellow_fg = {
+          color_light = orange_xdeep;
+          color_dark  = orange_shallow;
+        };
+        accent_olive_fg = {
+          color_light = green_deep_xdark;
+          color_dark  = green_deep_dark;
+        };
+        accent_green_fg = {
+          color_light = green_deep_dark;
+          color_dark  = green_deep_light;
+        };
+        accent_teal_fg = {
+          color_light = blue_deep;
+          color_dark  = blue_xdeep;
+        };
+        accent_blue_fg = {
+          color_light = blue;
+          color_dark  = blue_light;
+        };
+        accent_violet_fg = {
+          color_light = "#ff66f2";
+          color_dark  = "#ff66f2";
+        };
+        accent_purple_fg = {
+          color_light = purple;
+          color_dark  = purple;
+        };
+        accent_pink_fg = {
+          color_light = pink_xxxlight;
+          color_dark  = pink_xxxlight;
+        };
+        accent_gold_fg = {
+          color_light = orange_deep;
+          color_dark  = orange_deep;
+        };
+        accent_brown_fg = {
+          color_light = orange_xxdeep;
+          color_dark  = orange_xxdeep;
+        };
+        accent_gray_fg = {
+          color_light = gray_xdark;
+          color_dark  = gray_xdark;
+        };
+
+        # borders
+        border_1 = {
           color_light = pink_xlight;
           color_dark  = pink_light;
         };
-        outline_2 = {
+        border_2 = {
           color_light = pink_xxlight;
           color_dark  = pink_xlight;
         };
-        outline_3 = {
+        border_3 = {
           color_light = pink_xxxlight;
           color_dark  = pink_xxlight;
         };
-        outline_4 = {
+        border_4 = {
           color_light = pink_xxxxlight;
           color_dark  = pink_xxxlight;
         };
-        outline_default = outline_3;
+        border_default = border_3;
 
         # selection
-        selection_fg = {
-          color_light = pink_xlight;
-          color_dark  = pink_light;
-        };
         selection_bg = {
           color_light = pink_xxxxxlight;
           color_dark  = pink_xxxxlight;
         };
-
-        # cursor
-        cursor_fg = {
-          color_light = pink_light;
+        selection_fg = {
+          color_light = pink_xlight;
           color_dark  = pink_light;
         };
+
+        # cursor
         cursor_bg = {
           color_light = pink_xxxxlight;
           color_dark  = pink_xxxxlight;
         };
+        cursor_fg = {
+          color_light = pink_light;
+          color_dark  = pink_light;
+        };
 
         # hover
-        hover_fg      = accent_3_fg;
         hover_bg      = accent_3_bg;
-        hover_fg_vrnt = accent_4_fg;
+        hover_fg      = accent_3_fg;
         hover_bg_vrnt = accent_4_bg;
-
-        # button-like elements
-        btn_flat_hover_fg    = hover_fg;
-        btn_flat_hover_bg    = hover_bg;
-        btn_flat_border      = outline_3;
-        btn_raised_base_fg   = accent_3_fg;
-        btn_raised_base_bg   = accent_3_bg;
-        btn_raised_border    = outline_2;
-        btn_xraised_base_fg  = accent_2_fg;
-        btn_xraised_base_bg  = accent_2_bg;
-        btn_xraised_border   = outline_1;
-        btn_selected_base_fg = btn_xraised_base_fg;
-        btn_selected_base_bg = btn_xraised_base_bg;
-        btn_selected_border  = btn_xraised_border;
-
-        # button-like elements on variant surfaces
-        btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
-        btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
-        btn_flat_border_vrnt      = outline_3;
-        btn_raised_base_fg_vrnt   = accent_4_fg;
-        btn_raised_base_bg_vrnt   = accent_4_bg;
-        btn_raised_border_vrnt    = outline_2;
-        btn_xraised_base_fg_vrnt  = accent_3_fg;
-        btn_xraised_base_bg_vrnt  = accent_3_bg;
-        btn_xraised_border_vrnt   = outline_1;
-        btn_selected_base_fg_vrnt = btn_xraised_base_fg_vrnt;
-        btn_selected_base_bg_vrnt = btn_xraised_base_bg_vrnt;
-        btn_selected_border_vrnt  = btn_xraised_border_vrnt;
-
-        # button-like elements on selected surfaces
-        btn_flat_border_slct      = outline_2;
-        btn_raised_base_fg_slct   = btn_xraised_base_fg;
-        btn_raised_base_bg_slct   = btn_xraised_base_bg;
-        btn_raised_border_slct    = outline_1;
+        hover_fg_vrnt = accent_4_fg;
 
         # statuses
         error = {
           color_light = red;
           color_dark  = red;
         };
-        error_fg = {
-          color_light = "#cc0000";
-          color_dark  = "#cc0000";
-        };
         error_bg = {
           color_light = "#ffcccc";
           color_dark  = "#ffcccc";
         };
+        error_fg = {
+          color_light = "#cc0000";
+          color_dark  = "#cc0000";
+        };
+
         warning = {
           color_light = orange_xxdeep;
           color_dark  = orange_deep;
-        };
-        warning_fg = {
-          color_light = "#bd6800";
-          color_dark  = "#bd6800";
         };
         warning_bg = {
           color_light = "#ffeecc";
           color_dark  = "#ffeecc";
         };
+        warning_fg = {
+          color_light = "#bd6800";
+          color_dark  = "#bd6800";
+        };
+
         success = {
           color_light = green_deep_xdark;
           color_dark  = green;
-        };
-        success_fg = {
-          color_light = "#4c8a00";
-          color_dark  = "#4c8a00";
         };
         success_bg = {
           color_light = "#e8ffcc";
           color_dark  = "#e8ffcc";
         };
+        success_fg = {
+          color_light = "#4c8a00";
+          color_dark  = "#4c8a00";
+        };
 
         # search
-        search_fg = selection_fg;
         search_bg = selection_bg;
+        search_fg = selection_fg;
+        search_curr_bg = {
+          color_light = green_deep_light;
+          color_dark  = green_deep_light;
+        };
         search_curr_fg = {
           color_light = default_fg.color_light;
           color_dark  = default_bg.color_dark;
-        };
-        search_curr_bg = {
-          color_light = green_light;
-          color_dark  = green_light;
         };
 
         # links
@@ -253,53 +283,86 @@
         };
         link_visited = link_hovered;
 
-        # matching parens
-        matching_paren_fg = {
-          color_light = default_fg.color_light;
-          color_dark  = default_bg.color_dark;
-        };
-        matching_paren_bg = {
-          color_light = green_xlight;
-          color_dark  = green_xlight;
-        };
-
         # code syntax
-        class = {
+        code_class = {
           color_light = orange_xdeep;
           color_dark  = orange;
         };
-        comment = {
+        code_comment = {
           color_light = green_deep_xdark;
-          color_dark  = green_light;
+          color_dark  = green_deep_light;
         };
-        constant = {
+        code_constant = {
           color_light = blue_deep;
           color_dark  = blue_light;
         };
-        function = {
+        code_function = {
           color_light = orange_xdeep;
           color_dark  = orange;
         };
-        keyword = {
+        code_keyword = {
           color_light = pink_xxlight;
           color_dark  = pink_xxxxlight;
         };
-        variable = default_fg;
+        code_variable = default_fg;
+
+        code_match_paren_bg = {
+          color_light = green_deep_xlight;
+          color_dark  = green_deep_xlight;
+        };
+        code_match_paren_fg = {
+          color_light = default_fg.color_light;
+          color_dark  = default_bg.color_dark;
+        };
 
         # markdown syntax
-        markdown_bold = {
+        md_bold = {
           color_light = pink_xxlight;
           color_dark  = pink_xxlight;
         };
-        markdown_italic = markdown_bold;
-        markdown_code = {
+        md_italic = md_bold;
+        md_title = {
           color_light = pink_light;
           color_dark  = pink_light;
         };
-        markdown_title = {
+        md_code = {
           color_light = pink_light;
           color_dark  = pink_light;
         };
+
+        # button-like elements
+        btn_flat_border      = border_3;
+        btn_flat_hover_bg    = hover_bg;
+        btn_flat_hover_fg    = hover_fg;
+        btn_raised_border    = border_2;
+        btn_raised_base_bg   = accent_3_bg;
+        btn_raised_base_fg   = accent_3_fg;
+        btn_xraised_border   = border_1;
+        btn_xraised_base_bg  = accent_2_bg;
+        btn_xraised_base_fg  = accent_2_fg;
+        btn_selected_border  = btn_xraised_border;
+        btn_selected_base_bg = btn_xraised_base_bg;
+        btn_selected_base_fg = btn_xraised_base_fg;
+
+        # button-like elements on variant surfaces
+        btn_flat_border_vrnt      = border_3;
+        btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
+        btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
+        btn_raised_border_vrnt    = border_2;
+        btn_raised_base_bg_vrnt   = accent_4_bg;
+        btn_raised_base_fg_vrnt   = accent_4_fg;
+        btn_xraised_border_vrnt   = border_1;
+        btn_xraised_base_bg_vrnt  = accent_3_bg;
+        btn_xraised_base_fg_vrnt  = accent_3_fg;
+        btn_selected_border_vrnt  = btn_xraised_border_vrnt;
+        btn_selected_base_bg_vrnt = btn_xraised_base_bg_vrnt;
+        btn_selected_base_fg_vrnt = btn_xraised_base_fg_vrnt;
+
+        # button-like elements on selected surfaces
+        btn_flat_border_slct      = border_2;
+        btn_raised_border_slct    = border_1;
+        btn_raised_base_bg_slct   = btn_xraised_base_bg;
+        btn_raised_base_fg_slct   = btn_xraised_base_fg;
       };
     };
   };

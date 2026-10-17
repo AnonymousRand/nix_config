@@ -1,0 +1,12 @@
+@use "base";
+@use "./surfs";
+
+@include base.apply-surfs-to-btns(
+  surfs.$default-surfs, surfs.$variant-surfs, surfs.$selected-surfs
+);
+
+.btn--default {
+  @extend %btn-base;
+  @extend %btn-raised;
+  @include base.btn-bordered;
+}

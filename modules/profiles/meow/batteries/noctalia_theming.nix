@@ -24,7 +24,7 @@
               mOnSecondary      = colors.roles.accent_3_fg;                 # text on secondary surfaces
               mTertiary         = colors.roles.accent_4_bg;                 # tertiary accent
               mOnTertiary       = colors.roles.accent_4_fg;                 # text on tertiary surfaces
-              mOutline          = colors.roles.outline_default.color_light; # borders and dividers
+              mOutline          = colors.roles.border_default.color_light; # borders and dividers
               mShadow           = colors.vars.gray_xdark;                   # shadows
               mHover            = colors.roles.hover_bg.color_light;        # hover state background
               mOnHover          = colors.roles.hover_fg.color_light;        # text on hover surfaces
@@ -72,7 +72,7 @@
               mOnSecondary      = colors.roles.accent_3_fg;
               mTertiary         = colors.roles.accent_4_bg;
               mOnTertiary       = colors.roles.accent_4_fg;
-              mOutline          = colors.roles.outline_default.color_dark;
+              mOutline          = colors.roles.border_default.color_dark;
               mShadow           = colors.vars.gray_xdark;
               mHover            = colors.roles.hover_bg.color_dark;
               mOnHover          = colors.roles.hover_fg.color_dark;
@@ -99,7 +99,7 @@
                 bright = {
                   black   = colors.vars.gray_xdark;
                   red     = colors.vars.red;
-                  green   = colors.vars.green_light;
+                  green   = colors.vars.green_deep_light;
                   yellow  = colors.vars.orange_light;
                   blue    = colors.vars.blue_xdeep_light;
                   magenta = colors.vars.pink_xxxlight;
