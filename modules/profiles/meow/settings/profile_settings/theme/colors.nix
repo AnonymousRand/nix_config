@@ -27,7 +27,6 @@
         green_deep_dark   = "#78da00"; # 87 , 100, 85
         green_deep_xdark  = "#70cc00"; # 87 , 100, 80
 
-        # TODO auto gen base vars and theme files as .css files directly into external_css/ via nix
         orange               = "#ffd500"; # 50 , 100, 100
         orange_light         = "#ffdb26"; # 50 , 85 , 100
         orange_xlight        = "#ffdf40"; # 50 , 75 , 100
