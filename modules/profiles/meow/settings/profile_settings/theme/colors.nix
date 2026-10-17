@@ -78,7 +78,7 @@
 
         # variant bg/fg
         variant_bg = {
-          color_light = "#fff7fa";
+          color_light = "#fffafc"; # 336, 2  , 100
           color_dark  = gray_xxdark;
         };
         variant_fg = {
@@ -345,13 +345,13 @@
         btn_selected_base_fg = btn_xraised_base_fg;
 
         # button-like elements on variant surfaces
-        btn_flat_border_vrnt      = border_3;
+        btn_flat_border_vrnt      = border_4;
         btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
         btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
-        btn_raised_border_vrnt    = border_2;
+        btn_raised_border_vrnt    = border_3;
         btn_raised_base_bg_vrnt   = accent_4_bg;
         btn_raised_base_fg_vrnt   = accent_4_fg;
-        btn_xraised_border_vrnt   = border_1;
+        btn_xraised_border_vrnt   = border_2;
         btn_xraised_base_bg_vrnt  = accent_3_bg;
         btn_xraised_base_fg_vrnt  = accent_3_fg;
         btn_selected_border_vrnt  = btn_xraised_border_vrnt;
