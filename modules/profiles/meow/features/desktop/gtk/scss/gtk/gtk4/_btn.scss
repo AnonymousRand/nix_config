@@ -3,10 +3,10 @@
   $use-impt: false
 );
 @use "base";
-@use "./surfs";
+@use "./surf";
 
 @include base.apply-surfs-to-btns(
-  surfs.$default-surfs, surfs.$variant-surfs, surfs.$selected-surfs
+  surf.$default-surfs, surf.$variant-1-surfs, surf.$variant-2-surfs, surf.$selected-surfs
 );
 
 %btn-suggested {

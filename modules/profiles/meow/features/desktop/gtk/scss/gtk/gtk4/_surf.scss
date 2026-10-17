@@ -1,0 +1,94 @@
+@use "utils";
+
+$default-surfs: [];
+$variant-1-surfs: [];
+$variant-2-surfs: [];
+$selected-surfs:
+  "tabbox:not(.single-tab) tab:selected";
+
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  ".boxed-list",
+  ".boxed-list-separate",
+  ".card"
+]);
+:root {
+  --card-bg-color: var(---variant-1-bg);
+  --card-fg-color: var(---variant-1-fg);
+}
+
+:root {
+  --dialog-bg-color: var(---variant-1-bg);
+  --dialog-fg-color: var(---variant-1-fg);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "dialog"
+]);
+
+:root {
+  --headerbar-bg-color:       var(---variant-1-bg);
+  --headerbar-fg-color:       var(---variant-1-fg);
+  /* overlay that is blended onto unfocused headerbars */
+  --headerbar-backdrop-color: var(--headerbar-bg-color);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "actionbar",
+  "headerbar:not(.flat)",
+  "searchbar:not(.inline)",
+  "tabbar:not(.inline)",
+  // `AdwToolbarView` top and bottom bars
+  "toolbarview menubar",
+  "toolbarview viewswitcherbar",
+  "toolbarview .toolbar"
+]);
+
+:root {
+  --overview-bg-color: var(---variant-1-bg);
+  --overview-fg-color: var(---variant-1-fg);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "taboverview"
+]);
+
+:root {
+  --popover-bg-color: var(---variant-1-bg);
+  --popover-fg-color: var(---variant-1-fg);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "popover > arrow",
+  "popover > contents"
+]);
+
+// why the heck do you exist ;-;
+:root {
+  --secondary-sidebar-bg-color:       base.change-lightness(var(--sidebar-bg-color), 1.25);
+  --secondary-sidebar-fg-color:       var(--sidebar-fg-color);
+  --secondary-sidebar-backdrop-color: var(--sidebar-backdrop-color);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, []);
+
+:root {
+  --sidebar-bg-color:       var(---variant-1-bg);
+  --sidebar-fg-color:       var(---variant-1-fg);
+  --sidebar-backdrop-color: var(--sidebar-bg-color);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "navigation-split-view",
+  "overlay-split-view",
+  ".navigation-sidebar"
+]);
+
+:root {
+  --view-bg-color: var(---variant-1-bg);
+  --view-fg-color: var(---variant-1-fg);
+}
+$variant-1-surfs: utils.register-sels($variant-1-surfs, [
+  "textview.view"
+]);
+
+:root {
+  --window-bg-color: var(---default-bg);
+  --window-fg-color: var(---default-fg);
+}
+$default-surfs: utils.register-sels($default-surfs, [
+  "window.background"
+]);

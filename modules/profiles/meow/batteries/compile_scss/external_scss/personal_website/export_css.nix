@@ -2,7 +2,7 @@
   den.aspects.profiles.meow = {
     homeManager = { config, ... }: {
       aspects.batteries.noctalia-theming.templates = {
-        externPersonalWebsiteBtns = {
+        externPersonalWebsiteBtn = {
           input_path =
             "${config.aspects.batteries.compile-scss.cssOutput}/"
             + "external_scss/personal_website/btn.css";

@@ -83,13 +83,21 @@
         };
 
         # variant bg/fg
-        variant_bg = {
+        variant_1_bg = {
           color_light = "#fffafc"; # 336, 2  , 100
           color_dark  = gray_xxdark;
         };
-        variant_fg = {
+        variant_1_fg = {
           color_light = pink_xxlight;
           color_dark  = pink_xxlight;
+        };
+        variant_2_bg = {
+          color_light = white;
+          color_dark  = gray_xdark;
+        };
+        variant_2_fg = {
+          color_light = pink_xlight;
+          color_dark  = pink_xxxlight;
         };
 
         # accents
@@ -221,10 +229,12 @@
         };
 
         # hover
-        hover_bg      = accent_3_bg;
-        hover_fg      = accent_3_fg;
-        hover_bg_vrnt = accent_4_bg;
-        hover_fg_vrnt = accent_4_fg;
+        hover_bg        = accent_3_bg;
+        hover_fg        = accent_3_fg;
+        hover_bg_vrnt_1 = accent_4_bg;
+        hover_fg_vrnt_1 = accent_4_fg;
+        hover_bg_vrnt_2 = accent_4_bg;
+        hover_fg_vrnt_2 = accent_4_fg;
 
         # statuses
         error = {
@@ -354,19 +364,33 @@
         btn_selected_base_bg = btn_xraised_base_bg;
         btn_selected_base_fg = btn_xraised_base_fg;
 
-        # button-like elements on variant surfaces
-        btn_flat_border_vrnt      = border_4;
-        btn_flat_hover_bg_vrnt    = hover_bg_vrnt;
-        btn_flat_hover_fg_vrnt    = hover_fg_vrnt;
-        btn_raised_border_vrnt    = border_4;
-        btn_raised_base_bg_vrnt   = accent_4_bg;
-        btn_raised_base_fg_vrnt   = accent_4_fg;
-        btn_xraised_border_vrnt   = border_3;
-        btn_xraised_base_bg_vrnt  = accent_3_bg;
-        btn_xraised_base_fg_vrnt  = accent_3_fg;
-        btn_selected_border_vrnt  = btn_xraised_border_vrnt;
-        btn_selected_base_bg_vrnt = btn_xraised_base_bg_vrnt;
-        btn_selected_base_fg_vrnt = btn_xraised_base_fg_vrnt;
+        # button-like elements on variant 1 surfaces
+        btn_flat_border_vrnt_1      = border_4;
+        btn_flat_hover_bg_vrnt_1    = hover_bg_vrnt_1;
+        btn_flat_hover_fg_vrnt_1    = hover_fg_vrnt_1;
+        btn_raised_border_vrnt_1    = border_4;
+        btn_raised_base_bg_vrnt_1   = accent_4_bg;
+        btn_raised_base_fg_vrnt_1   = accent_4_fg;
+        btn_xraised_border_vrnt_1   = border_3;
+        btn_xraised_base_bg_vrnt_1  = accent_3_bg;
+        btn_xraised_base_fg_vrnt_1  = accent_3_fg;
+        btn_selected_border_vrnt_1  = btn_xraised_border_vrnt_1;
+        btn_selected_base_bg_vrnt_1 = btn_xraised_base_bg_vrnt_1;
+        btn_selected_base_fg_vrnt_1 = btn_xraised_base_fg_vrnt_1;
+
+        # button-like elements on variant 2 surfaces
+        btn_flat_border_vrnt_2      = border_4;
+        btn_flat_hover_bg_vrnt_2    = hover_bg_vrnt_2;
+        btn_flat_hover_fg_vrnt_2    = hover_fg_vrnt_2;
+        btn_raised_border_vrnt_2    = border_4;
+        btn_raised_base_bg_vrnt_2   = accent_4_bg;
+        btn_raised_base_fg_vrnt_2   = accent_4_fg;
+        btn_xraised_border_vrnt_2   = border_3;
+        btn_xraised_base_bg_vrnt_2  = accent_3_bg;
+        btn_xraised_base_fg_vrnt_2  = accent_3_fg;
+        btn_selected_border_vrnt_2  = btn_xraised_border_vrnt_2;
+        btn_selected_base_bg_vrnt_2 = btn_xraised_base_bg_vrnt_2;
+        btn_selected_base_fg_vrnt_2 = btn_xraised_base_fg_vrnt_2;
 
         # button-like elements on selected surfaces
         btn_flat_border_slct      = border_2;

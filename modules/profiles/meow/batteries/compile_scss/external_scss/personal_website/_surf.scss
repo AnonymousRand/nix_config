@@ -1,0 +1,12 @@
+@use "utils";
+
+$default-surfs: [];
+// since we want the main body to be the one closer to white/black for websites
+// SYNC: with personal website's own css! until i think of a clever way to synchronize the two
+$variant-1-surfs: "body";
+$variant-2-surfs:
+  ".flash",
+  ".dropdown-menu",
+  ".hljs",
+  ".tooltip .tooltip-inner";
+$selected-surfs: [];

@@ -12,7 +12,7 @@
      width="39"
      height="39"
      rx="8"
-     fill="{{colors.variant_bg_source.default.hex}}"
+     fill="{{colors.variant_1_bg_source.default.hex}}"
      id="rect1"
      style="fill:#fff7fa;fill-opacity:1"
      x="0"

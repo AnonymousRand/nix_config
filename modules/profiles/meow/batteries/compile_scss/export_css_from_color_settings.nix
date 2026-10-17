@@ -84,7 +84,8 @@
         "-md-title:"
         "-md-code:"
         "-border:"
-        "-border-vrnt:"
+        "-border-vrnt-1:"
+        "-border-vrnt-2:"
         "-border-slct:"
       ];
       cssVarNameSubstsTo = [
@@ -111,7 +112,8 @@
         "-md-title-fg:"
         "-md-code-fg:"
         "-border-color:"
-        "-border-vrnt-color:"
+        "-border-vrnt-1-color:"
+        "-border-vrnt-2-color:"
         "-border-slct-color:"
       ];
     in
