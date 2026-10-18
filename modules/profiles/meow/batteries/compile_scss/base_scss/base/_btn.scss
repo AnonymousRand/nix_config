@@ -93,7 +93,7 @@
   // - `base` variables are fixed regardless of state, and they are mainly used to derive the colors
   //   of different states.
 
-  /* colors should generally be overriden by just setting `----curr-bg` and/or `----base-bg`
+  /* colors should generally be overridden by just setting `----curr-bg` and/or `----base-bg`
    * (unless, for example, some other style completely overrode `background-color`) */
 
   // note: these defaults are important for flat buttons
@@ -158,8 +158,8 @@
   );
 }
 
-// note: there is currently no support for strong raised buttons on selected buttons, only flat ones.
-// if this is to be changed, remember to add colors for `hover-border` for raised on selected btns.
+// note: there is currently no support for strong raised buttons on selected surfaces
+// if this is to be changed, remember to add `border-color`
 %btn-selected {
   @include btn-raised-builder(
     $base-bg: var(--btn-selected-base-bg, var(---error-color)),

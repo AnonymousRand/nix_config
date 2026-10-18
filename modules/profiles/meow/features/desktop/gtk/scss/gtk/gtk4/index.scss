@@ -1,12 +1,12 @@
 @forward "./surf";
 @forward "./btn";
-@forward "./styles";
+@forward "./misc";
 
 // also `use` to make this file itself compile to usable CSS for gtk as well
 @use "base";
 @use "colors";
 @use "noctalia_auto_theme";
+@use "./vars";
 @use "./surf";
 @use "./btn";
-@use "./styles";
-@use "./vars";
+@use "./misc";

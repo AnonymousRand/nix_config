@@ -15,7 +15,7 @@
         generateFile "colors.scss" colorsFileLines { inherit lib pkgs; };
       colorsFileLines = lib: lib.mapAttrsToList (name: value:
         builtins.replaceStrings cssVarNameSubstsFrom cssVarNameSubstsTo (
-          "---${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
+          "----${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
           + "{{colors.${name}_source.default.hex}};"
         )
       ) colorSettings.vars;
@@ -27,7 +27,7 @@
           "---${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
           + "{{colors.${name}_source.default.hex}};"
         )
-      ) colorSettings.roles;
+      ) colorSettings.themed;
 
       lightThemeFile = { lib, pkgs }:
         generateFile "light_theme.scss" lightThemeFileLines { inherit lib pkgs; };
@@ -36,7 +36,7 @@
           "---${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
           + "{{colors.${name}_source.light.hex}};"
         )
-      ) colorSettings.roles;
+      ) colorSettings.themed;
 
       darkThemeFile = { lib, pkgs }:
         generateFile "dark_theme.scss" darkThemeFileLines { inherit lib pkgs; };
@@ -45,7 +45,7 @@
           "---${builtins.replaceStrings [ "_" ] [ "-" ] name}: "
           + "{{colors.${name}_source.dark.hex}};"
         )
-      ) colorSettings.roles;
+      ) colorSettings.themed;
 
       rootSrcDir = { lib, pkgs }: pkgs.symlinkJoin {
         name = "generated_scss";
@@ -65,6 +65,7 @@
         "-border-2:"
         "-border-3:"
         "-border-4:"
+        "-border-5:"
         "-border-default:"
         "-error:"
         "-warning:"
@@ -93,6 +94,7 @@
         "-border-2-color:"
         "-border-3-color:"
         "-border-4-color:"
+        "-border-5-color:"
         "-border-default-color:"
         "-error-color:"
         "-warning-color:"
@@ -125,30 +127,5 @@
       quirks-compile-scss-paths-to-load = { lib, pkgs, ... }: [
         (outputDirFullPath { inherit lib pkgs; })
       ];
-
-      homeManager = { config, ... }: {
-        # copy rendered css output needed for external users from nix store to `$XDG_DATA_HOME`
-        # for easier access (currently still needs manual copying to the external places though)
-        aspects.batteries.noctalia-theming.templates = {
-          externColors = {
-            input_path =
-              "${config.aspects.batteries.compile-scss.cssOutput}/${outputDir}/colors.css";
-            output_path = "$XDG_DATA_HOME/external_css/colors.css";
-          };
-
-          # currently not copying over auto theme since it's not needed
-          externLightThemeCss = {
-            input_path =
-              "${config.aspects.batteries.compile-scss.cssOutput}/${outputDir}/light_theme.css";
-            output_path = "$XDG_DATA_HOME/external_css/light_theme.css";
-          };
-
-          externDarkThemeCss = {
-            input_path =
-              "${config.aspects.batteries.compile-scss.cssOutput}/${outputDir}/dark_theme.css";
-            output_path = "$XDG_DATA_HOME/external_css/dark_theme.css";
-          };
-        };
-      };
     };
 }

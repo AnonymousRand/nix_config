@@ -82,7 +82,7 @@ selected_text = {
     bg_color = "{{colors.selection_bg_source.default.hex}}"
 }
 
-border_color          = "{{colors.border_4_source.default.hex}}"
+border_color          = "{{colors.border_default_source.default.hex}}"
 selected_border_color = "{{colors.border_1_source.default.hex}}"
 
 [styles.graphs]

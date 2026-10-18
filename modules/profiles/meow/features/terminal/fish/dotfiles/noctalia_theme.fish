@@ -1,12 +1,12 @@
 set -g fish_color_normal "{{colors.default_fg_source.default.hex}}" \
     --background         "{{colors.default_bg_source.default.hex}}"
 
-set -g _fish_right_prompt_color  brmagenta --bold
-set -g __fish_git_prompt_color   brcyan --bold
+set -g _fish_right_prompt_color brmagenta --bold
+set -g __fish_git_prompt_color  brcyan --bold
 
 set -g fish_color_autosuggestion "{{colors.lighter_fg_source.default.hex}}"
 set -g fish_color_command        $fish_color_normal
-set -g fish_color_comment        "{{colors.comment_source.default.hex}}"
+set -g fish_color_comment        "{{colors.code_comment_source.default.hex}}"
 set -g fish_color_cwd            brgreen --bold
 set -g fish_color_cwd_root       $fish_color_cwd
 set -g fish_color_end            yellow
@@ -15,7 +15,7 @@ set -g fish_color_escape         yellow
 set -g fish_color_host           bryellow --bold
 set -g fish_color_operator       yellow
 set -g fish_color_param          magenta
-set -g fish_color_quote          "{{colors.constant_source.default.hex}}"
+set -g fish_color_quote          "{{colors.code_constant_source.default.hex}}"
 set -g fish_color_redirection    $fish_color_end
 set -g fish_color_search_match   magenta --bold
 set -g fish_color_selection      "{{colors.selection_fg_source.default.hex}}" \
