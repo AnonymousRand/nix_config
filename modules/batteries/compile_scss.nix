@@ -56,7 +56,7 @@
             # copy `build/*` to the designated output directory for this derivation in the nix store
             # (`$out`), which is accessible via `"${<this package>}/<desired file path>"`
             installPhase = ''
-              mkdir -p $out
+              mkdir -p $out/
               cp -r build/* $out/
 
               runHook postInstall

@@ -16,9 +16,9 @@
         blue_xxxlight     = "#e0fcff"; # 186, 12 , 100
         blue_dark         = "#00c4d6"; # 185, 100, 84
         blue_deep         = "#00d0ff"; # 191, 100, 100
-        blue_deep_dark    = "#00c8f5"; # 191, 100, 96
         blue_deep_light   = "#73e5ff"; # 191, 55 , 100
         blue_deep_xlight  = "#8ceaff"; # 191, 45 , 100
+        blue_deep_dark    = "#00c8f5"; # 191, 100, 96
         blue_xdeep        = "#00bbff"; # 196, 100, 100
         blue_xdeep_light  = "#33c9ff"; # 196, 80 , 100
         blue_xdeep_xlight = "#59d3ff"; # 196, 65 , 100
