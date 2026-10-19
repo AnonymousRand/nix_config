@@ -1,3 +1,3 @@
-[submodule "modules/profiles/meow/external_theme"]
+[submodule "modules/profiles/meow/theme"]
 	path = modules/profiles/meow/theme
 	url = ssh://git@git.anonymousrand.xyz:2222/AnonymousRand-Theme/nix_config.git
