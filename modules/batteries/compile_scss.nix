@@ -58,8 +58,8 @@
             # copy `build/*` to the designated output directory for this derivation in the nix store
             # (`$out`), which is accessible via `"${<this package>}/<desired file path>"`
             installPhase = ''
-              mkdir -p $out/
-              cp -r build/* $out/
+              mkdir -p "$out/"
+              cp -r build/* "$out/"
 
               runHook postInstall
             '';
@@ -67,7 +67,7 @@
             # take all noctalia template syntax in the generated css files back out of quotes lmao
             # (since css doesn't recognize hex codes inside quotes/strings)
             postInstall = ''
-              find $out -name '*.css' -type f -exec \
+              find "$out" -name '*.css' -type f -exec \
                 sed -i 's/"\({{ *\?colors\..\+\?}}\)"/\1/g' {} +
             '';
           };

@@ -8,6 +8,7 @@
         pkgs.findutils
         pkgs.inotify-tools
         pkgs.rename
+        pkgs.rsync
         pkgs.tree
         pkgs.unzip
         pkgs.util-linux
