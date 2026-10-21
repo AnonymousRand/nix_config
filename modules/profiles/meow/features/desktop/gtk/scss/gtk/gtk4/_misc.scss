@@ -1,26 +1,26 @@
 @use "base";
 
 :root {
-  caret-color: var(---cursor-bg);
+  caret-color: var(---color-cursor-bg);
 }
 
 scrollbar {
   // this is when you are hovering close enough to the scrollbar for the whole thing to appear,
   // but not actually on top of the scrollbar itself
   &.overlay-indicator.hovering > range > trough {
-    background-color: rgb(from var(---border-4-color) r g b / 0.35);
+    background-color: rgb(from var(---color-border-4) r g b / 0.35);
   }
 
   > range > trough {
     // this is when you are actually hovering on top of the scrollbar
     &:hover {
-      background-color: rgb(from var(---border-4-color) r g b / 0.55);
+      background-color: rgb(from var(---color-border-4) r g b / 0.55);
     }
 
     > slider {
       @at-root :root {
         // slider portion's border color (this is a libadwaita variable)
-        --scrollbar-outline-color: var(---border-3-color);
+        --scrollbar-outline-color: var(---color-border-3);
       }
     }
   }

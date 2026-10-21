@@ -2,37 +2,37 @@
   // we override most of the built-in gtk/libadwaita css variables, which should
   // hopefully make our life slightly easier :33
 
-  --accent-color:    var(---accent-default-bg);
-  --accent-bg-color: var(---accent-default-bg);
-  --accent-fg-color: var(---accent-default-fg);
-  --accent-red:      var(---accent-red-fg);
-  --accent-yellow:   var(---accent-yellow-fg);
-  --accent-orange:   var(---accent-orange-fg);
-  --accent-green:    var(---accent-green-fg);
-  --accent-teal:     var(---accent-teal-fg);
-  --accent-blue:     var(---accent-blue-fg);
-  --accent-purple:   var(---accent-purple-fg);
-  --accent-pink:     var(---accent-pink-fg);
-  --accent-slate:    var(---accent-gray-fg);
+  --accent-color:    var(---color-accent-default-bg);
+  --accent-bg-color: var(---color-accent-default-bg);
+  --accent-fg-color: var(---color-accent-default-fg);
+  --accent-red:      var(---color-accent-red-fg);
+  --accent-yellow:   var(---color-accent-yellow-fg);
+  --accent-orange:   var(---color-accent-orange-fg);
+  --accent-green:    var(---color-accent-green-fg);
+  --accent-teal:     var(---color-accent-teal-fg);
+  --accent-blue:     var(---color-accent-blue-fg);
+  --accent-purple:   var(---color-accent-purple-fg);
+  --accent-pink:     var(---color-accent-pink-fg);
+  --accent-slate:    var(---color-accent-gray-fg);
 
-  --destructive-color:    var(---error-color);
-  --destructive-bg-color: var(---error-bg);
-  --destructive-fg-color: var(---error-fg);
+  --destructive-color:    var(---color-error);
+  --destructive-bg-color: var(---color-error-bg);
+  --destructive-fg-color: var(---color-error-fg);
 
-  --error-color:    var(---error-color);
-  --error-bg-color: var(---error-bg);
-  --error-fg-color: var(---error-fg);
+  --error-color:    var(---color-error);
+  --error-bg-color: var(---color-error-bg);
+  --error-fg-color: var(---color-error-fg);
 
-  --warning-color:    var(---warning-color);
-  --warning-bg-color: var(---warning-bg);
-  --warning-fg-color: var(---warning-fg);
+  --warning-color:    var(---color-warning);
+  --warning-bg-color: var(---color-warning-bg);
+  --warning-fg-color: var(---color-warning-fg);
 
-  --success-color:    var(---success-color);
-  --success-bg-color: var(---success-bg);
-  --success-fg-color: var(---success-fg);
+  --success-color:    var(---color-success);
+  --success-bg-color: var(---color-success-bg);
+  --success-fg-color: var(---color-success-fg);
 
-  --active-toggle-bg-color: var(---accent-default-bg);
-  --active-toggle-fg-color: var(---accent-default-fg);
+  --active-toggle-bg-color: var(---color-accent-default-bg);
+  --active-toggle-fg-color: var(---color-accent-default-fg);
 
   --border-opacity:   1;
   --disabled-opacity: 0.5;
