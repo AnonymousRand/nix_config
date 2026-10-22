@@ -48,39 +48,52 @@
             pkgs.hplipWithPlugin
           ]);
       in
-      {
-        services.printing = {
-          enable = printingSettings.enablePrinting;
-          drivers = printerPackages;
-        };
+      lib.mkMerge [
+        (lib.mkIf printingSettings.enablePrinting {
+          services.printing = {
+            enable = true;
+            drivers = printerPackages;
+          };
+        })
 
-        hardware.sane = {
-          enable = printingSettings.enableScanning;
-          extraBackends = printerPackages;
-        };
+        (lib.mkIf printingSettings.enableScanning {
+          hardware.sane = {
+            enable = true;
+            extraBackends = printerPackages;
+          };
 
-        services.avahi = lib.mkIf printingSettings.enableWireless {
-          enable = true;
-          nssmdns4 = true;
-          openFirewall = true;
-        };
-
-        environment.systemPackages =
-          (lib.optionals printingSettings.enableScanning [
+          environment.systemPackages = [
             pkgs.simple-scan
-          ]);
+            # may be needed for older, non-ipp printers
+            pkgs.cups-filters
+          ];
+        })
 
-        users.users =
-          let
-            combinedUsers =
-              printingSettings.printingUsers ++ printingSettings.scanningUsers;
-            getGroups = user:
-              (lib.optionals (builtins.elem user printingSettings.printingUsers) [ "lp" ])
-              ++ (lib.optionals (builtins.elem user printingSettings.scanningUsers) [ "scanner" ]);
-          in
-          lib.genAttrs combinedUsers (user: {
-            extraGroups = getGroups user;
-          });
-      };
+        (lib.mkIf printingSettings.enableWireless {
+          services.avahi = {
+            enable = true;
+            nssmdns4 = true;
+            openFirewall = true;
+          };
+        })
+
+        {
+          users.users =
+            let
+              combinedUsers =
+                printingSettings.printingUsers ++ printingSettings.scanningUsers;
+              getGroups = user:
+                (lib.optionals (builtins.elem user printingSettings.printingUsers) [
+                  "lp"
+                ])
+                ++ (lib.optionals (builtins.elem user printingSettings.scanningUsers) [
+                  "scanner"
+                ]);
+            in
+            lib.genAttrs combinedUsers (user: {
+              extraGroups = getGroups user;
+            });
+        }
+      ];
   };
 }
