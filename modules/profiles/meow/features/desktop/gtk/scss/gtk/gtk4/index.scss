@@ -1,9 +1,15 @@
+// this sets the config vars globally for gtk4 before any other modules are loaded, avoiding errors
+@use "base" with (
+  // since gtk css doesn't recognize `!important`
+  $use-impt: false
+);
+
+// these must come after `@use "base"` as they also hit `@use "impt"`s and cause errors with `with`
 @forward "./surf";
 @forward "./btn";
 @forward "./misc";
 
 // also `use` to make this file itself compile to usable CSS for gtk as well
-@use "base";
 @use "colors";
 @use "noctalia_auto_theme";
 @use "./vars";

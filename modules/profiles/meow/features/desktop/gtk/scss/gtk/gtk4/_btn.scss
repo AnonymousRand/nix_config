@@ -1,8 +1,5 @@
 @use "utils";
-@use "base" with (
-  // since gtk css doesn't recognize `!important`
-  $use-impt: false
-);
+@use "base";
 @use "./surf";
 
 @include base.apply-surfs-to-btns(
