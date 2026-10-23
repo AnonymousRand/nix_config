@@ -6,6 +6,17 @@
     quirks-compile-scss-paths-to-load = [ ./scss ];
 
     homeManager = { config, ... }: {
+      gtk =
+        let
+          gtk3And4CommonCfg = {
+            gtk-enable-primary = false;
+          };
+        in
+        {
+          gtk3.extraConfig = gtk3And4CommonCfg;
+          gtk4.extraConfig = gtk3And4CommonCfg;
+        };
+
       # noctalia theming (not using `gtk-theming` aspect's options to accommodate noctalia theming)
       aspects.batteries.noctalia-theming.templates = {
         #gtk3 = {
