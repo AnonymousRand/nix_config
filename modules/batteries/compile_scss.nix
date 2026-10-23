@@ -40,8 +40,7 @@
                 sassCommands = builtins.foldl'
                   (
                     acc: entry:
-                      acc + "\nsass ${entry}:build/${builtins.baseNameOf entry}" +
-                        " ${loadPathArgs} --no-source-map"
+                      acc + "\nsass ${entry}:build/${builtins.baseNameOf entry} ${loadPathArgs}"
                   )
                   "" quirks-compile-scss-paths-to-compile;
               in
