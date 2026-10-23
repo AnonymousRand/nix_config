@@ -41,7 +41,7 @@
                   (
                     acc: entry:
                       acc + "\nsass ${entry}:build/${builtins.baseNameOf entry}" +
-                        " --no-source-map ${loadPathArgs}"
+                        " ${loadPathArgs} --no-source-map"
                   )
                   "" quirks-compile-scss-paths-to-compile;
               in
