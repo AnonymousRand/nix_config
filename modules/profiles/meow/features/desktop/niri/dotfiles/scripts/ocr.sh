@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 # (`flock` makes sure that if you press escape to exit niri's screenshot UI without screenshotting,
 # the next time you screenshot there will not be a second `inotifywait` spawned)

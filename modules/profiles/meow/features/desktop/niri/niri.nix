@@ -4,7 +4,7 @@
       let
         noctaliaThemeCfgPath = "niri/noctalia_theme.kdl";
         cfgFiles = builtins.filter
-          (filename: filename != "noctalia_theme.kdl")
+          (filename: filename != "noctalia_theme.kdl" && filename != "scripts")
           (builtins.attrNames (builtins.readDir ./dotfiles));
       in
       {
@@ -19,7 +19,7 @@
         };
 
         # we need to do this instead of a recursive `xdg.configFile` to specifically exclude
-        # the unrendered noctalia theme template file :(
+        # the unrendered noctalia theme template file and `scripts/` :(
         xdg.configFile = builtins.listToAttrs (builtins.map (
           filename: {
             name = "niri/${filename}";

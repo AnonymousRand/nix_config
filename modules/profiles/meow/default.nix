@@ -11,7 +11,6 @@
       den.aspects.features.desktop.fcitx5
       den.aspects.features.desktop.gtk
       den.aspects.features.desktop.niri
-      den.aspects.features.desktop.niri.screenshots
       den.aspects.features.desktop.noctalia
 
       den.aspects.features.fonts.maple-mono
@@ -41,7 +40,8 @@
 
       den.aspects.features.media.ffmpeg
       den.aspects.features.media.inkscape
-      den.aspects.features.media.swayimg
+      den.aspects.features.media.loupe # for weird formats like heic
+      den.aspects.features.media.satty # for annotations on images
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>` by den
