@@ -4,6 +4,7 @@
       lib.mkIf (syst.settings.capabilities.has [ "graphics" "media" ]) {
         home.packages = [
           pkgs.loupe
+          pkgs.gthumb
         ];
       };
   };

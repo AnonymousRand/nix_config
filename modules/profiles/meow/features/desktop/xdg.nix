@@ -9,17 +9,17 @@
 
           # images
           "image/avif"               = "org.gnome.Loupe.desktop";
-          "image/bmp"                = "satty.desktop";
+          "image/bmp"                = "org.gnome.Loupe.desktop";
           "image/gif"                = "org.gnome.Loupe.desktop";
           "image/heif"               = "org.gnome.Loupe.desktop";
-          "image/jp2"                = "satty.desktop";
-          "image/jpeg"               = "satty.desktop";
+          "image/jp2"                = "org.gnome.Loupe.desktop";
+          "image/jpeg"               = "org.gnome.Loupe.desktop";
           "image/jxl"                = "org.gnome.Loupe.desktop";
-          "image/png"                = "satty.desktop";
+          "image/png"                = "org.gnome.Loupe.desktop";
           "image/qoi"                = "org.gnome.Loupe.desktop";
           "image/svg+xml"            = "org.inkspace.Inkscape.desktop";
           "image/svg+xml-compressed" = "org.inkspace.Inkscape.desktop";
-          "image/tiff"               = "satty.desktop";
+          "image/tiff"               = "org.gnome.Loupe.desktop";
           "image/webp"               = "org.gnome.Loupe.desktop";
         };
       };

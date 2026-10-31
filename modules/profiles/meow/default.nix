@@ -40,8 +40,8 @@
 
       den.aspects.features.media.ffmpeg
       den.aspects.features.media.inkscape
-      den.aspects.features.media.loupe # for weird formats like heic
-      den.aspects.features.media.satty # for annotations on images
+      den.aspects.features.media.loupe
+      den.aspects.features.media.satty # for quick annotations on images & screenshots
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>` by den
