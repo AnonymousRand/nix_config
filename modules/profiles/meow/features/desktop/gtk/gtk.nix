@@ -9,7 +9,7 @@
       gtk =
         let
           gtk3And4CommonCfg = {
-            gtk-enable-primary = false;
+            gtk-enable-primary-paste = false;
           };
         in
         {

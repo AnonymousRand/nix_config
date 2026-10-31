@@ -39,9 +39,10 @@
       den.aspects.features.apps.nautilus
 
       den.aspects.features.media.ffmpeg
+      den.aspects.features.media.gthumb # broken on close right now, TODO replace loupe when fixed
       den.aspects.features.media.inkscape
       den.aspects.features.media.loupe
-      den.aspects.features.media.satty # for quick annotations on images & screenshots
+      den.aspects.features.media.satty  # for annotations on images & screenshots
     ];
 
     # `user` class is forwarded to `nixos.users.users.<username>` by den
