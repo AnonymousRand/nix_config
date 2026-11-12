@@ -1,7 +1,11 @@
 input {
     keyboard {
-        // use default keyboard settings provided by host's nix config
-        xkb {}
+        // use default keyboard layout etc. provided by host's nix config
+        xkb {
+            layout "us"
+            // the x11 compose key for typing alt characters like em dashes
+            options "compose:rctrl"
+        }
         // enable numlock on startup
         numlock
     }
